@@ -194,7 +194,217 @@ function vibrateDevice(){
     else if(navigator.userAgent.match(/android/i)) try{navigator.vibrate(200)}catch(e){}
 }
 
-async function startScanner(){
+// ===== COMPLETELY FIXED CAMERA FUNCTIONS =====
+// FIXED: Html5QrCode → Html5Qrcode (lowercase 'c')
+let html5QrCode = null;
+let currentResult = '';
+let isScanning = false;
+let torchOn = false;
+let currentCameraId = null;
+let allCameras = [];
+let activeStream = null;
+
+async function startScanner() {
+    const startBtn = document.getElementById('btnStart');
+    const stopBtn = document.getElementById('btnStop');
+    const torchBtn = document.getElementById('btnTorch');
+    const switchBtn = document.getElementById('btnSwitch');
+    const statusEl = document.getElementById('scanStatus');
+    const laser = document.getElementById('scanLaser');
+    const placeholder = document.getElementById('camPlaceholder');
+
+    startBtn.classList.add('hidden');
+    stopBtn.classList.add('hidden');
+    torchBtn.classList.add('hidden');
+    switchBtn.classList.add('hidden');
+    statusEl.innerHTML = '<span style="color:#f59e0b">●</span> Meminta izin kamera...';
+
+    // Clean up previous instance
+    if (html5QrCode) {
+        try {
+            if (isScanning) await html5QrCode.stop();
+            html5QrCode.clear();
+        } catch (e) {}
+    }
+    if (activeStream) {
+        activeStream.getTracks().forEach(track => track.stop());
+        activeStream = null;
+    }
+
+    try {
+        // STEP 1: Request camera permission
+        let stream;
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } },
+                audio: false
+            });
+        } catch (e) {
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: "environment" },
+                audio: false
+            });
+        }
+
+        activeStream = stream;
+        statusEl.innerHTML = '<span style="color:#f59e0b">●</span> Memulai kamera...';
+        placeholder.style.display = 'none';
+
+        // STEP 2: Initialize - FIXED: Html5Qrcode (lowercase 'c')
+        html5QrCode = new Html5Qrcode("reader");
+
+        // STEP 3: Get cameras - FIXED: Html5Qrcode.getCameras() (lowercase 'c')
+        allCameras = await Html5Qrcode.getCameras();
+
+        if (!allCameras || allCameras.length === 0) {
+            statusEl.innerHTML = '<span style="color:#ef4444">✕</span> Kamera tidak ditemukan!';
+            startBtn.classList.remove('hidden');
+            placeholder.style.display = 'flex';
+            stream.getTracks().forEach(track => track.stop());
+            activeStream = null;
+            toast('❌ Tidak ada kamera. Gunakan Upload Gambar.', 'error');
+            return;
+        }
+
+        // STEP 4: Find back camera
+        const backCam = allCameras.find(c => {
+            const label = c.label.toLowerCase();
+            return label.includes('back') || label.includes('environment') || label.includes('belakang');
+        });
+        currentCameraId = backCam ? backCam.id : allCameras[0].id;
+
+        // STEP 5: Start scanning
+        await html5QrCode.start(
+            currentCameraId,
+            { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0 },
+            (decodedText, decodedResult) => {
+                currentResult = decodedText;
+                let formatName = 'Unknown';
+                try { if (decodedResult?.result?.format?.formatName) formatName = decodedResult.result.format.formatName; } catch (e) {}
+                if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+                showResult(decodedText, formatName);
+                saveHist(decodedText, formatName);
+                laser.style.display = 'none';
+                toast('✅ Barcode terdeteksi!');
+            },
+            () => {}
+        );
+
+        // STEP 6: Camera LIVE
+        isScanning = true;
+        stopBtn.classList.remove('hidden');
+        torchBtn.classList.remove('hidden');
+        if (allCameras.length > 1) switchBtn.classList.remove('hidden');
+        statusEl.innerHTML = '<span style="color:#10b981">●</span> Scanning...';
+        laser.style.display = 'block';
+        placeholder.style.display = 'none';
+
+    } catch (error) {
+        statusEl.innerHTML = '<span style="color:#ef4444">✕</span> Gagal akses kamera';
+        startBtn.classList.remove('hidden');
+        placeholder.style.display = 'flex';
+
+        if (activeStream) { activeStream.getTracks().forEach(track => track.stop()); activeStream = null; }
+        if (html5QrCode) { try { html5QrCode.clear(); } catch (e) {} }
+
+        if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+            toast('❌ Akses kamera ditolak. Buka Pengaturan Browser > Izin > Kamera, lalu izinkan.', 'error');
+        } else if (error.name === 'NotFoundError' || error.name === 'DevicesNotFoundError') {
+            toast('❌ Kamera tidak ditemukan.', 'error');
+        } else if (error.name === 'NotReadableError' || error.name === 'TrackStartError') {
+            toast('❌ Kamera sedang digunakan aplikasi lain.', 'error');
+        } else {
+            toast('❌ Gagal mengakses kamera: ' + error.message, 'error');
+        }
+    }
+}
+
+function stopScanner() {
+    if (html5QrCode && isScanning) {
+        html5QrCode.stop().then(() => {}).catch(err => {}).finally(() => {
+            try { html5QrCode.clear(); } catch (e) {}
+        });
+    }
+    if (activeStream) {
+        activeStream.getTracks().forEach(track => track.stop());
+        activeStream = null;
+    }
+
+    isScanning = false;
+    torchOn = false;
+    document.getElementById('btnStart').classList.remove('hidden');
+    document.getElementById('btnStop').classList.add('hidden');
+    document.getElementById('btnTorch').classList.add('hidden');
+    document.getElementById('btnSwitch').classList.add('hidden');
+    document.getElementById('scanStatus').innerHTML = '⚪ Kamera Mati';
+    document.getElementById('scanLaser').style.display = 'none';
+    document.getElementById('camPlaceholder').style.display = 'flex';
+}
+
+async function toggleTorch() {
+    if (!html5QrCode || !isScanning) return;
+    try {
+        let videoTrack = null;
+        if (typeof html5QrCode.getRunningTrack === 'function') videoTrack = html5QrCode.getRunningTrack();
+        if (!videoTrack && activeStream) videoTrack = activeStream.getVideoTracks()[0];
+        if (!videoTrack) {
+            const tracks = document.querySelector('#reader video')?.srcObject?.getVideoTracks();
+            if (tracks && tracks.length > 0) videoTrack = tracks[0];
+        }
+        if (videoTrack) {
+            const capabilities = videoTrack.getCapabilities ? videoTrack.getCapabilities() : null;
+            if (capabilities && capabilities.torch) {
+                torchOn = !torchOn;
+                await videoTrack.applyConstraints({ advanced: [{ torch: torchOn }] });
+                document.getElementById('btnTorch').classList.toggle('torch-on', torchOn);
+                toast(torchOn ? '💡 Senter ON' : '💡 Senter OFF');
+            } else { toast('⚠️ Senter tidak didukung', 'error'); }
+        }
+    } catch (e) { toast('⚠️ Gagal senter', 'error'); }
+}
+
+async function switchCamera() {
+    if (!html5QrCode || !isScanning || allCameras.length < 2) return;
+    try {
+        await html5QrCode.stop();
+        const currentIdx = allCameras.findIndex(c => c.id === currentCameraId);
+        const nextIdx = (currentIdx + 1) % allCameras.length;
+        currentCameraId = allCameras[nextIdx].id;
+        await html5QrCode.start(
+            currentCameraId,
+            { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0 },
+            (decodedText, decodedResult) => {
+                currentResult = decodedText;
+                let formatName = 'Unknown';
+                try { if (decodedResult?.result?.format?.formatName) formatName = decodedResult.result.format.formatName; } catch (e) {}
+                if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+                showResult(decodedText, formatName);
+                saveHist(decodedText, formatName);
+                document.getElementById('scanLaser').style.display = 'none';
+                toast('✅ Terdeteksi!');
+            },
+            () => {}
+        );
+        document.getElementById('scanLaser').style.display = 'block';
+        toast('📷 Kamera diganti');
+    } catch (e) { toast('❌ Gagal ganti kamera', 'error'); }
+}
+
+function scanImageFile(input) {
+    if (!input.files || !input.files[0]) return;
+    const tempScanner = new Html5Qrcode("reader"); // FIXED: lowercase 'c'
+    tempScanner.scanFile(input.files[0], true)
+        .then(decodedText => {
+            currentResult = decodedText;
+            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+            showResult(decodedText, 'File Image');
+            saveHist(decodedText, 'File Image');
+            tempScanner.clear();
+            toast('✅ Barcode terdeteksi!');
+        })
+        .catch(err => { toast('❌ Tidak ada barcode di gambar', 'error'); tempScanner.clear(); });
+    input.value = '';
+}
     document.getElementById('btnStart').classList.add('hidden');document.getElementById('scanStatus').innerHTML='<span style="color:#f59e0b">●</span> Meminta izin kamera...';document.getElementById('camPlaceholder').style.display='none';
     try{
         if(!qr)qr=new Html5Qrcode("reader");allCams=await Html5QrCode.getCameras();

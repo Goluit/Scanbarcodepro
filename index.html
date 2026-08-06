@@ -220,7 +220,7 @@ async function startScanner() {
         currentCam = back || cameraList[0];
 
         // START scanning - Html5Qrcode handles permission + stream
-        await scanner.start(
+        await scanner.start({ fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0 }
             currentCam.id,
             { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0 },
             (text, result) => {

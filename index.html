@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
-<head> <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<head><script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     
@@ -167,160 +167,23 @@ const blogImages=['https://images.unsplash.com/photo-1586281380349-632531db7ed1?
 const blogs=[{id:1,title:'Cara Scan Barcode dengan ScanBarcode Pro',cat:'Tutorial',date:'15 Mar 2026',excerpt:'Panduan lengkap scan barcode pakai HP.'},{id:2,title:'EAN vs UPC Retail Guide',cat:'Retail',date:'10 Mar 2026',excerpt:'Perbedaan EAN-13 dan UPC-A.'},{id:3,title:'QRIS Pembayaran Digital',cat:'Fintech',date:'5 Mar 2026',excerpt:'Standar nasional pembayaran.'},{id:4,title:'Manajemen Inventori UMKM',cat:'Bisnis',date:'28 Feb 2026',excerpt:'Optimalkan stok.'},{id:5,title:'WiFi QR Code Tools',cat:'Tools',date:'20 Feb 2026',excerpt:'Buat QR WiFi.'},{id:6,title:'Keamanan Scan QR Code',cat:'Keamanan',date:'15 Feb 2026',excerpt:'Tips aman.'},{id:7,title:'Barcode di Logistik',cat:'Logistik',date:'10 Feb 2026',excerpt:'Code128 tracking.'},{id:8,title:'vCard QR Digital',cat:'Tools',date:'5 Feb 2026',excerpt:'Kartu nama digital.'},{id:9,title:'Teknologi Barcode 2026',cat:'Teknologi',date:'1 Feb 2026',excerpt:'Tren barcode.'},{id:10,title:'Panduan QR Generator',cat:'Tutorial',date:'25 Jan 2026',excerpt:'Panduan generator.'}];
 function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card"><div class="blog-img" style="background-image:url('${blogImages[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date}</span></div></div>`).join('')}
 
+// ===== CLEAN SIMPLE CAMERA CODE =====
+let scanner = null;
+let scanResult = '';
+let scanning = false;
+let torchActive = false;
+let currentCam = null;
+let cameraList = [];
 
-/
-                // Better format names
-                formatName = getNiceFormatName(formatName, decodedText);
+async function startScanner() {
+    const sBtn = document.getElementById('btnStart');
+    const tBtn = document.getElementById('btnStop');
+    const rBtn = document.getElementById('btnTorch');
+    const wBtn = document.getElementById('btnSwitch');
+    const stat = document.getElementById('scanStatus');
+    const laser = document.getElementById('scanLaser');
+    const place = document.getElementById('camPlaceholder');
 
-                if (navigator.vibrate) navigator.vibrate([120, 50, 120]);
-
-                // Show result
-                showResult(decodedText, formatName);
-                saveHist(decodedText, formatName);
-
-                // Auto stop camera (like scanbarcode.net)
-                stopScanner();
-                toast('✅ ' + formatName + ' terdeteksi!');
-            },
-            () => {} // ignore continuous errors
-        );
-
-        // Camera LIVE
-        scanning = true;
-        tBtn.classList.remove('hidden');
-        rBtn.classList.remove('hidden');
-        if (cameraList.length > 1) wBtn.classList.remove('hidden');
-        stat.innerHTML = '<span style="color:#10b981">●</span> Scanning...';
-        laser.style.display = 'block';
-        place.style.display = 'none';
-
-    } catch (err) {
-        console.error(err);
-        stat.innerHTML = '<span style="color:#ef4444">✕</span> Gagal akses kamera';
-        sBtn.classList.remove('hidden');
-        place.style.display = 'flex';
-        if (scanner) { try { scanner.clear(); } catch(e) {} }
-        
-        if (err.name === 'NotAllowedError') {
-            toast('❌ Izin kamera ditolak. Izinkan di pengaturan browser.', 'error');
-        } else {
-            toast('❌ Gagal: ' + (err.message || err), 'error');
-        }
-    }
-}
-
-function stopScanner() {
-    if (scanner && scanning) {
-        scanner.stop().catch(() => {}).finally(() => {
-            try { scanner.clear(); } catch(e) {}
-        });
-    }
-    scanning = false;
-    torchActive = false;
-    document.getElementById('btnStart').classList.remove('hidden');
-    document.getElementById('btnStop').classList.add('hidden');
-    document.getElementById('btnTorch').classList.add('hidden');
-    document.getElementById('btnSwitch').classList.add('hidden');
-    document.getElementById('scanStatus').innerHTML = '⚪ Kamera Mati';
-    document.getElementById('scanLaser').style.display = 'none';
-    document.getElementById('camPlaceholder').style.display = 'flex';
-}
-
-async function toggleTorch() {
-    if (!scanner || !scanning) return;
-    try {
-        let track = scanner.getRunningTrack ? scanner.getRunningTrack() : null;
-        if (!track) {
-            const v = document.querySelector('#reader video');
-            if (v?.srcObject) track = v.srcObject.getVideoTracks()[0];
-        }
-        if (track?.getCapabilities?.()?.torch) {
-            torchActive = !torchActive;
-            await track.applyConstraints({ advanced: [{ torch: torchActive }] });
-            document.getElementById('btnTorch').classList.toggle('torch-on', torchActive);
-        }
-    } catch(e) {}
-}
-
-async function switchCamera() {
-    if (!scanner || !scanning || cameraList.length < 2) return;
-    try {
-        await scanner.stop();
-        const idx = cameraList.findIndex(c => c.id === currentCam.id);
-        currentCam = cameraList[(idx + 1) % cameraList.length];
-        await scanner.start(
-            currentCam.id,
-            {
-                fps: 10,
-                qrbox: function(w, h) {
-                    const size = Math.floor(Math.min(w, h) * 0.72);
-                    return { width: size, height: size };
-                },
-                aspectRatio: 1.333
-            },
-            (text, result) => {
-                let fmt = getNiceFormatName(result?.result?.format?.formatName || 'Unknown', text);
-                if (navigator.vibrate) navigator.vibrate([120, 50, 120]);
-                showResult(text, fmt);
-                saveHist(text, fmt);
-                stopScanner();
-                toast('✅ ' + fmt + ' terdeteksi!');
-            },
-            () => {}
-        );
-        document.getElementById('scanLaser').style.display = 'block';
-    } catch(e) {}
-}
-
-function scanImageFile(input) {
-    if (!input.files?.[0]) return;
-    const tmp = new Html5Qrcode("reader");
-    tmp.scanFile(input.files[0], true)
-        .then(text => {
-            const fmt = getNiceFormatName('File Image', text);
-            if (navigator.vibrate) navigator.vibrate([120, 50, 120]);
-            showResult(text, fmt);
-            saveHist(text, fmt);
-            tmp.clear();
-            toast('✅ ' + fmt + ' terdeteksi!');
-        })
-        .catch(() => {
-            toast('❌ Tidak ada barcode di gambar', 'error');
-            tmp.clear();
-        });
-    input.value = '';
-}
-
-// ===== Format Name Better =====
-function getNiceFormatName(rawFormat, text) {
-    if (!rawFormat || rawFormat === 'Unknown') {
-        if (/^https?:\/\//i.test(text)) return 'QR Code (URL)';
-        if (/^WIFI:/i.test(text)) return 'QR Code (WiFi)';
-        if (/^tel:/i.test(text)) return 'QR Code (Phone)';
-        if (/^mailto:/i.test(text)) return 'QR Code (Email)';
-        if (/^\d{13}$/.test(text)) return 'EAN-13';
-        if (/^\d{12}$/.test(text)) return 'UPC-A';
-        if (/^\d{8}$/.test(text)) return 'EAN-8';
-        return 'Barcode';
-    }
-
-    const f = rawFormat.toUpperCase();
-    if (f.includes('QR')) return 'QR Code';
-    if (f.includes('EAN_13') || f.includes('EAN13')) return 'EAN-13';
-    if (f.includes('EAN_8') || f.includes('EAN8')) return 'EAN-8';
-    if (f.includes('UPC_A') || f.includes('UPC-A')) return 'UPC-A';
-    if (f.includes('UPC_E')) return 'UPC-E';
-    if (f.includes('CODE_128') || f.includes('CODE128')) return 'Code 128';
-    if (f.includes('CODE_39') || f.includes('CODE39')) return 'Code 39';
-    if (f.includes('CODE_93')) return 'Code 93';
-    if (f.includes('ITF')) return 'ITF';
-    if (f.includes('CODABAR')) return 'Codabar';
-    if (f.includes('DATA_MATRIX')) return 'Data Matrix';
-    if (f.includes('PDF_417') || f.includes('PDF417')) return 'PDF417';
-    if (f.includes('AZTEC')) return 'Aztec';
-
-    return rawFormat;
-}
     // Hide start, show loading
     sBtn.classList.add('hidden');
     tBtn.classList.add('hidden');
@@ -513,4 +376,4 @@ if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.ad
 switchGenTab('qr');
 </script>
 </body>
-<html>
+</html>

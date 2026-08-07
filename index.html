@@ -168,72 +168,7 @@ const blogs=[{id:1,title:'Cara Scan Barcode dengan ScanBarcode Pro',cat:'Tutoria
 function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card"><div class="blog-img" style="background-image:url('${blogImages[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date}</span></div></div>`).join('')}
 
 
-// ===== PERFECT CAMERA CODE =====
-let scanner = null;
-let scanning = false;
-let torchActive = false;
-let currentCam = null;
-let cameraList = [];
-
-async function startScanner() {
-    const sBtn = document.getElementById('btnStart');
-    const tBtn = document.getElementById('btnStop');
-    const rBtn = document.getElementById('btnTorch');
-    const wBtn = document.getElementById('btnSwitch');
-    const stat = document.getElementById('scanStatus');
-    const laser = document.getElementById('scanLaser');
-    const place = document.getElementById('camPlaceholder');
-
-    sBtn.classList.add('hidden');
-    tBtn.classList.add('hidden');
-    rBtn.classList.add('hidden');
-    wBtn.classList.add('hidden');
-    stat.innerHTML = '<span style="color:#f59e0b">●</span> Membuka kamera...';
-
-    if (scanner) {
-        try { if (scanning) await scanner.stop(); scanner.clear(); } catch(e) {}
-        scanner = null;
-    }
-
-    try {
-        scanner = new Html5Qrcode("reader");
-        cameraList = await Html5Qrcode.getCameras();
-
-        if (!cameraList || cameraList.length === 0) {
-            stat.innerHTML = '<span style="color:#ef4444">✕</span> Kamera tidak ditemukan';
-            sBtn.classList.remove('hidden');
-            place.style.display = 'flex';
-            toast('❌ Tidak ada kamera', 'error');
-            return;
-        }
-
-        // Prefer back camera
-        const back = cameraList.find(c => {
-            const l = c.label.toLowerCase();
-            return l.includes('back') || l.includes('environment') || l.includes('belakang');
-        });
-        currentCam = back || cameraList[0];
-
-        await scanner.start(
-            currentCam.id,
-            {
-                fps: 10,
-                qrbox: function(viewfinderWidth, viewfinderHeight) {
-                    const minEdge = Math.min(viewfinderWidth, viewfinderHeight);
-                    const size = Math.floor(minEdge * 0.72);
-                    return { width: size, height: size };
-                },
-                aspectRatio: 1.333
-            },
-            (decodedText, decodedResult) => {
-                // ===== SUCCESS - AUTO STOP =====
-                let formatName = 'Unknown';
-                try {
-                    if (decodedResult?.result?.format?.formatName) {
-                        formatName = decodedResult.result.format.formatName;
-                    }
-                } catch(e) {}
-
+/
                 // Better format names
                 formatName = getNiceFormatName(formatName, decodedText);
 

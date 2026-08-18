@@ -1,52 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
+  <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://scanbarcode-pro.vercel.app/</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Main Scanner (scanner.html) -->
+  <!-- Main Tools -->
   <url>
     <loc>https://scanbarcode-pro.vercel.app/scanner.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- Optimized ScanResult Page -->
-  <url>
-    <loc>https://scanbarcode-pro.vercel.app/scanresult.html</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- Generator -->
   <url>
     <loc>https://scanbarcode-pro.vercel.app/generator.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
   </url>
 
-  <!-- Cara Scan Barcode -->
+  <!-- Blog / Guide Pages -->
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/blog.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <url>
     <loc>https://scanbarcode-pro.vercel.app/cara-scan-barcode.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/cara-scan-barcode-wifi.html</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/jenis-barcode.html</loc>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
-  <!-- Jenis Barcode -->
+  <!-- Secondary -->
   <url>
-    <loc>https://scanbarcode-pro.vercel.app/jenis-barcode.html</loc>
-    <lastmod>2026-08-18</lastmod>
+    <loc>https://scanbarcode-pro.vercel.app/scanresult.html</loc>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.60</priority>
   </url>
 
 </urlset>

@@ -4,36 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     
-    <!-- Google Site Verification -->
     <meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
     
-    <!-- SEO Title & Description -->
-    <title>Blog Scan Barcode & QR Code - Tips, Panduan & Artikel Premium | ScanBarcode Pro</title>
-    <meta name="description" content="Blog ScanBarcode Pro: Tips scan barcode WiFi, cara kerja barcode, scan di laptop, QR code generator, dan artikel premium teknologi barcode untuk Indonesia.">
-    <meta name="keywords" content="blog scan barcode, tips scan barcode wifi, cara kerja barcode, scan barcode laptop, qr code generator, online barcode scanner, artikel barcode premium">
-    <meta name="author" content="ScanBarcode Pro Indonesia">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <title>Blog Scan Barcode & QR Code - Tips & Panduan | ScanBarcode Pro</title>
+    <meta name="description" content="Blog ScanBarcode Pro: Tips scan QRIS, cara scan barcode WiFi, dan panduan lengkap teknologi barcode untuk Indonesia.">
+    <meta name="keywords" content="blog scan barcode, cara scan qris, scan barcode wifi, panduan barcode, tips qr code">
+    <meta name="robots" content="index, follow">
     <meta name="language" content="id">
-    <meta name="geo.country" content="ID">
     <meta name="theme-color" content="#0b1120">
     
-    <!-- Canonical -->
     <link rel="canonical" href="https://scanbarcode-pro.vercel.app/blog.html" />
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Blog Scan Barcode & QR Code - Tips & Panduan Premium | ScanBarcode Pro">
-    <meta property="og:description" content="Artikel premium tentang scan barcode, QR code generator, dan tips teknologi barcode untuk Indonesia.">
+    <meta property="og:title" content="Blog Scan Barcode & QR Code | ScanBarcode Pro">
+    <meta property="og:description" content="Tips dan panduan lengkap scan barcode, QRIS, dan QR code.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scanbarcode-pro.vercel.app/blog.html">
     <meta property="og:locale" content="id_ID">
-    <meta property="og:site_name" content="ScanBarcode Pro Indonesia">
     
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Blog Scan Barcode & QR Code - Tips Premium">
-    <meta name="twitter:description" content="Artikel premium tentang scan barcode dan QR code untuk Indonesia.">
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -42,20 +29,14 @@
                     colors: {
                         dark: '#0b1120',
                         darkCard: '#111827',
-                        darkBorder: '#1e293b',
                         primary: '#7c3aed',
-                        secondary: '#2563eb',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -66,7 +47,6 @@
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid #1e293b;
-            padding: 0 16px;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -78,180 +58,102 @@
             justify-content: space-between;
             align-items: center;
             height: 64px;
+            padding: 0 16px;
         }
         .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #e2e8f0; font-weight: 800; font-size: 18px; }
-        .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #2563eb); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 19px; font-weight: 700; }
+        .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #2563eb); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
         .logo span { color: #7c3aed; }
-        .nav-links { display: flex; gap: 2px; list-style: none; }
-        .nav-links a { padding: 7px 12px; border-radius: 7px; text-decoration: none; color: #94a3b8; font-size: 13px; font-weight: 600; transition: all 0.2s; white-space: nowrap; }
-        .nav-links a:hover { background: #1e293b; color: #a78bfa; }
-        .nav-links a.active { background: #1e293b; color: #a78bfa; }
-        .mobile-menu-btn { display: none; width: 38px; height: 38px; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 20px; color: #94a3b8; }
-        .mobile-menu { display: none; background: #0f172a; border-top: 1px solid #1e293b; padding: 6px; }
+        .nav-links { display: flex; gap: 4px; list-style: none; }
+        .nav-links a { padding: 7px 12px; border-radius: 7px; text-decoration: none; color: #94a3b8; font-size: 13px; font-weight: 600; }
+        .nav-links a:hover, .nav-links a.active { background: #1e293b; color: #a78bfa; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
+        .mobile-menu { display: none; background: #0f172a; border-top: 1px solid #1e293b; padding: 8px; }
         .mobile-menu.show { display: block; }
-        .mobile-menu a { display: block; padding: 12px 16px; font-weight: 600; text-decoration: none; color: #94a3b8; border-radius: 8px; font-size: 14px; }
+        .mobile-menu a { display: block; padding: 12px 16px; color: #94a3b8; text-decoration: none; font-weight: 600; border-radius: 8px; }
         
         .main-content { max-width: 1200px; margin: 0 auto; padding: 40px 16px 60px; }
         
         .page-header {
-            background: linear-gradient(135deg, #7c3aed, #2563eb, #f97316);
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
             border-radius: 20px;
-            padding: 60px 30px;
+            padding: 50px 30px;
             text-align: center;
             color: #fff;
             margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
         }
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-            animation: pulse 3s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        .page-header h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 900;
-            margin-bottom: 14px;
-            line-height: 1.2;
-            position: relative;
-            z-index: 1;
-        }
-        .page-header p {
-            font-size: 17px;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+        .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; margin-bottom: 12px; }
+        .page-header p { font-size: 16px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
         
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
         }
         .blog-card {
             background: #111827;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid #1e293b;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             cursor: pointer;
-            position: relative;
         }
         .blog-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             border-color: #7c3aed;
-            box-shadow: 0 20px 45px rgba(124, 58, 237, 0.15), 0 0 0 1px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
         }
         .blog-card-img {
-            height: 220px;
+            height: 200px;
             background-size: cover;
             background-position: center;
             position: relative;
-            overflow: hidden;
         }
         .blog-card-img::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 40%, rgba(11, 17, 32, 0.9) 100%);
+            background: linear-gradient(to bottom, transparent 40%, rgba(11,17,32,0.85));
         }
-        .blog-card-img .cat-badge {
+        .cat-badge {
             position: absolute;
-            top: 16px;
-            left: 16px;
+            top: 14px;
+            left: 14px;
             z-index: 2;
             background: rgba(124, 58, 237, 0.9);
-            backdrop-filter: blur(6px);
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .blog-card-body {
-            padding: 22px;
-        }
-        .blog-card-body h3 {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #f1f5f9;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        .blog-card-body p {
-            font-size: 13px;
-            color: #94a3b8;
-            margin-bottom: 14px;
-            line-height: 1.6;
-        }
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 11px;
-            color: #64748b;
-        }
-        .blog-meta span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .blog-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px solid #1e293b;
-        }
-        .read-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #a78bfa;
-            font-weight: 700;
-            font-size: 12px;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .read-btn:hover { color: #fff; gap: 8px; }
+        .blog-card-body { padding: 20px; }
+        .blog-card-body h3 { font-size: 1.1rem; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; line-height: 1.4; }
+        .blog-card-body p { font-size: 13px; color: #94a3b8; margin-bottom: 14px; line-height: 1.6; }
+        .blog-meta { display: flex; gap: 14px; font-size: 11px; color: #64748b; margin-bottom: 12px; }
+        .read-btn { color: #a78bfa; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .read-btn:hover { color: #fff; }
         
         .footer {
             background: #0f172a;
+            border-top: 1px solid #1e293b;
             color: #64748b;
-            padding: 35px 20px;
+            padding: 30px 20px;
             text-align: center;
             font-size: 13px;
-            border-top: 1px solid #1e293b;
         }
         .footer a { color: #64748b; text-decoration: none; }
         .footer a:hover { color: #a78bfa; }
         
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .mobile-menu-btn { display: flex; }
+            .mobile-menu-btn { display: block; }
             .blog-grid { grid-template-columns: 1fr; }
-            .page-header { padding: 35px 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav class="navbar">
     <div class="nav-container">
         <a href="https://scanbarcode-pro.vercel.app/" class="logo">
@@ -262,134 +164,64 @@
             <li><a href="https://scanbarcode-pro.vercel.app/">Beranda</a></li>
             <li><a href="/generator.html">Generator</a></li>
             <li><a href="/scanner.html">Scanner</a></li>
-            <li><a href="/cara-scan-barcode.html">Cara Scan</a></li>
             <li><a href="/blog.html" class="active">Blog</a></li>
         </ul>
-        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('show')">☰</button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
         <a href="https://scanbarcode-pro.vercel.app/">🏠 Beranda</a>
         <a href="/generator.html">🎨 Generator</a>
         <a href="/scanner.html">📷 Scanner</a>
-        <a href="/cara-scan-barcode.html">📖 Cara Scan</a>
         <a href="/blog.html">📰 Blog</a>
     </div>
 </nav>
 
-<!-- MAIN CONTENT -->
 <div class="main-content">
-
-    <!-- PAGE HEADER -->
     <div class="page-header">
         <h1>📰 Blog Scan Barcode & QR Code</h1>
-        <p>Tips, panduan, dan artikel premium tentang teknologi barcode, QR code, dan cara scan barcode untuk pengguna Indonesia.</p>
+        <p>Tips, panduan, dan artikel lengkap tentang scan barcode, QRIS, dan QR code untuk pengguna Indonesia.</p>
     </div>
 
-    <!-- BLOG GRID -->
-    <div class="blog-grid" id="blogGrid"></div>
+    <div class="blog-grid">
 
-</div>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2026 ScanBarcode Pro Indonesia | <a href="https://scanbarcode-pro.vercel.app/">Beranda</a> | <a href="/scanner.html">Scanner</a> | <a href="/generator.html">Generator</a> | <a href="/blog.html">Blog</a></p>
-    <p style="margin-top:6px;opacity:0.7;">ScanBarcode Pro adalah alat independen untuk scan barcode umum.</p>
-</footer>
-
-<script>
-// ===== TOGGLE MOBILE MENU =====
-function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('show');
-}
-
-// ===== BLOG DATA =====
-const blogPosts = [
-    {
-        title: 'Cara Scan Barcode WiFi: Langsung Konek Tanpa Ribet',
-        category: 'Tips',
-        date: '18 Maret 2026',
-        readTime: '5 menit',
-        description: 'Pelajari cara memindai barcode WiFi dengan HP Anda dan langsung terhubung ke jaringan tanpa perlu mengetik password. Panduan lengkap untuk pemula.',
-        image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=320&fit=crop',
-        slug: 'cara-scan-barcode-wifi'
-    },
-    {
-        title: 'Bagaimana Cara Kerja Barcode? Penjelasan Sederhana untuk Pemula',
-        category: 'Panduan',
-        date: '15 Maret 2026',
-        readTime: '7 menit',
-        description: 'Memahami mekanisme di balik barcode: dari garis hitam putih hingga data digital. Penjelasan sederhana yang mudah dipahami semua orang.',
-        image: 'https://images.unsplash.com/photo-1553729459-afe8a1f19b2a?w=500&h=320&fit=crop',
-        slug: 'cara-kerja-barcode'
-    },
-    {
-        title: 'Scan Barcode di Laptop atau PC Tanpa Aplikasi',
-        category: 'Tips',
-        date: '12 Maret 2026',
-        readTime: '4 menit',
-        description: 'Tidak punya HP? Tenang, Anda bisa scan barcode langsung dari laptop atau PC menggunakan webcam. Begini caranya.',
-        image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=500&h=320&fit=crop',
-        slug: 'scan-barcode-di-laptop'
-    },
-    {
-        title: 'Online Barcode Scanner vs Mobile Apps: Mana Lebih Baik?',
-        category: 'Teknologi',
-        date: '10 Maret 2026',
-        readTime: '6 menit',
-        description: 'Perbandingan lengkap antara scanner online berbasis browser dengan aplikasi mobile. Mana yang lebih cocok untuk kebutuhan Anda?',
-        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=320&fit=crop',
-        slug: 'online-scanner-vs-mobile-apps'
-    },
-    {
-        title: 'Tips Scan Barcode yang Rusak atau Buram',
-        category: 'Tips',
-        date: '8 Maret 2026',
-        readTime: '5 menit',
-        description: 'Barcode rusak, buram, atau terlipat? Jangan khawatir! Pelajari tips dan trik untuk tetap bisa memindai barcode dalam kondisi sulit.',
-        image: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=500&h=320&fit=crop',
-        slug: 'tips-scan-barcode-rusak'
-    },
-    {
-        title: 'Cara Membuat QR Code untuk WiFi dengan Mudah',
-        category: 'Panduan',
-        date: '5 Maret 2026',
-        readTime: '4 menit',
-        description: 'Panduan langkah demi langkah membuat QR code WiFi untuk bisnis kafe, restoran, atau rumah Anda. Permudah tamu terhubung internet.',
-        image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=320&fit=crop',
-        slug: 'cara-membuat-qr-code-wifi'
-    }
-];
-
-// ===== RENDER BLOG CARDS =====
-function renderBlogs() {
-    const grid = document.getElementById('blogGrid');
-    
-    grid.innerHTML = blogPosts.map(post => `
-        <div class="blog-card" onclick="window.location.href='/blog/${post.slug}.html'">
-            <div class="blog-card-img" style="background-image: url('${post.image}')">
-                <span class="cat-badge">${post.category}</span>
+        <!-- Article 1: Cara Scan QRIS -->
+        <div class="blog-card" onclick="window.location.href='/cara-scan-qris.html'">
+            <div class="blog-card-img" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop')">
+                <span class="cat-badge">Panduan</span>
             </div>
             <div class="blog-card-body">
-                <h3>${post.title}</h3>
-                <p>${post.description}</p>
+                <h3>Cara Scan QRIS untuk Bayar: Panduan Lengkap 2026</h3>
+                <p>Pembayaran digital mudah dan aman dengan QRIS - GoPay, OVO, DANA, ShopeePay. Panduan lengkap cara scan QRIS.</p>
                 <div class="blog-meta">
-                    <span><i class="far fa-calendar"></i> ${post.date}</span>
-                    <span><i class="far fa-clock"></i> ${post.readTime} baca</span>
+                    <span><i class="far fa-calendar"></i> 19 Agustus 2026</span>
+                    <span><i class="far fa-clock"></i> 6 menit baca</span>
                 </div>
-                <div class="blog-card-footer">
-                    <a href="/blog/${post.slug}.html" class="read-btn">
-                        Baca Selengkapnya <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <span style="font-size:11px;color:#7c3aed;"><i class="fas fa-bookmark"></i></span>
-                </div>
+                <a href="/cara-scan-qris.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
-    `).join('');
-}
 
-// ===== INIT =====
-renderBlogs();
-</script>
+        <!-- Article 2: Cara Scan Barcode WiFi -->
+        <div class="blog-card" onclick="window.location.href='/cara-scan-barcode-wifi.html'">
+            <div class="blog-card-img" style="background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop')">
+                <span class="cat-badge">Tips</span>
+            </div>
+            <div class="blog-card-body">
+                <h3>Cara Scan Barcode WiFi: Langsung Konek Tanpa Ribet</h3>
+                <p>Pelajari cara memindai barcode WiFi dengan HP dan langsung terhubung ke jaringan tanpa mengetik password.</p>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> 18 Maret 2026</span>
+                    <span><i class="far fa-clock"></i> 5 menit baca</span>
+                </div>
+                <a href="/cara-scan-barcode-wifi.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 ScanBarcode Pro Indonesia | <a href="/">Beranda</a> | <a href="/scanner.html">Scanner</a> | <a href="/generator.html">Generator</a> | <a href="/blog.html">Blog</a></p>
+</footer>
 
 </body>
-  </html>
+</html>

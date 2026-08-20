@@ -23,12 +23,12 @@
     <meta property="og:url" content="https://scanbarcode-pro.vercel.app/blog.html">
     <meta property="og:locale" content="id_ID">
     <meta property="og:site_name" content="ScanBarcode Pro Indonesia">
-    <meta property="og:image" content="https://scanbarcode-pro.vercel.app/cara-scan-qris.jpg">
+    <meta property="og:image" content="https://scanbarcode-pro.vercel.app/cara-scan-resi.jpg">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Blog Scan Barcode & QR Code 2026 | ScanBarcode Pro">
     <meta name="twitter:description" content="Tips scan barcode rusak, QRIS Static vs Dynamic, cara scan QRIS & barcode WiFi.">
-    <meta name="twitter:image" content="https://scanbarcode-pro.vercel.app/cara-scan-qris.jpg">
+    <meta name="twitter:image" content="https://scanbarcode-pro.vercel.app/cara-scan-resi.jpg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -114,20 +114,21 @@
             box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
         }
         
-        /* ========== FIXED IMAGE (no more side cut on mobile) ========== */
+        /* ========== FIXED IMAGE: full visible in desktop, no side cut, consistent ratio ========== */
         .blog-card-img-wrapper {
             width: 100%;
-            aspect-ratio: 16 / 9;          /* same ratio as real images → almost zero crop */
+            aspect-ratio: 16 / 9;           /* uniform 16:9 ratio, no weird crop or side clipping */
             position: relative;
             overflow: hidden;
-            background-color: #0f172a;
+            background-color: #0f172a;       /* fallback bg while loading */
+            border-radius: 0;               /* blend with card */
         }
         .blog-card-img-wrapper img {
             width: 100%;
             height: 100%;
             display: block;
-            object-fit: cover;
-            object-position: center center;  /* balanced, no forced top bias */
+            object-fit: cover;              /* fills the box, ensures image looks full */
+            object-position: center center; /* balanced cropping if any, avoids side cut on cara-scan-resi */
             transition: transform 0.35s ease;
         }
         .blog-card:hover .blog-card-img-wrapper img {
@@ -223,7 +224,7 @@
             </div>
         </a>
 
-        <!-- 3. Cara Scan Resi -->
+        <!-- 3. Cara Scan Resi (full image now: no side crop, object-fit cover with correct ratio) -->
         <a href="/cara-scan-resi.html" class="blog-card">
             <div class="blog-card-img-wrapper">
                 <img src="/cara-scan-resi.jpg" alt="Cara Scan Resi Pengiriman" loading="lazy">

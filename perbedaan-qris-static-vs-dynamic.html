@@ -1,574 +1,568 @@
 <!DOCTYPE html>
 <html lang="id">
-<head><meta property="og:image" content="https://scanbarcode-pro.vercel.app/perbedaan-qris-static-vs-dynamic.jpg">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perbedaan QRIS Static vs Dynamic: Mana yang Lebih Baik untuk Bisnis Anda? | ScanBarcode Pro</title>
-  <meta name="description" content="Pahami perbedaan QRIS Static dan Dynamic secara lengkap. Temukan kelebihan, kekurangan, tabel perbandingan, serta rekomendasi terbaik untuk bisnis Anda.">
-  <style>
-    :root {
-      --bg-primary: #f1f5f9;
-      --bg-card: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #334155;
-      --text-muted: #64748b;
-      --accent: #2563eb;
-      --accent-dark: #1e40af;
-      --purple: #7c3aed;
-      --purple-dark: #6d28d9;
-      --border: #e2e8f0;
-      --shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
-      --shadow-hover: 0 20px 50px -12px rgba(0,0,0,0.12);
-      --radius: 20px;
-      --radius-sm: 12px;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
+    
+    <!-- SEO Title & Description -->
+    <title>Perbedaan QRIS Static vs Dynamic: Mana yang Lebih Baik? | ScanBarcode Pro</title>
+    <meta name="description" content="Pelajari perbedaan QRIS Static vs Dynamic. Tabel perbandingan lengkap, kelebihan, kekurangan, tips memilih, dan FAQ. Panduan untuk bisnis di Indonesia.">
+    <meta name="keywords" content="qris static vs dynamic, perbedaan qris static dynamic, qris static, qris dynamic, qris bisnis, pembayaran qris, qris untuk umkm, qris merchant, qris indonesia">
+    <meta name="author" content="ScanBarcode Pro Indonesia">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="language" content="id">
+    <meta name="geo.country" content="ID">
+    <meta name="theme-color" content="#7c3aed">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://scanbarcode-pro.vercel.app/qris-static-vs-dynamic.html" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Perbedaan QRIS Static vs Dynamic: Mana yang Lebih Baik? | ScanBarcode Pro">
+    <meta property="og:description" content="Tabel perbandingan lengkap QRIS Static vs Dynamic. Kelebihan, kekurangan, dan tips memilih untuk bisnis Anda.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://scanbarcode-pro.vercel.app/qris-static-vs-dynamic.html">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="ScanBarcode Pro Indonesia">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7c3aed',
+                        secondary: '#2563eb',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    body {
-      background: var(--bg-primary);
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-      color: var(--text-primary);
-      line-height: 1.7;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
-      color: white;
-      padding: 3.5rem 1.25rem 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -20%;
-      width: 140%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      color: white;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 0.45rem 1.2rem;
-      border-radius: 50px;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      margin-bottom: 1.4rem;
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-
-    .hero h1 {
-      font-size: 2.7rem;
-      font-weight: 800;
-      line-height: 1.25;
-      letter-spacing: -1px;
-      margin-bottom: 1rem;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero .subtitle {
-      font-size: 1.15rem;
-      opacity: 0.92;
-      max-width: 580px;
-      margin: 0 auto 1.8rem;
-      line-height: 1.6;
-    }
-
-    .meta {
-      display: flex;
-      justify-content: center;
-      gap: 1.8rem;
-      font-size: 0.9rem;
-      opacity: 0.85;
-      flex-wrap: wrap;
-    }
-
-    /* ===== MAIN CONTENT ===== */
-    .main-content {
-      margin-top: -2.5rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .card {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 2.5rem 2.8rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.6);
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      font-weight: 750;
-      color: var(--text-primary);
-      margin: 2.8rem 0 1.1rem;
-      letter-spacing: -0.4px;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    h2:first-child { margin-top: 0; }
-
-    h3 {
-      font-size: 1.3rem;
-      font-weight: 650;
-      margin: 1.8rem 0 0.7rem;
-      color: var(--text-primary);
-    }
-
-    p {
-      margin-bottom: 1.15rem;
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-    }
-
-    strong { color: var(--text-primary); font-weight: 700; }
-
-    .highlight {
-      background: linear-gradient(135deg, #eff6ff, #f5f3ff);
-      border-left: 5px solid var(--accent);
-      padding: 1.3rem 1.6rem;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 2rem 0;
-    }
-
-    .highlight p {
-      margin: 0;
-      color: #1e3a8a;
-      font-weight: 550;
-    }
-
-    /* ===== COMPARISON CARDS ===== */
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin: 2.2rem 0;
-    }
-
-    .compare-card {
-      border-radius: var(--radius-sm);
-      padding: 1.8rem 1.6rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .compare-card.static {
-      background: linear-gradient(145deg, #eff6ff, #dbeafe);
-      border: 1px solid #bfdbfe;
-    }
-
-    .compare-card.dynamic {
-      background: linear-gradient(145deg, #f5f3ff, #ede9fe);
-      border: 1px solid #ddd6fe;
-    }
-
-    .compare-card h3 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .compare-card ul {
-      margin: 1rem 0 0 1.1rem;
-      padding: 0;
-    }
-
-    .compare-card li {
-      margin-bottom: 0.55rem;
-      font-size: 0.98rem;
-      color: var(--text-secondary);
-    }
-
-    /* ===== TABLE ===== */
-    .table-wrapper {
-      overflow-x: auto;
-      margin: 2rem 0;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 560px;
-    }
-
-    thead th {
-      background: linear-gradient(135deg, #1e40af, #7c3aed);
-      color: white;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 1.15rem 1.3rem;
-      text-align: left;
-    }
-
-    tbody td {
-      padding: 1.1rem 1.3rem;
-      border-bottom: 1px solid #f1f5f9;
-      color: var(--text-secondary);
-      font-size: 0.97rem;
-      vertical-align: top;
-    }
-
-    tbody tr:nth-child(even) { background: #f8fafc; }
-    tbody tr:hover { background: #f0f7ff; }
-
-    .label-col {
-      font-weight: 700;
-      color: var(--text-primary);
-      width: 28%;
-    }
-
-    /* ===== LISTS ===== */
-    ul, ol {
-      margin: 0.9rem 0 1.6rem 1.5rem;
-      color: var(--text-secondary);
-    }
-
-    li {
-      margin-bottom: 0.65rem;
-      font-size: 1.03rem;
-    }
-
-    li::marker { color: var(--accent); font-weight: 700; }
-
-    /* ===== CTA BOX ===== */
-    .cta-box {
-      background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
-      border-radius: var(--radius);
-      padding: 3rem 2.2rem;
-      text-align: center;
-      margin: 3rem 0 1.5rem;
-      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -20%;
-      width: 60%;
-      height: 160%;
-      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
-    }
-
-    .cta-box h3 {
-      color: white;
-      margin: 0 0 0.8rem;
-      font-size: 1.7rem;
-      font-weight: 750;
-      position: relative;
-    }
-
-    .cta-box p {
-      color: rgba(255,255,255,0.92);
-      margin-bottom: 1.9rem;
-      font-size: 1.08rem;
-      position: relative;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: white;
-      color: #1e40af;
-      text-decoration: none;
-      font-weight: 750;
-      padding: 1.05rem 2.8rem;
-      border-radius: 50px;
-      font-size: 1.08rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      position: relative;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-      background: #f8fafc;
-    }
-
-    /* ===== FAQ ===== */
-    .faq-item {
-      border-bottom: 1px solid #f1f5f9;
-      padding: 1.5rem 0;
-    }
-
-    .faq-item:last-child { border-bottom: none; }
-
-    .faq-question {
-      font-weight: 700;
-      font-size: 1.08rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      gap: 0.7rem;
-      align-items: flex-start;
-    }
-
-    .faq-question::before {
-      content: "💬";
-      flex-shrink: 0;
-      margin-top: 0.15rem;
-    }
-
-    .faq-answer {
-      color: var(--text-secondary);
-      padding-left: 2.1rem;
-      font-size: 1rem;
-    }
-
-    a.internal-link {
-      color: var(--accent);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      font-weight: 600;
-    }
-
-    a.internal-link:hover { color: var(--accent-dark); }
-
-    /* ===== FOOTER ===== */
-    .article-footer {
-      text-align: center;
-      padding: 2.5rem 1rem 3rem;
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      .hero { padding: 2.8rem 1.2rem 3.2rem; }
-      .hero h1 { font-size: 2.05rem; }
-      .card { padding: 1.8rem 1.4rem; }
-      .compare-grid { grid-template-columns: 1fr; }
-      h2 { font-size: 1.5rem; }
-      .cta-box { padding: 2.3rem 1.4rem; }
-      .cta-box h3 { font-size: 1.4rem; }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 1.75rem; }
-      .meta { gap: 1rem; font-size: 0.82rem; }
-    }
-  </style>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.8; }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 62px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 800;
+            font-size: 18px;
+        }
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 19px;
+            font-weight: 700;
+        }
+        .logo span { color: #7c3aed; }
+        .nav-links { display: flex; gap: 2px; list-style: none; }
+        .nav-links a {
+            padding: 7px 12px;
+            border-radius: 7px;
+            text-decoration: none;
+            color: #1e293b;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { background: #f5f3ff; color: #7c3aed; }
+        .nav-links a.active { background: #f5f3ff; color: #7c3aed; }
+        .mobile-menu-btn { display: none; width: 38px; height: 38px; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 20px; color: #1e293b; }
+        .mobile-menu { display: none; background: #fff; border-top: 1px solid #e5e7eb; padding: 6px; }
+        .mobile-menu.show { display: block; }
+        .mobile-menu a { display: block; padding: 12px 16px; font-weight: 600; text-decoration: none; color: #1e293b; border-radius: 8px; font-size: 14px; }
+        
+        .article-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 16px 50px;
+        }
+        
+        .article-header {
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            border-radius: 18px;
+            padding: 40px 30px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .article-header h1 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 900;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .article-header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        
+        .content-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e5e7eb;
+        }
+        .content-card h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f5f3ff;
+        }
+        .content-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin: 20px 0 10px;
+        }
+        .content-card p { margin-bottom: 14px; font-size: 15px; color: #374151; }
+        .content-card ul, .content-card ol { margin: 14px 0; padding-left: 22px; }
+        .content-card li { margin-bottom: 8px; font-size: 15px; color: #374151; }
+        
+        .highlight-box {
+            background: #f5f3ff;
+            border-left: 4px solid #7c3aed;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+        .highlight-box strong { color: #7c3aed; }
+        
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+        .tip-box strong { color: #059669; }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+        .comparison-table th {
+            background: #f5f3ff;
+            font-weight: 700;
+            color: #7c3aed;
+        }
+        .comparison-table td {
+            color: #374151;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+        
+        .faq-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 30px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 18px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 14px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 0;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+            margin: 30px 0;
+        }
+        .cta-box h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+        .cta-box p { font-size: 15px; opacity: 0.9; margin-bottom: 18px; }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 26px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin: 4px;
+        }
+        .cta-btn-primary { background: #fff; color: #7c3aed; }
+        .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,255,255,0.3); }
+        .cta-btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.5); color: #fff; }
+        .cta-btn-outline:hover { border-color: #fff; }
+        
+        .footer {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer a { color: #94a3b8; text-decoration: none; }
+        .footer a:hover { color: #fff; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .article-header { padding: 25px 18px; }
+            .content-card { padding: 20px; }
+            .comparison-table th, .comparison-table td { padding: 10px 12px; font-size: 12px; }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <img src="/perbedaan-qris-static-vs-dynamic.jpg" 
-     alt="Perbedaan QRIS Static vs Dynamic" 
-     style="max-width:100%; border-radius:16px; margin: 0 0 2rem 0; display:block;">
-  <header class="hero">
-    <div class="container">
-      <div class="badge">💳 Panduan Pembayaran Digital 2026</div>
-      <h1>Perbedaan QRIS Static vs Dynamic: Mana yang Lebih Baik?</h1>
-      <p class="subtitle">Pahami perbedaan mendasar dua jenis QRIS ini agar bisnis Anda lebih efisien, akurat, dan profesional.</p>
-      <div class="meta">
-        <span>✍️ Tim ScanBarcode Pro</span>
-        <span>📅 19 Agustus 2026</span>
-        <span>⏱️ 8 menit baca</span>
-      </div>
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="https://scanbarcode-pro.vercel.app/" class="logo">
+            <div class="logo-icon">📷</div>
+            <div>ScanBarcode<span>Pro</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="https://scanbarcode-pro.vercel.app/">Beranda</a></li>
+            <li><a href="/generator.html">Generator</a></li>
+            <li><a href="/scanner.html">Scanner</a></li>
+            <li><a href="/cara-scan-barcode.html">Cara Scan</a></li>
+            <li><a href="/jenis-barcode.html">Jenis Barcode</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     </div>
-  </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="https://scanbarcode-pro.vercel.app/">🏠 Beranda</a>
+        <a href="/generator.html">🎨 Generator</a>
+        <a href="/scanner.html">📷 Scanner</a>
+        <a href="/cara-scan-barcode.html">📖 Cara Scan</a>
+        <a href="/jenis-barcode.html">📊 Jenis Barcode</a>
+    </div>
+</nav>
 
-  <div class="container main-content">
-    <main class="card">
-      <p>Bayangkan Anda baru saja membuka coffee shop kecil. Pelanggan datang, memesan, lalu mengarahkan kamera ponselnya ke kode QR yang menempel di meja. Transaksi berhasil. Tapi tunggu — apakah Anda tahu QR tersebut bertipe <strong>Static</strong> atau <strong>Dynamic</strong>?</p>
+<!-- ARTICLE CONTENT -->
+<div class="article-container">
 
-      <p>QRIS sudah menjadi tulang punggung pembayaran digital UMKM di Indonesia. Namun masih banyak pelaku usaha yang belum memahami perbedaan antara <strong>QRIS Static</strong> dan <strong>QRIS Dynamic</strong>. Padahal pilihan yang tepat langsung memengaruhi kecepatan transaksi, akurasi laporan, dan pengalaman pelanggan.</p>
+    <!-- ARTICLE HEADER -->
+    <div class="article-header">
+        <h1>Perbedaan QRIS Static vs Dynamic:<br>Mana yang Lebih Baik untuk Bisnis Anda?</h1>
+        <p>Panduan lengkap dan mendalam untuk memilih jenis QRIS yang tepat sesuai kebutuhan bisnis di Indonesia</p>
+    </div>
 
-      <div class="highlight">
-        <p>💡 Fakta: QRIS Static masih mendominasi di kalangan UMKM, namun QRIS Dynamic tumbuh jauh lebih cepat di bisnis menengah ke atas karena efisiensi dan akurasinya.</p>
-      </div>
-
-      <!-- COMPARISON CARDS -->
-      <div class="compare-grid">
-        <div class="compare-card static">
-          <h3>📄 Static QRIS</h3>
-          <p style="margin-bottom:0.8rem; font-size:0.95rem; color:#1e40af; font-weight:600;">Printed / Fixed (Tertulis)</p>
-          <ul>
-            <li>Kode dicetak sekali & berlaku selamanya</li>
-            <li>Pelanggan input nominal manual</li>
-            <li>Sangat cocok untuk UMKM & warung</li>
-            <li>Biaya hampir nol</li>
-          </ul>
+    <!-- APA ITU QRIS STATIC -->
+    <div class="content-card">
+        <h2>📌 Apa Itu QRIS Static?</h2>
+        <p>QRIS Static adalah jenis QR code pembayaran yang <strong>ditempel secara permanen</strong> di tempat usaha atau di meja kasir. QR code ini berisi informasi merchant yang bersifat tetap dan tidak pernah berubah. Ketika pelanggan memindai QRIS Static, mereka harus <strong>memasukkan nominal pembayaran secara manual</strong> di aplikasi pembayaran mereka.</p>
+        
+        <p>Ini adalah jenis QRIS yang paling banyak digunakan oleh pelaku usaha kecil dan menengah di Indonesia. Alasannya sederhana: <strong>praktis, murah, dan mudah digunakan</strong>. Cukup cetak satu kali, tempel, dan langsung bisa menerima pembayaran.</p>
+        
+        <h3>Karakteristik Utama QRIS Static:</h3>
+        <ul>
+            <li>QR code dicetak satu kali dan ditempel permanen di tempat usaha</li>
+            <li>Nominal pembayaran diinput oleh pelanggan secara manual</li>
+            <li>Informasi merchant tidak pernah berubah</li>
+            <li>Tidak perlu biaya tambahan untuk generate ulang</li>
+            <li>Bisa digunakan tanpa perangkat elektronik tambahan</li>
+            <li>Cocok untuk semua jenis bisnis dari skala kecil hingga menengah</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <strong>💡 Contoh Pengguna:</strong> Warung makan, toko kelontong, pedagang kaki lima, laundry, bengkel, dan usaha rumahan lainnya biasanya menggunakan QRIS Static karena kepraktisannya.
         </div>
-        <div class="compare-card dynamic">
-          <h3>📱 Dynamic QRIS</h3>
-          <p style="margin-bottom:0.8rem; font-size:0.95rem; color:#6d28d9; font-weight:600;">Digital / Generated</p>
-          <ul>
-            <li>Kode unik per transaksi</li>
-            <li>Nominal sudah terisi otomatis</li>
-            <li>Ideal untuk restoran & retail modern</li>
-            <li>Rekonsiliasi otomatis</li>
-          </ul>
+    </div>
+
+    <!-- APA ITU QRIS DYNAMIC -->
+    <div class="content-card">
+        <h2>📌 Apa Itu QRIS Dynamic?</h2>
+        <p>QRIS Dynamic adalah jenis QR code pembayaran yang <strong>di-generate secara khusus untuk setiap transaksi baru</strong>. Berbeda dengan QRIS Static yang nominalnya diinput manual oleh pelanggan, QRIS Dynamic sudah <strong>memuat nominal pembayaran yang telah ditentukan</strong> oleh merchant.</p>
+        
+        <p>QRIS Dynamic biasanya ditampilkan di layar kasir, monitor POS (Point of Sale), atau dicetak oleh printer khusus untuk setiap transaksi. Ini membuat proses pembayaran lebih cepat dan akurat karena pelanggan tinggal scan dan langsung konfirmasi pembayaran tanpa perlu mengetik angka.</p>
+        
+        <h3>Karakteristik Utama QRIS Dynamic:</h3>
+        <ul>
+            <li>QR code dibuat baru untuk setiap transaksi</li>
+            <li>Nominal pembayaran sudah terpasang otomatis</li>
+            <li>Ditampilkan di layar kasir, POS, atau printer khusus</li>
+            <li>Lebih akurat karena pelanggan tidak bisa salah input</li>
+            <li>Memerlukan sistem atau aplikasi khusus untuk generate</li>
+            <li>Terintegrasi langsung dengan sistem kasir digital</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <strong>💡 Contoh Pengguna:</strong> Restoran modern, retail dengan sistem kasir digital, kafe premium, hotel, dan merchant online biasanya menggunakan QRIS Dynamic untuk profesionalisme dan efisiensi.
         </div>
-      </div>
+    </div>
 
-      <h2>Apa itu QRIS Static?</h2>
-      <p>QRIS Static adalah kode QR yang <strong>nilai nominalnya tidak ditentukan oleh merchant</strong>. Pelanggan yang memindai harus memasukkan sendiri nominal pembayaran di aplikasi dompet digital atau mobile banking mereka.</p>
-      <p>Kode biasanya dicetak sekali, ditempel di meja kasir, dinding, atau etalase. Satu kode bisa digunakan untuk banyak transaksi tanpa batas. Sangat praktis untuk warung makan, toko kelontong, barbershop, atau jasa laundry.</p>
-
-      <h3>Ciri-ciri QRIS Static:</h3>
-      <ul>
-        <li>Kode QR dicetak satu kali dan berlaku selamanya</li>
-        <li>Pelanggan memasukkan nominal secara manual</li>
-        <li>Tidak menampilkan detail transaksi spesifik</li>
-        <li>Cocok untuk usaha mikro dengan harga bervariasi</li>
-      </ul>
-
-      <h2>Apa itu QRIS Dynamic?</h2>
-      <p>QRIS Dynamic adalah kode QR yang <strong>sudah berisi nominal pembayaran tetap</strong> yang ditentukan oleh merchant. Saat dipindai, aplikasi langsung menampilkan jumlah yang harus dibayar — tanpa input manual.</p>
-      <p>Setiap transaksi biasanya menghasilkan kode unik. Kode dibuat lewat mesin kasir (POS), aplikasi merchant, atau sistem yang terintegrasi. Risiko salah input hampir nol.</p>
-
-      <h3>Ciri-ciri QRIS Dynamic:</h3>
-      <ul>
-        <li>Nominal sudah ditentukan oleh sistem merchant</li>
-        <li>Kode bisa berbeda untuk setiap transaksi</li>
-        <li>Terintegrasi dengan aplikasi kasir atau printer</li>
-        <li>Memudahkan rekonsiliasi keuangan otomatis</li>
-      </ul>
-
-      <h2>Tabel Perbandingan Lengkap</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Aspek</th>
-              <th>QRIS Static</th>
-              <th>QRIS Dynamic</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="label-col">Nominal Pembayaran</td>
-              <td>Diinput manual oleh pelanggan</td>
-              <td>Sudah ditentukan oleh merchant</td>
-            </tr>
-            <tr>
-              <td class="label-col">Pembuatan Kode</td>
-              <td>Satu kali, berlaku selamanya</td>
-              <td>Bisa dibuat per transaksi</td>
-            </tr>
-            <tr>
-              <td class="label-col">Kebutuhan Hardware</td>
-              <td>Hanya cetak stiker / banner</td>
-              <td>Butuh aplikasi kasir atau printer QR</td>
-            </tr>
-            <tr>
-              <td class="label-col">Risiko Kesalahan Input</td>
-              <td>Sedang–Tinggi</td>
-              <td>Minimal</td>
-            </tr>
-            <tr>
-              <td class="label-col">Rekonsiliasi Keuangan</td>
-              <td>Manual</td>
-              <td>Otomatis</td>
-            </tr>
-            <tr>
-              <td class="label-col">Cocok untuk Bisnis</td>
-              <td>Warung, UMKM, jasa informal</td>
-              <td>Restoran, retail modern, e-commerce</td>
-            </tr>
-            <tr>
-              <td class="label-col">Biaya Setup</td>
-              <td>Gratis / sangat murah</td>
-              <td>Butuh investasi sistem</td>
-            </tr>
-          </tbody>
+    <!-- TABEL PERBANDINGAN -->
+    <div class="content-card">
+        <h2>📊 Tabel Perbandingan QRIS Static vs Dynamic</h2>
+        <p>Berikut tabel perbandingan lengkap antara QRIS Static dan QRIS Dynamic untuk membantu Anda memahami perbedaan keduanya:</p>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Fitur Pembanding</th>
+                    <th>QRIS Static</th>
+                    <th>QRIS Dynamic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Nominal Pembayaran</strong></td>
+                    <td>Diinput manual oleh pelanggan</td>
+                    <td>Sudah terpasang otomatis oleh sistem</td>
+                </tr>
+                <tr>
+                    <td><strong>Cara Generate</strong></td>
+                    <td>Cetak sekali, gunakan selamanya</td>
+                    <td>Generate baru untuk setiap transaksi</td>
+                </tr>
+                <tr>
+                    <td><strong>Kebutuhan Sistem</strong></td>
+                    <td>Manual (cukup print QR code)</td>
+                    <td>Memerlukan POS atau aplikasi khusus</td>
+                </tr>
+                <tr>
+                    <td><strong>Risiko Salah Input</strong></td>
+                    <td>Tinggi (pelanggan bisa typo)</td>
+                    <td>Rendah (nominal sudah ditetapkan)</td>
+                </tr>
+                <tr>
+                    <td><strong>Biaya Implementasi</strong></td>
+                    <td>Sangat murah atau bahkan gratis</td>
+                    <td>Lebih mahal (perlu perangkat)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kecocokan Bisnis</strong></td>
+                    <td>UMKM, warung, PKL</td>
+                    <td>Restoran, retail modern, hotel</td>
+                </tr>
+                <tr>
+                    <td><strong>Fleksibilitas Nominal</strong></td>
+                    <td>Tidak bisa diubah per transaksi</td>
+                    <td>Bisa disesuaikan setiap transaksi</td>
+                </tr>
+                <tr>
+                    <td><strong>Integrasi Kasir</strong></td>
+                    <td>Tidak terintegrasi</td>
+                    <td>Terintegrasi langsung</td>
+                </tr>
+                <tr>
+                    <td><strong>Kecepatan Transaksi</strong></td>
+                    <td>Lebih lambat (input manual)</td>
+                    <td>Lebih cepat (otomatis)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kesan Profesional</strong></td>
+                    <td>Sederhana</td>
+                    <td>Modern dan canggih</td>
+                </tr>
+            </tbody>
         </table>
-      </div>
+    </div>
 
-      <h2>Mana yang Lebih Baik? Rekomendasi Jujur</h2>
-      <p>Jawaban singkatnya: <strong>tergantung skala dan jenis bisnis Anda</strong>.</p>
+    <!-- KELEBIHAN & KEKURANGAN -->
+    <div class="content-card">
+        <h2>⚖️ Kelebihan dan Kekurangan Masing-masing</h2>
+        
+        <h3>✅ Kelebihan QRIS Static</h3>
+        <ul>
+            <li><strong>Biaya sangat murah:</strong> Cukup cetak sekali dan tempel permanen</li>
+            <li><strong>Sangat mudah digunakan:</strong> Tidak perlu sistem atau perangkat khusus</li>
+            <li><strong>Cocok untuk UMKM:</strong> Warung, PKL, dan usaha kecil bisa langsung pakai</li>
+            <li><strong>Tanpa perawatan:</strong> QR code tidak perlu diupdate atau dirawat</li>
+            <li><strong>Aksesibilitas tinggi:</strong> Bisa digunakan di mana saja tanpa internet</li>
+        </ul>
+        
+        <h3>❌ Kekurangan QRIS Static</h3>
+        <ul>
+            <li><strong>Risiko salah input:</strong> Pelanggan bisa typo saat memasukkan nominal</li>
+            <li><strong>Proses lebih lambat:</strong> Pelanggan harus mengetik angka manual</li>
+            <li><strong>Tidak terintegrasi:</strong> Tidak tercatat otomatis di sistem kasir</li>
+            <li><strong>Kesan sederhana:</strong> Kurang profesional untuk bisnis modern</li>
+        </ul>
+        
+        <h3>✅ Kelebihan QRIS Dynamic</h3>
+        <ul>
+            <li><strong>Nominal otomatis:</strong> Pelanggan tinggal scan dan konfirmasi</li>
+            <li><strong>Lebih akurat:</strong> Tidak ada risiko salah input nominal</li>
+            <li><strong>Terintegrasi sistem:</strong> Langsung tercatat di kasir digital</li>
+            <li><strong>Lebih profesional:</strong> Kesan modern untuk bisnis Anda</li>
+            <li><strong>Transaksi cepat:</strong> Mempercepat proses antrian</li>
+        </ul>
+        
+        <h3>❌ Kekurangan QRIS Dynamic</h3>
+        <ul>
+            <li><strong>Biaya lebih mahal:</strong> Perlu investasi sistem POS atau aplikasi</li>
+            <li><strong>Perlu perangkat:</strong> Harus ada layar, printer, atau tablet</li>
+            <li><strong>Maintenance:</strong> Sistem perlu diupdate secara berkala</li>
+            <li><strong>Ketergantungan internet:</strong> Memerlukan koneksi stabil</li>
+        </ul>
+    </div>
 
-      <p>Jika Anda pemilik <strong>warung, pedagang kaki lima, barbershop, atau jasa freelance</strong> → <strong>QRIS Static</strong> adalah pilihan paling logis. Murah, praktis, langsung jalan.</p>
+    <!-- MANA YANG LEBIH BAIK -->
+    <div class="content-card">
+        <h2>🤔 Mana yang Lebih Baik? Rekomendasi Kami</h2>
+        <p>Pertanyaan ini tidak memiliki jawaban tunggal karena pilihan terbaik sangat bergantung pada <strong>jenis bisnis, skala operasi, dan budget</strong> yang Anda miliki. Berikut rekomendasi kami berdasarkan pengalaman:</p>
+        
+        <h3>Gunakan QRIS Static Jika:</h3>
+        <ul>
+            <li>Anda adalah pemilik UMKM, warung, atau pedagang kaki lima</li>
+            <li>Volume transaksi harian Anda <strong>di bawah 50 transaksi</strong></li>
+            <li>Anda tidak memiliki sistem kasir digital</li>
+            <li>Budget Anda terbatas untuk investasi perangkat</li>
+            <li>Anda ingin solusi yang murah, cepat, dan praktis</li>
+        </ul>
+        
+        <h3>Gunakan QRIS Dynamic Jika:</h3>
+        <ul>
+            <li>Anda memiliki restoran, kafe, atau retail modern</li>
+            <li>Volume transaksi harian Anda <strong>di atas 100 transaksi</strong></li>
+            <li>Anda sudah menggunakan sistem POS atau kasir digital</li>
+            <li>Anda ingin tampilan yang lebih profesional</li>
+            <li>Anda membutuhkan integrasi otomatis dengan sistem keuangan</li>
+        </ul>
+        
+        <div class="tip-box">
+            <strong>💡 Saran Kami:</strong> Mulailah dengan QRIS Static untuk bisnis kecil atau yang baru berjalan. Seiring perkembangan bisnis, upgrade ke QRIS Dynamic untuk efisiensi dan profesionalisme. Ini adalah strategi bertahap yang paling aman.
+        </div>
+    </div>
 
-      <p>Namun jika Anda punya <strong>restoran dengan banyak meja, minimarket, toko retail, atau volume transaksi di atas 40–50 per hari</strong> → <strong>QRIS Dynamic</strong> jauh lebih unggul. Efisiensi waktu, akurasi data, dan profesionalisme sepadan dengan investasinya.</p>
+    <!-- TIPS MEMILIH -->
+    <div class="content-card">
+        <h2>💡 Tips Praktis Memilih Jenis QRIS yang Tepat</h2>
+        <ol>
+            <li><strong>Evaluasi volume transaksi:</strong> Hitung rata-rata transaksi harian Anda</li>
+            <li><strong>Pertimbangkan budget:</strong> QRIS Static hemat biaya, Dynamic perlu investasi</li>
+            <li><strong>Analisis pengalaman pelanggan:</strong> Dynamic lebih cepat dan akurat</li>
+            <li><strong>Rencana jangka panjang:</strong> Jika bisnis berkembang, Dynamic lebih siap</li>
+            <li><strong>Konsultasi dengan provider:</strong> Tanyakan ke GoPay, OVO, atau DANA tentang opsi Anda</li>
+            <li><strong>Verifikasi QRIS Anda:</strong> Gunakan <a href="/scanner.html" style="color:#7c3aed;">ScanBarcode Pro Scanner</a> untuk memastikan QRIS berfungsi dengan baik</li>
+        </ol>
+    </div>
 
-      <div class="highlight">
-        <p>🎯 Rekomendasi: Mulai dengan QRIS Static. Ketika volume transaksi harian sudah konsisten di atas 30–50, upgrade ke Dynamic untuk efisiensi maksimal.</p>
-      </div>
-
-      <h2>Tips Praktis Memilih</h2>
-      <ol>
-        <li><strong>Hitung volume transaksi harian.</strong> Di bawah 20 → Static sudah cukup.</li>
-        <li><strong>Perhatikan jenis usaha.</strong> Harga fixed (menu paket) → Dynamic. Harga bervariasi → Static.</li>
-        <li><strong>Cek kesiapan tim.</strong> Jika kasir sering lupa verifikasi, Dynamic mengurangi beban.</li>
-        <li><strong>Pertimbangkan integrasi.</strong> Sudah pakai POS atau scanner? Pilih yang bisa terhubung.</li>
-        <li><strong>Mulai sederhana.</strong> Tidak ada salahnya mulai dari Static, lalu upgrade saat siap.</li>
-      </ol>
-
-      <!-- STRONG CTA -->
-      <div class="cta-box">
-        <h3>🚀 Siap Optimalkan Pembayaran QRIS Anda?</h3>
-        <p>Gunakan <strong>ScanBarcode Pro</strong> untuk memindai, memverifikasi, dan mengelola QRIS dengan lebih cepat, akurat, dan aman. Gratis untuk dicoba!</p>
-        <a href="/scanner.html" class="btn-primary">🔍 Coba Scanner QRIS Sekarang →</a>
-      </div>
-    </main>
+    <!-- KESIMPULAN -->
+    <div class="cta-box">
+        <h2>🎯 Kesimpulan</h2>
+        <p>QRIS Static dan Dynamic keduanya adalah alat pembayaran yang sah dan valid dari Bank Indonesia. Pilihan terbaik tergantung pada kebutuhan spesifik bisnis Anda. Yang terpenting, pastikan QRIS Anda berfungsi dengan baik dan mudah dipindai oleh pelanggan.</p>
+        <a href="/scanner.html" class="cta-btn cta-btn-primary">
+            <i class="fas fa-camera"></i> Verifikasi QRIS Anda Sekarang
+        </a>
+    </div>
 
     <!-- FAQ -->
-    <section class="card">
-      <h2>FAQ — Pertanyaan yang Sering Diajukan</h2>
+    <div class="faq-section">
+        <h2>❓ FAQ - Pertanyaan Umum tentang QRIS Static vs Dynamic</h2>
+        
+        <div class="faq-item">
+            <h3>Apakah QRIS Static dan Dynamic sama-sama sah?</h3>
+            <p>Ya, keduanya adalah standar resmi dari Bank Indonesia dan sama-sama valid untuk menerima pembayaran digital di seluruh Indonesia.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Bisakah saya upgrade dari QRIS Static ke Dynamic?</h3>
+            <p>Tentu bisa. Anda tinggal menghubungi penyedia layanan pembayaran (GoPay, OVO, DANA, ShopeePay) dan mengajukan permohonan upgrade ke QRIS Dynamic.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Apakah QRIS Dynamic lebih aman dari Static?</h3>
+            <p>Keduanya sama-sama aman. Perbedaan utama hanya pada cara input nominal. QRIS Dynamic mengurangi risiko human error karena nominal sudah otomatis.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Berapa biaya transaksi QRIS?</h3>
+            <p>Biaya transaksi QRIS biasanya sekitar 0,3% hingga 0,7% per transaksi, tergantung jenis merchant dan penyedia layanan pembayaran.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Bagaimana cara memverifikasi QRIS saya berfungsi?</h3>
+            <p>Gunakan <a href="/scanner.html" style="color:#7c3aed;">ScanBarcode Pro Scanner</a> untuk memindai QRIS Anda dan pastikan informasi merchant muncul dengan benar di layar.</p>
+        </div>
+    </div>
 
-      <div class="faq-item">
-        <div class="faq-question">Apakah QRIS Static benar-benar gratis selamanya?</div>
-        <div class="faq-answer">Ya, sebagian besar penyedia tidak memungut biaya bulanan untuk Static. Anda hanya perlu biaya cetak stiker. Perhatikan MDR (biasanya 0–0,7% per transaksi).</div>
-      </div>
+</div>
 
-      <div class="faq-item">
-        <div class="faq-question">Bisakah saya punya Static dan Dynamic sekaligus?</div>
-        <div class="faq-answer">Tentu. Banyak bisnis pakai Static untuk walk-in dan Dynamic untuk sistem kasir atau pesanan online.</div>
-      </div>
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 ScanBarcode Pro Indonesia | <a href="https://scanbarcode-pro.vercel.app/">Beranda</a> | <a href="/scanner.html">Scanner</a> | <a href="/generator.html">Generator</a> | <a href="/jenis-barcode.html">Jenis Barcode</a></p>
+    <p style="margin-top:6px;opacity:0.7;">ScanBarcode Pro adalah alat independen untuk scan barcode umum.</p>
+</footer>
 
-      <div class="faq-item">
-        <div class="faq-question">Apakah Dynamic harus pakai printer khusus?</div>
-        <div class="faq-answer">Tidak harus. Bisa ditampilkan di layar monitor, tablet, atau dikirim via WhatsApp. Printer hanya salah satu opsi.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Bagaimana cara upgrade dari Static ke Dynamic?</div>
-        <div class="faq-answer">Hubungi penyedia QRIS Anda. Biasanya proses 1–3 hari kerja dan mungkin butuh perangkat tambahan.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">Apakah scanner biasa bisa baca QRIS?</div>
-        <div class="faq-answer">Ya. Namun untuk verifikasi transaksi yang lebih relevan, gunakan scanner yang mendukung format QRIS. Coba <a href="/scanner.html" class="internal-link">scanner kami di sini</a>.</div>
-      </div>
-    </section>
-
-    <footer class="article-footer">
-      <p>© 2026 ScanBarcode Pro — Artikel edukasi pembayaran digital Indonesia. Semua hak dilindungi.</p>
-    </footer>
-  </div>
+<script>
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('show');
+}
+</script>
 
 </body>
-                                                                   </html>
+</html>

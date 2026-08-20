@@ -114,9 +114,10 @@
             box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
         }
         
-        /* ========== IMAGE FIX - FULL ON MOBILE + DESKTOP ========== */
+        /* ========== FIXED IMAGE (no more side cut on mobile) ========== */
         .blog-card-img-wrapper {
             width: 100%;
+            aspect-ratio: 16 / 9;          /* same ratio as real images → almost zero crop */
             position: relative;
             overflow: hidden;
             background-color: #0f172a;
@@ -126,25 +127,11 @@
             height: 100%;
             display: block;
             object-fit: cover;
-            object-position: center 15%;
+            object-position: center center;  /* balanced, no forced top bias */
             transition: transform 0.35s ease;
         }
         .blog-card:hover .blog-card-img-wrapper img {
             transform: scale(1.03);
-        }
-        
-        /* Mobile - TALLER so image almost full (less cut) */
-        @media (max-width: 767px) {
-            .blog-card-img-wrapper {
-                aspect-ratio: 3 / 2;   /* 1.5 → taller than 16:9 */
-            }
-        }
-        
-        /* Desktop - natural 16:9 */
-        @media (min-width: 768px) {
-            .blog-card-img-wrapper {
-                aspect-ratio: 16 / 9;
-            }
         }
         /* ========== END IMAGE FIX ========== */
         

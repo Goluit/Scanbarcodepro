@@ -6,7 +6,6 @@
     
     <meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
     
-    <!-- SEO Title & Description -->
     <title>Blog Scan Barcode & QR Code 2026 - Tips, Panduan QRIS & Barcode | ScanBarcode Pro</title>
     <meta name="description" content="Blog resmi ScanBarcode Pro Indonesia. Tips scan barcode rusak, perbedaan QRIS Static vs Dynamic, cara scan QRIS, barcode WiFi, dan resi pengiriman. Panduan lengkap 2026.">
     <meta name="keywords" content="blog scan barcode, tips scan barcode rusak, perbedaan qris static dynamic, cara scan qris, scan barcode wifi, cara scan resi, panduan barcode, qr code indonesia, scanbarcode pro">
@@ -18,7 +17,6 @@
     
     <link rel="canonical" href="https://scanbarcode-pro.vercel.app/blog.html" />
     
-    <!-- Open Graph -->
     <meta property="og:title" content="Blog Scan Barcode & QR Code 2026 | ScanBarcode Pro">
     <meta property="og:description" content="Tips scan barcode rusak, perbedaan QRIS Static vs Dynamic, cara scan QRIS, barcode WiFi & resi. Panduan lengkap untuk Indonesia.">
     <meta property="og:type" content="website">
@@ -27,7 +25,6 @@
     <meta property="og:site_name" content="ScanBarcode Pro Indonesia">
     <meta property="og:image" content="https://scanbarcode-pro.vercel.app/cara-scan-qris.jpg">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Blog Scan Barcode & QR Code 2026 | ScanBarcode Pro">
     <meta name="twitter:description" content="Tips scan barcode rusak, QRIS Static vs Dynamic, cara scan QRIS & barcode WiFi.">
@@ -117,38 +114,39 @@
             box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
         }
         
-        /* ===== IMAGE - FULL ON MOBILE + DESKTOP ===== */
+        /* ========== IMAGE FIX - FULL ON MOBILE + DESKTOP ========== */
         .blog-card-img-wrapper {
             width: 100%;
-            aspect-ratio: 16 / 9;          /* natural wide ratio */
             position: relative;
             overflow: hidden;
-            background-color: #1e293b;
+            background-color: #0f172a;
         }
         .blog-card-img-wrapper img {
             width: 100%;
             height: 100%;
+            display: block;
             object-fit: cover;
-            object-position: center top;  /* important text on top stays visible */
+            object-position: center 15%;
             transition: transform 0.35s ease;
         }
         .blog-card:hover .blog-card-img-wrapper img {
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
         
-        /* Mobile - slightly taller so less crop */
+        /* Mobile - TALLER so image almost full (less cut) */
         @media (max-width: 767px) {
             .blog-card-img-wrapper {
-                aspect-ratio: 16 / 10;
+                aspect-ratio: 3 / 2;   /* 1.5 → taller than 16:9 */
             }
         }
-        /* Desktop - standard */
+        
+        /* Desktop - natural 16:9 */
         @media (min-width: 768px) {
             .blog-card-img-wrapper {
                 aspect-ratio: 16 / 9;
             }
         }
-        /* ===== END IMAGE ===== */
+        /* ========== END IMAGE FIX ========== */
         
         .blog-card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
         .blog-card-body h3 { font-size: 1.1rem; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; line-height: 1.4; }
@@ -206,7 +204,7 @@
 
     <div class="blog-grid">
 
-        <!-- Article 1: Tips Scan Barcode Rusak -->
+        <!-- 1. Tips Scan Barcode Rusak -->
         <a href="/tips-scan-barcode-rusak.html" class="blog-card">
             <div class="blog-card-img-wrapper">
                 <img src="/tips-scan-barcode-rusak.jpg" alt="Tips Scan Barcode yang Rusak atau Buram" loading="lazy">
@@ -222,7 +220,7 @@
             </div>
         </a>
 
-        <!-- Article 2: Perbedaan QRIS Static vs Dynamic -->
+        <!-- 2. Perbedaan QRIS Static vs Dynamic -->
         <a href="/perbedaan-qris-static-vs-dynamic.html" class="blog-card">
             <div class="blog-card-img-wrapper">
                 <img src="/perbedaan-qris-static-vs-dynamic.jpg" alt="Perbedaan QRIS Static vs Dynamic" loading="lazy">
@@ -238,7 +236,7 @@
             </div>
         </a>
 
-        <!-- Article 3: Cara Scan Resi -->
+        <!-- 3. Cara Scan Resi -->
         <a href="/cara-scan-resi.html" class="blog-card">
             <div class="blog-card-img-wrapper">
                 <img src="/cara-scan-resi.jpg" alt="Cara Scan Resi Pengiriman" loading="lazy">
@@ -254,7 +252,7 @@
             </div>
         </a>
 
-        <!-- Article 4: Cara Scan QRIS -->
+        <!-- 4. Cara Scan QRIS -->
         <a href="/cara-scan-qris.html" class="blog-card">
             <div class="blog-card-img-wrapper">
                 <img src="/cara-scan-qris.jpg" alt="Cara Scan QRIS untuk Bayar" loading="lazy">
@@ -270,7 +268,7 @@
             </div>
         </a>
 
-        <!-- Article 5: Cara Scan Barcode WiFi -->
+        <!-- 5. Cara Scan Barcode WiFi -->
         <a href="/cara-scan-barcode-wifi.html" class="blog-card">
             <div class="blog-card-img-wrapper">
                 <img src="/cara-scan-barcode-wifi.jpg" alt="Cara Scan Barcode WiFi" loading="lazy">

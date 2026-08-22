@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
+    
+    <!-- SEO Title & Description -->
+    <title>QR Code Scanner from Image - Scan QR Code dari Gambar Online | ScanBarcode Pro</title>
+    <meta name="description" content="QR Code Scanner from Image - Scan QR Code dari gambar online gratis. Upload gambar QR code dan dapatkan hasil scan instan. Tanpa install aplikasi, 100% privat.">
+    <meta name="keywords" content="QR Code Scanner from Image, Scan QR Code dari Gambar, Upload Gambar QR Code, scan qr code online, scan qr dari foto, qr code image scanner, scan qr code dari gallery">
+    <meta name="author" content="ScanBarcode Pro Indonesia">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="language" content="id">
+    <meta name="geo.country" content="ID">
+    <meta name="theme-color" content="#7c3aed">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://scanbarcode-pro.vercel.app/qr-code-scanner-from-image.html" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="QR Code Scanner from Image - Scan QR Code dari Gambar Online | ScanBarcode Pro">
+    <meta property="og:description" content="Scan QR Code dari gambar online gratis. Upload gambar QR code dan dapatkan hasil scan instan.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scanbarcode-pro.vercel.app/qr-code-scanner-from-image.html">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="ScanBarcode Pro Indonesia">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7c3aed',
+                        secondary: '#2563eb',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.8; }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 16px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 62px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 800;
+            font-size: 18px;
+        }
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 19px;
+            font-weight: 700;
+        }
+        .logo span { color: #7c3aed; }
+        .nav-links { display: flex; gap: 2px; list-style: none; }
+        .nav-links a {
+            padding: 7px 12px;
+            border-radius: 7px;
+            text-decoration: none;
+            color: #1e293b;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover { background: #f5f3ff; color: #7c3aed; }
+        .nav-links a.active { background: #f5f3ff; color: #7c3aed; }
+        .mobile-menu-btn { display: none; width: 38px; height: 38px; border-radius: 8px; border: none; background: transparent; cursor: pointer; font-size: 20px; color: #1e293b; }
+        .mobile-menu { display: none; background: #fff; border-top: 1px solid #e5e7eb; padding: 6px; }
+        .mobile-menu.show { display: block; }
+        .mobile-menu a { display: block; padding: 12px 16px; font-weight: 600; text-decoration: none; color: #1e293b; border-radius: 8px; font-size: 14px; }
+        
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 30px 16px 50px; }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            border-radius: 20px;
+            padding: 60px 30px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 35px;
+        }
+        .hero-section h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            line-height: 1.25;
+        }
+        .hero-section p {
+            font-size: 17px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 24px;
+        }
+        
+        .content-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e5e7eb;
+        }
+        .content-section h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f5f3ff;
+        }
+        .content-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin: 20px 0 10px;
+        }
+        .content-section p { margin-bottom: 14px; font-size: 15px; color: #374151; }
+        .content-section ul, .content-section ol { margin: 14px 0; padding-left: 22px; }
+        .content-section li { margin-bottom: 8px; font-size: 15px; color: #374151; }
+        
+        .highlight-box {
+            background: #f5f3ff;
+            border-left: 4px solid #7c3aed;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+        .highlight-box strong { color: #7c3aed; }
+        
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+        .tip-box strong { color: #059669; }
+        
+        .warning-box {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+        .warning-box strong { color: #d97706; }
+        
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta-btn-white { background: #fff; color: #7c3aed; }
+        .cta-btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,255,255,0.3); }
+        .cta-btn-primary { background: linear-gradient(135deg, #7c3aed, #2563eb); color: #fff; }
+        .cta-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(124,58,237,0.4); }
+        
+        .faq-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 30px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 18px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 14px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 0;
+        }
+        
+        .footer {
+            background: #1e293b;
+            color: #94a3b8;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer a { color: #94a3b8; text-decoration: none; }
+        .footer a:hover { color: #fff; }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .hero-section { padding: 35px 20px; }
+            .content-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="https://scanbarcode-pro.vercel.app/" class="logo">
+            <div class="logo-icon">📷</div>
+            <div>ScanBarcode<span>Pro</span></div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="https://scanbarcode-pro.vercel.app/">Beranda</a></li>
+            <li><a href="/generator.html">Generator</a></li>
+            <li><a href="/scanner.html">Scanner</a></li>
+            <li><a href="/cara-scan-barcode.html">Cara Scan</a></li>
+            <li><a href="/jenis-barcode.html">Jenis Barcode</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="https://scanbarcode-pro.vercel.app/">🏠 Beranda</a>
+        <a href="/generator.html">🎨 Generator</a>
+        <a href="/scanner.html">📷 Scanner</a>
+        <a href="/cara-scan-barcode.html">📖 Cara Scan</a>
+        <a href="/jenis-barcode.html">📊 Jenis Barcode</a>
+    </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main-content">
+
+    <!-- HERO SECTION -->
+    <div class="hero-section">
+        <h1>🖼️ QR Code Scanner from Image<br>Scan QR Code dari Gambar Online</h1>
+        <p>Upload gambar QR code dan dapatkan hasil scan instan. Tanpa install aplikasi, 100% privat, dan gratis selamanya.</p>
+        <a href="/scanner.html" class="cta-btn cta-btn-white">
+            <i class="fas fa-upload"></i> Upload Gambar & Scan Sekarang
+        </a>
+    </div>
+
+    <!-- APA ITU QR CODE SCANNER FROM IMAGE -->
+    <div class="content-section">
+        <h2>🖼️ Apa Itu QR Code Scanner from Image?</h2>
+        <p><strong>QR Code Scanner from Image</strong> adalah fitur yang memungkinkan Anda memindai QR code dari file gambar yang sudah tersimpan di HP atau komputer. Berbeda dengan scanner kamera live yang memerlukan QR code fisik di depan Anda, scan dari gambar bekerja dengan menganalisis foto atau screenshot QR code.</p>
+        <p>Fitur ini sangat berguna ketika Anda menerima QR code melalui WhatsApp, email, atau media sosial. Cukup simpan gambar QR code, upload ke scanner, dan hasilnya langsung muncul. ScanBarcode Pro menyediakan fitur ini secara gratis tanpa batasan.</p>
+        
+        <div class="highlight-box">
+            <strong>💡 Fakta:</strong> Scan QR Code dari gambar menggunakan teknologi image recognition yang menganalisis pola QR code dalam file gambar, bukan memindai langsung dari kamera.
+        </div>
+    </div>
+
+    <!-- CARA KERJA -->
+    <div class="content-section">
+        <h2>🔍 Cara Kerja Scan QR Code dari Gambar</h2>
+        <p>Proses scan QR code dari gambar bekerja melalui beberapa tahap:</p>
+        <ol>
+            <li><strong>Upload gambar:</strong> Pilih file gambar QR code dari gallery HP atau komputer</li>
+            <li><strong>Analisis gambar:</strong> Scanner memproses gambar untuk menemukan pola QR code</li>
+            <li><strong>Dekode data:</strong> Algoritma membaca informasi yang tersimpan dalam QR code</li>
+            <li><strong>Tampilkan hasil:</strong> Hasil scan muncul di layar dengan action button</li>
+        </ol>
+        
+        <h3>Format Gambar yang Didukung:</h3>
+        <ul>
+            <li>JPG / JPEG</li>
+            <li>PNG</li>
+            <li>WEBP</li>
+            <li>GIF</li>
+            <li>BMP</li>
+        </ul>
+    </div>
+
+    <!-- KELEBIHAN SCAN DARI IMAGE -->
+    <div class="content-section">
+        <h2>✅ Kelebihan Scan QR Code dari Image Dibanding Kamera</h2>
+        
+        <h3>1. Bisa Scan QR Code yang Sudah Tersimpan</h3>
+        <p>Anda bisa memindai QR code yang sudah lama diterima tanpa perlu mencari fisik QR code-nya. Simpan gambar, scan kapan saja.</p>
+        
+        <h3>2. Tidak Perlu Akses Kamera</h3>
+        <p>Jika kamera HP bermasalah atau Anda menggunakan perangkat tanpa kamera (beberapa PC), scan dari gambar tetap bisa dilakukan.</p>
+        
+        <h3>3. Lebih Akurat untuk QR Code Kecil</h3>
+        <p>Gambar bisa diperbesar dan diperjelas terlebih dahulu sebelum diupload, sehingga QR code kecil atau buram lebih mudah terbaca.</p>
+        
+        <h3>4. Bisa Scan dari Screenshot</h3>
+        <p>QR code yang muncul di layar HP atau komputer bisa discan dari screenshot tanpa perlu kamera kedua.</p>
+        
+        <h3>5. Privasi Lebih Terjaga</h3>
+        <p>Tidak perlu memberikan akses kamera. Cukup upload file gambar yang sudah Anda pilih.</p>
+        
+        <div class="tip-box">
+            <strong>✅ Tips Pro:</strong> Untuk hasil terbaik, pastikan gambar QR code memiliki resolusi cukup dan tidak terlalu buram. Anda bisa menggunakan aplikasi edit foto untuk meningkatkan ketajaman sebelum upload.
+        </div>
+    </div>
+
+    <!-- LANGKAH-LANGKAH -->
+    <div class="content-section">
+        <h2>📋 Langkah-langkah Praktis Scan QR Code dari Gambar</h2>
+        
+        <h3>Langkah 1: Siapkan Gambar QR Code</h3>
+        <p>Pastikan gambar QR code sudah tersimpan di gallery HP atau komputer Anda. Jika QR code ada di layar, ambil screenshot terlebih dahulu.</p>
+        
+        <h3>Langkah 2: Buka Scanner Online</h3>
+        <p>Kunjungi <a href="/scanner.html" style="color:#7c3aed;">ScanBarcode Pro Scanner</a> di browser Anda.</p>
+        
+        <h3>Langkah 3: Pilih Upload Gambar</h3>
+        <p>Klik tombol <strong>"Upload Gambar"</strong> atau <strong>"Scan dari Gambar"</strong> pada halaman scanner.</p>
+        
+        <h3>Langkah 4: Pilih File Gambar</h3>
+        <p>Pilih file gambar QR code dari gallery HP atau folder komputer Anda.</p>
+        
+        <h3>Langkah 5: Tunggu Hasil</h3>
+        <p>Scanner akan menganalisis gambar dan menampilkan hasil dalam hitungan detik.</p>
+        
+        <h3>Langkah 6: Gunakan Hasil</h3>
+        <p>Anda bisa menyalin teks, membuka URL, atau membagikan hasil scan ke aplikasi lain.</p>
+    </div>
+
+    <!-- KAPAN HARUS PAKAI -->
+    <div class="content-section">
+        <h2>🤔 Kapan Harus Pakai Scan QR Code dari Gambar?</h2>
+        
+        <h3>Gunakan Scan dari Gambar Ketika:</h3>
+        <ul>
+            <li>QR code diterima melalui chat (WhatsApp, Telegram, Line)</li>
+            <li>QR code muncul di layar HP/laptop dan tidak bisa discan kamera</li>
+            <li>Kamera HP rusak atau tidak berfungsi</li>
+            <li>QR code terlalu kecil atau buram saat discan langsung</li>
+            <li>Anda ingin scan QR code dari foto lama</li>
+            <li>Menggunakan perangkat tanpa kamera (beberapa PC desktop)</li>
+        </ul>
+        
+        <h3>Gunakan Live Camera Ketika:</h3>
+        <ul>
+            <li>QR code fisik ada di depan Anda (produk, menu, banner)</li>
+            <li>Anda perlu scan cepat tanpa menyimpan gambar</li>
+            <li>QR code dalam kondisi jelas dan pencahayaan baik</li>
+        </ul>
+    </div>
+
+    <!-- CTA AKHIR -->
+    <div class="content-section" style="background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff;text-align:center;">
+        <h2 style="color:#fff;border:none;">🎯 Siap Scan QR Code dari Gambar?</h2>
+        <p style="opacity:0.95;">Upload gambar QR code Anda sekarang dan dapatkan hasil scan instan. Gratis, cepat, dan 100% privat.</p>
+        <div style="margin-top:16px;">
+            <a href="/scanner.html" class="cta-btn cta-btn-white">
+                <i class="fas fa-upload"></i> Upload Gambar & Scan Sekarang
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+        <h2>❓ FAQ - QR Code Scanner from Image</h2>
+        
+        <div class="faq-item">
+            <h3>Bagaimana cara scan QR Code dari gambar online?</h3>
+            <p>Buka ScanBarcode Pro Scanner, klik "Upload Gambar", pilih file gambar QR code, dan hasil scan akan muncul otomatis dalam hitungan detik.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Format gambar apa yang didukung untuk scan QR Code dari gambar?</h3>
+            <p>ScanBarcode Pro mendukung JPG, PNG, WEBP, GIF, dan BMP. Pastikan gambar tidak terlalu buram untuk hasil terbaik.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Apakah scan QR Code dari gambar gratis?</h3>
+            <p>Ya, fitur Upload Gambar QR Code di ScanBarcode Pro 100% gratis selamanya tanpa batasan.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Apakah data gambar saya diupload ke server?</h3>
+            <p>Tidak. Semua pemrosesan dilakukan di browser Anda (client-side). Gambar tidak pernah dikirim ke server manapun.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>Bisakah scan QR Code dari gambar di HP dan PC?</h3>
+            <p>Ya, fitur ini bekerja sempurna di semua perangkat: HP Android, iPhone, PC Windows, Mac, dan laptop.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 ScanBarcode Pro Indonesia | <a href="https://scanbarcode-pro.vercel.app/">Beranda</a> | <a href="/scanner.html">Scanner</a> | <a href="/generator.html">Generator</a> | <a href="/jenis-barcode.html">Jenis Barcode</a></p>
+    <p style="margin-top:6px;opacity:0.7;">ScanBarcode Pro adalah alat independen untuk scan barcode umum.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('show');
+}
+</script>
+
+</body>
+  </html>

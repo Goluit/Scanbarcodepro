@@ -1,67 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://scanbarcode-pro.vercel.app/</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Main Tools -->
   <url>
     <loc>https://scanbarcode-pro.vercel.app/scanner.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://scanbarcode-pro.vercel.app/generator.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
-    <loc>https://scanbarcode-pro.vercel.app/blog.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://scanbarcode-pro.vercel.app/scanresult.html</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.90</priority>
   </url>
 
+  <!-- Blog -->
   <url>
-    <loc>https://scanbarcode-pro.vercel.app/cara-scan-barcode.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://scanbarcode-pro.vercel.app/blog.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- New Keyword Page -->
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/qr-code-scanner-from-image.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Articles -->
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/tips-scan-barcode-rusak.html</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://scanbarcode-pro.vercel.app/cara-scan-barcode-wifi.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://scanbarcode-pro.vercel.app/perbedaan-qris-static-vs-dynamic.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/online-scanner-vs-aplikasi-mobile.html</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/cara-scan-resi.html</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scanbarcode-pro.vercel.app/cara-scan-qris.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scanbarcode-pro.vercel.app/cara-scan-barcode-wifi.html</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scanbarcode-pro.vercel.app/jenis-barcode.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
-    <loc>https://scanbarcode-pro.vercel.app/scanresult.html</loc>
-    <lastmod>2026-08-19</lastmod>
+    <loc>https://scanbarcode-pro.vercel.app/cara-scan-barcode.html</loc>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
+    <priority>0.80</priority>
   </url>
 
 </urlset>

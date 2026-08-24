@@ -134,18 +134,36 @@
             box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25);
         }
         
+        /* ===== FIXED IMAGE SECTION ===== */
         .blog-card-img {
-            height: 200px;
+            width: 100%;
+            height: 220px;                    /* Mobile default */
             background-size: cover;
-            background-position: center;
+            background-position: center center;
+            background-repeat: no-repeat;
             background-color: #1e3a5f;
             position: relative;
         }
+        
+        /* Laptop / Desktop - taller image so photos don't get cut */
+        @media (min-width: 768px) {
+            .blog-card-img {
+                height: 240px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .blog-card-img {
+                height: 250px;
+            }
+        }
+        
         .blog-card-img::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 45%, rgba(15, 28, 51, 0.85));
+            background: linear-gradient(to bottom, transparent 50%, rgba(15, 28, 51, 0.75));
+            pointer-events: none;
         }
         
         .blog-card-body { 
@@ -239,7 +257,7 @@
 
     <div class="blog-grid">
 
-        <!-- NEW: QR Code Scanner from Image -->
+        <!-- QR Code Scanner from Image -->
         <div class="blog-card" onclick="window.location.href='/qr-code-scanner-from-image.html'">
             <div class="blog-card-img" style="background-image: url('/qr-code-scanner-from-image.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">

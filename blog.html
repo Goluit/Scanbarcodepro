@@ -8,7 +8,7 @@
     
     <title>Blog Scan Barcode & QR Code 2026 | ScanBarcode Pro</title>
     <meta name="description" content="Blog ScanBarcode Pro: Tips scan barcode, QRIS, QR Code, dan panduan lengkap teknologi barcode untuk Indonesia.">
-    <meta name="keywords" content="blog scan barcode, cara scan qris, scan barcode wifi, tips barcode rusak, qris static vs dynamic">
+    <meta name="keywords" content="blog scan barcode, cara scan qris, scan barcode wifi, tips barcode rusak, qris static vs dynamic, qr code scanner from image">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0b1120">
     
@@ -39,12 +39,19 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0b1120; color: #e2e8f0; line-height: 1.7; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(160deg, #0a1628 0%, #0f1c3a 40%, #132044 100%);
+            color: #e2e8f0; 
+            line-height: 1.7; 
+            min-height: 100vh;
+        }
         
         .navbar {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #1e293b;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #1e3a5f;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -59,95 +66,144 @@
             padding: 0 16px;
         }
         .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #e2e8f0; font-weight: 800; font-size: 18px; }
-        .logo-icon { width: 38px; height: 38px; background: linear-gradient(135deg, #7c3aed, #2563eb); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
-        .logo span { color: #7c3aed; }
+        .logo-icon { 
+            width: 38px; height: 38px; 
+            background: linear-gradient(135deg, #3b82f6, #7c3aed); 
+            border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: #fff; font-size: 18px; 
+        }
+        .logo span { color: #60a5fa; }
         .nav-links { display: flex; gap: 4px; list-style: none; }
-        .nav-links a { padding: 7px 12px; border-radius: 7px; text-decoration: none; color: #94a3b8; font-size: 13px; font-weight: 600; }
-        .nav-links a:hover, .nav-links a.active { background: #1e293b; color: #a78bfa; }
+        .nav-links a { 
+            padding: 7px 12px; border-radius: 7px; text-decoration: none; 
+            color: #94a3b8; font-size: 13px; font-weight: 600; transition: 0.2s; 
+        }
+        .nav-links a:hover, .nav-links a.active { background: #1e3a5f; color: #93c5fd; }
         .mobile-menu-btn { display: none; background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
-        .mobile-menu { display: none; background: #0f172a; border-top: 1px solid #1e293b; padding: 8px; }
+        .mobile-menu { display: none; background: #0a1628; border-top: 1px solid #1e3a5f; padding: 8px; }
         .mobile-menu.show { display: block; }
         .mobile-menu a { display: block; padding: 12px 16px; color: #94a3b8; text-decoration: none; font-weight: 600; border-radius: 8px; }
+        .mobile-menu a:hover { background: #1e3a5f; color: #93c5fd; }
         
-        .main-content { max-width: 1200px; margin: 0 auto; padding: 40px 16px 60px; }
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 40px 16px 80px; }
         
         .page-header {
-            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 40%, #4f46e5 100%);
             border-radius: 20px;
-            padding: 50px 30px;
+            padding: 48px 28px;
             text-align: center;
             color: #fff;
             margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+            border: 1px solid rgba(96, 165, 250, 0.2);
         }
-        .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; margin-bottom: 12px; }
-        .page-header p { font-size: 16px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+        .page-header h1 { 
+            font-size: clamp(1.8rem, 4vw, 2.5rem); 
+            font-weight: 900; 
+            margin-bottom: 12px; 
+            letter-spacing: -0.5px; 
+        }
+        .page-header p { 
+            font-size: 15px; 
+            opacity: 0.92; 
+            max-width: 580px; 
+            margin: 0 auto; 
+            line-height: 1.6; 
+        }
         
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 24px;
         }
+        
         .blog-card {
-            background: #111827;
+            background: #0f1c33;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #1e293b;
-            transition: all 0.3s;
+            border: 1px solid #1e3a5f;
+            transition: all 0.3s ease;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
         }
         .blog-card:hover {
-            transform: translateY(-5px);
-            border-color: #7c3aed;
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.15);
+            transform: translateY(-6px);
+            border-color: #3b82f6;
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25);
         }
+        
         .blog-card-img {
             height: 200px;
             background-size: cover;
             background-position: center;
-            background-color: #1e293b;
+            background-color: #1e3a5f;
             position: relative;
         }
         .blog-card-img::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, transparent 40%, rgba(11,17,32,0.85));
+            background: linear-gradient(to bottom, transparent 45%, rgba(15, 28, 51, 0.85));
         }
-        .cat-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            z-index: 2;
-            background: rgba(124, 58, 237, 0.9);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #fff;
+        
+        .blog-card-body { 
+            padding: 22px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .blog-card-body { padding: 20px; }
-        .blog-card-body h3 { font-size: 1.1rem; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; line-height: 1.4; }
-        .blog-card-body p { font-size: 13px; color: #94a3b8; margin-bottom: 14px; line-height: 1.6; }
-        .blog-meta { display: flex; gap: 14px; font-size: 11px; color: #64748b; margin-bottom: 12px; }
-        .read-btn { color: #a78bfa; font-weight: 700; font-size: 13px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-        .read-btn:hover { color: #fff; }
+        .blog-card-body h3 { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            color: #f1f5f9; 
+            margin-bottom: 10px; 
+            line-height: 1.4; 
+        }
+        .blog-card-body p { 
+            font-size: 13.5px; 
+            color: #94a3b8; 
+            margin-bottom: 16px; 
+            line-height: 1.65;
+            flex: 1;
+        }
+        .blog-meta { 
+            display: flex; 
+            gap: 16px; 
+            font-size: 12px; 
+            color: #64748b; 
+            margin-bottom: 14px; 
+        }
+        .read-btn { 
+            color: #60a5fa; 
+            font-weight: 700; 
+            font-size: 13px; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .read-btn:hover { color: #93c5fd; gap: 9px; }
         
         .footer {
-            background: #0f172a;
-            border-top: 1px solid #1e293b;
+            background: #0a1628;
+            border-top: 1px solid #1e3a5f;
             color: #64748b;
-            padding: 30px 20px;
+            padding: 28px 20px;
             text-align: center;
             font-size: 13px;
         }
-        .footer a { color: #64748b; text-decoration: none; }
-        .footer a:hover { color: #a78bfa; }
+        .footer a { color: #64748b; text-decoration: none; margin: 0 6px; }
+        .footer a:hover { color: #60a5fa; }
         
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
-            .blog-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; gap: 20px; }
+            .page-header { padding: 36px 20px; border-radius: 16px; }
+            .main-content { padding: 28px 14px 60px; }
         }
     </style>
 </head>
@@ -183,11 +239,23 @@
 
     <div class="blog-grid">
 
-        <!-- 1. Tips Scan Barcode Rusak -->
-        <div class="blog-card" onclick="window.location.href='/tips-scan-barcode-rusak.html'">
-            <div class="blog-card-img" style="background-image: url('/tips-scan-barcode-rusak.jpg')">
-                <span class="cat-badge">Tips</span>
+        <!-- NEW: QR Code Scanner from Image -->
+        <div class="blog-card" onclick="window.location.href='/qr-code-scanner-from-image.html'">
+            <div class="blog-card-img" style="background-image: url('/qr-code-scanner-from-image.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
+            <div class="blog-card-body">
+                <h3>QR Code Scanner from Image – Scan dari Foto</h3>
+                <p>Upload gambar QR Code atau screenshot dan langsung dapatkan hasilnya. Cocok saat kamera tidak bisa digunakan.</p>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> 24 Agustus 2026</span>
+                    <span><i class="far fa-clock"></i> 5 menit baca</span>
+                </div>
+                <a href="/qr-code-scanner-from-image.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
             </div>
+        </div>
+
+        <!-- 1 -->
+        <div class="blog-card" onclick="window.location.href='/tips-scan-barcode-rusak.html'">
+            <div class="blog-card-img" style="background-image: url('/tips-scan-barcode-rusak.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Tips Scan Barcode yang Rusak atau Buram</h3>
                 <p>Panduan lengkap mengatasi barcode yang sulit dibaca. Solusi praktis untuk barcode pudar, terlipat, atau rusak.</p>
@@ -199,11 +267,9 @@
             </div>
         </div>
 
-        <!-- 2. QRIS Static vs Dynamic -->
+        <!-- 2 -->
         <div class="blog-card" onclick="window.location.href='/perbedaan-qris-static-vs-dynamic.html'">
-            <div class="blog-card-img" style="background-image: url('/perbedaan-qris-static-vs-dynamic.jpg')">
-                <span class="cat-badge">Panduan</span>
-            </div>
+            <div class="blog-card-img" style="background-image: url('/perbedaan-qris-static-vs-dynamic.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Perbedaan QRIS Static vs Dynamic: Mana yang Lebih Baik?</h3>
                 <p>Tabel perbandingan lengkap, kelebihan, kekurangan, dan rekomendasi memilih QRIS untuk bisnis Anda.</p>
@@ -215,11 +281,9 @@
             </div>
         </div>
 
-        <!-- 3. Online Scanner vs App -->
+        <!-- 3 -->
         <div class="blog-card" onclick="window.location.href='/online-scanner-vs-aplikasi-mobile.html'">
-            <div class="blog-card-img" style="background-image: url('/online-scanner-vs-aplikasi-mobile.jpg')">
-                <span class="cat-badge">Perbandingan</span>
-            </div>
+            <div class="blog-card-img" style="background-image: url('/online-scanner-vs-aplikasi-mobile.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Online Barcode Scanner vs Aplikasi Mobile</h3>
                 <p>Mana yang lebih baik? Perbandingan lengkap antara scanner online dan aplikasi mobile.</p>
@@ -231,11 +295,9 @@
             </div>
         </div>
 
-        <!-- 4. Cara Scan Resi -->
+        <!-- 4 -->
         <div class="blog-card" onclick="window.location.href='/cara-scan-resi.html'">
-            <div class="blog-card-img" style="background-image: url('/cara-scan-resi.jpg')">
-                <span class="cat-badge">Panduan</span>
-            </div>
+            <div class="blog-card-img" style="background-image: url('/cara-scan-resi.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Cara Scan Resi Pengiriman: Panduan Lengkap</h3>
                 <p>Mudah scan barcode resi JNE, J&T, SiCepat, Anteraja dan kurir lainnya hanya dengan HP.</p>
@@ -247,11 +309,9 @@
             </div>
         </div>
 
-        <!-- 5. Cara Scan QRIS -->
+        <!-- 5 -->
         <div class="blog-card" onclick="window.location.href='/cara-scan-qris.html'">
-            <div class="blog-card-img" style="background-image: url('/cara-scan-qris.jpg')">
-                <span class="cat-badge">Panduan</span>
-            </div>
+            <div class="blog-card-img" style="background-image: url('/cara-scan-qris.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Cara Scan QRIS untuk Bayar: Panduan Lengkap 2026</h3>
                 <p>Pembayaran digital mudah dan aman dengan QRIS - GoPay, OVO, DANA, ShopeePay.</p>
@@ -263,11 +323,9 @@
             </div>
         </div>
 
-        <!-- 6. Cara Scan WiFi -->
+        <!-- 6 -->
         <div class="blog-card" onclick="window.location.href='/cara-scan-barcode-wifi.html'">
-            <div class="blog-card-img" style="background-image: url('/cara-scan-barcode-wifi.jpg')">
-                <span class="cat-badge">Tips</span>
-            </div>
+            <div class="blog-card-img" style="background-image: url('/cara-scan-barcode-wifi.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Cara Scan Barcode WiFi: Langsung Konek Tanpa Ribet</h3>
                 <p>Pelajari cara memindai barcode WiFi dengan HP dan langsung terhubung ke jaringan tanpa mengetik password.</p>
@@ -279,11 +337,9 @@
             </div>
         </div>
 
-        <!-- 7. Jenis Barcode -->
+        <!-- 7 -->
         <div class="blog-card" onclick="window.location.href='/jenis-barcode.html'">
-            <div class="blog-card-img" style="background-image: url('/jenis-barcode.jpg')">
-                <span class="cat-badge">Edukasi</span>
-            </div>
+            <div class="blog-card-img" style="background-image: url('/jenis-barcode.jpg')"></div>
             <div class="blog-card-body">
                 <h3>Jenis-Jenis Barcode Lengkap: EAN, UPC, QR Code, Code128</h3>
                 <p>Panduan lengkap semua format barcode yang digunakan di Indonesia untuk retail, logistik, dan pembayaran.</p>

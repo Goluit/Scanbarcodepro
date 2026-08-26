@@ -2,20 +2,19 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
     
-    <title>Blog Scan Barcode & QR Code 2026 | ScanBarcode Pro</title>
-    <meta name="description" content="Blog ScanBarcode Pro: Tips scan barcode, QRIS, QR Code, dan panduan lengkap teknologi barcode untuk Indonesia.">
-    <meta name="keywords" content="blog scan barcode, cara scan qris, scan barcode wifi, tips barcode rusak, qris static vs dynamic, qr code scanner from image">
+    <title>Blog Scan Barcode & QR Code 2026 | Tips & Panduan Lengkap | ScanBarcode Pro</title>
+    <meta name="description" content="Blog ScanBarcode Pro: Tips scan barcode rusak, cara scan QRIS, QR Code dari gambar, scan resi, dan panduan lengkap teknologi barcode untuk Indonesia.">
+    <meta name="keywords" content="blog scan barcode, cara scan qris, scan barcode wifi, tips barcode rusak, qris static vs dynamic, qr code scanner from image, scan resi barcode, cara scan barcode di hp">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0b1120">
     
     <link rel="canonical" href="https://scanbarcode-pro.vercel.app/blog.html" />
     
     <meta property="og:title" content="Blog Scan Barcode & QR Code | ScanBarcode Pro">
-    <meta property="og:description" content="Tips dan panduan lengkap scan barcode, QRIS, dan QR code.">
+    <meta property="og:description" content="Tips dan panduan lengkap scan barcode, QRIS, dan QR code untuk Indonesia.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://scanbarcode-pro.vercel.app/blog.html">
     
@@ -102,14 +101,12 @@
             font-size: clamp(1.8rem, 4vw, 2.5rem); 
             font-weight: 900; 
             margin-bottom: 12px; 
-            letter-spacing: -0.5px; 
         }
         .page-header p { 
             font-size: 15px; 
             opacity: 0.92; 
             max-width: 580px; 
             margin: 0 auto; 
-            line-height: 1.6; 
         }
         
         .blog-grid {
@@ -134,28 +131,18 @@
             box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25);
         }
         
-        /* ===== FIXED IMAGE SECTION ===== */
         .blog-card-img {
             width: 100%;
-            height: 200px;                    /* Mobile default */
+            height: 200px;
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             background-repeat: no-repeat;
             background-color: #1e3a5f;
             position: relative;
         }
         
-        /* Laptop / Desktop - taller image so photos don't get cut */
         @media (min-width: 768px) {
-            .blog-card-img {
-                height: 240px;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .blog-card-img {
-                height: 250px;
-            }
+            .blog-card-img { height: 230px; }
         }
         
         .blog-card-img::after {
@@ -163,7 +150,6 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(to bottom, transparent 50%, rgba(15, 28, 51, 0.75));
-            pointer-events: none;
         }
         
         .blog-card-body { 
@@ -201,9 +187,8 @@
             display: inline-flex; 
             align-items: center; 
             gap: 6px;
-            transition: 0.2s;
         }
-        .read-btn:hover { color: #93c5fd; gap: 9px; }
+        .read-btn:hover { color: #93c5fd; }
         
         .footer {
             background: #0a1628;
@@ -219,9 +204,8 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
-            .blog-grid { grid-template-columns: 1fr; gap: 20px; }
-            .page-header { padding: 36px 20px; border-radius: 16px; }
-            .main-content { padding: 28px 14px 60px; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .page-header { padding: 36px 20px; }
         }
     </style>
 </head>
@@ -257,7 +241,7 @@
 
     <div class="blog-grid">
 
-        <!-- QR Code Scanner from Image -->
+        <!-- 1. QR Code Scanner from Image -->
         <div class="blog-card" onclick="window.location.href='/qr-code-scanner-from-image.html'">
             <div class="blog-card-img" style="background-image: url('/qr-code-scanner-from-image.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
@@ -271,9 +255,9 @@
             </div>
         </div>
 
-        <!-- 1 -->
+        <!-- 2. Tips Scan Barcode Rusak -->
         <div class="blog-card" onclick="window.location.href='/tips-scan-barcode-rusak.html'">
-            <div class="blog-card-img" style="background-image: url('/tips-scan-barcode-rusak.png')"></div>
+            <div class="blog-card-img" style="background-image: url('/tips-scan-barcode-rusak.png'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
                 <h3>Tips Scan Barcode yang Rusak atau Buram</h3>
                 <p>Panduan lengkap mengatasi barcode yang sulit dibaca. Solusi praktis untuk barcode pudar, terlipat, atau rusak.</p>
@@ -285,11 +269,11 @@
             </div>
         </div>
 
-        <!-- 2 -->
+        <!-- 3. QRIS Static vs Dynamic -->
         <div class="blog-card" onclick="window.location.href='/perbedaan-qris-static-vs-dynamic.html'">
-            <div class="blog-card-img" style="background-image: url('/perbedaan-qris-static-vs-dynamic.png')"></div>
+            <div class="blog-card-img" style="background-image: url('/perbedaan-qris-static-vs-dynamic.png'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
-                <h3>Perbedaan QRIS Static vs Dynamic: Mana yang Lebih Baik?</h3>
+                <h3>Perbedaan QRIS Static vs Dynamic</h3>
                 <p>Tabel perbandingan lengkap, kelebihan, kekurangan, dan rekomendasi memilih QRIS untuk bisnis Anda.</p>
                 <div class="blog-meta">
                     <span><i class="far fa-calendar"></i> 20 Agustus 2026</span>
@@ -299,9 +283,9 @@
             </div>
         </div>
 
-        <!-- 3 -->
+        <!-- 4. Online Scanner vs Aplikasi -->
         <div class="blog-card" onclick="window.location.href='/online-scanner-vs-aplikasi-mobile.html'">
-            <div class="blog-card-img" style="background-image: url('/online-scanner-vs-aplikasi-mobile.jpg')"></div>
+            <div class="blog-card-img" style="background-image: url('/online-scanner-vs-aplikasi-mobile.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
                 <h3>Online Barcode Scanner vs Aplikasi Mobile</h3>
                 <p>Mana yang lebih baik? Perbandingan lengkap antara scanner online dan aplikasi mobile.</p>
@@ -313,56 +297,84 @@
             </div>
         </div>
 
-        <!-- 4 -->
+        <!-- 5. Cara Scan Resi -->
         <div class="blog-card" onclick="window.location.href='/cara-scan-resi.html'">
-            <div class="blog-card-img" style="background-image: url('/cara-scan-resi.jpg')"></div>
+            <div class="blog-card-img" style="background-image: url('/cara-scan-resi.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
-                <h3>Cara Scan Resi Pengiriman: Panduan Lengkap</h3>
-                <p>Mudah scan barcode resi JNE, J&T, SiCepat, Anteraja dan kurir lainnya hanya dengan HP.</p>
+                <h3>Cara Scan Resi Pengiriman Online</h3>
+                <p>Cara mudah scan resi JNE, J&T, SiCepat, dan ekspedisi lain langsung dari HP tanpa aplikasi.</p>
                 <div class="blog-meta">
                     <span><i class="far fa-calendar"></i> 19 Agustus 2026</span>
-                    <span><i class="far fa-clock"></i> 5 menit baca</span>
+                    <span><i class="far fa-clock"></i> 6 menit baca</span>
                 </div>
                 <a href="/cara-scan-resi.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- 5 -->
-        <div class="blog-card" onclick="window.location.href='/cara-scan-qris.html'">
-            <div class="blog-card-img" style="background-image: url('/cara-scan-qris.png')"></div>
+        <!-- 6. Cara Cek Resi Barcode -->
+        <div class="blog-card" onclick="window.location.href='/cara-cek-resi-barcode.html'">
+            <div class="blog-card-img" style="background-image: url('/cara-cek-resi-barcode.png'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
-                <h3>Cara Scan QRIS untuk Bayar: Panduan Lengkap 2026</h3>
-                <p>Pembayaran digital mudah dan aman dengan QRIS - GoPay, OVO, DANA, ShopeePay.</p>
+                <h3>Cara Cek Resi Lewat Barcode</h3>
+                <p>Panduan lengkap cara cek status pengiriman hanya dengan scan barcode resi.</p>
                 <div class="blog-meta">
-                    <span><i class="far fa-calendar"></i> 19 Agustus 2026</span>
-                    <span><i class="far fa-clock"></i> 6 menit baca</span>
+                    <span><i class="far fa-calendar"></i> 22 Agustus 2026</span>
+                    <span><i class="far fa-clock"></i> 5 menit baca</span>
                 </div>
-                <a href="/cara-scan-qris.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                <a href="/cara-cek-resi-barcode.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- 6 -->
-        <div class="blog-card" onclick="window.location.href='/cara-scan-barcode-wifi.html'">
-            <div class="blog-card-img" style="background-image: url('/cara-scan-barcode-wifi.jpg')"></div>
+        <!-- 7. Cara Scan Barcode di HP -->
+        <div class="blog-card" onclick="window.location.href='/cara-scan-barcode-di-hp.html'">
+            <div class="blog-card-img" style="background-image: url('/cara-scan-barcode-di-hp.png'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
-                <h3>Cara Scan Barcode WiFi: Langsung Konek Tanpa Ribet</h3>
-                <p>Pelajari cara memindai barcode WiFi dengan HP dan langsung terhubung ke jaringan tanpa mengetik password.</p>
+                <h3>Cara Scan Barcode di HP Tanpa Aplikasi</h3>
+                <p>Langkah mudah scan barcode produk, QRIS, dan QR Code langsung dari browser HP.</p>
                 <div class="blog-meta">
-                    <span><i class="far fa-calendar"></i> 19 Agustus 2026</span>
+                    <span><i class="far fa-calendar"></i> 18 Agustus 2026</span>
+                    <span><i class="far fa-clock"></i> 6 menit baca</span>
+                </div>
+                <a href="/cara-scan-barcode-di-hp.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- 8. Cara Scan Barcode WiFi -->
+        <div class="blog-card" onclick="window.location.href='/cara-scan-barcode-wifi.html'">
+            <div class="blog-card-img" style="background-image: url('/cara-scan-barcode-wifi.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
+            <div class="blog-card-body">
+                <h3>Cara Scan Barcode / QR WiFi</h3>
+                <p>Cara mudah terhubung ke WiFi hanya dengan scan QR Code, tanpa ketik password manual.</p>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> 17 Agustus 2026</span>
                     <span><i class="far fa-clock"></i> 5 menit baca</span>
                 </div>
                 <a href="/cara-scan-barcode-wifi.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
 
-        <!-- 7 -->
-        <div class="blog-card" onclick="window.location.href='/jenis-barcode.html'">
-            <div class="blog-card-img" style="background-image: url('/jenis-barcode.jpg')"></div>
+        <!-- 9. Cara Scan QRIS -->
+        <div class="blog-card" onclick="window.location.href='/cara-scan-qris.html'">
+            <div class="blog-card-img" style="background-image: url('/cara-scan-qris.png'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
             <div class="blog-card-body">
-                <h3>Jenis-Jenis Barcode Lengkap: EAN, UPC, QR Code, Code128</h3>
-                <p>Panduan lengkap semua format barcode yang digunakan di Indonesia untuk retail, logistik, dan pembayaran.</p>
+                <h3>Cara Scan QRIS Online Tanpa Aplikasi</h3>
+                <p>Panduan lengkap scan QRIS untuk pembayaran digital langsung dari browser.</p>
                 <div class="blog-meta">
-                    <span><i class="far fa-calendar"></i> 21 Agustus 2026</span>
+                    <span><i class="far fa-calendar"></i> 16 Agustus 2026</span>
+                    <span><i class="far fa-clock"></i> 6 menit baca</span>
+                </div>
+                <a href="/cara-scan-qris.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- 10. Jenis Barcode -->
+        <div class="blog-card" onclick="window.location.href='/jenis-barcode.html'">
+            <div class="blog-card-img" style="background-image: url('/jenis-barcode.jpg'), linear-gradient(135deg, #1e3a8a, #3b82f6)"></div>
+            <div class="blog-card-body">
+                <h3>Jenis-Jenis Barcode yang Perlu Diketahui</h3>
+                <p>Penjelasan lengkap EAN, UPC, Code 128, QR Code, Data Matrix, dan format lainnya.</p>
+                <div class="blog-meta">
+                    <span><i class="far fa-calendar"></i> 15 Agustus 2026</span>
                     <span><i class="far fa-clock"></i> 8 menit baca</span>
                 </div>
                 <a href="/jenis-barcode.html" class="read-btn">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
@@ -373,7 +385,13 @@
 </div>
 
 <footer class="footer">
-    <p>© 2026 ScanBarcode Pro Indonesia | <a href="/">Beranda</a> | <a href="/scanner.html">Scanner</a> | <a href="/generator.html">Generator</a> | <a href="/blog.html">Blog</a></p>
+    <p>© 2026 ScanBarcode Pro. Semua hak dilindungi.</p>
+    <p style="margin-top: 8px;">
+        <a href="https://scanbarcode-pro.vercel.app/">Beranda</a> •
+        <a href="/scanner.html">Scanner</a> •
+        <a href="/generator.html">Generator</a> •
+        <a href="/blog.html">Blog</a>
+    </p>
 </footer>
 
 </body>

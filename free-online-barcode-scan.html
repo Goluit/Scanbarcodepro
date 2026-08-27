@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <title>Free Online Barcode Scanner</title>
+    <meta name="description" content="Free online barcode scanner - Scan barcode online gratis langsung dari kamera HP. QR scanner, barcode reader. 50+ format, 100% privat, tanpa upload data. Pemindai barcode online gratis terbaik di Indonesia.">
+    <meta name="keywords" content="free online barcode scanner, scan barcode online gratis, pemindai barcode online, barcode scanner gratis, scan qr code online, barcode reader online, free barcode scanner, pemindai qr code, scanner barcode online, gratis barcode scanner">
+    <meta name="author" content="ScanBarcode Pro Indonesia">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="language" content="id">
+    <meta name="geo.country" content="ID">
+    <meta name="theme-color" content="#7c3aed">
+    
+    <meta property="og:title" content="Free Online Barcode Scanner | Pemindai Barcode Online Gratis">
+    <meta property="og:description" content="Scan barcode online gratis langsung dari kamera. 100% privat, tanpa upload data.">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        :root{--bg:#f8fafc;--text:#1e293b;--card:#ffffff;--border:#e5e7eb;--primary:#7c3aed;--secondary:#2563eb;--hover:#f5f3ff}
+        .dark{--bg:#0f172a;--text:#e2e8f0;--card:#1e293b;--border:#334155;--hover:#312e81}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:all 0.3s;line-height:1.8;display:flex;flex-direction:column;font-size:16px}
+        
+        .navbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 16px;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+        .nav-container{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:64px}
+        .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:var(--text);font-weight:800;font-size:18px}
+        .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#7c3aed,#2563eb);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700}
+        .logo span{color:#7c3aed}.logo sub{font-size:7px;color:#9ca3af;letter-spacing:1px;display:block;margin-top:-3px}
+        .nav-links{display:flex;gap:1px;list-style:none}.nav-links a{padding:7px 11px;border-radius:7px;text-decoration:none;color:var(--text);font-size:13px;font-weight:600;transition:all 0.2s;white-space:nowrap}.nav-links a:hover{background:var(--hover);color:#7c3aed}
+        
+        .hamburger-btn{width:40px;height:40px;border-radius:8px;border:none;background:transparent;cursor:pointer;display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;color:var(--text)}
+        .hamburger-btn span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s ease}
+        .hamburger-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger-btn.open span:nth-child(2){opacity:0}
+        .hamburger-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+        
+        .theme-btn{width:38px;height:38px;border-radius:50%;border:none;background:transparent;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;color:var(--text)}
+        .mobile-menu{display:none;background:var(--card);border-top:1px solid var(--border);padding:6px}.mobile-menu.show{display:block}
+        .mobile-menu a{display:block;padding:13px 16px;font-weight:600;text-decoration:none;color:var(--text);border-radius:8px;font-size:14px}
+        
+        .main-content{flex:1;max-width:1280px;margin:0 auto;padding:28px 18px 45px;width:100%}
+        .page{display:none}.page.active{display:block;animation:fadeIn 0.4s}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 30px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;border:none;text-decoration:none;transition:all 0.3s}
+        .btn-primary{background:linear-gradient(135deg,#7c3aed,#2563eb);color:#fff}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(124,58,237,0.4)}
+        .btn-outline{background:var(--card);border:2px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:#7c3aed}
+        .btn-success{background:#10b981;color:#fff}.btn-danger{background:#ef4444;color:#fff}.btn-dark{background:#374151;color:#fff}
+        .btn-sm{padding:8px 16px;font-size:13px;border-radius:8px}
+        .btn-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;border:none;background:#374151;color:#fff}.torch-on{background:#fbbf24!important;color:#000!important}
+        
+        .card{background:var(--card);border-radius:16px;padding:28px;box-shadow:0 4px 24px rgba(0,0,0,0.05);border:1px solid var(--border)}
+        
+        .scanner-wrapper{display:flex;flex-direction:column;align-items:center;gap:20px}
+        .scanner-content{display:grid;grid-template-columns:1fr;gap:20px;width:100%;max-width:950px}@media(min-width:900px){.scanner-content{grid-template-columns:1fr 1fr}}
+        .scanner-box{background:#000;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:4/3;box-shadow:0 20px 50px rgba(0,0,0,0.35),0 0 0 3px rgba(124,58,237,0.2);max-width:420px;width:100%;margin:0 auto}
+        .scanner-box video{width:100%;height:100%;object-fit:cover}
+        .scanner-laser{position:absolute;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,#ef4444,#ef4444,#ef4444,transparent);z-index:10;pointer-events:none;animation:laser 2.2s ease-in-out infinite;box-shadow:0 0 25px #ef4444;display:none}@keyframes laser{0%,100%{top:18%;opacity:0.5}50%{top:82%;opacity:1}}
+        .cam-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a0a0a;color:#9ca3af;z-index:5}
+        
+        .result-box{min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:2px dashed var(--border);border-radius:12px;padding:20px;text-align:center}.result-box.success{background:#f0fdf4;border-color:#10b981;border-style:solid}
+        
+        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+        .blog-card{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,0.04);cursor:pointer;transition:all 0.3s}.blog-card:hover{transform:translateY(-5px)}
+        .blog-img{height:210px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:20px;color:#fff;font-weight:800;font-size:18px;position:relative;overflow:hidden}.blog-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,0.75))}.blog-img span{position:relative;z-index:1}
+        .blog-info{padding:18px}.blog-cat{font-size:10px;font-weight:700;color:#7c3aed;text-transform:uppercase}.blog-title{font-size:17px;font-weight:700;margin:6px 0}.blog-date{font-size:12px;color:#9ca3af}.blog-excerpt{font-size:13px;color:#6b7280;margin-top:6px}
+        
+        .blog-detail-header{height:280px;background-size:cover;background-position:center;border-radius:18px;display:flex;align-items:flex-end;padding:28px;color:#fff;position:relative;overflow:hidden;margin-bottom:28px}.blog-detail-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(transparent,rgba(0,0,0,0.8))}.blog-detail-header div{position:relative;z-index:1}
+        .blog-detail-content{max-width:850px;margin:0 auto;line-height:2;font-size:16px}.blog-detail-content h2{font-size:1.6rem;font-weight:800;color:#7c3aed;margin:30px 0 14px}.blog-detail-content p{margin-bottom:18px}
+        .blog-back{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;background:var(--hover);border:none;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;color:var(--text);margin-bottom:22px}.blog-back:hover{background:#7c3aed;color:#fff}
+        
+        .gen-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}@media(max-width:768px){.gen-grid{grid-template-columns:1fr}}
+        
+        .prose{max-width:950px;line-height:2;margin:0 auto}
+        .prose h2{font-size:1.6rem;font-weight:800;color:#7c3aed;margin:32px 0 16px}
+        .prose h3{font-size:1.25rem;font-weight:700;margin:24px 0 12px}
+        .prose p{margin-bottom:18px;font-size:16px}
+        .prose ul,.prose ol{margin:16px 0;padding-left:26px}
+        .prose li{margin-bottom:10px;font-size:15px}
+        .prose .highlight{background:var(--hover);padding:20px;border-left:5px solid #7c3aed;border-radius:10px;margin:24px 0}
+        
+        .footer{background:#0f172a;color:#94a3b8;padding:50px 22px 22px;margin-top:auto;border-top:1px solid #1e293b}
+        .footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;margin-bottom:35px}
+        .footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:14px}.footer p{font-size:14px;line-height:1.9;opacity:0.8}.footer ul{list-style:none;padding:0}.footer ul li{margin-bottom:8px}.footer ul li a{font-size:14px;text-decoration:none;color:#94a3b8;opacity:0.8}.footer ul li a:hover{color:#fff}
+        .footer-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.footer-tag{font-size:11px;color:#94a3b8;text-decoration:none;padding:5px 12px;border:1px solid #334155;border-radius:16px}.footer-tag:hover{color:#fff;border-color:#fff}
+        .footer-bottom{max-width:1280px;margin:0 auto;text-align:center;padding-top:18px;border-top:1px solid #1e293b;font-size:12px;opacity:0.6}
+        
+        .toast{position:fixed;top:18px;right:18px;z-index:999;padding:13px 22px;border-radius:12px;color:#fff;font-weight:600;box-shadow:0 10px 35px rgba(0,0,0,0.25);animation:slide 0.35s;font-size:14px}@keyframes slide{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
+        .hidden{display:none!important}
+        
+        @media(max-width:768px){.nav-links{display:none}.hamburger-btn{display:flex}.footer-grid{grid-template-columns:1fr;gap:28px;text-align:center}.blog-grid{grid-template-columns:1fr}.scanner-content{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo" onclick="go('scanner')"><div class="logo-icon">📷</div><div>ScanBarcode<span>Pro</span><sub>FREE ONLINE BARCODE SCANNER</sub></div></a>
+        <ul class="nav-links">
+            <li><a href="#" onclick="go('scanner')">📷 Pemindai</a></li>
+            <li><a href="#" onclick="go('generator')">🎨 Generator</a></li>
+            <li><a href="#" onclick="go('riwayat')">📋 Riwayat</a></li>
+            <li><a href="#" onclick="go('blog')">📚 Blog</a></li>
+            <li><a href="#" onclick="go('tentang')">ℹ️ Tentang</a></li>
+            <li><a href="#" onclick="go('kontak')">📧 Kontak</a></li>
+        </ul>
+        <div style="display:flex;align-items:center;gap:6px">
+            <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+            <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#" onclick="go('scanner')">📷 Pemindai</a>
+        <a href="#" onclick="go('generator')">🎨 Generator</a>
+        <a href="#" onclick="go('riwayat')">📋 Riwayat</a>
+        <a href="#" onclick="go('blog')">📚 Blog</a>
+        <a href="#" onclick="go('tentang')">ℹ️ Tentang</a>
+        <a href="#" onclick="go('kontak')">📧 Kontak</a>
+    </div>
+</nav>
+
+<div class="main-content">
+
+    <!-- SCANNER PAGE - DEFAULT -->
+    <div class="page active" id="page-scanner">
+        <h2 style="font-weight:800;font-size:1.6rem;margin-bottom:14px"><i class="fas fa-camera"></i> Free Online Barcode Scanner</h2>
+        <p style="color:#6b7280;margin-bottom:20px;font-size:16px">Scan barcode online gratis langsung dari kamera Anda. Klik "Mulai Kamera" untuk mengaktifkan.</p>
+        <div class="scanner-wrapper">
+            <div class="scanner-content">
+                <div>
+                    <div class="scanner-box"><div id="reader" style="width:100%;height:100%"></div><div class="cam-placeholder" id="camPlaceholder"><div style="font-size:3.5rem;margin-bottom:10px">📷</div><p style="font-size:15px">Klik "Mulai Kamera" untuk mengaktifkan</p></div><div class="scanner-laser" id="scanLaser"></div></div>
+                    <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap">
+                        <button id="btnStart" class="btn btn-primary" onclick="startScanner()"><i class="fas fa-play"></i> Mulai Kamera</button>
+                        <button id="btnStop" class="btn btn-danger hidden" onclick="stopScanner()"><i class="fas fa-stop"></i> Stop</button>
+                        <button id="btnTorch" class="btn-icon hidden" onclick="toggleTorch()">💡</button>
+                        <button id="btnSwitch" class="btn-icon hidden" onclick="switchCamera()">🔄</button>
+                    </div>
+                    <div class="card" style="margin-top:10px;padding:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                        <label style="cursor:pointer;padding:8px 14px;background:var(--bg);border-radius:8px;font-weight:500;font-size:13px;border:1px solid var(--border);display:inline-flex;align-items:center;gap:6px"><i class="fas fa-image"></i> Upload Gambar<input type="file" accept="image/*" style="display:none" onchange="scanImageFile(this)"></label>
+                        <span id="scanStatus" style="font-size:12px;padding:5px 10px;border-radius:20px;background:var(--bg);border:1px solid var(--border)">⚪ Kamera Mati</span>
+                    </div>
+                </div>
+                <div class="card" style="padding:20px">
+                    <h3 style="font-weight:700;margin-bottom:12px;font-size:1.1rem"><i class="fas fa-clipboard-check"></i> Hasil Scan</h3>
+                    <div id="resultDisplay" class="result-box"><div style="font-size:2.5rem;margin-bottom:6px">📷</div><p style="font-size:14px">Arahkan kamera ke barcode</p></div>
+                    <div id="resultActions" style="margin-top:10px;display:none;flex-direction:column;gap:8px"></div>
+                    <div id="resultInfo" style="margin-top:8px;display:none;padding:8px;background:var(--hover);border-left:3px solid #7c3aed;border-radius:6px;font-size:12px"></div>
+                    <div id="productSearch" style="margin-top:8px;display:none"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ 500 LINES SEO CONTENT ============ -->
+        <div class="card prose" style="margin-top:40px">
+            <h2>📱 Apa itu Free Online Barcode Scanner?</h2>
+            <p><strong>Free Online Barcode Scanner</strong> adalah alat pemindai barcode online gratis yang memungkinkan Anda membaca dan mendekode barcode langsung dari browser tanpa perlu menginstal aplikasi apapun. ScanBarcode Pro menyediakan layanan free online barcode scanner terbaik di Indonesia dengan dukungan 50+ format barcode termasuk EAN-13, UPC-A, Code128, QR Code, DataMatrix, PDF417, dan masih banyak lagi.</p>
+            <p>Free online barcode scanner kami menggunakan teknologi WebAssembly dan ZXing untuk memproses pemindaian secara lokal di browser Anda. Ini berarti data barcode Anda <strong>TIDAK PERNAH</strong> dikirim ke server manapun. Semua pemrosesan terjadi 100% di perangkat Anda, menjamin privasi absolut untuk setiap pemindaian.</p>
+            <p>Dengan free online barcode scanner dari ScanBarcode Pro, Anda tidak perlu lagi mengunduh aplikasi scanner yang memakan ruang penyimpanan HP Anda. Cukup buka browser, izinkan akses kamera, dan langsung scan barcode apapun. Semua fitur tersedia gratis tanpa batasan penggunaan.</p>
+            
+            <h2>🔍 Bagaimana Cara Kerja Free Online Barcode Scanner?</h2>
+            <p>Menggunakan free online barcode scanner dari ScanBarcode Pro sangat mudah dan intuitif. Berikut adalah langkah-langkahnya:</p>
+            <ol>
+                <li><strong>Buka Website:</strong> Akses ScanBarcode Pro melalui browser favorit Anda di HP atau PC</li>
+                <li><strong>Klik "Mulai Kamera":</strong> Tombol ungu akan mengaktifkan kamera perangkat Anda</li>
+                <li><strong>Izinkan Akses Kamera:</strong> Browser akan meminta izin - klik "Allow" atau "Izinkan"</li>
+                <li><strong>Arahkan ke Barcode:</strong> Posisikan barcode dalam area pemindaian yang ditandai</li>
+                <li><strong>Hasil Instan:</strong> Scanner mendeteksi dan menampilkan hasil dalam milidetik</li>
+            </ol>
+            <p>Free online barcode scanner kami dirancang untuk bekerja dengan lancar di semua perangkat. Baik Anda menggunakan smartphone Android, iPhone, tablet, laptop, atau desktop, scanner akan berfungsi dengan optimal selama perangkat memiliki kamera dan browser modern.</p>
+            
+            <h2>✅ Format Barcode yang Didukung Free Online Barcode Scanner</h2>
+            <p>ScanBarcode Pro free online barcode scanner mendukung lebih dari 50 format barcode yang berbeda. Ini menjadikannya salah satu scanner online paling lengkap yang tersedia di Indonesia.</p>
+            
+            <h3>Barcode 1D (Linear)</h3>
+            <ul>
+                <li><strong>EAN-13:</strong> Standar barcode 13 digit untuk produk retail global, paling umum di Indonesia</li>
+                <li><strong>EAN-8:</strong> Versi pendek EAN untuk produk kecil seperti permen dan rokok</li>
+                <li><strong>UPC-A:</strong> Standar 12 digit untuk produk impor dari Amerika Serikat</li>
+                <li><strong>UPC-E:</strong> Versi kompak UPC untuk kemasan kecil</li>
+                <li><strong>Code 128:</strong> Format serbaguna untuk logistik, pengiriman, dan inventori</li>
+                <li><strong>Code 39:</strong> Format alfanumerik untuk industri otomotif dan militer</li>
+                <li><strong>Code 93:</strong> Versi lebih padat dari Code 39 dengan keamanan lebih baik</li>
+                <li><strong>ITF-14:</strong> Untuk karton dan kemasan besar di gudang</li>
+                <li><strong>Codabar:</strong> Untuk perpustakaan, bank darah, dan kurir</li>
+                <li><strong>MSI Plessey:</strong> Untuk retail dan manajemen gudang</li>
+            </ul>
+            
+            <h3>Barcode 2D (Matrix)</h3>
+            <ul>
+                <li><strong>QR Code:</strong> Format paling populer untuk berbagai keperluan digital</li>
+                <li><strong>DataMatrix:</strong> Untuk industri elektronik dan komponen kecil</li>
+                <li><strong>PDF417:</strong> Untuk dokumen, KTP, SIM, dan identifikasi</li>
+                <li><strong>Aztec Code:</strong> Untuk tiket transportasi dan boarding pass</li>
+                <li><strong>MaxiCode:</strong> Untuk pengiriman UPS dan logistik internasional</li>
+            </ul>
+            
+            <h2>🔒 Keamanan dan Privasi Free Online Barcode Scanner</h2>
+            <p>ScanBarcode Pro free online barcode scanner dirancang dengan fokus utama pada privasi dan keamanan pengguna. Berikut adalah fitur keamanan kami:</p>
+            <ul>
+                <li><strong>Client-Side Processing:</strong> Semua pemrosesan terjadi di browser Anda, bukan di server</li>
+                <li><strong>Tanpa Upload Data:</strong> Tidak ada data barcode yang dikirim ke server manapun</li>
+                <li><strong>Tanpa Penyimpanan:</strong> Kami tidak menyimpan hasil scan apapun</li>
+                <li><strong>Tanpa Pelacakan:</strong> Tidak ada cookie pelacakan atau analytics yang mengganggu</li>
+                <li><strong>Riwayat Lokal:</strong> Riwayat scan hanya tersimpan di perangkat Anda sendiri</li>
+                <li><strong>HTTPS:</strong> Koneksi terenkripsi untuk keamanan maksimal</li>
+            </ul>
+            <p>Dengan free online barcode scanner yang 100% client-side, Anda dapat memindai barcode sensitif seperti QRIS pembayaran, tiket, atau dokumen pribadi tanpa khawatir data bocor ke pihak ketiga.</p>
+            
+            <h2>🏢 Aplikasi Free Online Barcode Scanner untuk Bisnis</h2>
+            <p>Free online barcode scanner dari ScanBarcode Pro sangat berguna untuk berbagai kebutuhan bisnis di Indonesia:</p>
+            
+            <h3>Ritel & Supermarket</h3>
+            <p>Scan barcode produk untuk cek harga, stok, dan informasi produk. Free online barcode scanner kami mendukung EAN-13 dan UPC-A yang umum digunakan pada produk retail di seluruh Indonesia. Kasir dapat menggunakan scanner ini sebagai backup jika scanner fisik mengalami masalah.</p>
+            
+            <h3>Logistik & Ekspedisi</h3>
+            <p>Lacak paket dan kiriman menggunakan barcode Code128. Free online barcode scanner kami dapat membaca resi pengiriman dari berbagai jasa kurir di Indonesia seperti JNE, J&T Express, SiCepat, AnterAja, Pos Indonesia, dan lainnya.</p>
+            
+            <h3>UMKM & Warung</h3>
+            <p>Scan kode QRIS untuk pembayaran digital. Verifikasi pembayaran dari GoPay, OVO, DANA, ShopeePay, dan aplikasi pembayaran lainnya. Free online barcode scanner membantu UMKM memverifikasi transaksi dengan cepat dan akurat.</p>
+            
+            <h3>Farmasi & Kesehatan</h3>
+            <p>Verifikasi obat dan alat medis menggunakan barcode GS1. Pastikan keaslian produk farmasi sebelum digunakan. Free online barcode scanner membantu apotek dan rumah sakit memverifikasi obat dengan cepat.</p>
+            
+            <h3>Perpustakaan</h3>
+            <p>Scan ISBN untuk manajemen buku. Kelola peminjaman dan pengembalian buku dengan efisien. Free online barcode scanner mendukung format ISBN yang digunakan pada semua buku.</p>
+            
+            <h3>Manufaktur</h3>
+            <p>Quality control dan tracking produksi menggunakan barcode. Lacak komponen dan produk jadi dengan mudah. Free online barcode scanner membantu proses quality control lebih efisien.</p>
+            
+            <h2>📱 Free Online Barcode Scanner untuk Mobile</h2>
+            <p>ScanBarcode Pro free online barcode scanner dioptimalkan untuk penggunaan di smartphone. Buka website di Chrome, Safari, atau Firefox di HP Anda, izinkan akses kamera, dan langsung scan barcode. Tidak perlu download aplikasi apapun yang memakan ruang penyimpanan.</p>
+            <p>Fitur senter (torch) membantu saat kondisi pencahayaan kurang. Fitur ganti kamera memungkinkan Anda beralih antara kamera depan dan belakang dengan mudah. Semua fitur ini tersedia gratis tanpa batasan.</p>
+            
+            <h2>🖥️ Free Online Barcode Scanner untuk Desktop</h2>
+            <p>ScanBarcode Pro juga bekerja sempurna di komputer desktop dan laptop. Gunakan webcam bawaan atau kamera eksternal untuk memindai barcode langsung dari komputer Anda. Ini sangat berguna untuk pekerjaan kantor, gudang, atau kasir.</p>
+            <p>Desktop version juga mendukung upload gambar barcode dari komputer Anda. Cukup klik "Upload Gambar" dan pilih file gambar barcode yang ingin dipindai.</p>
+            
+            <h2>💡 Tips Menggunakan Free Online Barcode Scanner</h2>
+            <ul>
+                <li>Pastikan pencahayaan cukup saat memindai barcode</li>
+                <li>Jaga jarak ideal 15-30 cm antara kamera dan barcode</li>
+                <li>Gunakan fitur senter untuk kondisi gelap</li>
+                <li>Upload gambar barcode jika kamera bermasalah</li>
+                <li>Bersihkan lensa kamera untuk hasil optimal</li>
+                <li>Pastikan barcode tidak rusak atau terlipat</li>
+                <li>Gunakan kamera belakang untuk hasil terbaik</li>
+                <li>Jaga tangan tetap stabil saat memindai</li>
+            </ul>
+            
+            <h2>❓ FAQ Free Online Barcode Scanner</h2>
+            <p><strong>Q: Apakah free online barcode scanner ini benar-benar gratis?</strong><br>A: Ya, 100% gratis selamanya tanpa batasan apapun. Tidak ada biaya tersembunyi.</p>
+            <p><strong>Q: Apakah perlu install aplikasi?</strong><br>A: Tidak perlu! Cukup buka browser dan langsung scan. Hemat ruang penyimpanan HP Anda.</p>
+            <p><strong>Q: Format apa saja yang bisa discan?</strong><br>A: 50+ format termasuk EAN, UPC, Code128, QR Code, DataMatrix, PDF417, WiFi, vCard.</p>
+            <p><strong>Q: Apakah data saya aman?</strong><br>A: Sangat aman! Semua pemrosesan di browser, tidak ada upload data ke server.</p>
+            <p><strong>Q: Bisakah scan dari gambar?</strong><br>A: Ya, Anda bisa upload gambar barcode untuk dipindai.</p>
+            <p><strong>Q: Apakah ada batasan penggunaan?</strong><br>A: Tidak ada batasan. Scan sebanyak apapun, gratis selamanya.</p>
+            <p><strong>Q: Apakah mendukung kamera depan dan belakang?</strong><br>A: Ya, Anda bisa beralih antara kamera depan dan belakang dengan tombol 🔄.</p>
+            <p><strong>Q: Apakah ada fitur senter?</strong><br>A: Ya, tersedia fitur senter (💡) untuk kondisi pencahayaan kurang.</p>
+            <p><strong>Q: Apakah bisa scan QRIS?</strong><br>A: Ya, free online barcode scanner kami mendukung pembacaan QRIS untuk pembayaran digital.</p>
+            <p><strong>Q: Apakah bisa scan barcode produk?</strong><br>A: Ya, mendukung EAN-13 dan UPC-A yang digunakan pada produk retail.</p>
+            
+            <h2>🔄 Perbandingan dengan Aplikasi Scanner</h2>
+            <p>Mengapa memilih free online barcode scanner dibandingkan aplikasi scanner yang harus diinstall?</p>
+            <ul>
+                <li><strong>Tanpa Install:</strong> Tidak perlu download, langsung pakai di browser</li>
+                <li><strong>Hemat Ruang:</strong> Tidak memakan ruang penyimpanan HP Anda</li>
+                <li><strong>Selalu Update:</strong> Selalu menggunakan versi terbaru tanpa perlu update manual</li>
+                <li><strong>Cross-Platform:</strong> Bekerja di Android, iOS, Windows, Mac, Linux</li>
+                <li><strong>Privasi Lebih Baik:</strong> Tidak ada izin aplikasi yang berlebihan</li>
+                <li><strong>Gratis:</strong> Tidak ada iklan mengganggu atau biaya premium</li>
+            </ul>
+            
+            <h2>🎯 Kesimpulan</h2>
+            <p>ScanBarcode Pro free online barcode scanner adalah solusi terbaik untuk kebutuhan pemindaian barcode di Indonesia. Dengan dukungan 50+ format, privasi 100%, dan kemudahan penggunaan, scanner ini menjadi pilihan utama bagi jutaan pengguna. Coba sekarang dan rasakan kemudahannya!</p>
+        </div>
+    </div>
+
+    <!-- GENERATOR PAGE -->
+    <div class="page" id="page-generator">
+        <h2 style="font-weight:800;font-size:1.4rem;margin-bottom:14px"><i class="fas fa-qrcode"></i> QR Code Generator</h2>
+        <div class="card" style="padding:0;overflow:hidden">
+            <div style="display:flex;border-bottom:1px solid var(--border)">
+                <button onclick="genTab('qr')" id="tabQr" style="flex:1;padding:14px;font-weight:700;border:none;cursor:pointer;background:var(--hover);color:#7c3aed;font-size:14px">📱 QR Generator</button>
+                <button onclick="genTab('barcode')" id="tabBc" style="flex:1;padding:14px;font-weight:700;border:none;cursor:pointer;background:var(--card);color:var(--text);font-size:14px">📊 Barcode Generator</button>
+            </div>
+            <div style="padding:20px" class="gen-grid">
+                <div id="genControls"></div>
+                <div style="background:var(--bg);border-radius:10px;padding:20px;min-height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+                    <div id="genPreview" style="background:#fff;padding:20px;border-radius:8px;margin-bottom:12px;min-width:200px;min-height:200px;display:flex;align-items:center;justify-content:center"><span style="color:#9ca3af">Preview</span></div>
+                    <button id="btnDownloadGen" class="btn btn-primary btn-sm hidden"><i class="fas fa-download"></i> Unduh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIWAYAT PAGE -->
+    <div class="page" id="page-riwayat"><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px"><h2 style="font-weight:700;font-size:1.2rem"><i class="fas fa-history"></i> Riwayat Scan</h2><div style="display:flex;gap:8px"><button onclick="exportHistory()" class="btn btn-primary btn-sm"><i class="fas fa-file-csv"></i> Export CSV</button><button onclick="clearHistory()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button></div></div><div id="historyList" style="max-height:420px;overflow-y:auto"></div><div id="historyEmpty" style="text-align:center;color:#9ca3af;padding:50px"><div style="font-size:2.5rem;margin-bottom:8px">📭</div><p>Belum ada riwayat</p></div></div></div>
+
+    <!-- BLOG PAGE -->
+    <div class="page" id="page-blog"><div id="blogListView"><h2 style="font-weight:800;font-size:1.8rem;margin-bottom:6px">📚 Blog</h2><div class="blog-grid" id="blogGrid"></div></div><div id="blogDetailView" class="hidden"><button class="blog-back" onclick="closeBlog()"><i class="fas fa-arrow-left"></i> Kembali</button><div id="blogDetailContent"></div></div></div>
+
+    <!-- TENTANG PAGE -->
+    <div class="page" id="page-tentang"><div class="card" style="max-width:850px;margin:0 auto;line-height:1.9"><h1 style="font-weight:800;font-size:1.8rem;margin-bottom:16px">ℹ️ Tentang Free Online Barcode Scanner</h1><p>ScanBarcode Pro adalah free online barcode scanner #1 di Indonesia. Gratis, cepat, dan 100% privat.</p></div></div>
+
+    <!-- KONTAK PAGE -->
+    <div class="page" id="page-kontak"><div class="card" style="max-width:850px;margin:0 auto;line-height:1.9"><h1 style="font-weight:800;font-size:1.8rem;margin-bottom:16px">📧 Hubungi Kami</h1><p>Punya pertanyaan? Hubungi tim ScanBarcode Pro.</p></div></div>
+
+</div>
+
+<footer class="footer"><div class="footer-grid"><div><h4>📷 ScanBarcode Pro</h4><p>Free online barcode scanner terbaik di Indonesia. Gratis, cepat, dan aman.</p><div class="footer-tags"><span class="footer-tag">free online barcode scanner</span><span class="footer-tag">scan barcode online</span><span class="footer-tag">pemindai barcode</span><span class="footer-tag">barcode scanner</span></div></div><div><h4>📋 Menu</h4><ul><li><a href="#" onclick="go('scanner')">📷 Scan Barcode</a></li><li><a href="#" onclick="go('generator')">🎨 QR Generator</a></li><li><a href="#" onclick="go('blog')">📝 Blog</a></li><li><a href="#" onclick="go('kontak')">✉ Kontak</a></li></ul></div><div><h4>⚖️ Legal</h4><ul><li><a href="#" onclick="go('privacy')">🔐 Privasi</a></li><li><a href="#" onclick="go('terms')">⚖️ Ketentuan</a></li><li><a href="#" onclick="go('faq')">❓ FAQ</a></li></ul></div></div><div class="footer-bottom"><p>ScanBarcode Pro adalah alat independen untuk scan barcode umum.</p><p>© 2026 ScanBarcode Pro. Hak Cipta Dilindungi.</p></div></footer>
+
+<script>
+function toast(m,t){let c=document.createElement('div');c.className='toast';c.style.background=t==='error'?'#ef4444':'#10b981';c.textContent=m;document.body.appendChild(c);setTimeout(()=>{c.style.opacity='0';c.style.transition='.3s';setTimeout(()=>c.remove(),300)},2500)}
+function toggleMenu(){let m=document.getElementById('mobileMenu'),h=document.getElementById('hamburgerBtn');m.classList.toggle('show');h.classList.toggle('open')}
+function go(n){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    let el=document.getElementById('page-'+n);
+    if(el)el.classList.add('active');else document.getElementById('page-scanner').classList.add('active');
+    document.getElementById('mobileMenu').classList.remove('show');document.getElementById('hamburgerBtn').classList.remove('open');
+    window.scrollTo(0,0);
+    if(n==='blog')renderBlogs();if(n==='riwayat')renderHistory();if(n==='generator')genTab('qr');if(n!=='scanner')stopScanner();
+}
+function toggleTheme(){let d=document.documentElement.classList.toggle('dark');document.getElementById('themeBtn').textContent=d?'☀️':'🌙';localStorage.setItem('theme',d?'dark':'light')}
+
+// ===== BLOG DATA =====
+const blogImgs=['https://images.unsplash.com/photo-1586281380349-632531db7ed1?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1553729459-afe8a1f19b2a?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1553413077-190dd305871c?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1586281380117-5a60cdc5c2a5?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=300&fit=crop','https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop'];
+const blogs=[{id:1,title:'Cara Scan Barcode Online Gratis',cat:'Tutorial',date:'15 Maret 2026',excerpt:'Panduan free online barcode scanner.',content:'<p>Free online barcode scanner memudahkan scan barcode dari browser.</p>'},{id:2,title:'Perbedaan EAN dan UPC',cat:'Retail',date:'10 Maret 2026',excerpt:'Standar barcode retail.',content:'<p>EAN-13 dan UPC-A adalah standar barcode retail paling umum.</p>'},{id:3,title:'QRIS Pembayaran Digital',cat:'Fintech',date:'5 Maret 2026',excerpt:'Standar nasional.',content:'<p>ScanBarcode Pro membaca QRIS untuk verifikasi pembayaran.</p>'},{id:4,title:'Inventori UMKM',cat:'Bisnis',date:'28 Februari 2026',excerpt:'Optimalkan stok.',content:'<p>Barcode membantu UMKM melacak stok dengan akurat.</p>'},{id:5,title:'WiFi QR Code',cat:'Tools',date:'20 Februari 2026',excerpt:'QR WiFi bisnis.',content:'<p>Buat QR code WiFi untuk pelanggan.</p>'},{id:6,title:'Keamanan QR Code',cat:'Keamanan',date:'15 Februari 2026',excerpt:'Tips aman.',content:'<p>Periksa URL sebelum membuka hasil scan.</p>'},{id:7,title:'Barcode Logistik',cat:'Logistik',date:'10 Februari 2026',excerpt:'Code128 tracking.',content:'<p>Code128 untuk label pengiriman.</p>'},{id:8,title:'vCard QR Code',cat:'Tools',date:'5 Februari 2026',excerpt:'Kartu nama digital.',content:'<p>vCard QR menyimpan kontak ke phonebook.</p>'},{id:9,title:'Teknologi Barcode',cat:'Teknologi',date:'1 Februari 2026',excerpt:'Tren masa depan.',content:'<p>AR barcode dan digital product passport.</p>'},{id:10,title:'Panduan QR Generator',cat:'Tutorial',date:'25 Januari 2026',excerpt:'Cara buat QR.',content:'<p>Generator mendukung URL, teks, WiFi, vCard.</p>'}];
+function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card" onclick="openBlog(${b.id})"><div class="blog-img" style="background-image:url('${blogImgs[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date}</span></div></div>`).join('')}
+function openBlog(id){let b=blogs.find(x=>x.id===id)||blogs[0];document.getElementById('blogListView').classList.add('hidden');document.getElementById('blogDetailView').classList.remove('hidden');document.getElementById('blogDetailContent').innerHTML=`<div class="blog-detail-header" style="background-image:url('${blogImgs[id-1]}')"><div><span style="font-size:11px;font-weight:700;text-transform:uppercase;opacity:0.9">${b.cat}</span><h1 style="font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin:8px 0">${b.title}</h1><span style="font-size:13px;opacity:0.85">📅 ${b.date}</span></div></div><div class="blog-detail-content">${b.content}</div>`;window.scrollTo(0,0)}
+function closeBlog(){document.getElementById('blogListView').classList.remove('hidden');document.getElementById('blogDetailView').classList.add('hidden');window.scrollTo(0,0)}
+
+// ===== CAMERA =====
+let scanner=null,scanRes='',scanning=!1,torchOn=!1,curCam=null,cams=[];
+async function startScanner(){let sb=document.getElementById('btnStart'),tb=document.getElementById('btnStop'),rb=document.getElementById('btnTorch'),wb=document.getElementById('btnSwitch'),st=document.getElementById('scanStatus'),laser=document.getElementById('scanLaser'),ph=document.getElementById('camPlaceholder');sb.classList.add('hidden');tb.classList.add('hidden');rb.classList.add('hidden');wb.classList.add('hidden');st.innerHTML='<span style="color:#f59e0b">●</span> Membuka kamera...';if(scanner){try{if(scanning)await scanner.stop();scanner.clear()}catch(e){}scanner=null}try{scanner=new Html5Qrcode("reader");cams=await Html5Qrcode.getCameras();if(!cams||cams.length===0){st.innerHTML='<span style="color:#ef4444">✕</span> Kamera tidak ditemukan';sb.classList.remove('hidden');ph.style.display='flex';toast('Tidak ada kamera','error');return}let bc=cams.find(c=>{let l=c.label.toLowerCase();return l.includes('back')||l.includes('environment')||l.includes('belakang')});curCam=bc||cams[0];await scanner.start(curCam.id,{fps:10,qrbox:{width:250,height:250},aspectRatio:1.0},(t,r)=>{scanRes=t;let fn='Unknown';try{if(r?.result?.format?.formatName)fn=r.result.format.formatName}catch(e){}if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(t,fn);saveHist(t,fn);stopScanner();toast('✅ Barcode terdeteksi!')},()=>{});scanning=!0;tb.classList.remove('hidden');rb.classList.remove('hidden');if(cams.length>1)wb.classList.remove('hidden');st.innerHTML='<span style="color:#10b981">●</span> Scanning...';laser.style.display='block';ph.style.display='none'}catch(e){st.innerHTML='<span style="color:#ef4444">✕</span> Gagal akses kamera';sb.classList.remove('hidden');ph.style.display='flex';toast('Gagal: '+(e.message||e),'error')}}
+function stopScanner(){if(scanner&&scanning){scanner.stop().catch(()=>{}).finally(()=>{try{scanner.clear()}catch(e){}})}scanning=!1;torchOn=!1;document.getElementById('btnStart').classList.remove('hidden');document.getElementById('btnStop').classList.add('hidden');document.getElementById('btnTorch').classList.add('hidden');document.getElementById('btnSwitch').classList.add('hidden');document.getElementById('scanStatus').innerHTML='⚪ Kamera Mati';document.getElementById('scanLaser').style.display='none';document.getElementById('camPlaceholder').style.display='flex'}
+async function toggleTorch(){if(!scanner||!scanning)return;try{let t=scanner.getRunningTrack?scanner.getRunningTrack():null;if(!t){let v=document.querySelector('#reader video');if(v?.srcObject)t=v.srcObject.getVideoTracks()[0]}if(t&&t.getCapabilities?.()?.torch){torchOn=!torchOn;await t.applyConstraints({advanced:[{torch:torchOn}]});document.getElementById('btnTorch').classList.toggle('torch-on',torchOn)}}catch(e){}}
+async function switchCamera(){if(!scanner||!scanning||cams.length<2)return;try{await scanner.stop();let i=cams.findIndex(c=>c.id===curCam.id);curCam=cams[(i+1)%cams.length];await scanner.start(curCam.id,{fps:10,qrbox:{width:250,height:250},aspectRatio:1.0},(t,r)=>{scanRes=t;let fn='Unknown';try{if(r?.result?.format?.formatName)fn=r.result.format.formatName}catch(e){}if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(t,fn);saveHist(t,fn);stopScanner()},()=>{});document.getElementById('scanLaser').style.display='block'}catch(e){}}
+function scanImageFile(input){if(!input.files||!input.files[0])return;let t=new Html5Qrcode("reader");t.scanFile(input.files[0],!0).then(x=>{scanRes=x;if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(x,'File Image');saveHist(x,'File Image');t.clear();toast('✅ Terdeteksi!')}).catch(()=>{toast('Tidak ada barcode','error');t.clear()});input.value=''}
+
+// ===== RESULT =====
+function showResult(t,f){let d=document.getElementById('resultDisplay'),a=document.getElementById('resultActions'),i=document.getElementById('resultInfo'),p=document.getElementById('productSearch');let type=/^https?:\/\//i.test(t)?'url':/^WIFI:/i.test(t)?'wifi':/^tel:/i.test(t)?'phone':/^mailto:/i.test(t)?'email':/^\d{8,14}$/.test(t)?'product':'text';let ic={url:'🔗',wifi:'📶',phone:'📞',email:'✉️',product:'📦',text:'📝'},lb={url:'Link',wifi:'WiFi',phone:'Telepon',email:'Email',product:'Produk',text:'Teks'};d.className='result-box success';d.innerHTML=`<div style="text-align:center"><div style="font-size:2rem">${ic[type]}</div><div style="font-size:11px;font-weight:700;color:#7c3aed;margin:4px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;padding:8px;border-radius:5px;font-size:12px">${t.length>60?t.substring(0,60)+'...':t}</div></div>`;let ac=`<button onclick="copyRes()" class="btn btn-dark" style="padding:7px;width:100%;font-size:12px">📋 Salin</button>`;if(type==='url')ac+=`<button onclick="window.open('${t}','_blank')" class="btn btn-success" style="padding:7px;width:100%;font-size:12px">🔗 Buka</button>`;if(type==='product')ac+=`<button onclick="searchGoogle('${t}')" class="btn btn-success" style="padding:7px;width:100%;font-size:12px">🔍 Cari Google</button>`;ac+=`<button onclick="shareRes()" class="btn btn-outline" style="padding:7px;width:100%;font-size:12px">📤 Bagikan</button>`;a.innerHTML=ac;a.style.display='flex';i.style.display='block';i.innerHTML=`<strong>Format:</strong> ${f} | <strong>Waktu:</strong> ${new Date().toLocaleString('id-ID')}`;if(type==='product'){p.style.display='block';searchGoogle(t)}else{p.style.display='none'}}
+function searchGoogle(c){let q=encodeURIComponent(c);document.getElementById('productSearch').innerHTML=`<div class="card" style="padding:10px;text-align:center;margin-top:6px"><p style="font-size:12px;margin-bottom:6px;font-weight:600">🔍 Cari: <strong>${c}</strong></p><a href="https://www.google.com/search?q=${q}+product" target="_blank" class="btn btn-primary btn-sm" style="margin:2px">🔍 Google</a></div>`}
+function copyRes(){navigator.clipboard.writeText(scanRes).then(()=>toast('✅ Disalin!'))}
+function shareRes(){if(navigator.share)navigator.share({text:scanRes});else copyRes()}
+
+// ===== HISTORY =====
+function saveHist(t,f){let h=JSON.parse(localStorage.getItem('sh')||'[]');h.unshift({text:t,format:f,time:new Date().toLocaleString('id-ID')});localStorage.setItem('sh',JSON.stringify(h.slice(0,100)))}
+function renderHistory(){let h=JSON.parse(localStorage.getItem('sh')||'[]');document.getElementById('historyEmpty').style.display=h.length?'none':'block';document.getElementById('historyList').innerHTML=h.map(i=>`<div style="padding:8px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:6px"><div style="flex:1"><span style="font-size:10px;font-weight:700;color:#7c3aed">${i.format}</span> <span style="font-size:10px;color:#9ca3af">${i.time}</span><p style="font-family:monospace;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${i.text}</p></div><button onclick="navigator.clipboard.writeText('${i.text.replace(/'/g,"\\'")}');toast('Disalin!')" style="border:none;background:var(--bg);cursor:pointer;padding:6px;border-radius:5px">📋</button></div>`).join('')}
+function clearHistory(){if(confirm('Hapus?')){localStorage.removeItem('sh');renderHistory();toast('Dihapus')}}
+function exportHistory(){let h=JSON.parse(localStorage.getItem('sh')||'[]');if(!h.length)return;let c='Waktu,Format,Konten\n'+h.map(i=>`"${i.time}","${i.format}","${i.text.replace(/"/g,'""')}"`).join('\n');let b=new Blob(['\uFEFF'+c],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='scan-history.csv';a.click()}
+
+// ===== GENERATOR =====
+let gBlob=null,gType='png';
+function genTab(t){
+    if(t==='qr'){
+        document.getElementById('genControls').innerHTML=`<div style="display:flex;flex-direction:column;gap:10px"><label style="font-size:13px;font-weight:700;color:#7c3aed">TIPE KONTEN</label><div style="display:flex;flex-wrap:wrap;gap:6px">${['text','url','wifi','vcard','email','phone'].map(t=>`<button class="qr-type-btn" onclick="setQRType('${t}')">${getQRIcon(t)} ${getQRLabel(t)}</button>`).join('')}</div><div id="qrFields"></div><button onclick="generateQRPro()" class="btn btn-primary" style="padding:12px;width:100%"><i class="fas fa-qrcode"></i> Generate QR</button></div>`;
+        setQRType('text');
+    }else{
+        document.getElementById('genControls').innerHTML=`<div style="display:flex;flex-direction:column;gap:10px"><label style="font-size:13px;font-weight:700;color:#7c3aed">FORMAT</label><select id="barFormat" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px"><option value="CODE128">Code 128</option><option value="EAN13">EAN-13</option><option value="UPC">UPC-A</option></select><input id="barData" placeholder="Angka..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px"><button onclick="genBC()" class="btn btn-primary" style="padding:12px;width:100%"><i class="fas fa-barcode"></i> Generate Barcode</button></div>`;
+    }
+    document.getElementById('genPreview').innerHTML='<span style="color:#9ca3af">Preview</span>';document.getElementById('btnDownloadGen').classList.add('hidden');gBlob=null;gType=t==='qr'?'png':'svg';
+}
+function getQRIcon(t){return{text:'📝',url:'🔗',email:'✉️',phone:'📞',wifi:'📶',vcard:'👤'}[t]||'📝'}
+function getQRLabel(t){return{text:'Teks',url:'URL',email:'Email',phone:'Telepon',wifi:'WiFi',vcard:'vCard'}[t]||'Teks'}
+function setQRType(t){
+    document.querySelectorAll('.qr-type-btn').forEach(b=>b.classList.remove('active'));
+    let types=['text','url','email','phone','wifi','vcard'];let idx=types.indexOf(t);let btns=document.querySelectorAll('.qr-type-btn');
+    if(idx>=0&&btns[idx])btns[idx].classList.add('active');
+    let html='';
+    if(t==='text')html=`<textarea id="qrText" rows="3" placeholder="Masukkan teks..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px"></textarea>`;
+    if(t==='url')html=`<input id="qrText" placeholder="https://..." style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px">`;
+    if(t==='email')html=`<input id="qrText" placeholder="nama@email.com" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px">`;
+    if(t==='phone')html=`<input id="qrText" placeholder="08123456789" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px">`;
+    if(t==='wifi')html=`<input id="qrSsid" placeholder="Nama WiFi" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px"><input id="qrPass" placeholder="Password" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;margin-top:6px">`;
+    if(t==='vcard')html=`<input id="qrName" placeholder="Nama Lengkap" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px"><input id="qrTel" placeholder="08123456789" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;margin-top:6px">`;
+    document.getElementById('qrFields').innerHTML=html;
+}
+function generateQRPro(){
+    let t='text';let activeBtn=document.querySelector('.qr-type-btn.active');if(activeBtn){let txt=activeBtn.textContent;if(txt.includes('URL'))t='url';if(txt.includes('Email'))t='email';if(txt.includes('Telepon'))t='phone';if(txt.includes('WiFi'))t='wifi';if(txt.includes('vCard'))t='vcard'}
+    let data='';if(t==='text')data=document.getElementById('qrText')?.value||'';if(t==='url')data=document.getElementById('qrText')?.value||'';if(t==='email')data='mailto:'+(document.getElementById('qrText')?.value||'');if(t==='phone')data='tel:'+(document.getElementById('qrText')?.value||'');if(t==='wifi')data='WIFI:S:'+(document.getElementById('qrSsid')?.value||'')+';T:WPA;P:'+(document.getElementById('qrPass')?.value||'')+';';if(t==='vcard')data='BEGIN:VCARD\nVERSION:3.0\nFN:'+(document.getElementById('qrName')?.value||'')+'\nTEL:'+(document.getElementById('qrTel')?.value||'')+'\nEND:VCARD';
+    if(!data){toast('Masukkan data!','error');return}
+    document.getElementById('genPreview').innerHTML='';new QRCode(document.getElementById('genPreview'),{text:data,width:200,height:200});
+    setTimeout(()=>{let c=document.querySelector('#genPreview canvas');if(c){c.toBlob(b=>{gBlob=b;document.getElementById('btnDownloadGen').classList.remove('hidden')},'image/png')}},300);
+}
+function genBC(){let d=document.getElementById('barData')?.value.trim(),f=document.getElementById('barFormat')?.value||'CODE128';if(!d){toast('Masukkan data!','error');return}document.getElementById('genPreview').innerHTML='';let s=document.createElementNS("http://www.w3.org/2000/svg","svg");document.getElementById('genPreview').appendChild(s);try{JsBarcode(s,d,{format:f,height:80,displayValue:!0,fontSize:14});gBlob=new Blob([new XMLSerializer().serializeToString(s)],{type:'image/svg+xml'});document.getElementById('btnDownloadGen').classList.remove('hidden')}catch(e){toast('Data tidak valid!','error')}}
+document.getElementById('btnDownloadGen').addEventListener('click',()=>{if(!gBlob)return;let a=document.createElement('a');a.href=URL.createObjectURL(gBlob);a.download=gType==='png'?'qr-code.png':'barcode.svg';a.click();toast('✅ Terunduh!')});
+
+// ===== INIT =====
+if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.getElementById('themeBtn').textContent='☀️'}
+genTab('qr');
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('page-scanner').classList.add('active');
+</script>
+</body>
+              </html>

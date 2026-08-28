@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Barcode Online Gratis - ScanBarcode Pro</title>
+    <meta name="description" content="Generator Barcode Online Gratis - Buat barcode profesional secara gratis. Mendukung Code 128, EAN-13, UPC, QR Code, dan banyak lagi. Download PNG, JPG, SVG. Kunjungi scanbarcode-pro.vercel.app">
+    
+    <!-- Barcode Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header h1 i {
+            color: #06b6d4;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .website-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .website-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .website-link i {
+            margin-right: 8px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #6366f1;
+            font-size: 20px;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .type-btn {
+            padding: 15px 10px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .type-btn:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .type-btn.active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .type-btn i {
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: #f8fafc;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        select.form-input {
+            cursor: pointer;
+        }
+
+        .color-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .color-picker {
+            width: 50px;
+            height: 45px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 2px;
+        }
+
+        .color-hex {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .range-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .range-slider {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+        }
+
+        .range-value {
+            font-weight: 700;
+            color: #6366f1;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .preview-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 40px;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .preview-placeholder {
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .preview-placeholder i {
+            font-size: 80px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .preview-placeholder p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        #barcodeDisplay {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #barcodeDisplay svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            background: white;
+            padding: 20px;
+        }
+
+        #barcodeDisplay img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .barcode-text {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e293b;
+            text-align: center;
+            word-break: break-all;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-download {
+            padding: 12px;
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-download:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-action:hover {
+            border-color: #6366f1;
+            color: #6366f1;
+            background: #f8fafc;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #f0f0ff, #f8f0ff);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #e0e0ff;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: #6366f1;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: #1e293b;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            min-width: 300px;
+        }
+
+        .toast.success { border-left: 4px solid #10b981; }
+        .toast.error { border-left: 4px solid #ef4444; }
+        .toast.info { border-left: 4px solid #6366f1; }
+        .toast.warning { border-left: 4px solid #f59e0b; }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        .description-section {
+            margin-top: 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .description-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .description-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .description-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #6366f1;
+            margin: 25px 0 15px 0;
+        }
+
+        .description-content p {
+            margin-bottom: 15px;
+        }
+
+        .description-content ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .description-content li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .type-grid { grid-template-columns: repeat(2, 1fr); }
+            .download-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 32px; }
+            .card { padding: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .type-grid { grid-template-columns: repeat(2, 1fr); gap: 5px; }
+            .type-btn { padding: 10px 5px; font-size: 11px; }
+            .type-btn i { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-barcode"></i>Generator Barcode Online Gratis</h1>
+            <p>✨ Buat Barcode Profesional Secara Gratis dengan Berbagai Pilihan Format ✨</p>
+            <a href="https://scanbarcode-pro.vercel.app" class="website-link" target="_blank">
+                <i class="fas fa-globe"></i> Kunjungi ScanBarcode Pro
+            </a>
+        </div>
+
+        <div class="main-grid">
+            <!-- Left Panel - Controls -->
+            <div class="card">
+                <!-- Barcode Type Selection -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-cube"></i> Pilih Jenis Barcode
+                    </div>
+                    <div class="type-grid" id="typeGrid">
+                        <button class="type-btn active" data-type="CODE128">
+                            <i class="fas fa-barcode"></i> Code 128
+                        </button>
+                        <button class="type-btn" data-type="EAN13">
+                            <i class="fas fa-barcode"></i> EAN-13
+                        </button>
+                        <button class="type-btn" data-type="EAN8">
+                            <i class="fas fa-barcode"></i> EAN-8
+                        </button>
+                        <button class="type-btn" data-type="UPC">
+                            <i class="fas fa-barcode"></i> UPC-A
+                        </button>
+                        <button class="type-btn" data-type="CODE39">
+                            <i class="fas fa-barcode"></i> Code 39
+                        </button>
+                        <button class="type-btn" data-type="ITF14">
+                            <i class="fas fa-barcode"></i> ITF-14
+                        </button>
+                        <button class="type-btn" data-type="MSI">
+                            <i class="fas fa-barcode"></i> MSI
+                        </button>
+                        <button class="type-btn" data-type="pharmacode">
+                            <i class="fas fa-barcode"></i> Pharmacode
+                        </button>
+                        <button class="type-btn" data-type="codabar">
+                            <i class="fas fa-barcode"></i> Codabar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Content Input -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-edit"></i> Masukkan Data Barcode
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nilai Barcode *</label>
+                        <input type="text" id="barcodeData" placeholder="Masukkan data barcode..." class="form-input">
+                        <small style="color: #94a3b8; display: block; margin-top: 5px;" id="barcodeHint">
+                            Code 128 mendukung huruf, angka, dan karakter khusus
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Display Options -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-palette"></i> Opsi Tampilan
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Warna Barcode</label>
+                        <div class="color-group">
+                            <input type="color" id="barColor" value="#000000" class="color-picker">
+                            <input type="text" id="barColorHex" value="#000000" class="color-hex form-input" maxlength="7">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Warna Latar Belakang</label>
+                        <div class="color-group">
+                            <input type="color" id="bgColor" value="#ffffff" class="color-picker">
+                            <input type="text" id="bgColorHex" value="#ffffff" class="color-hex form-input" maxlength="7">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            <input type="checkbox" id="showText" checked style="margin-right: 5px;">
+                            Tampilkan Teks di Bawah Barcode
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Size Settings -->
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-expand"></i> Pengaturan Ukuran
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Lebar: <span id="widthLabel">2</span>px</label>
+                        <div class="range-group">
+                            <input type="range" id="barWidth" min="1" max="4" value="2" step="1" class="range-slider">
+                            <span class="range-value" id="widthValue">2px</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tinggi: <span id="heightLabel">100</span>px</label>
+                        <div class="range-group">
+                            <input type="range" id="barHeight" min="50" max="200" value="100" step="10" class="range-slider">
+                            <span class="range-value" id="heightValue">100px</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ukuran Font: <span id="fontSizeLabel">20</span>px</label>
+                        <div class="range-group">
+                            <input type="range" id="fontSize" min="12" max="30" value="20" step="1" class="range-slider">
+                            <span class="range-value" id="fontSizeValue">20px</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generate Button -->
+                <button id="generateBtn" class="btn btn-primary">
+                    <i class="fas fa-magic"></i> Buat Barcode
+                </button>
+            </div>
+
+            <!-- Right Panel - Preview -->
+            <div class="card">
+                <div class="section-title" style="margin-bottom: 20px;">
+                    <i class="fas fa-barcode"></i> Pratinjau
+                </div>
+
+                <div class="preview-box" id="previewBox">
+                    <div id="previewPlaceholder" class="preview-placeholder">
+                        <i class="fas fa-barcode"></i>
+                        <p>Barcode Anda Akan Muncul di Sini</p>
+                        <p style="font-size: 14px; color: #cbd5e1; margin-top: 10px;">Klik "Buat Barcode" untuk membuat</p>
+                    </div>
+                    <div id="barcodeDisplay" class="hidden"></div>
+                </div>
+
+                <div id="downloadOptions" class="hidden">
+                    <div class="download-grid">
+                        <button class="btn-download" id="btnDownloadPNG">
+                            <i class="fas fa-download"></i> Unduh PNG
+                        </button>
+                        <button class="btn-download" id="btnDownloadJPG">
+                            <i class="fas fa-download"></i> Unduh JPG
+                        </button>
+                        <button class="btn-download" id="btnDownloadSVG">
+                            <i class="fas fa-download"></i> Unduh SVG
+                        </button>
+                        <button class="btn-download" id="btnPrint">
+                            <i class="fas fa-print"></i> Cetak Barcode
+                        </button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-action" id="btnCopy">
+                            <i class="fas fa-copy"></i> Salin ke Clipboard
+                        </button>
+                        <button class="btn-action" id="btnShare">
+                            <i class="fas fa-share-alt"></i> Bagikan Barcode
+                        </button>
+                    </div>
+                </div>
+
+                <div id="barcodeInfo" class="info-box hidden">
+                    <div class="info-item">
+                        <span class="info-label">Jenis:</span>
+                        <span class="info-value" id="infoType">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Data:</span>
+                        <span class="info-value" id="infoData">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Ukuran:</span>
+                        <span class="info-value" id="infoSize">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 500 Lines Description Section -->
+        <div class="description-section">
+            <h2 class="description-title">📋 Generator Barcode Online Gratis - Panduan Lengkap</h2>
+            <div class="description-content">
+                <h3>Apa itu Barcode?</h3>
+                <p>Barcode adalah representasi data yang dapat dibaca oleh mesin dalam bentuk visual. Barcode terdiri dari serangkaian garis paralel dengan lebar dan jarak yang bervariasi yang mewakili data. Teknologi barcode telah menjadi bagian integral dari kehidupan modern, digunakan di berbagai industri mulai dari ritel hingga kesehatan, logistik hingga perpustakaan.</p>
+                
+                <h3>Sejarah Barcode</h3>
+                <p>Barcode pertama kali ditemukan oleh Norman Joseph Woodland dan Bernard Silver pada tahun 1948. Mereka mengembangkan sistem yang menggunakan pola garis untuk mewakili data. Pada tahun 1974, produk pertama yang menggunakan barcode UPC dipindai di supermarket di Ohio, Amerika Serikat. Sejak saat itu, teknologi barcode terus berkembang dan menjadi standar global untuk identifikasi produk.</p>
+                
+                <h3>Jenis-Jenis Barcode</h3>
+                <p>Ada berbagai jenis barcode yang tersedia di generator kami, masing-masing dengan karakteristik dan kegunaan yang berbeda:</p>
+                <ul>
+                    <li><strong>Code 128:</strong> Barcode universal yang dapat mengkodekan semua karakter ASCII. Sangat populer untuk berbagai aplikasi bisnis.</li>
+                    <li><strong>EAN-13:</strong> Standar barcode ritel internasional yang digunakan untuk produk konsumen di seluruh dunia.</li>
+                    <li><strong>EAN-8:</strong> Versi pendek dari EAN-13 untuk produk kecil yang tidak memiliki cukup ruang.</li>
+                    <li><strong>UPC-A:</strong> Standar barcode Amerika Utara untuk produk ritel.</li>
+                    <li><strong>Code 39:</strong> Barcode industri yang mendukung huruf besar dan angka.</li>
+                    <li><strong>ITF-14:</strong> Digunakan untuk pengiriman karton dan palet dalam logistik.</li>
+                    <li><strong>MSI:</strong> Barcode numerik untuk kontrol inventaris.</li>
+                    <li><strong>Pharmacode:</strong> Barcode khusus untuk industri farmasi.</li>
+                    <li><strong>Codabar:</strong> Digunakan di perpustakaan, bank darah, dan laboratorium.</li>
+                </ul>
+                
+                <h3>Keuntungan Menggunakan Barcode</h3>
+                <p>Barcode memberikan banyak keuntungan bagi bisnis dan organisasi:</p>
+                <ul>
+                    <li><strong>Akurasi Tinggi:</strong> Mengurangi kesalahan input data manual hingga 99%.</li>
+                    <li><strong>Kecepatan:</strong> Pemindaian barcode jauh lebih cepat daripada input manual.</li>
+                    <li><strong>Efisiensi Biaya:</strong> Mengurangi biaya operasional dan tenaga kerja.</li>
+                    <li><strong>Pelacakan Real-time:</strong> Memudahkan pelacakan inventaris secara real-time.</li>
+                    <li><strong>Standarisasi:</strong> Menggunakan standar global yang diakui.</li>
+                    <li><strong>Integrasi Mudah:</strong> Dapat diintegrasikan dengan berbagai sistem.</li>
+                </ul>
+                
+                <h3>Cara Menggunakan Generator Barcode Kami</h3>
+                <p>Generator barcode online gratis kami sangat mudah digunakan:</p>
+                <ul>
+                    <li>Pilih jenis barcode yang diinginkan dari pilihan yang tersedia.</li>
+                    <li>Masukkan data yang ingin dikodekan ke dalam barcode.</li>
+                    <li>Sesuaikan warna, ukuran, dan opsi tampilan sesuai kebutuhan.</li>
+                    <li>Klik tombol "Buat Barcode" untuk menghasilkan barcode.</li>
+                    <li>Unduh barcode dalam format PNG, JPG, atau SVG.</li>
+                    <li>Gunakan barcode untuk keperluan bisnis atau pribadi Anda.</li>
+                </ul>
+                
+                <h3>Aplikasi Barcode dalam Kehidupan Sehari-hari</h3>
+                <p>Barcode digunakan dalam berbagai aspek kehidupan kita:</p>
+                <ul>
+                    <li><strong>Ritel:</strong> Identifikasi produk dan manajemen inventaris.</li>
+                    <li><strong>Kesehatan:</strong> Identifikasi pasien dan pelacakan obat.</li>
+                    <li><strong>Logistik:</strong> Pelacakan pengiriman dan manajemen gudang.</li>
+                    <li><strong>Perpustakaan:</strong> Manajemen buku dan peminjaman.</li>
+                    <li><strong>Manufaktur:</strong> Kontrol kualitas dan pelacakan produksi.</li>
+                    <li><strong>Pemerintahan:</strong> Identifikasi dokumen dan keamanan.</li>
+                </ul>
+                
+                <h3>Tips Membuat Barcode yang Efektif</h3>
+                <p>Untuk membuat barcode yang efektif, perhatikan tips berikut:</p>
+                <ul>
+                    <li>Pastikan kontras yang cukup antara barcode dan latar belakang.</li>
+                    <li>Gunakan ukuran yang sesuai dengan kebutuhan pemindaian.</li>
+                    <li>Pertahankan area tenang (quiet zone) di sekitar barcode.</li>
+                    <li>Uji barcode dengan pemindai yang berbeda.</li>
+                    <li>Simpan barcode dalam format yang sesuai.</li>
+                    <li>Perhatikan kualitas cetak untuk hasil terbaik.</li>
+                </ul>
+                
+                <h3>Format File yang Didukung</h3>
+                <p>Generator kami mendukung berbagai format file:</p>
+                <ul>
+                    <li><strong>PNG:</strong> Format lossless dengan transparansi.</li>
+                    <li><strong>JPG:</strong> Format terkompresi untuk ukuran file kecil.</li>
+                    <li><strong>SVG:</strong> Format vektor untuk skalabilitas tanpa batas.</li>
+                </ul>
+                
+                <h3>Keamanan dan Privasi</h3>
+                <p>Kami menjamin keamanan dan privasi data Anda. Semua barcode dibuat langsung di browser Anda tanpa data yang dikirim ke server. Ini berarti data Anda tetap aman dan pribadi.</p>
+                
+                <h3>Gratis untuk Digunakan</h3>
+                <p>Generator barcode online kami sepenuhnya gratis untuk digunakan. Tidak ada biaya tersembunyi, tidak perlu mendaftar, dan tidak ada batasan penggunaan. Anda dapat membuat barcode sebanyak yang Anda butuhkan untuk keperluan pribadi maupun bisnis.</p>
+                
+                <h3>Kunjungi Website Kami</h3>
+                <p>Untuk informasi lebih lanjut tentang barcode, pemindaian barcode, dan alat-alat terkait, kunjungi website kami di <a href="https://scanbarcode-pro.vercel.app" target="_blank">scanbarcode-pro.vercel.app</a>. Kami menyediakan berbagai alat dan sumber daya untuk membantu Anda dengan kebutuhan barcode Anda.</p>
+                
+                <h3>Dukungan Pelanggan</h3>
+                <p>Jika Anda memiliki pertanyaan atau membutuhkan bantuan, jangan ragu untuk menghubungi tim dukungan kami. Kami siap membantu Anda dengan semua kebutuhan barcode Anda.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // Global variables
+        let currentType = 'CODE128';
+        let currentBarcodeSVG = null;
+        let currentBarcodeDataURL = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Menginisialisasi Generator Barcode...');
+            initializeApp();
+        });
+
+        function initializeApp() {
+            setupTypeButtons();
+            setupColorSync();
+            setupRangeSliders();
+            setupGenerateButton();
+            setupDownloadButtons();
+            setupActionButtons();
+            console.log('✅ Semua fitur siap digunakan!');
+        }
+
+        const barcodeTypes = {
+            CODE128: {
+                hint: 'Code 128 mendukung huruf, angka, dan karakter khusus (ASCII)',
+                example: 'Contoh: ABC-12345'
+            },
+            EAN13: {
+                hint: 'EAN-13 membutuhkan tepat 12 atau 13 digit',
+                example: 'Contoh: 5901234123457'
+            },
+            EAN8: {
+                hint: 'EAN-8 membutuhkan tepat 7 atau 8 digit',
+                example: 'Contoh: 96385074'
+            },
+            UPC: {
+                hint: 'UPC-A membutuhkan tepat 11 atau 12 digit',
+                example: 'Contoh: 123456789012'
+            },
+            CODE39: {
+                hint: 'Code 39 mendukung huruf besar, angka, dan beberapa karakter khusus',
+                example: 'Contoh: ABC-1234'
+            },
+            ITF14: {
+                hint: 'ITF-14 membutuhkan tepat 13 atau 14 digit',
+                example: 'Contoh: 15400141288763'
+            },
+            MSI: {
+                hint: 'MSI hanya mendukung angka',
+                example: 'Contoh: 1234567'
+            },
+            pharmacode: {
+                hint: 'Pharmacode mendukung angka dari 3 hingga 131070',
+                example: 'Contoh: 12345'
+            },
+            codabar: {
+                hint: 'Codabar mendukung angka dan karakter - $ : / . +',
+                example: 'Contoh: A12345B'
+            }
+        };
+
+        function setupTypeButtons() {
+            const buttons = document.querySelectorAll('.type-btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentType = this.dataset.type;
+                    
+                    const hint = document.getElementById('barcodeHint');
+                    const typeInfo = barcodeTypes[currentType];
+                    if (typeInfo) {
+                        hint.textContent = typeInfo.hint + ' | ' + typeInfo.example;
+                    }
+                });
+            });
+        }
+
+        function validateBarcodeData(data, type) {
+            switch(type) {
+                case 'EAN13':
+                    return /^\d{12,13}$/.test(data);
+                case 'EAN8':
+                    return /^\d{7,8}$/.test(data);
+                case 'UPC':
+                    return /^\d{11,12}$/.test(data);
+                case 'ITF14':
+                    return /^\d{13,14}$/.test(data);
+                case 'MSI':
+                    return /^\d+$/.test(data);
+                case 'pharmacode':
+                    return /^\d+$/.test(data) && parseInt(data) >= 3 && parseInt(data) <= 131070;
+                case 'CODE39':
+                    return /^[A-Z0-9\-\.\ \$\/\+\%]+$/.test(data);
+                case 'codabar':
+                    return /^[A-Da-d]?[0-9\-\$\:\/\.\+]+[A-Da-d]?$/.test(data);
+                default:
+                    return data.length > 0;
+            }
+        }
+
+        function setupColorSync() {
+            const barColor = document.getElementById('barColor');
+            const barColorHex = document.getElementById('barColorHex');
+            const bgColor = document.getElementById('bgColor');
+            const bgColorHex = document.getElementById('bgColorHex');
+            
+            barColor.addEventListener('input', function() {
+                barColorHex.value = this.value;
+            });
+            
+            bgColor.addEventListener('input', function() {
+                bgColorHex.value = this.value;
+            });
+            
+            barColorHex.addEventListener('input', function() {
+                if (/^#[0-9A-Fa-f]{6}$/.test(this.value)) {
+                    barColor.value = this.value;
+                }
+            });
+            
+            bgColorHex.addEventListener('input', function() {
+                if (/^#[0-9A-Fa-f]{6}$/.test(this.value)) {
+                    bgColor.value = this.value;
+                }
+            });
+        }
+
+        function setupRangeSliders() {
+            const barWidthSlider = document.getElementById('barWidth');
+            barWidthSlider.addEventListener('input', function() {
+                document.getElementById('widthValue').textContent = this.value + 'px';
+                document.getElementById('widthLabel').textContent = this.value;
+            });
+            
+            const barHeightSlider = document.getElementById('barHeight');
+            barHeightSlider.addEventListener('input', function() {
+                document.getElementById('heightValue').textContent = this.value + 'px';
+                document.getElementById('heightLabel').textContent = this.value;
+            });
+            
+            const fontSizeSlider = document.getElementById('fontSize');
+            fontSizeSlider.addEventListener('input', function() {
+                document.getElementById('fontSizeValue').textContent = this.value + 'px';
+                document.getElementById('fontSizeLabel').textContent = this.value;
+            });
+        }
+
+        function setupGenerateButton() {
+            const generateBtn = document.getElementById('generateBtn');
+            
+            generateBtn.addEventListener('click', function() {
+                const data = document.getElementById('barcodeData').value.trim();
+                
+                if (!data) {
+                    showToast('⚠️ Silakan masukkan data barcode terlebih dahulu!', 'warning');
+                    return;
+                }
+                
+                if (!validateBarcodeData(data, currentType)) {
+                    showToast('❌ Data tidak valid untuk format ' + currentType + '!', 'error');
+                    return;
+                }
+                
+                generateBtn.disabled = true;
+                generateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Membuat...';
+                
+                const barcodeDisplay = document.getElementById('barcodeDisplay');
+                const previewPlaceholder = document.getElementById('previewPlaceholder');
+                
+                barcodeDisplay.innerHTML = '<div class="spinner"></div>';
+                barcodeDisplay.classList.remove('hidden');
+                previewPlaceholder.classList.add('hidden');
+                
+                try {
+                    barcodeDisplay.innerHTML = '';
+                    
+                    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                    svg.setAttribute('id', 'barcodeSVG');
+                    barcodeDisplay.appendChild(svg);
+                    
+                    JsBarcode(svg, data, {
+                        format: currentType,
+                        lineColor: document.getElementById('barColor').value,
+                        background: document.getElementById('bgColor').value,
+                        width: parseInt(document.getElementById('barWidth').value),
+                        height: parseInt(document.getElementById('barHeight').value),
+                        displayValue: document.getElementById('showText').checked,
+                        fontSize: parseInt(document.getElementById('fontSize').value),
+                        margin: 10
+                    });
+                    
+                    currentBarcodeSVG = svg;
+                    
+                    const svgData = new XMLSerializer().serializeToString(svg);
+                    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+                    const svgUrl = URL.createObjectURL(svgBlob);
+                    
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const padding = 20;
+                        canvas.width = img.width + (padding * 2);
+                        canvas.height = img.height + (padding * 2);
+                        
+                        const ctx = canvas.getContext('2d');
+                        ctx.fillStyle = document.getElementById('bgColor').value;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.drawImage(img, padding, padding);
+                        
+                        currentBarcodeDataURL = canvas.toDataURL('image/png');
+                        
+                        document.getElementById('downloadOptions').classList.remove('hidden');
+                        document.getElementById('barcodeInfo').classList.remove('hidden');
+                        
+                        document.getElementById('infoType').textContent = currentType;
+                        document.getElementById('infoData').textContent = data;
+                        document.getElementById('infoSize').textContent = canvas.width + 'x' + canvas.height + 'px';
+                        
+                        showToast('✅ Barcode berhasil dibuat!', 'success');
+                    };
+                    img.src = svgUrl;
+                    
+                } catch (error) {
+                    console.error('Kesalahan pembuatan:', error);
+                    showToast('❌ Gagal membuat barcode: ' + error.message, 'error');
+                    previewPlaceholder.classList.remove('hidden');
+                    barcodeDisplay.classList.add('hidden');
+                } finally {
+                    generateBtn.disabled = false;
+                    generateBtn.innerHTML = '<i class="fas fa-magic"></i> Buat Barcode';
+                }
+            });
+        }
+
+        function setupDownloadButtons() {
+            document.getElementById('btnDownloadPNG').addEventListener('click', function() {
+                downloadBarcode('png');
+            });
+            
+            document.getElementById('btnDownloadJPG').addEventListener('click', function() {
+                downloadBarcode('jpg');
+            });
+            
+            document.getElementById('btnDownloadSVG').addEventListener('click', function() {
+                downloadBarcode('svg');
+            });
+            
+            document.getElementById('btnPrint').addEventListener('click', function() {
+                printBarcode();
+            });
+        }
+
+        function downloadBarcode(format) {
+            if (!currentBarcodeDataURL && format !== 'svg') {
+                showToast('⚠️ Silakan buat barcode terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            if (format === 'svg' && !currentBarcodeSVG) {
+                showToast('⚠️ Silakan buat barcode terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            if (format === 'svg') {
+                const svgData = new XMLSerializer().serializeToString(currentBarcodeSVG);
+                const blob = new Blob([svgData], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.download = 'barcode.svg';
+                link.href = url;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                showToast('✅ Barcode diunduh sebagai SVG!', 'success');
+                return;
+            }
+            
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                
+                let dataUrl, filename, mimeType;
+                
+                if (format === 'png') {
+                    dataUrl = canvas.toDataURL('image/png');
+                    filename = 'barcode.png';
+                    mimeType = 'image/png';
+                } else {
+                    dataUrl = canvas.toDataURL('image/jpeg', 0.95);
+                    filename = 'barcode.jpg';
+                    mimeType = 'image/jpeg';
+                }
+                
+                const blob = dataURLtoBlob(dataUrl);
+                
+                if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    if (navigator.share) {
+                        const file = new File([blob], filename, { type: mimeType });
+                        navigator.share({
+                            files: [file],
+                            title: 'Barcode'
+                        }).then(() => {
+                            showToast('✅ Barcode tersimpan!', 'success');
+                        }).catch(() => {
+                            showToast('✅ Unduhan dimulai!', 'success');
+                        });
+                    } else {
+                        showToast('✅ Unduhan dimulai!', 'success');
+                    }
+                } else {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    showToast('✅ Barcode diunduh sebagai ' + format.toUpperCase() + '!', 'success');
+                }
+            };
+            img.src = currentBarcodeDataURL;
+        }
+
+        function dataURLtoBlob(dataURL) {
+            const parts = dataURL.split(',');
+            const byteString = atob(parts[1]);
+            const mimeType = parts[0].split(':')[1].split(';')[0];
+            
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+            
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+            
+            return new Blob([ab], { type: mimeType });
+        }
+
+        function printBarcode() {
+            if (!currentBarcodeDataURL) {
+                showToast('⚠️ Silakan buat barcode terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            const printWindow = window.open('', '_blank', 'width=800,height=600');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Cetak Barcode</title>
+                    <style>
+                        body {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100vh;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                        @media print {
+                            body { margin: 0; padding: 20px; }
+                            img { max-width: 80%; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <img src="${currentBarcodeDataURL}" alt="Barcode" onload="setTimeout(() => window.print(), 500)">
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+        }
+
+        function setupActionButtons() {
+            document.getElementById('btnCopy').addEventListener('click', copyToClipboard);
+            document.getElementById('btnShare').addEventListener('click', shareBarcode);
+        }
+
+        async function copyToClipboard() {
+            if (!currentBarcodeDataURL) {
+                showToast('⚠️ Silakan buat barcode terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            try {
+                const blob = dataURLtoBlob(currentBarcodeDataURL);
+                
+                if (navigator.clipboard && navigator.clipboard.write) {
+                    await navigator.clipboard.write([
+                        new ClipboardItem({ 'image/png': blob })
+                    ]);
+                    showToast('✅ Barcode disalin ke clipboard!', 'success');
+                } else {
+                    const img = document.createElement('img');
+                    img.src = currentBarcodeDataURL;
+                    const div = document.createElement('div');
+                    div.contentEditable = true;
+                    div.appendChild(img);
+                    document.body.appendChild(div);
+                    
+                    const range = document.createRange();
+                    range.selectNode(div);
+                    window.getSelection().removeAllRanges();
+                    window.getSelection().addRange(range);
+                    document.execCommand('copy');
+                    window.getSelection().removeAllRanges();
+                    document.body.removeChild(div);
+                    
+                    showToast('✅ Barcode disalin!', 'success');
+                }
+            } catch (error) {
+                console.error('Gagal menyalin:', error);
+                showToast('❌ Gagal menyalin. Silakan gunakan unduhan.', 'error');
+            }
+        }
+
+        async function shareBarcode() {
+            if (!currentBarcodeDataURL) {
+                showToast('⚠️ Silakan buat barcode terlebih dahulu!', 'warning');
+                return;
+            }
+            
+            try {
+                const blob = dataURLtoBlob(currentBarcodeDataURL);
+                const file = new File([blob], 'barcode.png', { type: 'image/png' });
+                
+                if (navigator.share) {
+                    await navigator.share({
+                        title: 'Barcode',
+                        text: 'Lihat barcode ini!',
+                        files: [file]
+                    });
+                    showToast('✅ Berhasil dibagikan!', 'success');
+                } else {
+                    showToast('⚠️ Berbagi tidak didukung di perangkat ini', 'warning');
+                }
+            } catch (error) {
+                if (error.name !== 'AbortError') {
+                    console.error('Gagal berbagi:', error);
+                    showToast('❌ Gagal berbagi', 'error');
+                }
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-exclamation-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+            
+            const toast = document.createElement('div');
+            toast.className = 'toast ' + type;
+            toast.innerHTML = '<i class="fas ' + (icons[type] || icons.info) + '"></i> ' + message;
+            
+            const container = document.getElementById('toastContainer');
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('generateBtn').click();
+            }
+        });
+
+        console.log('🎉 Generator Barcode Online Gratis siap digunakan!');
+        console.log('💡 Kunjungi: scanbarcode-pro.vercel.app');
+    </script>
+</body>
+  </html>

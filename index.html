@@ -12,8 +12,9 @@
     <meta property="og:title" content="ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia">
     <meta property="og:description" content="Pemindai barcode online gratis dengan live camera. 100% privat.">
     
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="data:application/json,{'name':'ScanBarcode Pro','short_name':'ScanPro','start_url':'/','display':'standalone','background_color':'#2563eb','theme_color':'#2563eb','icons':[{'src':'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>','sizes':'any','type':'image/svg+xml'}]}">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ScanPro">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,7 +31,7 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:all 0.3s;line-height:1.8;display:flex;flex-direction:column;font-size:16px}
         
-        .navbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 18px;position:sticky;top:0;z-index:1000}
+        .navbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 16px rgba(37,99,235,0.06)}
         .nav-container{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:64px}
         .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:var(--text);font-weight:800;font-size:18px}
         .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700}
@@ -70,11 +71,17 @@
         .scanner-content{display:grid;grid-template-columns:1fr;gap:24px;width:100%;max-width:1000px}@media(min-width:900px){.scanner-content{grid-template-columns:1fr 1fr}}
         .scanner-box{background:#000;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:4/3;box-shadow:0 30px 80px rgba(0,0,0,0.45),0 0 0 4px rgba(37,99,235,0.35);max-width:460px;width:100%;margin:0 auto;border:2px solid rgba(37,99,235,0.6)}
         .scanner-box video{width:100%;height:100%;object-fit:cover;display:block}
-        .scanner-laser{position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,transparent,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6,transparent);z-index:10;pointer-events:none;animation:laserTopDown 3.5s linear infinite;box-shadow:0 0 40px #3b82f6,0 0 80px #60a5fa;display:none;border-radius:50%;transform:translateY(-100%)}
-        @keyframes laserTopDown{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+        .scanner-laser{position:absolute;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6,transparent);z-index:10;pointer-events:none;animation:laserTopToBottom 2s linear infinite;box-shadow:0 0 40px #3b82f6,0 0 80px #60a5fa;display:none;border-radius:50%;will-change:top}
+        @keyframes laserTopToBottom{0%{top:0%}50%{top:50%}100%{top:100%}}
         .cam-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000;color:#64748b;z-index:5}
         
         .result-box{min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:2px dashed var(--border);border-radius:16px;padding:24px;text-align:center;transition:all 0.4s}.result-box.success{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-color:#3b82f6;border-style:solid;box-shadow:0 8px 30px rgba(59,130,246,0.15)}
+        
+        /* Product Info Grid */
+        .product-info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
+        .product-info-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
+        .product-info-label{font-size:10px;color:#64748b;text-transform:uppercase;font-weight:700;letter-spacing:0.5px;margin-bottom:3px}
+        .product-info-value{font-size:14px;font-weight:700;color:var(--text);word-break:break-all}
         
         .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px}
         .blog-card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 18px rgba(0,0,0,0.04);cursor:pointer;transition:all 0.35s}.blog-card:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(0,0,0,0.1)}
@@ -101,7 +108,7 @@
         @keyframes toastIn{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
         .hidden{display:none!important}
         
-        @media(max-width:768px){.nav-links{display:none}.hamburger-btn{display:flex}.stats-grid{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:30px}.blog-grid{grid-template-columns:1fr}.scanner-content{grid-template-columns:1fr}.gen-grid{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav-links{display:none}.hamburger-btn{display:flex}.stats-grid{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:30px}.blog-grid{grid-template-columns:1fr}.scanner-content{grid-template-columns:1fr}.gen-grid{grid-template-columns:1fr}.product-info-grid{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
@@ -124,11 +131,11 @@
 
 <div class="main-content">
 
-    <!-- HOME PAGE - PROFESSIONAL LONG CONTENT -->
+    <!-- HOME -->
     <div class="page active" id="page-home">
         <div class="hero">
             <h1>Pemindai Barcode Online Gratis<br>Profesional & Terpercaya</h1>
-            <p><strong>ScanBarcode Pro</strong> adalah platform pemindai barcode dan QR code online gratis terbaik di Indonesia. Dengan teknologi live camera canggih, laser biru yang halus, dan kecepatan pemindaian yang optimal, Anda dapat memindai barcode dengan akurat dan 100% privat.</p>
+            <p><strong>ScanBarcode Pro</strong> adalah platform pemindai barcode dan QR code online gratis terbaik di Indonesia. Dengan live camera canggih dan QR generator profesional, semua kebutuhan scan barcode Anda terpenuhi. 100% privat, tanpa upload data.</p>
             <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
                 <button class="btn btn-primary" onclick="go('scanner')"><i class="fas fa-camera"></i> Scan Barcode Sekarang</button>
                 <button class="btn btn-outline" onclick="go('generator')"><i class="fas fa-qrcode"></i> QR Generator Pro</button>
@@ -154,82 +161,101 @@
         </div>
 
         <div class="features-grid">
-            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">🔒</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Privasi 100% Terjamin</h3><p style="color:#64748b;font-size:14px">Data tidak pernah diupload ke server. Semua diproses di browser Anda.</p></div>
-            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">📷</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Live Camera Profesional</h3><p style="color:#64748b;font-size:14px">Laser biru halus dengan pemindaian real-time yang akurat.</p></div>
-            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">⚡</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Super Cepat</h3><p style="color:#64748b;font-size:14px">Hasil pemindaian muncul dalam hitungan milidetik.</p></div>
+            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">🔒</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Privasi 100% Terjamin</h3><p style="color:#64748b;font-size:14px">Data tidak pernah diupload ke server manapun.</p></div>
+            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">📷</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Live Camera Profesional</h3><p style="color:#64748b;font-size:14px">Laser biru indah dengan pemindaian akurat.</p></div>
+            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">⚡</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Super Cepat</h3><p style="color:#64748b;font-size:14px">Hasil muncul dalam milidetik.</p></div>
         </div>
 
-        <!-- EXTENSIVE PROFESSIONAL CONTENT (800+ lines equivalent) -->
+        <!-- PROFESSIONAL HOME CONTENT (500+ lines expanded) -->
         <div class="card" style="margin-top:35px;line-height:2">
             <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin-bottom:16px">Apa Itu Pemindai Barcode Online?</h2>
             <p>Pemindai barcode online adalah alat digital yang memungkinkan Anda membaca informasi dari kode batang (barcode) atau kode matriks (QR code) menggunakan kamera smartphone tanpa perlu menginstal aplikasi tambahan. ScanBarcode Pro hadir sebagai solusi pemindai barcode online gratis terbaik di Indonesia yang dapat diakses langsung dari browser favorit Anda.</p>
-            <p>Teknologi pemindaian barcode telah berkembang pesat dalam beberapa tahun terakhir. Dulu, Anda memerlukan alat scanner khusus yang mahal dan rumit untuk digunakan. Sekarang, cukup dengan smartphone dan koneksi internet, Anda dapat memindai berbagai jenis barcode dengan akurasi yang sangat tinggi. ScanBarcode Pro menggunakan teknologi WebAssembly dan ZXing untuk memberikan hasil pemindaian terbaik di kelasnya.</p>
-            <p>Aktivitas scan barcode sangat bermanfaat dalam kehidupan sehari-hari di Indonesia. Dari mengecek harga produk di supermarket, melacak resi pengiriman paket dari toko online, memverifikasi keaslian barang branded, hingga membaca QR code menu restoran atau undangan digital. Semua bisa dilakukan dengan cepat dan mudah menggunakan ScanBarcode Pro.</p>
+            <p>Teknologi pemindaian barcode telah berkembang pesat. Dulu, Anda memerlukan alat scanner khusus yang mahal dan rumit. Sekarang, cukup dengan smartphone dan koneksi internet, Anda dapat memindai berbagai jenis barcode dengan akurasi tinggi. ScanBarcode Pro menggunakan teknologi WebAssembly dan ZXing untuk memberikan hasil pemindaian terbaik.</p>
+            <p>Aktivitas scan barcode sangat bermanfaat dalam kehidupan sehari-hari di Indonesia. Dari mengecek harga produk di supermarket, melacak resi pengiriman paket dari toko online, memverifikasi keaslian barang branded, hingga membaca QR code undangan pernikahan atau menu restoran digital. Dengan alat scan barcode yang tepat, semua bisa selesai dalam hitungan detik.</p>
+            <p>ScanBarcode Pro dirancang khusus untuk pengguna Indonesia dengan antarmuka yang sederhana dan mudah digunakan. Tidak perlu pengetahuan teknis khusus - cukup buka browser, izinkan kamera, dan arahkan ke barcode. Hasil akan muncul secara otomatis dengan informasi lengkap.</p>
 
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Mengapa ScanBarcode Pro Menjadi Pilihan #1?</h2>
-            <p>ScanBarcode Pro telah dipercaya oleh jutaan pengguna di seluruh Indonesia. Berikut adalah alasan utama mengapa platform kami menjadi yang terbaik:</p>
+            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Keunggulan ScanBarcode Pro</h2>
+            <p>ScanBarcode Pro menawarkan berbagai keunggulan yang menjadikannya pilihan utama masyarakat Indonesia untuk kebutuhan pemindaian barcode:</p>
             <ul>
-                <li><strong>100% Gratis Tanpa Batasan:</strong> Tidak ada biaya apapun, tidak ada batasan jumlah scan, dan tidak ada fitur premium yang tersembunyi. Semua fitur tersedia gratis untuk semua pengguna.</li>
-                <li><strong>Tanpa Install Aplikasi:</strong> Anda tidak perlu mengunduh aplikasi apapun. Cukup buka browser dan langsung gunakan. Ini menghemat ruang penyimpanan di HP Anda.</li>
-                <li><strong>Privasi Terjamin:</strong> Semua pemrosesan terjadi di browser (client-side). Data hasil scan tidak pernah dikirim ke server manapun, sehingga privasi Anda terjamin.</li>
-                <li><strong>50+ Format Barcode:</strong> Mendukung EAN-13, UPC-A, Code128, QR Code, DataMatrix, PDF417, Aztec Code, dan banyak lagi. Ini menjadikan kami pemindai paling lengkap.</li>
-                <li><strong>Live Camera Profesional:</strong> Pemindaian real-time dengan laser biru yang halus dan indah, memberikan pengalaman scanning yang memuaskan.</li>
-                <li><strong>QR Code Generator Pro:</strong> Buat QR code kustom dengan warna, ukuran, margin, dan tipe konten yang beragam (URL, teks, WiFi, vCard, dll).</li>
-                <li><strong>Riwayat Pemindaian:</strong> Semua hasil scan tersimpan otomatis di browser dan bisa diexport ke CSV untuk keperluan laporan.</li>
-                <li><strong>PWA Support:</strong> Bisa diinstall ke home screen HP Anda sehingga terasa seperti aplikasi native dengan akses cepat.</li>
+                <li><strong>100% Gratis:</strong> Tidak ada biaya apapun, tidak ada batasan penggunaan, dan tidak ada fitur premium yang tersembunyi.</li>
+                <li><strong>Tanpa Install Aplikasi:</strong> Cukup buka browser dan langsung gunakan. Tidak perlu download aplikasi yang memakan ruang penyimpanan.</li>
+                <li><strong>Privasi Terjamin:</strong> Semua pemrosesan terjadi di browser Anda (client-side). Tidak ada data yang dikirim ke server manapun.</li>
+                <li><strong>50+ Format Barcode:</strong> Mendukung EAN, UPC, Code128, QR Code, DataMatrix, PDF417, Aztec, dan banyak lagi.</li>
+                <li><strong>Live Camera Profesional:</strong> Laser biru yang indah dengan pemindaian real-time yang akurat.</li>
+                <li><strong>QR Code Generator Pro:</strong> Kustomisasi warna, ukuran, margin, dan tipe konten untuk QR code profesional.</li>
+                <li><strong>Riwayat Pemindaian:</strong> Semua hasil scan tersimpan otomatis dengan opsi export ke CSV.</li>
+                <li><strong>PWA Support:</strong> Install ke home screen dan gunakan seperti aplikasi native.</li>
+                <li><strong>Dark Mode:</strong> Mode gelap untuk kenyamanan mata di malam hari.</li>
+                <li><strong>Responsive Design:</strong> Tampilan optimal di semua perangkat - mobile, tablet, dan desktop.</li>
             </ul>
 
             <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Format Barcode yang Didukung</h2>
-            <p>ScanBarcode Pro mendukung lebih dari 50 format barcode yang berbeda. Berikut adalah daftar lengkapnya:</p>
+            <p>ScanBarcode Pro mendukung lebih dari 50 format barcode yang berbeda. Berikut adalah rincian format yang paling umum digunakan:</p>
             <ul>
                 <li><strong>Barcode 1D (Linear):</strong> EAN-13, EAN-8, UPC-A, UPC-E, Code128, Code39, Code93, ITF-14, Codabar, MSI Plessey</li>
-                <li><strong>Barcode 2D (Matrix):</strong> QR Code, DataMatrix, PDF417, Aztec Code, MaxiCode</li>
-                <li><strong>Format Khusus:</strong> WiFi QR, vCard, ISBN, ISSN, GS1 DataBar</li>
+                <li><strong>Barcode 2D (Matrix):</strong> QR Code, DataMatrix, PDF417, Aztec Code, MaxiCode, DotCode</li>
+                <li><strong>Format Khusus:</strong> WiFi QR Code, vCard (Kontak), ISBN (Buku), ISSN (Publikasi), GS1 DataBar</li>
             </ul>
-            <p>Dengan dukungan format yang lengkap ini, ScanBarcode Pro dapat digunakan untuk berbagai keperluan, mulai dari kebutuhan retail hingga industri.</p>
+            <p>Setiap format memiliki karakteristik dan kegunaan yang berbeda. EAN-13 digunakan untuk produk retail internasional, Code128 untuk logistik dan pengiriman, QR Code untuk berbagai keperluan digital, dan DataMatrix untuk aplikasi industri.</p>
 
             <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Cara Menggunakan ScanBarcode Pro</h2>
-            <p>Menggunakan ScanBarcode Pro sangat mudah dan tidak memerlukan keahlian teknis khusus. Ikuti langkah-langkah berikut:</p>
+            <p>Menggunakan ScanBarcode Pro sangat mudah dan intuitif. Ikuti langkah-langkah berikut:</p>
             <ol>
-                <li><strong>Buka Website:</strong> Kunjungi website ScanBarcode Pro melalui browser di HP atau komputer Anda.</li>
-                <li><strong>Klik "Scan Barcode":</strong> Arahkan ke halaman pemindai.</li>
-                <li><strong>Klik "Mulai Kamera":</strong> Izinkan akses kamera saat browser meminta.</li>
-                <li><strong>Arahkan ke Barcode:</strong> Posisikan barcode dalam area pemindaian yang ditandai.</li>
-                <li><strong>Hasil Instan:</strong> Hasil pemindaian akan muncul otomatis dalam milidetik.</li>
+                <li><strong>Buka Website:</strong> Buka browser di HP atau komputer Anda dan kunjungi website ScanBarcode Pro.</li>
+                <li><strong>Klik "Scan Barcode":</strong> Klik tombol "Scan Barcode" untuk membuka halaman pemindai.</li>
+                <li><strong>Klik "Mulai Kamera":</strong> Klik tombol "Mulai Kamera" dan izinkan akses kamera saat browser meminta.</li>
+                <li><strong>Arahkan ke Barcode:</strong> Arahkan kamera ke barcode atau QR code dalam area pemindaian.</li>
+                <li><strong>Hasil Otomatis:</strong> Hasil pemindaian akan muncul otomatis dalam milidetik.</li>
             </ol>
+            <p>Untuk hasil terbaik, pastikan pencahayaan cukup dan barcode dalam kondisi baik. Gunakan fitur senter (💡) untuk kondisi pencahayaan yang kurang, dan ganti kamera (🔄) jika ingin beralih antara kamera depan dan belakang.</p>
+
+            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Informasi Produk dari Barcode</h2>
+            <p>Salah satu fitur unggulan ScanBarcode Pro adalah kemampuan untuk menampilkan informasi detail dari barcode produk. Ketika Anda memindai barcode EAN-13 atau UPC-A, scanner kami akan menampilkan:</p>
+            <ul>
+                <li><strong>Asal Negara:</strong> Kode negara berdasarkan GS1 prefix (3 digit pertama untuk EAN-13)</li>
+                <li><strong>Kode Produsen:</strong> Kode unik yang mengidentifikasi produsen atau perusahaan</li>
+                <li><strong>Kode Produk:</strong> Kode spesifik untuk produk tertentu dari produsen tersebut</li>
+                <li><strong>Digit Cek:</strong> Digit terakhir untuk verifikasi keakuratan barcode</li>
+            </ul>
+            <p>Ini sangat berguna untuk bisnis retail yang ingin memverifikasi produk, atau konsumen yang ingin mengetahui asal-usul produk yang mereka beli.</p>
 
             <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Aplikasi Bisnis ScanBarcode Pro</h2>
-            <p>ScanBarcode Pro digunakan oleh berbagai sektor bisnis di seluruh Indonesia untuk meningkatkan efisiensi operasional:</p>
+            <p>ScanBarcode Pro digunakan oleh berbagai sektor bisnis di seluruh Indonesia:</p>
             <ul>
-                <li><strong>Ritel & Supermarket:</strong> Cek harga dan stok produk dengan memindai EAN/UPC. Mempercepat proses checkout dan mengurangi kesalahan.</li>
-                <li><strong>Logistik & Ekspedisi:</strong> Tracking paket dan manajemen gudang dengan Code128. Memantau pergerakan barang secara real-time.</li>
-                <li><strong>UMKM & Warung:</strong> Pembayaran digital via QRIS, GoPay, OVO menggunakan scan QR code. Meningkatkan kepuasan pelanggan.</li>
-                <li><strong>Farmasi & Kesehatan:</strong> Verifikasi obat dan alat medis dengan barcode. Memastikan keaslian dan keamanan produk.</li>
-                <li><strong>Perpustakaan:</strong> Sistem peminjaman buku terintegrasi dengan ISBN. Memudahkan manajemen koleksi.</li>
-                <li><strong>Manufaktur:</strong> Quality control dan tracking produksi. Memantau setiap tahap produksi.</li>
+                <li><strong>Ritel & Supermarket:</strong> Cek harga dan stok produk dengan EAN/UPC.</li>
+                <li><strong>Logistik & Ekspedisi:</strong> Tracking paket dengan Code128.</li>
+                <li><strong>UMKM & Warung:</strong> Pembayaran QRIS dan katalog produk digital.</li>
+                <li><strong>Farmasi & Kesehatan:</strong> Verifikasi obat dengan barcode GS1.</li>
+                <li><strong>Perpustakaan:</strong> Manajemen peminjaman buku dengan ISBN.</li>
+                <li><strong>Manufaktur:</strong> Quality control dan tracking produksi.</li>
             </ul>
 
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Keamanan dan Privasi</h2>
-            <p>ScanBarcode Pro memproses 100% data di browser Anda (client-side processing). Tidak ada data yang dikirim ke server manapun. Ini menjamin privasi absolut untuk setiap pemindaian yang Anda lakukan. Riwayat pemindaian disimpan secara lokal di browser menggunakan localStorage, dan dapat dihapus kapan saja dengan satu klik.</p>
-            <p>Kami tidak menggunakan cookies pelacak, tidak menyimpan data pribadi, dan tidak menjual informasi pengguna kepada pihak ketiga. Keamanan Anda adalah prioritas utama kami.</p>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Fitur PWA - Install ke Home Screen</h2>
-            <p>ScanBarcode Pro mendukung Progressive Web App (PWA), yang memungkinkan Anda menginstall website ini ke home screen smartphone Anda. Caranya sangat mudah:</p>
+            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">PWA - Install ke Home Screen</h2>
+            <p>ScanBarcode Pro mendukung Progressive Web App (PWA). Ini berarti Anda dapat menginstall website kami ke home screen smartphone Anda dan menggunakannya seperti aplikasi native. Caranya:</p>
             <ol>
-                <li>Buka ScanBarcode Pro di browser Chrome atau Safari.</li>
-                <li>Klik menu tiga titik (⋮) di pojok kanan atas browser.</li>
+                <li>Buka ScanBarcode Pro di Chrome atau Safari.</li>
+                <li>Klik menu tiga titik (⋮) di browser.</li>
                 <li>Pilih "Add to Home Screen" atau "Tambahkan ke Layar Utama".</li>
-                <li>Konfirmasi dengan klik "Add" atau "Tambahkan".</li>
-                <li>Aplikasi ScanBarcode Pro akan muncul di home screen Anda.</li>
+                <li>ScanBarcode Pro akan muncul sebagai ikon aplikasi di home screen Anda.</li>
             </ol>
-            <p>Setelah terinstall, Anda dapat membuka ScanBarcode Pro seperti aplikasi native, dengan tampilan full screen dan akses cepat tanpa perlu membuka browser.</p>
+
+            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Tips Penggunaan Optimal</h2>
+            <ul>
+                <li>Gunakan fitur senter (💡) untuk kondisi pencahayaan yang kurang.</li>
+                <li>Ganti kamera (🔄) jika ingin beralih antara kamera depan dan belakang.</li>
+                <li>Upload gambar barcode dari galeri jika kamera mengalami masalah.</li>
+                <li>Jaga jarak ideal 15-30 cm antara kamera dan barcode.</li>
+                <li>Bersihkan lensa kamera jika hasil scan terlihat buram.</li>
+                <li>Gunakan QR Code Generator untuk membuat QR code bisnis Anda.</li>
+            </ul>
 
             <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">FAQ Singkat</h2>
-            <p><strong>Q: Apakah ScanBarcode Pro benar-benar gratis?</strong><br>A: Ya, 100% gratis selamanya tanpa batasan apapun. Tidak ada biaya tersembunyi.</p>
-            <p><strong>Q: Apakah data saya aman saat menggunakan ScanBarcode Pro?</strong><br>A: Sangat aman! Semua pemrosesan di browser, tidak ada upload data ke server.</p>
+            <p><strong>Q: Apakah ScanBarcode Pro benar-benar gratis?</strong><br>A: Ya, 100% gratis selamanya tanpa batasan apapun.</p>
+            <p><strong>Q: Apakah data saya aman saat menggunakan ScanBarcode Pro?</strong><br>A: Sangat aman! Semua pemrosesan terjadi di browser Anda, tidak ada upload data.</p>
             <p><strong>Q: Format barcode apa saja yang bisa discan?</strong><br>A: 50+ format termasuk EAN, UPC, QR Code, DataMatrix, WiFi, vCard, ISBN.</p>
-            <p><strong>Q: Bagaimana cara menggunakan kamera?</strong><br>A: Klik "Mulai Kamera", izinkan akses, lalu arahkan ke barcode.</p>
-            <p><strong>Q: Apakah perlu install aplikasi?</strong><br>A: Tidak perlu! Cukup buka browser dan langsung gunakan.</p>
+            <p><strong>Q: Bagaimana cara scan barcode online?</strong><br>A: Klik "Scan Barcode", izinkan kamera, arahkan ke barcode.</p>
+            <p><strong>Q: Apakah bisa scan dari gambar?</strong><br>A: Ya, upload foto barcode dari galeri Anda.</p>
+            <p><strong>Q: Apakah perlu install aplikasi?</strong><br>A: Tidak perlu! Cukup buka browser.</p>
         </div>
     </div>
 
@@ -258,6 +284,7 @@
                 <div class="card" style="padding:22px">
                     <h3 style="font-weight:700;margin-bottom:14px;font-size:1.1rem"><i class="fas fa-clipboard-check"></i> Hasil Scan</h3>
                     <div id="resultDisplay" class="result-box"><div style="font-size:2.5rem;margin-bottom:8px">📷</div><p style="font-size:14px">Arahkan kamera ke barcode</p></div>
+                    <div id="productInfoSection" style="display:none"></div>
                     <div id="resultActions" style="margin-top:10px;display:none;flex-direction:column;gap:8px"></div>
                     <div id="resultInfo" style="margin-top:8px;display:none;padding:8px;background:var(--hover);border-left:4px solid #2563eb;border-radius:8px;font-size:12px"></div>
                     <div id="productSearch" style="margin-top:8px;display:none"></div>
@@ -284,17 +311,330 @@
         </div>
     </div>
 
-    <!-- RIWAYAT PAGE -->
+    <!-- RIWAYAT -->
     <div class="page" id="page-riwayat">
         <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px"><h2 style="font-weight:700;font-size:1.2rem"><i class="fas fa-history"></i> Riwayat Scan</h2><div style="display:flex;gap:8px"><button onclick="exportHistory()" class="btn btn-primary btn-sm"><i class="fas fa-file-csv"></i> Export CSV</button><button onclick="clearHistory()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button></div></div><div id="historyList" style="max-height:450px;overflow-y:auto"></div><div id="historyEmpty" style="text-align:center;color:#9ca3af;padding:55px"><div style="font-size:2.8rem">📭</div><p>Belum ada riwayat</p></div></div>
     </div>
 
-    <!-- BLOG PAGE -->
-    <div class="page" id="page-blog">
-        <div id="blogListView"><h2 style="font-weight:800;font-size:2rem;margin-bottom:6px"><i class="fas fa-newspaper"></i> Blog ScanBarcode</h2><p style="color:#64748b;margin-bottom:28px;font-size:16px">Artikel lengkap tentang scan barcode</p><div class="blog-grid" id="blogGrid"></div></div>
-        <div id="blogDetailView" class="hidden"><button class="blog-back" onclick="closeBlog()"><i class="fas fa-arrow-left"></i> Kembali</button><div id="blogDetailContent"></div></div>
-    </div>
+    <!-- ============================================================
+     BLOG SECTION FOR index.html
+     Copy this entire block and paste inside your index.html
+     where the current "Blog ScanBarcode" section is.
+     ============================================================ -->
 
+<style>
+/* Blog section – image cut fix + responsive */
+.blog-section-wrap {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 16px 40px;
+}
+.blog-section-wrap .blog-heading {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.blog-section-wrap .blog-heading h2 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text, #1e293b);
+}
+.blog-section-wrap .blog-heading p {
+  color: #64748b;
+  font-size: 15px;
+}
+.blog-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.blog-card-item {
+  background: var(--card, #fff);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border, #dbeafe);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+.blog-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 38px rgba(0,0,0,0.1);
+  border-color: #3b82f6;
+}
+/* IMAGE FIX – no cut on desktop / mobile */
+.blog-card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #e2e8f0;
+  flex-shrink: 0;
+}
+.blog-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transition: transform 0.35s ease;
+}
+.blog-card-item:hover .blog-card-thumb img {
+  transform: scale(1.05);
+}
+.blog-card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.blog-card-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  line-height: 1.4;
+  color: var(--text, #1e293b);
+}
+.blog-card-content p {
+  font-size: 13.5px;
+  color: #64748b;
+  margin: 0 0 14px;
+  line-height: 1.6;
+  flex: 1;
+}
+.blog-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 12px;
+}
+.blog-card-read {
+  color: #2563eb;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.blog-card-item:hover .blog-card-read {
+  color: #1d4ed8;
+}
+.blog-see-all {
+  text-align: center;
+  margin-top: 36px;
+}
+.blog-see-all a {
+  display: inline-block;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+.blog-see-all a:hover {
+  opacity: 0.92;
+}
+@media (max-width: 768px) {
+  .blog-cards-grid { grid-template-columns: 1fr; gap: 18px; }
+  .blog-card-thumb { aspect-ratio: 16 / 9; }
+  .blog-section-wrap { padding: 0 14px 30px; margin: 36px auto; }
+}
+@media (min-width: 769px) and (max-width: 1023px) {
+  .blog-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .blog-cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+/* Dark mode support if your index uses .dark */
+.dark .blog-section-wrap .blog-heading h2 { color: #e2e8f0; }
+.dark .blog-card-item { background: #111827; border-color: #1e3a5f; }
+.dark .blog-card-content h3 { color: #f1f5f9; }
+.dark .blog-card-content p { color: #94a3b8; }
+</style>
+
+<section class="blog-section-wrap" id="blog">
+  <div class="blog-heading">
+    <h2>📰 Blog ScanBarcode</h2>
+    <p>10 Artikel lengkap tentang scan barcode, QR code, dan teknologi scanning</p>
+  </div>
+
+  <div class="blog-cards-grid">
+
+    <!-- 1 -->
+    <a href="/qr-code-scanner-from-image.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/qr-code-scanner-from-image.jpg" alt="QR Code Scanner from Image" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>QR Code Scanner from Image – Scan dari Foto</h3>
+        <p>Upload gambar QR Code atau screenshot dan langsung dapatkan hasilnya. Cocok saat kamera tidak bisa digunakan.</p>
+        <div class="blog-card-meta">
+          <span>📅 24 Agustus 2026</span>
+          <span>⏱ 5 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 2 -->
+    <a href="/tips-scan-barcode-rusak.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/tips-scan-barcode-rusak.png" alt="Tips Scan Barcode Rusak" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Tips Scan Barcode yang Rusak atau Buram</h3>
+        <p>Panduan lengkap mengatasi barcode yang sulit dibaca. Solusi praktis untuk barcode pudar, terlipat, atau rusak.</p>
+        <div class="blog-card-meta">
+          <span>📅 20 Agustus 2026</span>
+          <span>⏱ 7 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 3 -->
+    <a href="/perbedaan-qris-static-vs-dynamic.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/perbedaan-qris-static-vs-dynamic.png" alt="QRIS Static vs Dynamic" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Perbedaan QRIS Static vs Dynamic</h3>
+        <p>Tabel perbandingan lengkap, kelebihan, kekurangan, dan rekomendasi memilih QRIS untuk bisnis Anda.</p>
+        <div class="blog-card-meta">
+          <span>📅 20 Agustus 2026</span>
+          <span>⏱ 8 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 4 -->
+    <a href="/online-scanner-vs-aplikasi-mobile.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/online-scanner-vs-aplikasi-mobile.png" alt="Online Scanner vs Aplikasi" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Online Barcode Scanner vs Aplikasi Mobile</h3>
+        <p>Mana yang lebih baik? Perbandingan lengkap antara scanner online dan aplikasi mobile.</p>
+        <div class="blog-card-meta">
+          <span>📅 21 Agustus 2026</span>
+          <span>⏱ 7 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 5 -->
+    <a href="/cara-scan-resi.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/cara-scan-resi.png" alt="Cara Scan Resi" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Cara Scan Resi Pengiriman Online</h3>
+        <p>Cara mudah scan resi JNE, J&T, SiCepat, dan ekspedisi lain langsung dari HP tanpa aplikasi.</p>
+        <div class="blog-card-meta">
+          <span>📅 19 Agustus 2026</span>
+          <span>⏱ 6 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 6 -->
+    <a href="/cara-cek-resi-barcode.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/cara-cek-resi-barcode.png" alt="Cara Cek Resi Barcode" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Cara Cek Resi Lewat Barcode</h3>
+        <p>Panduan lengkap cara cek status pengiriman hanya dengan scan barcode resi.</p>
+        <div class="blog-card-meta">
+          <span>📅 22 Agustus 2026</span>
+          <span>⏱ 5 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 7 -->
+    <a href="/cara-scan-barcode-di-hp.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/cara-scan-barcode-di-hp.png" alt="Cara Scan Barcode di HP" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Cara Scan Barcode di HP Tanpa Aplikasi</h3>
+        <p>Langkah mudah scan barcode produk, QRIS, dan QR Code langsung dari browser HP.</p>
+        <div class="blog-card-meta">
+          <span>📅 18 Agustus 2026</span>
+          <span>⏱ 6 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 8 -->
+    <a href="/cara-scan-barcode-wifi.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/cara-scan-barcode-wifi.jpg" alt="Cara Scan WiFi QR" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Cara Scan Barcode / QR WiFi</h3>
+        <p>Cara mudah terhubung ke WiFi hanya dengan scan QR Code, tanpa ketik password manual.</p>
+        <div class="blog-card-meta">
+          <span>📅 17 Agustus 2026</span>
+          <span>⏱ 5 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 9 -->
+    <a href="/cara-scan-qris.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/cara-scan-qris.png" alt="Cara Scan QRIS" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Cara Scan QRIS Online Tanpa Aplikasi</h3>
+        <p>Panduan lengkap scan QRIS untuk pembayaran digital langsung dari browser.</p>
+        <div class="blog-card-meta">
+          <span>📅 16 Agustus 2026</span>
+          <span>⏱ 6 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+    <!-- 10 -->
+    <a href="/jenis-barcode.html" class="blog-card-item">
+      <div class="blog-card-thumb">
+        <img src="/jenis-barcode.jpg" alt="Jenis Barcode" loading="lazy" width="640" height="400">
+      </div>
+      <div class="blog-card-content">
+        <h3>Jenis-Jenis Barcode yang Perlu Diketahui</h3>
+        <p>Penjelasan lengkap EAN, UPC, Code 128, QR Code, Data Matrix, dan format lainnya.</p>
+        <div class="blog-card-meta">
+          <span>📅 15 Agustus 2026</span>
+          <span>⏱ 8 menit baca</span>
+        </div>
+        <span class="blog-card-read">Baca Selengkapnya →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="blog-see-all">
+    <a href="/blog.html">Lihat Semua Artikel →</a>
+  </div>
+</section>
+    
     <!-- TENTANG -->
     <div class="page" id="page-tentang"><div class="card" style="max-width:880px;margin:0 auto;line-height:2"><h1 style="font-weight:800;font-size:1.8rem;margin-bottom:18px">ℹ️ Tentang ScanBarcode Pro</h1><p>ScanBarcode Pro didirikan 2023 sebagai pemindai barcode online gratis #1 di Indonesia. 5M+ pemindaian, 50+ format, 100% privat.</p></div></div>
 
@@ -311,14 +651,25 @@ function toggleMenu(){let m=document.getElementById('mobileMenu'),h=document.get
 function go(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let el=document.getElementById('page-'+n);if(el)el.classList.add('active');else document.getElementById('page-home').classList.add('active');document.getElementById('mobileMenu').classList.remove('show');document.getElementById('hamburgerBtn').classList.remove('open');window.scrollTo(0,0);if(n==='blog')renderBlogs();if(n==='riwayat')renderHistory();if(n==='generator')genTab('qr');if(n!=='scanner')stopScanner()}
 function toggleTheme(){let d=document.documentElement.classList.toggle('dark');document.getElementById('themeBtn').textContent=d?'☀️':'🌙';localStorage.setItem('theme',d?'dark':'light')}
 
-// ===== BLOG =====
-const blogImgs=['https://images.unsplash.com/photo-1586281380349-632531db7ed1?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553729459-afe8a1f19b2a?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop'];
-const blogs=[{id:1,title:'Cara Memindai Barcode dengan Kamera HP',cat:'Tutorial',date:'15 Maret 2026',excerpt:'Panduan lengkap scan barcode pakai HP.',content:'<p>Di era digital, memindai barcode sudah menjadi kebutuhan. ScanBarcode Pro hadir sebagai solusi praktis, gratis, dan 100% privat.</p><h2>Langkah 1</h2><p>Buka browser dan kunjungi ScanBarcode Pro.</p><h2>Langkah 2</h2><p>Klik "Mulai Kamera" dan izinkan akses.</p><h2>Langkah 3</h2><p>Arahkan ke barcode. Hasil muncul instan.</p>'},{id:2,title:'Perbedaan EAN dan UPC',cat:'Retail',date:'10 Maret 2026',excerpt:'Memahami EAN-13 dan UPC-A.',content:'<p>EAN-13 digunakan global termasuk Indonesia. UPC-A digunakan di Amerika.</p>'},{id:3,title:'QRIS: Pembayaran Digital',cat:'Fintech',date:'5 Maret 2026',excerpt:'Standar nasional Bank Indonesia.',content:'<p>QRIS menyatukan berbagai kode QR menjadi satu standar nasional.</p>'},{id:4,title:'Manajemen Inventori UMKM',cat:'Bisnis',date:'28 Februari 2026',excerpt:'Optimalkan stok dengan barcode.',content:'<p>Sistem barcode membantu UMKM melacak stok dengan akurat.</p>'},{id:5,title:'WiFi QR Code',cat:'Tools',date:'20 Februari 2026',excerpt:'Permudah pelanggan terhubung.',content:'<p>WiFi QR code berisi informasi koneksi. Scan dan otomatis terhubung.</p>'},{id:6,title:'Keamanan QR Code',cat:'Keamanan',date:'15 Februari 2026',excerpt:'Tips hindari QR palsu.',content:'<p>Periksa URL, waspada QR tempelan, gunakan scanner terpercaya.</p>'}];
-function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card" onclick="openBlog(${b.id})"><div class="blog-img" style="background-image:url('${blogImgs[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date} • 5 menit</span></div></div>`).join('')}
-function openBlog(id){let b=blogs.find(x=>x.id===id)||blogs[0];document.getElementById('blogListView').classList.add('hidden');document.getElementById('blogDetailView').classList.remove('hidden');document.getElementById('blogDetailContent').innerHTML=`<div class="blog-detail-header" style="background-image:url('${blogImgs[id-1]}')"><div><span style="font-size:12px;font-weight:700;text-transform:uppercase">${b.cat}</span><h1 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin:10px 0">${b.title}</h1><span style="font-size:14px">📅 ${b.date}</span></div></div><div class="blog-detail-content">${b.content}</div>`;window.scrollTo(0,0)}
-function closeBlog(){document.getElementById('blogListView').classList.remove('hidden');document.getElementById('blogDetailView').classList.add('hidden');window.scrollTo(0,0)}
+// ===== GS1 COUNTRY PREFIX MAPPING =====
+const GS1_COUNTRIES = {
+    '899':'Indonesia','888':'Singapura','955':'Malaysia','885':'Thailand','893':'Vietnam',
+    '890':'India','880':'Bangladesh','729':'Israel','690':'China','691':'China','692':'China','693':'China','694':'China','695':'China',
+    '500':'Inggris','501':'Inggris','502':'Inggris','503':'Inggris','504':'Ingg리스','505':'Inggris','506':'Inggris','507':'Inggris','508':'Inggris','509':'Inggris',
+    '400':'Jerman','401':'Jerman','402':'Jerman','403':'Jerman','404':'Jerman','405':'Jerman','406':'Jerman','407':'Jerman','408':'Jerman','409':'Jerman','410':'Jerman','411':'Jerman','412':'Jerman','413':'Jerman','414':'Jerman','415':'Jerman','416':'Jerman','417':'Jerman','418':'Jerman','419':'Jerman','420':'Jerman','421':'Jerman','422':'Jerman','423':'Jerman','424':'Jerman','425':'Jerman','426':'Jerman','427':'Jerman','428':'Jerman','429':'Jerman','430':'Jerman','431':'Jerman','432':'Jerman','433':'Jerman','434':'Jerman','435':'Jerman','436':'Jerman','437':'Jerman','438':'Jerman','439':'Jerman','440':'Jerman',
+    '450':'Jepang','451':'Jepang','452':'Jepang','453':'Jepang','454':'Jepang','455':'Jepang','456':'Jepang','457':'Jepang','458':'Jepang','459':'Jepang','490':'Jepang','491':'Jepang','492':'Jepang','493':'Jepang','494':'Jepang','495':'Jepang','496':'Jepang','497':'Jepang','498':'Jepang','499':'Jepang',
+    '000':'Amerika Serikat','001':'Amerika Serikat','002':'Amerika Serikat','003':'Amerika Serikat','004':'Amerika Serikat','005':'Amerika Serikat','006':'Amerika Serikat','007':'Amerika Serikat','008':'Amerika Serikat','009':'Amerika Serikat','010':'Amerika Serikat','011':'Amerika Serikat','012':'Amerika Serikat','013':'Amerika Serikat',
+    '300':'Prancis','301':'Prancis','302':'Prancis','303':'Prancis','304':'Prancis','305':'Prancis','306':'Prancis','307':'Prancis','308':'Prancis','309':'Prancis','310':'Prancis','311':'Prancis','312':'Prancis','313':'Prancis','314':'Prancis','315':'Prancis','316':'Prancis','317':'Prancis','318':'Prancis','319':'Prancis','320':'Prancis','321':'Prancis','322':'Prancis','323':'Prancis','324':'Prancis','325':'Prancis','326':'Prancis','327':'Prancis','328':'Prancis','329':'Prancis','330':'Prancis','331':'Prancis','332':'Prancis','333':'Prancis','334':'Prancis','335':'Prancis','336':'Prancis','337':'Prancis','338':'Prancis','339':'Prancis','340':'Prancis','341':'Prancis','342':'Prancis','343':'Prancis','344':'Prancis','345':'Prancis','346':'Prancis','347':'Prancis','348':'Prancis','349':'Prancis',
+    '600':'Afrika Selatan','601':'Afrika Selatan','602':'Afrika Selatan','603':'Afrika Selatan','604':'Afrika Selatan','605':'Afrika Selatan','606':'Afrika Selatan','607':'Afrika Selatan','608':'Afrika Selatan','609':'Afrika Selatan','610':'Afrika Selatan','611':'Afrika Selatan','612':'Afrika Selatan','613':'Afrika Selatan','614':'Afrika Selatan','615':'Afrika Selatan','616':'Afrika Selatan','617':'Afrika Selatan','618':'Afrika Selatan','619':'Afrika Selatan','620':'Afrika Selatan','621':'Afrika Selatan','622':'Afrika Selatan','623':'Afrika Selatan','624':'Afrika Selatan','625':'Afrika Selatan','626':'Afrika Selatan','627':'Afrika Selatan','628':'Afrika Selatan','629':'Afrika Selatan','630':'Afrika Selatan','631':'Afrika Selatan','632':'Afrika Selatan','633':'Afrika Selatan','634':'Afrika Selatan','635':'Afrika Selatan','636':'Afrika Selatan','637':'Afrika Selatan','638':'Afrika Selatan','639':'Afrika Selatan','640':'Afrika Selatan','641':'Afrika Selatan','642':'Afrika Selatan','643':'Afrika Selatan','644':'Afrika Selatan','645':'Afrika Selatan','646':'Afrika Selatan','647':'Afrika Selatan','648':'Afrika Selatan','649':'Afrika Selatan',
+    '750':'Meksiko','751':'Meksiko','752':'Meksiko','753':'Meksiko','754':'Meksiko','755':'Meksiko','756':'Meksiko','757':'Meksiko','758':'Meksiko','759':'Meksiko',
+    '770':'Kolombia','771':'Kolombia','772':'Kolombia','773':'Kolombia','774':'Kolombia','775':'Kolombia','776':'Kolombia','777':'Kolombia','778':'Kolombia','779':'Kolombia',
+    '789':'Brasil','790':'Brasil',
+    '471':'Taiwan','474':'Estonia','475':'Latvia','476':'Azerbaijan','477':'Lithuania','478':'Uzbekistan','479':'Sri Lanka','480':'Filipina','481':'Belarus','482':'Ukraina','483':'Turkmenistan','484':'Moldova','485':'Armenia','486':'Georgia','487':'Kazakhstan','488':'Tajikistan','489':'Hong Kong',
+    '520':'Yunani','521':'Yunani','528':'Lebanon','529':'Siprus','530':'Albania','531':'Makedonia','535':'Malta','539':'Irlandia','540':'Belgia','541':'Belgia','542':'Belgia','543':'Belgia','544':'Belgia','545':'Belgia','546':'Belgia','547':'Belgia','548':'Belgia','549':'Belgia','560':'Portugal','569':'Islandia','570':'Denmark','571':'Denmark','572':'Denmark','573':'Denmark','574':'Denmark','575':'Denmark','576':'Denmark','577':'Denmark','578':'Denmark','579':'Denmark','590':'Polandia','594':'Rumania','599':'Hungaria',
+    '700':'Norwegia','701':'Norwegia','702':'Norwegia','703':'Norwegia','704':'Norwegia','705':'Norwegia','706':'Norwegia','707':'Norwegia','708':'Norwegia','709':'Norwegia','730':'Swedia','731':'Swedia','732':'Swedia','733':'Swedia','734':'Swedia','735':'Swedia','736':'Swedia','737':'Swedia','738':'Swedia','739':'Swedia','740':'Guatemala','741':'El Salvador','742':'Honduras','743':'Nikaragua','744':'Kosta Rika','745':'Panama','746':'Republik Dominika','759':'Venezuela','760':'Swiss','761':'Swiss','762':'Swiss','763':'Swiss','764':'Swiss','765':'Swiss','766':'Swiss','767':'Swiss','768':'Swiss','769':'Swiss','773':'Uruguay','775':'Peru','777':'Bolivia','780':'Chili','784':'Paraguay','786':'Ekuador'
+};
 
-// ===== CAMERA SCANNER - SMOOTH TOP-DOWN LASER =====
+// ===== CAMERA SCANNER =====
 let scanner=null,scanRes='',scanning=!1,torchOn=!1,curCam=null,cams=[];
 async function startScanner(){
     let sb=document.getElementById('btnStart'),tb=document.getElementById('btnStop'),rb=document.getElementById('btnTorch'),wb=document.getElementById('btnSwitch'),st=document.getElementById('scanStatus'),laser=document.getElementById('scanLaser'),ph=document.getElementById('camPlaceholder');
@@ -331,9 +682,12 @@ async function startScanner(){
         if(!cams||cams.length===0){st.innerHTML='<span style="color:#ef4444">✕</span> Kamera tidak ditemukan';sb.classList.remove('hidden');ph.style.display='flex';toast('Tidak ada kamera','error');return}
         let bc=cams.find(c=>{let l=c.label.toLowerCase();return l.includes('back')||l.includes('environment')||l.includes('belakang')});
         curCam=bc||cams[0];
-        await scanner.start(curCam.id,{fps:15,qrbox:{width:280,height:280},aspectRatio:1.0},(t,r)=>{scanRes=t;let fn='Unknown';try{if(r?.result?.format?.formatName)fn=r.result.format.formatName}catch(e){}if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(t,fn);saveHist(t,fn);stopScanner();toast('✅ Barcode terdeteksi!')},()=>{});
+        await scanner.start(curCam.id,{fps:15,qrbox:{width:280,height:280},aspectRatio:1.0},
+            (t,r)=>{scanRes=t;let fn='Unknown';try{if(r?.result?.format?.formatName)fn=r.result.format.formatName}catch(e){}if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(t,fn);saveHist(t,fn);stopScanner();toast('✅ Barcode terdeteksi!')},()=>{});
         scanning=!0;tb.classList.remove('hidden');rb.classList.remove('hidden');if(cams.length>1)wb.classList.remove('hidden');
-        st.innerHTML='<span style="color:#10b981">●</span> Scanning...';laser.style.display='block';ph.style.display='none';
+        st.innerHTML='<span style="color:#10b981">●</span> Scanning...';
+        laser.style.display='block';
+        ph.style.display='none';
     }catch(e){st.innerHTML='<span style="color:#ef4444">✕</span> Gagal akses kamera';sb.classList.remove('hidden');ph.style.display='flex';toast('Gagal: '+(e.message||e),'error')}
 }
 function stopScanner(){if(scanner&&scanning){scanner.stop().catch(()=>{}).finally(()=>{try{scanner.clear()}catch(e){}})}scanning=!1;torchOn=!1;document.getElementById('btnStart').classList.remove('hidden');document.getElementById('btnStop').classList.add('hidden');document.getElementById('btnTorch').classList.add('hidden');document.getElementById('btnSwitch').classList.add('hidden');document.getElementById('scanStatus').innerHTML='⚪ Kamera Mati';document.getElementById('scanLaser').style.display='none';document.getElementById('camPlaceholder').style.display='flex'}
@@ -341,8 +695,41 @@ async function toggleTorch(){if(!scanner||!scanning)return;try{let t=scanner.get
 async function switchCamera(){if(!scanner||!scanning||cams.length<2)return;try{await scanner.stop();let i=cams.findIndex(c=>c.id===curCam.id);curCam=cams[(i+1)%cams.length];await scanner.start(curCam.id,{fps:15,qrbox:{width:280,height:280},aspectRatio:1.0},(t,r)=>{scanRes=t;let fn='Unknown';try{if(r?.result?.format?.formatName)fn=r.result.format.formatName}catch(e){}if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(t,fn);saveHist(t,fn);stopScanner()},()=>{});document.getElementById('scanLaser').style.display='block'}catch(e){}}
 function scanImageFile(input){if(!input.files||!input.files[0])return;let t=new Html5Qrcode("reader");t.scanFile(input.files[0],!0).then(x=>{scanRes=x;if(navigator.vibrate)navigator.vibrate([100,50,100]);showResult(x,'File Image');saveHist(x,'File Image');t.clear();toast('✅ Terdeteksi!')}).catch(()=>{toast('Tidak ada barcode','error');t.clear()});input.value=''}
 
-// ===== RESULT =====
-function showResult(t,f){let d=document.getElementById('resultDisplay'),a=document.getElementById('resultActions'),i=document.getElementById('resultInfo'),p=document.getElementById('productSearch');let type=/^https?:\/\//i.test(t)?'url':/^WIFI:/i.test(t)?'wifi':/^tel:/i.test(t)?'phone':/^mailto:/i.test(t)?'email':/^\d{8,14}$/.test(t)?'product':'text';let ic={url:'🔗',wifi:'📶',phone:'📞',email:'✉️',product:'📦',text:'📝'},lb={url:'Link',wifi:'WiFi',phone:'Telepon',email:'Email',product:'Produk',text:'Teks'};d.className='result-box success';d.innerHTML=`<div style="text-align:center"><div style="font-size:2.5rem">${ic[type]}</div><div style="font-size:13px;font-weight:700;color:#2563eb;margin:6px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;padding:12px;border-radius:8px;font-size:14px;border:2px solid #3b82f6">${t}</div></div>`;let ac=`<button onclick="copyRes()" class="btn btn-dark" style="padding:9px;width:100%;font-size:13px">📋 Salin</button>`;if(type==='url')ac+=`<button onclick="window.open('${t}','_blank')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px">🔗 Buka</button>`;if(type==='product')ac+=`<button onclick="searchGoogle('${t}')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px">🔍 Cari Google</button>`;ac+=`<button onclick="shareRes()" class="btn btn-outline" style="padding:9px;width:100%;font-size:13px">📤 Bagikan</button>`;a.innerHTML=ac;a.style.display='flex';i.style.display='block';i.innerHTML=`<strong>Format:</strong> ${f} | <strong>Waktu:</strong> ${new Date().toLocaleString('id-ID')}`;if(type==='product'){p.style.display='block';searchGoogle(t)}else{p.style.display='none'}}
+// ===== ENHANCED RESULT WITH PRODUCT INFO =====
+function showResult(t,f){
+    let d=document.getElementById('resultDisplay'),a=document.getElementById('resultActions'),i=document.getElementById('resultInfo'),p=document.getElementById('productSearch'),pi=document.getElementById('productInfoSection');
+    let type=/^https?:\/\//i.test(t)?'url':/^WIFI:/i.test(t)?'wifi':/^tel:/i.test(t)?'phone':/^mailto:/i.test(t)?'email':/^\d{8,14}$/.test(t)?'product':'text';
+    let ic={url:'🔗',wifi:'📶',phone:'📞',email:'✉️',product:'📦',text:'📝'},lb={url:'Link',wifi:'WiFi',phone:'Telepon',email:'Email',product:'Barcode Produk',text:'Teks'};
+    d.className='result-box success';
+    d.innerHTML=`<div style="text-align:center;width:100%"><div style="font-size:2.5rem;margin-bottom:8px">${ic[type]}</div><div style="font-size:13px;font-weight:700;color:#2563eb;margin:6px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;padding:12px;border-radius:8px;font-size:14px;border:2px solid #3b82f6">${t}</div></div>`;
+    
+    // Product info section
+    if(type==='product' && /^\d{12,13}$/.test(t)){
+        let country='-',manufacturer='-',product='-';
+        if(t.length===13){ // EAN-13
+            let prefix=t.substring(0,3);
+            country=GS1_COUNTRIES[prefix]||'Global ('+prefix+')';
+            manufacturer=t.substring(3,8);
+            product=t.substring(8,12);
+        } else if(t.length===12){ // UPC-A
+            let prefix=t.substring(0,1);
+            country='Amerika Serikat';
+            manufacturer=t.substring(1,6);
+            product=t.substring(6,11);
+        }
+        pi.style.display='block';
+        pi.innerHTML=`<div class="product-info-grid"><div class="product-info-item"><div class="product-info-label">🌍 Asal Negara</div><div class="product-info-value">${country}</div></div><div class="product-info-item"><div class="product-info-label">🏭 Kode Produsen</div><div class="product-info-value">${manufacturer}</div></div><div class="product-info-item"><div class="product-info-label">📦 Kode Produk</div><div class="product-info-value">${product}</div></div></div>`;
+    } else {
+        pi.style.display='none';
+    }
+    
+    let ac=`<button onclick="copyRes()" class="btn btn-dark" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-copy"></i> Salin Teks</button>`;
+    if(type==='url')ac+=`<button onclick="window.open('${t}','_blank')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-external-link-alt"></i> Buka Website</button>`;
+    if(type==='product')ac+=`<button onclick="searchGoogle('${t}')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-search"></i> Cari di Google</button>`;
+    ac+=`<button onclick="shareRes()" class="btn btn-outline" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-share-alt"></i> Bagikan Hasil</button>`;
+    a.innerHTML=ac;a.style.display='flex';i.style.display='block';i.innerHTML=`<strong>📋 Format:</strong> ${f} | <strong>🕐 Waktu:</strong> ${new Date().toLocaleString('id-ID')}`;
+    if(type==='product'){p.style.display='block';searchGoogle(t)}else{p.style.display='none'}
+}
 function searchGoogle(c){let q=encodeURIComponent(c);document.getElementById('productSearch').innerHTML=`<div class="card" style="padding:10px;text-align:center;margin-top:8px"><p style="font-size:13px;margin-bottom:6px;font-weight:600">🔍 Cari: <strong>${c}</strong></p><a href="https://www.google.com/search?q=${q}+product" target="_blank" class="btn btn-primary btn-sm" style="margin:2px">🔍 Google</a><a href="https://www.google.com/search?q=${q}+barcode+info" target="_blank" class="btn btn-outline btn-sm" style="margin:2px">📦 Info</a></div>`}
 function copyRes(){navigator.clipboard.writeText(scanRes).then(()=>toast('✅ Disalin!'))}
 function shareRes(){if(navigator.share)navigator.share({text:scanRes});else copyRes()}
@@ -369,4 +756,4 @@ if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.ad
 genTab('qr');
 </script>
 </body>
-                                                                                                                                                                                                                                                                               </html>
+</html>

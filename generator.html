@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ... (all CSS from previous code remains the same, only showing critical parts) ... */
         :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#06b6d4;--accent:#8b5cf6;--success:#10b981;--error:#ef4444;--warning:#f59e0b;--dark:#1e293b;--gray:#64748b;--border:#e2e8f0;--light:#f8fafc;--white:#ffffff;--shadow:0 20px 60px rgba(0,0,0,0.3)}
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px}
@@ -93,11 +94,14 @@
         @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
         @keyframes slideOut{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:0}}
         .barcode-options{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-        /* Article */
         .article-section{margin-top:40px;background:white;border-radius:20px;padding:40px;box-shadow:var(--shadow)}
-        .article-title{font-size:28px;font-weight:800;color:var(--dark);margin-bottom:15px;text-align:center}
+        .article-title{font-size:28px;font-weight:800;color:var(--dark);margin-bottom:20px;text-align:center}
+        .article-content h2{font-size:22px;font-weight:700;color:var(--dark);margin:25px 0 15px;padding-bottom:10px;border-bottom:3px solid var(--primary);display:inline-block}
         .article-content p{font-size:16px;line-height:1.8;color:#475569;margin-bottom:20px;text-align:justify}
-        .article-content p:last-child{margin-bottom:0}
+        .article-content ul{margin:15px 0;padding-left:25px}
+        .article-content li{margin-bottom:10px;line-height:1.7;color:#475569}
+        .article-content .highlight-box{background:linear-gradient(135deg,#f0f0ff,#f8f0ff);border-left:4px solid var(--primary);padding:20px;border-radius:8px;margin:20px 0}
+        .article-content .highlight-box p{margin:0;font-style:italic}
         @media(max-width:1024px){.main-grid{grid-template-columns:1fr}.barcode-options{grid-template-columns:1fr}}
         @media(max-width:768px){.type-grid{grid-template-columns:repeat(2,1fr)}.download-grid{grid-template-columns:1fr}.header h1{font-size:32px}.card{padding:20px}.article-section{padding:25px}}
     </style>
@@ -109,9 +113,14 @@
             <p>✨ Buat Kode QR dan Barcode Profesional dengan Fitur Lengkap ✨</p>
         </div>
 
+        <!-- Tabs with onclick for guaranteed switching -->
         <div class="tabs">
-            <button class="tab-btn active" id="tabQR"><i class="fas fa-qrcode"></i> QR Code</button>
-            <button class="tab-btn" id="tabBarcode"><i class="fas fa-barcode"></i> Barcode</button>
+            <button class="tab-btn active" id="tabQR" onclick="switchTab('qr')">
+                <i class="fas fa-qrcode"></i> QR Code
+            </button>
+            <button class="tab-btn" id="tabBarcode" onclick="switchTab('barcode')">
+                <i class="fas fa-barcode"></i> Barcode
+            </button>
         </div>
 
         <!-- QR Section -->
@@ -206,9 +215,24 @@
             <div class="main-grid">
                 <div class="card">
                     <div class="section">
-                        <div class="section-title"><i class="fas fa-barcode"></i> Data Barcode</div>
-                        <div class="form-group"><label class="form-label">Nilai / Data *</label><input type="text" id="barcode-value" placeholder="Masukkan angka atau teks" class="form-input" required></div>
-                        <div class="form-group"><label class="form-label">Format Barcode</label><select id="barcode-format" class="form-input"><option value="CODE128">CODE128 (Auto)</option><option value="EAN13">EAN-13</option><option value="EAN8">EAN-8</option><option value="UPC">UPC-A</option><option value="ITF14">ITF-14</option><option value="MSI">MSI</option><option value="pharmacode">Pharmacode</option><option value="codabar">Codabar</option></select></div>
+                        <div class="section-title"><i class="fas fa-barcode"></i> Pilih Format Barcode</div>
+                        <div class="type-grid" id="barcodeFormatGrid">
+                            <button class="type-btn active" data-format="CODE128"><i class="fas fa-barcode"></i> CODE128</button>
+                            <button class="type-btn" data-format="EAN13"><i class="fas fa-barcode"></i> EAN-13</button>
+                            <button class="type-btn" data-format="EAN8"><i class="fas fa-barcode"></i> EAN-8</button>
+                            <button class="type-btn" data-format="UPC"><i class="fas fa-barcode"></i> UPC-A</button>
+                            <button class="type-btn" data-format="ITF14"><i class="fas fa-barcode"></i> ITF-14</button>
+                            <button class="type-btn" data-format="MSI"><i class="fas fa-barcode"></i> MSI</button>
+                            <button class="type-btn" data-format="pharmacode"><i class="fas fa-barcode"></i> Pharmacode</button>
+                            <button class="type-btn" data-format="codabar"><i class="fas fa-barcode"></i> Codabar</button>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title"><i class="fas fa-edit"></i> Masukkan Data</div>
+                        <div class="form-group">
+                            <label class="form-label">Nilai / Data *</label>
+                            <input type="text" id="barcode-value" placeholder="Masukkan angka atau teks" class="form-input" required>
+                        </div>
                     </div>
                     <div class="section">
                         <div class="section-title"><i class="fas fa-palette"></i> Kustomisasi Barcode</div>
@@ -240,12 +264,49 @@
             </div>
         </div>
 
-        <!-- Article Section -->
+        <!-- Artikel Profesional -->
         <div class="article-section">
-            <h2 class="article-title">📱 Generator Kode QR & Barcode Online Gratis</h2>
+            <h2 class="article-title">📱 Generator QR Code & Barcode Online Gratis: Solusi Lengkap untuk Kebutuhan Visual Anda</h2>
             <div class="article-content">
-                <p>Generator Kode QR & Barcode online gratis kami adalah solusi lengkap untuk kebutuhan pembuatan kode visual profesional. Dengan dukungan 8 jenis konten QR (URL, teks, email, telepon, SMS, WiFi, vCard, dan lokasi) serta 8 format barcode (CODE128, EAN-13, EAN-8, UPC-A, ITF-14, MSI, Pharmacode, dan Codabar), alat ini dirancang untuk memenuhi berbagai kebutuhan bisnis, pendidikan, dan personal. Antarmuka yang intuitif memungkinkan siapa pun, bahkan tanpa keahlian teknis, untuk membuat kode QR dan barcode berkualitas tinggi dalam hitungan detik. Anda dapat menyesuaikan warna, menambahkan logo ke QR code, mengatur ukuran dan margin, serta memilih tingkat koreksi kesalahan untuk memastikan kode dapat dipindai dengan optimal di berbagai media.</p>
-                <p>Keunggulan utama generator ini adalah kemudahan unduh dalam berbagai format (PNG, JPG, SVG) dan opsi cetak langsung. Untuk QR code, fitur logo dan kustomisasi warna memberikan fleksibilitas branding yang luar biasa, sementara untuk barcode, pengaturan lebar garis, tinggi, dan tampilan nilai memberikan kontrol penuh atas hasil akhir. Semua pemrosesan dilakukan di browser Anda (client-side), sehingga data tidak pernah diunggah ke server, menjamin privasi dan keamanan informasi Anda. Baik untuk menu restoran digital, kartu nama, label produk, tiket acara, atau keperluan inventaris, generator ini memberikan solusi gratis tanpa batas, tanpa watermark, dan tanpa perlu registrasi. Cobalah sekarang dan rasakan kemudahan membuat kode QR dan barcode profesional secara instan!</p>
+                <p>Di era digital yang serba cepat, kode QR dan barcode telah menjadi bagian tak terpisahkan dari kehidupan sehari-hari. Keduanya berfungsi sebagai jembatan antara dunia fisik dan digital, memungkinkan pertukaran informasi secara instan hanya dengan sekali pemindaian. <strong>Generator QR Code & Barcode Pro</strong> hadir sebagai solusi lengkap yang menggabungkan kedua teknologi ini dalam satu platform yang mudah digunakan, gratis, dan tanpa batasan. Dengan antarmuka intuitif dan fitur kustomisasi mendalam, alat ini cocok untuk bisnis, pendidikan, pemasaran, dan keperluan pribadi.</p>
+
+                <div class="highlight-box">
+                    <p>💡 <strong>Tahukah Anda?</strong> Penggunaan kode QR meningkat lebih dari 300% sejak tahun 2020, sementara barcode telah menjadi standar global untuk manajemen inventaris dan ritel sejak tahun 1970-an. Kini, keduanya dapat dibuat secara gratis dalam hitungan detik.</p>
+                </div>
+
+                <h2>Fitur Unggulan QR Code Generator</h2>
+                <p>Generator QR Code kami mendukung 8 jenis konten yang paling umum digunakan: URL, teks bebas, email, nomor telepon, SMS, konfigurasi WiFi, vCard, dan lokasi GPS. Setiap jenis konten memiliki formulir khusus yang memudahkan pengisian data. Anda dapat menambahkan logo atau gambar ke tengah kode QR untuk branding, mengatur warna depan dan latar belakang, menyesuaikan ukuran (dari 200px hingga 2000px), mengatur margin, serta memilih tingkat koreksi kesalahan dari L (7%) hingga H (30%). Fitur koreksi kesalahan yang tinggi memastikan kode QR tetap dapat dipindai meskipun sebagian rusak atau tertutup.</p>
+
+                <h2>Kustomisasi Barcode yang Kuat</h2>
+                <p>Barcode generator kami mendukung 8 format populer: CODE128 (otomatis), EAN-13, EAN-8, UPC-A, ITF-14, MSI, Pharmacode, dan Codabar. Sekarang format dapat dipilih dengan sekali klik menggunakan tombol-tombol interaktif, sama seperti memilih jenis konten pada QR code. Anda dapat mengatur warna garis dan latar belakang, lebar garis (1–4 piksel), tinggi barcode (50–200 piksel), serta menampilkan atau menyembunyikan nilai di bawah barcode. Format CODE128 cocok untuk teks alfanumerik, sedangkan EAN/UPC ideal untuk produk ritel. Fitur unduhan tersedia dalam PNG dan SVG, serta opsi cetak langsung untuk kebutuhan label dan kemasan.</p>
+
+                <h2>Mengapa Memilih Generator Ini?</h2>
+                <ul>
+                    <li><strong>100% Gratis:</strong> Tanpa biaya tersembunyi, tanpa watermark, tanpa batasan jumlah.</li>
+                    <li><strong>Privasi Terjamin:</strong> Semua pemrosesan terjadi di browser Anda; data tidak pernah diunggah ke server.</li>
+                    <li><strong>Kualitas Tinggi:</strong> Hasil unduhan dalam resolusi penuh, cocok untuk cetak dan digital.</li>
+                    <li><strong>Antarmuka Ramah Pengguna:</strong> Desain responsif yang mudah digunakan di desktop maupun perangkat mobile.</li>
+                    <li><strong>Fitur Lengkap:</strong> Dari logo hingga koreksi kesalahan, semua tersedia tanpa batas.</li>
+                </ul>
+
+                <h2>Aplikasi Praktis untuk Bisnis dan Personal</h2>
+                <p><strong>QR Code:</strong> Restoran dapat mengganti menu fisik dengan QR code; toko ritel menghubungkan produk ke ulasan online; kartu nama digital memperkaya networking; dan kampanye pemasaran menjadi lebih interaktif. <strong>Barcode:</strong> Pengelolaan inventaris gudang, pelabelan produk retail, tiket acara, manajemen perpustakaan, dan pelacakan aset perusahaan. Kombinasi keduanya memberikan fleksibilitas maksimal untuk berbagai skenario.</p>
+
+                <h2>Tips Membuat Kode yang Efektif</h2>
+                <ul>
+                    <li>Gunakan kontras warna yang cukup antara latar depan dan latar belakang.</li>
+                    <li>Untuk QR code, jangan buat logo terlalu besar (maksimal 30% dari ukuran).</li>
+                    <li>Pilih tingkat koreksi kesalahan H untuk media cetak yang rentan rusak.</li>
+                    <li>Untuk barcode, pastikan data sesuai dengan format yang dipilih (misal EAN-13 harus 12–13 digit angka).</li>
+                    <li>Selalu uji hasil dengan beberapa aplikasi pemindai berbeda sebelum dipublikasikan.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>🎯 <strong>Fakta Menarik:</strong> Kode QR dengan koreksi kesalahan tingkat H tetap berfungsi meskipun 30% dari kode rusak atau tertutup. Barcode EAN-13 adalah standar global untuk produk ritel dan dapat dibaca oleh hampir semua scanner di seluruh dunia.</p>
+                </div>
+
+                <h2>Kesimpulan</h2>
+                <p>Generator QR Code & Barcode Pro adalah alat yang wajib dimiliki di era modern. Dengan menggabungkan dua teknologi penting dalam satu platform gratis, Anda dapat membuat kode visual profesional untuk segala keperluan tanpa memerlukan keahlian teknis. Cobalah sekarang dan rasakan kemudahannya – buat, unduh, dan bagikan kode Anda dalam hitungan detik!</p>
             </div>
         </div>
     </div>
@@ -255,31 +316,15 @@
     <script>
         // Global variables
         let currentType = 'url';
+        let currentBarcodeFormat = 'CODE128';
         let logoImage = null;
         let currentQRCanvas = null;
         let currentQRDataURL = null;
         let currentBarcodeCanvas = null;
         let currentBarcodeDataURL = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setupTabs();
-            setupQRTypeButtons();
-            setupColorSync();
-            setupRangeSliders();
-            setupLogoUpload();
-            setupQRGenerateButton();
-            setupQRDownloadButtons();
-            setupQRActionButtons();
-            setupBarcodeGenerateButton();
-            setupBarcodeDownloadButtons();
-        });
-
-        // Tabs
-        function setupTabs() {
-            document.getElementById('tabQR').addEventListener('click', () => switchTab('qr'));
-            document.getElementById('tabBarcode').addEventListener('click', () => switchTab('barcode'));
-        }
-        function switchTab(tab) {
+        // Make switchTab global and use inline onclick fallback
+        window.switchTab = function(tab) {
             const qrSection = document.getElementById('qrSection');
             const barcodeSection = document.getElementById('barcodeSection');
             const tabQR = document.getElementById('tabQR');
@@ -291,17 +336,46 @@
                 tabBarcode.classList.add('active'); tabQR.classList.remove('active');
                 barcodeSection.classList.remove('hidden'); qrSection.classList.add('hidden');
             }
-        }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupQRTypeButtons();
+            setupBarcodeFormatButtons();
+            setupColorSync();
+            setupRangeSliders();
+            setupLogoUpload();
+            setupQRGenerateButton();
+            setupQRDownloadButtons();
+            setupQRActionButtons();
+            setupBarcodeGenerateButton();
+            setupBarcodeDownloadButtons();
+            // Additional safety: attach listeners to tabs if inline onclick didn't
+            document.getElementById('tabQR').addEventListener('click', () => switchTab('qr'));
+            document.getElementById('tabBarcode').addEventListener('click', () => switchTab('barcode'));
+            console.log('Semua fitur siap. Barcode tab dapat diklik.');
+        });
 
         // QR Type Buttons
         function setupQRTypeButtons() {
-            document.querySelectorAll('.type-btn').forEach(btn => {
+            document.querySelectorAll('#typeGrid .type-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+                    document.querySelectorAll('#typeGrid .type-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     currentType = this.dataset.type;
                     document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
                     document.getElementById('panel-' + currentType).classList.add('active');
+                });
+            });
+        }
+
+        // Barcode Format Buttons
+        function setupBarcodeFormatButtons() {
+            document.querySelectorAll('#barcodeFormatGrid .type-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('#barcodeFormatGrid .type-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentBarcodeFormat = this.dataset.format;
+                    console.log('Format barcode dipilih:', currentBarcodeFormat);
                 });
             });
         }
@@ -616,7 +690,7 @@
                 display.classList.remove('hidden');
                 placeholder.classList.add('hidden');
                 try {
-                    const format = document.getElementById('barcode-format').value;
+                    const format = currentBarcodeFormat;
                     const lineColor = document.getElementById('barcode-line-color').value;
                     const bgColor = document.getElementById('barcode-bg-color').value;
                     const width = parseInt(document.getElementById('barcodeWidth').value);
@@ -698,7 +772,7 @@
         function downloadBarcodeSVG() {
             const value = document.getElementById('barcode-value').value.trim();
             if(!value) { showToast('⚠️ Tidak ada data barcode', 'error'); return; }
-            const format = document.getElementById('barcode-format').value;
+            const format = currentBarcodeFormat;
             const lineColor = document.getElementById('barcode-line-color').value;
             const bgColor = document.getElementById('barcode-bg-color').value;
             const width = parseInt(document.getElementById('barcodeWidth').value);
@@ -757,4 +831,4 @@
         });
     </script>
 </body>
-</html>
+    </html>

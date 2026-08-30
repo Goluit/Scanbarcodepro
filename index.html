@@ -3,11 +3,13 @@
 <head><meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-     <title>ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia - Scan QR Code Live Camera</title>
+    
+    <title>ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia - Scan QR Code Live Camera</title>
     <meta name="description" content="ScanBarcode Pro - Pemindai barcode online gratis #1 Indonesia. Scan QR code dan barcode dari kamera live. QR generator profesional. 100% privat.">
     <meta name="keywords" content="scan barcode, pemindai barcode online, scan qr code, barcode scanner, qr code generator">
     <meta name="theme-color" content="#2563eb">
-     <meta property="og:title" content="ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia">
+    
+    <meta property="og:title" content="ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia">
     <meta property="og:description" content="Pemindai barcode online gratis dengan live camera. 100% privat.">
     
     <link rel="manifest" href="data:application/json,{'name':'ScanBarcode Pro','short_name':'ScanPro','start_url':'/','display':'standalone','background_color':'#2563eb','theme_color':'#2563eb','icons':[{'src':'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>','sizes':'any','type':'image/svg+xml'}]}">
@@ -313,319 +315,13 @@
     <div class="page" id="page-riwayat">
         <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px"><h2 style="font-weight:700;font-size:1.2rem"><i class="fas fa-history"></i> Riwayat Scan</h2><div style="display:flex;gap:8px"><button onclick="exportHistory()" class="btn btn-primary btn-sm"><i class="fas fa-file-csv"></i> Export CSV</button><button onclick="clearHistory()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button></div></div><div id="historyList" style="max-height:450px;overflow-y:auto"></div><div id="historyEmpty" style="text-align:center;color:#9ca3af;padding:55px"><div style="font-size:2.8rem">📭</div><p>Belum ada riwayat</p></div></div>
     </div>
-<!--Blog -->
-    /* Blog section – image cut fix + responsive */
-.blog-section-wrap {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 16px 40px;
-}
-.blog-section-wrap .blog-heading {
-  text-align: center;
-  margin-bottom: 36px;
-}
-.blog-section-wrap .blog-heading h2 {
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 800;
-  margin-bottom: 8px;
-  color: var(--text, #1e293b);
-}
-.blog-section-wrap .blog-heading p {
-  color: #64748b;
-  font-size: 15px;
-}
-.blog-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-.blog-card-item {
-  background: var(--card, #fff);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid var(--border, #dbeafe);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-}
-.blog-card-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 38px rgba(0,0,0,0.1);
-  border-color: #3b82f6;
-}
-/* IMAGE FIX – no cut on desktop / mobile */
-.blog-card-thumb {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: #e2e8f0;
-  flex-shrink: 0;
-}
-.blog-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  display: block;
-  transition: transform 0.35s ease;
-}
-.blog-card-item:hover .blog-card-thumb img {
-  transform: scale(1.05);
-}
-.blog-card-content {
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.blog-card-content h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0 0 8px;
-  line-height: 1.4;
-  color: var(--text, #1e293b);
-}
-.blog-card-content p {
-  font-size: 13.5px;
-  color: #64748b;
-  margin: 0 0 14px;
-  line-height: 1.6;
-  flex: 1;
-}
-.blog-card-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 14px;
-  font-size: 12px;
-  color: #94a3b8;
-  margin-bottom: 12px;
-}
-.blog-card-read {
-  color: #2563eb;
-  font-weight: 700;
-  font-size: 13px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.blog-card-item:hover .blog-card-read {
-  color: #1d4ed8;
-}
-.blog-see-all {
-  text-align: center;
-  margin-top: 36px;
-}
-.blog-see-all a {
-  display: inline-block;
-  padding: 12px 28px;
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  color: #fff;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-}
-.blog-see-all a:hover {
-  opacity: 0.92;
-}
-@media (max-width: 768px) {
-  .blog-cards-grid { grid-template-columns: 1fr; gap: 18px; }
-  .blog-card-thumb { aspect-ratio: 16 / 9; }
-  .blog-section-wrap { padding: 0 14px 30px; margin: 36px auto; }
-}
-@media (min-width: 769px) and (max-width: 1023px) {
-  .blog-cards-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 1024px) {
-  .blog-cards-grid { grid-template-columns: repeat(3, 1fr); }
-}
-/* Dark mode support if your index uses .dark */
-.dark .blog-section-wrap .blog-heading h2 { color: #e2e8f0; }
-.dark .blog-card-item { background: #111827; border-color: #1e3a5f; }
-.dark .blog-card-content h3 { color: #f1f5f9; }
-.dark .blog-card-content p { color: #94a3b8; }
-</style>
 
-<section class="blog-section-wrap" id="blog">
-  <div class="blog-heading">
-    <h2>📰 Blog ScanBarcode</h2>
-    <p>10 Artikel lengkap tentang scan barcode, QR code, dan teknologi scanning</p>
-  </div>
+    <!-- BLOG -->
+    <div class="page" id="page-blog">
+        <div id="blogListView"><h2 style="font-weight:800;font-size:2rem;margin-bottom:6px"><i class="fas fa-newspaper"></i> Blog ScanBarcode</h2><p style="color:#64748b;margin-bottom:28px;font-size:16px">Artikel lengkap tentang scan barcode</p><div class="blog-grid" id="blogGrid"></div></div>
+        <div id="blogDetailView" class="hidden"><button class="blog-back" onclick="closeBlog()"><i class="fas fa-arrow-left"></i> Kembali</button><div id="blogDetailContent"></div></div>
+    </div>
 
-  <div class="blog-cards-grid">
-
-    <!-- 1 -->
-    <a href="/qr-code-scanner-from-image.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/qr-code-scanner-from-image.jpg" alt="QR Code Scanner from Image" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>QR Code Scanner from Image – Scan dari Foto</h3>
-        <p>Upload gambar QR Code atau screenshot dan langsung dapatkan hasilnya. Cocok saat kamera tidak bisa digunakan.</p>
-        <div class="blog-card-meta">
-          <span>📅 24 Agustus 2026</span>
-          <span>⏱ 5 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 2 -->
-    <a href="/tips-scan-barcode-rusak.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/tips-scan-barcode-rusak.png" alt="Tips Scan Barcode Rusak" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Tips Scan Barcode yang Rusak atau Buram</h3>
-        <p>Panduan lengkap mengatasi barcode yang sulit dibaca. Solusi praktis untuk barcode pudar, terlipat, atau rusak.</p>
-        <div class="blog-card-meta">
-          <span>📅 20 Agustus 2026</span>
-          <span>⏱ 7 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 3 -->
-    <a href="/perbedaan-qris-static-vs-dynamic.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/perbedaan-qris-static-vs-dynamic.png" alt="QRIS Static vs Dynamic" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Perbedaan QRIS Static vs Dynamic</h3>
-        <p>Tabel perbandingan lengkap, kelebihan, kekurangan, dan rekomendasi memilih QRIS untuk bisnis Anda.</p>
-        <div class="blog-card-meta">
-          <span>📅 20 Agustus 2026</span>
-          <span>⏱ 8 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 4 -->
-    <a href="/online-scanner-vs-aplikasi-mobile.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/online-scanner-vs-aplikasi-mobile.png" alt="Online Scanner vs Aplikasi" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Online Barcode Scanner vs Aplikasi Mobile</h3>
-        <p>Mana yang lebih baik? Perbandingan lengkap antara scanner online dan aplikasi mobile.</p>
-        <div class="blog-card-meta">
-          <span>📅 21 Agustus 2026</span>
-          <span>⏱ 7 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 5 -->
-    <a href="/cara-scan-resi.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/cara-scan-resi.png" alt="Cara Scan Resi" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Cara Scan Resi Pengiriman Online</h3>
-        <p>Cara mudah scan resi JNE, J&T, SiCepat, dan ekspedisi lain langsung dari HP tanpa aplikasi.</p>
-        <div class="blog-card-meta">
-          <span>📅 19 Agustus 2026</span>
-          <span>⏱ 6 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 6 -->
-    <a href="/cara-cek-resi-barcode.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/cara-cek-resi-barcode.png" alt="Cara Cek Resi Barcode" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Cara Cek Resi Lewat Barcode</h3>
-        <p>Panduan lengkap cara cek status pengiriman hanya dengan scan barcode resi.</p>
-        <div class="blog-card-meta">
-          <span>📅 22 Agustus 2026</span>
-          <span>⏱ 5 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 7 -->
-    <a href="/cara-scan-barcode-di-hp.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/cara-scan-barcode-di-hp.png" alt="Cara Scan Barcode di HP" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Cara Scan Barcode di HP Tanpa Aplikasi</h3>
-        <p>Langkah mudah scan barcode produk, QRIS, dan QR Code langsung dari browser HP.</p>
-        <div class="blog-card-meta">
-          <span>📅 18 Agustus 2026</span>
-          <span>⏱ 6 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 8 -->
-    <a href="/cara-scan-barcode-wifi.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/cara-scan-barcode-wifi.jpg" alt="Cara Scan WiFi QR" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Cara Scan Barcode / QR WiFi</h3>
-        <p>Cara mudah terhubung ke WiFi hanya dengan scan QR Code, tanpa ketik password manual.</p>
-        <div class="blog-card-meta">
-          <span>📅 17 Agustus 2026</span>
-          <span>⏱ 5 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 9 -->
-    <a href="/cara-scan-qris.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/cara-scan-qris.png" alt="Cara Scan QRIS" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Cara Scan QRIS Online Tanpa Aplikasi</h3>
-        <p>Panduan lengkap scan QRIS untuk pembayaran digital langsung dari browser.</p>
-        <div class="blog-card-meta">
-          <span>📅 16 Agustus 2026</span>
-          <span>⏱ 6 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-    <!-- 10 -->
-    <a href="/jenis-barcode.html" class="blog-card-item">
-      <div class="blog-card-thumb">
-        <img src="/jenis-barcode.jpg" alt="Jenis Barcode" loading="lazy" width="640" height="400">
-      </div>
-      <div class="blog-card-content">
-        <h3>Jenis-Jenis Barcode yang Perlu Diketahui</h3>
-        <p>Penjelasan lengkap EAN, UPC, Code 128, QR Code, Data Matrix, dan format lainnya.</p>
-        <div class="blog-card-meta">
-          <span>📅 15 Agustus 2026</span>
-          <span>⏱ 8 menit baca</span>
-        </div>
-        <span class="blog-card-read">Baca Selengkapnya →</span>
-      </div>
-    </a>
-
-  </div>
-
-  <div class="blog-see-all">
-    <a href="/blog.html">Lihat Semua Artikel →</a>
-  </div>
-</section>
-    
     <!-- TENTANG -->
     <div class="page" id="page-tentang"><div class="card" style="max-width:880px;margin:0 auto;line-height:2"><h1 style="font-weight:800;font-size:1.8rem;margin-bottom:18px">ℹ️ Tentang ScanBarcode Pro</h1><p>ScanBarcode Pro didirikan 2023 sebagai pemindai barcode online gratis #1 di Indonesia. 5M+ pemindaian, 50+ format, 100% privat.</p></div></div>
 
@@ -659,6 +355,13 @@ const GS1_COUNTRIES = {
     '520':'Yunani','521':'Yunani','528':'Lebanon','529':'Siprus','530':'Albania','531':'Makedonia','535':'Malta','539':'Irlandia','540':'Belgia','541':'Belgia','542':'Belgia','543':'Belgia','544':'Belgia','545':'Belgia','546':'Belgia','547':'Belgia','548':'Belgia','549':'Belgia','560':'Portugal','569':'Islandia','570':'Denmark','571':'Denmark','572':'Denmark','573':'Denmark','574':'Denmark','575':'Denmark','576':'Denmark','577':'Denmark','578':'Denmark','579':'Denmark','590':'Polandia','594':'Rumania','599':'Hungaria',
     '700':'Norwegia','701':'Norwegia','702':'Norwegia','703':'Norwegia','704':'Norwegia','705':'Norwegia','706':'Norwegia','707':'Norwegia','708':'Norwegia','709':'Norwegia','730':'Swedia','731':'Swedia','732':'Swedia','733':'Swedia','734':'Swedia','735':'Swedia','736':'Swedia','737':'Swedia','738':'Swedia','739':'Swedia','740':'Guatemala','741':'El Salvador','742':'Honduras','743':'Nikaragua','744':'Kosta Rika','745':'Panama','746':'Republik Dominika','759':'Venezuela','760':'Swiss','761':'Swiss','762':'Swiss','763':'Swiss','764':'Swiss','765':'Swiss','766':'Swiss','767':'Swiss','768':'Swiss','769':'Swiss','773':'Uruguay','775':'Peru','777':'Bolivia','780':'Chili','784':'Paraguay','786':'Ekuador'
 };
+
+// ===== BLOG DATA =====
+const blogImgs=['https://images.unsplash.com/photo-1586281380349-632531db7ed1?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553729459-afe8a1f19b2a?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop'];
+const blogs=[{id:1,title:'Cara Memindai Barcode dengan Kamera HP',cat:'Tutorial',date:'15 Maret 2026',excerpt:'Panduan lengkap scan barcode pakai HP.',content:'<p>Di era digital, memindai barcode sudah menjadi kebutuhan. ScanBarcode Pro hadir sebagai solusi praktis, gratis, dan 100% privat.</p><h2>Langkah 1</h2><p>Buka browser dan kunjungi ScanBarcode Pro.</p><h2>Langkah 2</h2><p>Klik "Mulai Kamera" dan izinkan akses.</p><h2>Langkah 3</h2><p>Arahkan ke barcode. Hasil muncul instan.</p>'},{id:2,title:'Perbedaan EAN dan UPC',cat:'Retail',date:'10 Maret 2026',excerpt:'Memahami EAN-13 dan UPC-A.',content:'<p>EAN-13 digunakan global termasuk Indonesia. UPC-A digunakan di Amerika.</p>'},{id:3,title:'QRIS: Pembayaran Digital',cat:'Fintech',date:'5 Maret 2026',excerpt:'Standar nasional Bank Indonesia.',content:'<p>QRIS menyatukan berbagai kode QR menjadi satu standar nasional.</p>'},{id:4,title:'Manajemen Inventori UMKM',cat:'Bisnis',date:'28 Februari 2026',excerpt:'Optimalkan stok dengan barcode.',content:'<p>Sistem barcode membantu UMKM melacak stok dengan akurat.</p>'},{id:5,title:'WiFi QR Code',cat:'Tools',date:'20 Februari 2026',excerpt:'Permudah pelanggan terhubung.',content:'<p>WiFi QR code berisi informasi koneksi. Scan dan otomatis terhubung.</p>'},{id:6,title:'Keamanan QR Code',cat:'Keamanan',date:'15 Februari 2026',excerpt:'Tips hindari QR palsu.',content:'<p>Periksa URL, waspada QR tempelan, gunakan scanner terpercaya.</p>'}];
+function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card" onclick="openBlog(${b.id})"><div class="blog-img" style="background-image:url('${blogImgs[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date} • 5 menit</span></div></div>`).join('')}
+function openBlog(id){let b=blogs.find(x=>x.id===id)||blogs[0];document.getElementById('blogListView').classList.add('hidden');document.getElementById('blogDetailView').classList.remove('hidden');document.getElementById('blogDetailContent').innerHTML=`<div class="blog-detail-header" style="background-image:url('${blogImgs[id-1]}')"><div><span style="font-size:12px;font-weight:700;text-transform:uppercase">${b.cat}</span><h1 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin:10px 0">${b.title}</h1><span style="font-size:14px">📅 ${b.date}</span></div></div><div class="blog-detail-content">${b.content}</div>`;window.scrollTo(0,0)}
+function closeBlog(){document.getElementById('blogListView').classList.remove('hidden');document.getElementById('blogDetailView').classList.add('hidden');window.scrollTo(0,0)}
 
 // ===== CAMERA SCANNER =====
 let scanner=null,scanRes='',scanning=!1,torchOn=!1,curCam=null,cams=[];
@@ -747,4 +450,4 @@ if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.ad
 genTab('qr');
 </script>
 </body>
-</html>
+                                                                                                                                                                                                                                                                                                               </html>

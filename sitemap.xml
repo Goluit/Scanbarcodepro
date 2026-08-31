@@ -3,7 +3,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://scanbarcode-pro.vercel.app/</loc>
+    <loc>https://scanbarcode-pro.vercel.app/index.html</loc>
     <lastmod>2026-08-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>

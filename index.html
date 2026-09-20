@@ -3,16 +3,14 @@
 <head><meta name="google-site-verification" content="qsNZ4wuXFPl9HWkoaTKg3abalBUy1eiwFOM3dYmq4tk" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    
-    <title>ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia - Scan QR Code Live Camera</title>
-    <meta name="description" content="ScanBarcode Pro - Pemindai barcode online gratis #1 Indonesia. Scan QR code dan barcode dari kamera live. QR generator profesional. 100% privat.">
-    <meta name="keywords" content="scan barcode, pemindai barcode online, scan qr code, barcode scanner, qr code generator">
+    <title>ScanBarcode Pro — Pemindai & Generator QR/Barcode Online Gratis #1 Indonesia</title>
+    <meta name="description" content="ScanBarcode Pro — pemindai barcode online gratis terbaik di Indonesia. Scan QR code dari kamera live, generator QR & barcode profesional dengan logo, warna, dan unduhan PNG/SVG.">
+    <meta name="keywords" content="scan barcode, pemindai barcode online, scan qr code, barcode scanner indonesia, qr code generator, generator barcode online">
     <meta name="theme-color" content="#2563eb">
     <link rel="canonical" href="https://scanbarcode-pro.vercel.app/" />
     
-    <meta property="og:title" content="ScanBarcode Pro | Pemindai Barcode Online Gratis #1 Indonesia">
-    <meta property="og:description" content="Pemindai barcode online gratis dengan live camera. 100% privat.">
-    
+    <meta property="og:title" content="ScanBarcode Pro — Pemindai & Generator QR/Barcode #1 Indonesia">
+    <meta property="og:description" content="Pemindai barcode online gratis dengan live camera + generator QR & barcode profesional.">
     <link rel="manifest" href="data:application/json,{'name':'ScanBarcode Pro','short_name':'ScanPro','start_url':'/','display':'standalone','background_color':'#2563eb','theme_color':'#2563eb','icons':[{'src':'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📷</text></svg>','sizes':'any','type':'image/svg+xml'}]}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -20,350 +18,596 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <style>
-        :root{--bg:#f0f4ff;--text:#1e293b;--card:#ffffff;--border:#dbeafe;--primary:#2563eb;--hover:#eff6ff}
-        .dark{--bg:#0a0f1e;--text:#e2e8f0;--card:#111827;--border:#1e3a5f;--hover:#1a2744}
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:all 0.3s;line-height:1.8;display:flex;flex-direction:column;font-size:16px}
-        
-        .navbar{background:var(--card);border-bottom:1px solid var(--border);padding:0 18px;position:sticky;top:0;z-index:1000;box-shadow:0 2px 16px rgba(37,99,235,0.06)}
-        .nav-container{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:64px}
-        .logo{display:flex;align-items:center;gap:8px;cursor:pointer;text-decoration:none;color:var(--text);font-weight:800;font-size:18px}
-        .logo-icon{width:40px;height:40px;background:linear-gradient(135deg,#2563eb,#3b82f6);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;font-weight:700}
-        .logo span{color:#2563eb}.logo sub{font-size:7px;color:#9ca3af;letter-spacing:1.5px;display:block;margin-top:-3px}
-        .nav-links{display:flex;gap:1px;list-style:none}.nav-links a{padding:7px 12px;border-radius:7px;text-decoration:none;color:var(--text);font-size:13px;font-weight:600;transition:all 0.2s}.nav-links a:hover{background:var(--hover);color:#2563eb}
-        
-        .hamburger-btn{width:42px;height:42px;border-radius:10px;border:none;background:var(--hover);cursor:pointer;display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px}
-        .hamburger-btn span{display:block;width:23px;height:2.5px;background:var(--text);border-radius:3px;transition:all 0.35s}
-        .hamburger-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-        .hamburger-btn.open span:nth-child(2){opacity:0}
-        .hamburger-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-        
-        .theme-btn{width:42px;height:42px;border-radius:50%;border:none;background:var(--hover);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
-        .mobile-menu{display:none;background:var(--card);border-top:1px solid var(--border);padding:10px}.mobile-menu.show{display:block}
-        .mobile-menu a{display:block;padding:14px 18px;font-weight:600;text-decoration:none;color:var(--text);border-radius:10px;font-size:15px;margin-bottom:2px}
-        
-        .main-content{flex:1;max-width:1280px;margin:0 auto;padding:36px 20px 50px;width:100%}
-        .page{display:none}.page.active{display:block;animation:fadeIn 0.45s}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-        
-        .hero{text-align:center;padding:70px 0 60px}
-        .hero h1{font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;line-height:1.12;margin-bottom:20px;background:linear-gradient(135deg,#2563eb,#3b82f6,#1d4ed8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero p{font-size:18px;color:#64748b;max-width:820px;margin:0 auto 34px;line-height:1.9}
-        
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 32px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;border:none;text-decoration:none;transition:all 0.3s}
-        .btn-primary{background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;box-shadow:0 6px 22px rgba(37,99,235,0.35)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(37,99,235,0.5)}
-        .btn-outline{background:var(--card);border:2px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:#2563eb;color:#2563eb}
-        .btn-success{background:#10b981;color:#fff}.btn-danger{background:#ef4444;color:#fff}.btn-dark{background:#334155;color:#fff}
-        .btn-sm{padding:8px 16px;font-size:13px;border-radius:10px}
-        .btn-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;border:none;background:#334155;color:#fff;transition:all 0.3s}.btn-icon:hover{background:#475569;transform:scale(1.08)}.torch-on{background:#fbbf24!important;color:#000!important}
-        
-        .card{background:var(--card);border-radius:18px;padding:30px;box-shadow:0 4px 24px rgba(0,0,0,0.05);border:1px solid var(--border);transition:all 0.35s}.card:hover{transform:translateY(-3px);box-shadow:0 10px 34px rgba(0,0,0,0.08)}
-        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:40px 0}.stat-card{background:var(--card);border-radius:16px;padding:26px 18px;text-align:center;border:1px solid var(--border)}.stat-num{font-size:38px;font-weight:900}.stat-label{color:#64748b;font-size:14px;margin-top:5px}
-        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:40px 0}
-        
-        .scanner-wrapper{display:flex;flex-direction:column;align-items:center;gap:24px}
-        .scanner-content{display:grid;grid-template-columns:1fr;gap:24px;width:100%;max-width:1000px}@media(min-width:900px){.scanner-content{grid-template-columns:1fr 1fr}}
-        .scanner-box{background:#000;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:4/3;box-shadow:0 30px 80px rgba(0,0,0,0.45),0 0 0 4px rgba(37,99,235,0.35);max-width:460px;width:100%;margin:0 auto;border:2px solid rgba(37,99,235,0.6)}
-        .scanner-box video{width:100%;height:100%;object-fit:cover;display:block}
-        .scanner-laser{position:absolute;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6,transparent);z-index:10;pointer-events:none;animation:laserTopToBottom 2s linear infinite;box-shadow:0 0 40px #3b82f6,0 0 80px #60a5fa;display:none;border-radius:50%;will-change:top}
-        @keyframes laserTopToBottom{0%{top:0%}50%{top:50%}100%{top:100%}}
-        .cam-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000;color:#64748b;z-index:5}
-        
-        .result-box{min-height:240px;display:flex;align-items:center;justify-content:center;background:var(--bg);border:2px dashed var(--border);border-radius:16px;padding:24px;text-align:center;transition:all 0.4s}.result-box.success{background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-color:#3b82f6;border-style:solid;box-shadow:0 8px 30px rgba(59,130,246,0.15)}
-        
-        /* Product Info Grid */
-        .product-info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
-        .product-info-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px;text-align:center}
-        .product-info-label{font-size:10px;color:#64748b;text-transform:uppercase;font-weight:700;letter-spacing:0.5px;margin-bottom:3px}
-        .product-info-value{font-size:14px;font-weight:700;color:var(--text);word-break:break-all}
-        
-        .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px}
-        .blog-card{background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 4px 18px rgba(0,0,0,0.04);cursor:pointer;transition:all 0.35s}.blog-card:hover{transform:translateY(-6px);box-shadow:0 16px 38px rgba(0,0,0,0.1)}
-        .blog-img{height:220px;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:22px;color:#fff;font-weight:800;font-size:18px;position:relative;overflow:hidden}.blog-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:65%;background:linear-gradient(transparent,rgba(0,0,0,0.8))}.blog-img span{position:relative;z-index:1}
-        .blog-info{padding:20px}.blog-cat{font-size:11px;font-weight:700;color:#2563eb;text-transform:uppercase}.blog-title{font-size:17px;font-weight:700;margin:8px 0}.blog-date{font-size:12px;color:#9ca3af}.blog-excerpt{font-size:14px;color:#64748b;margin-top:8px}
-        
-        .blog-detail-header{height:280px;background-size:cover;background-position:center;border-radius:20px;display:flex;align-items:flex-end;padding:32px;color:#fff;position:relative;overflow:hidden;margin-bottom:30px}.blog-detail-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:65%;background:linear-gradient(transparent,rgba(0,0,0,0.85))}.blog-detail-header div{position:relative;z-index:1}
-        .blog-detail-content{max-width:880px;margin:0 auto;line-height:2.1;font-size:16px}.blog-detail-content h2{font-size:1.7rem;font-weight:800;color:#2563eb;margin:34px 0 16px}.blog-detail-content p{margin-bottom:18px}
-        .blog-back{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:var(--hover);border:none;border-radius:12px;font-weight:600;font-size:14px;cursor:pointer;color:var(--text);margin-bottom:22px}.blog-back:hover{background:#2563eb;color:#fff}
-        
-        .gen-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}@media(max-width:768px){.gen-grid{grid-template-columns:1fr}}
-        .qr-pro-header{background:linear-gradient(135deg,#2563eb,#3b82f6,#60a5fa);border-radius:18px 18px 0 0;padding:22px 28px;color:#fff;display:flex;align-items:center;gap:14px}
-        .qr-type-btn{padding:9px 15px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--text);transition:all 0.25s}.qr-type-btn.active{background:#2563eb;color:#fff;border-color:#2563eb}
-        
-        .keywords-section{background:var(--card);border-radius:16px;padding:24px;margin:38px 0;border:1px solid var(--border)}.kw-list{display:flex;flex-wrap:wrap;gap:10px}.kw-tag{padding:8px 18px;background:var(--hover);border-radius:22px;font-size:14px;font-weight:500;text-decoration:none;color:var(--text);border:1.5px solid var(--border)}.kw-tag:hover{background:#2563eb;color:#fff}
-        
-        .footer{background:#0f172a;color:#94a3b8;padding:55px 28px 25px;margin-top:auto}
-        .footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:45px;margin-bottom:35px}
-        .footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:14px}.footer p{font-size:14px;line-height:2;opacity:0.8}.footer ul{list-style:none;padding:0}.footer ul li{margin-bottom:9px}.footer ul li a{font-size:14px;text-decoration:none;color:#94a3b8;opacity:0.8;transition:all 0.25s}.footer ul li a:hover{color:#fff}
-        .footer-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}.footer-tag{font-size:11px;color:#94a3b8;text-decoration:none;padding:5px 12px;border:1px solid #334155;border-radius:18px}.footer-tag:hover{color:#fff;border-color:#2563eb;background:#2563eb}
-        .footer-bottom{max-width:1280px;margin:0 auto;text-align:center;padding-top:20px;border-top:1px solid #1e293b;font-size:12px;opacity:0.65;line-height:2}
-        
-        .toast{position:fixed;top:18px;right:18px;z-index:9999;padding:13px 22px;border-radius:12px;color:#fff;font-weight:600;box-shadow:0 10px 35px rgba(0,0,0,0.3);animation:toastIn 0.4s;font-size:14px}
-        @keyframes toastIn{from{transform:translateX(120%);opacity:0}to{transform:translateX(0);opacity:1}}
-        .hidden{display:none!important}
-        
-        @media(max-width:768px){.nav-links{display:none}.hamburger-btn{display:flex}.stats-grid{grid-template-columns:repeat(2,1fr)}.features-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr;gap:30px}.blog-grid{grid-template-columns:1fr}.scanner-content{grid-template-columns:1fr}.gen-grid{grid-template-columns:1fr}.product-info-grid{grid-template-columns:1fr}}
+        :root { --bg:#f0f4ff; --text:#1e293b; --card:#ffffff; --border:#dbeafe; --primary:#2563eb; --hover:#eff6ff; }
+        .dark { --bg:#0a0f1e; --text:#e2e8f0; --card:#111827; --border:#1e3a5f; --hover:#1a2744; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition:all 0.3s; line-height:1.8; display:flex; flex-direction:column; font-size:16px; }
+        .navbar { background:var(--card); border-bottom:1px solid var(--border); padding:0 18px; position:sticky; top:0; z-index:1000; box-shadow:0 2px 16px rgba(37,99,235,0.06); backdrop-filter:blur(20px); }
+        .nav-container { max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; height:68px; }
+        .logo { display:flex; align-items:center; gap:12px; cursor:pointer; text-decoration:none; color:var(--text); }
+        .logo-icon { width:48px; height:48px; background:linear-gradient(135deg,#1e40af,#2563eb,#60a5fa); background-size:300% 300%; animation:gradientShift 6s ease-in-out infinite; border-radius:14px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:22px; font-weight:800; box-shadow:0 6px 24px rgba(37,99,235,0.45); }
+        @keyframes gradientShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        .logo-text { font-size:20px; font-weight:800; letter-spacing:-0.6px; line-height:1.15; }
+        .logo-text span { color:#2563eb; }
+        .logo-sub { font-size:7px; color:#9ca3af; letter-spacing:2.5px; display:block; margin-top:1px; font-weight:700; text-transform:uppercase; }
+        .nav-links { display:flex; gap:2px; list-style:none; }
+        .nav-links a { padding:8px 14px; border-radius:8px; text-decoration:none; color:var(--text); font-size:13px; font-weight:600; transition:all 0.25s; }
+        .nav-links a:hover { background:var(--hover); color:#2563eb; }
+        .hamburger-btn { width:42px; height:42px; border-radius:10px; border:none; background:var(--hover); cursor:pointer; display:none; align-items:center; justify-content:center; flex-direction:column; gap:5px; }
+        .hamburger-btn span { display:block; width:22px; height:2.5px; background:var(--text); border-radius:3px; transition:all 0.35s; }
+        .hamburger-btn.open span:nth-child(1){ transform:rotate(45deg) translate(5px,5px); }
+        .hamburger-btn.open span:nth-child(2){ opacity:0; }
+        .hamburger-btn.open span:nth-child(3){ transform:rotate(-45deg) translate(5px,-5px); }
+        .theme-btn { width:42px; height:42px; border-radius:50%; border:none; background:var(--hover); cursor:pointer; font-size:18px; }
+        .mobile-menu { display:none; background:var(--card); border-top:1px solid var(--border); padding:10px; }
+        .mobile-menu.show { display:block; }
+        .mobile-menu a { display:block; padding:14px 18px; font-weight:600; text-decoration:none; color:var(--text); border-radius:10px; font-size:15px; }
+        .main-content { flex:1; max-width:1280px; margin:0 auto; padding:28px 20px 40px; width:100%; }
+        .page { display:none; }
+        .page.active { display:block; animation:fadeIn 0.5s; }
+        @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)} }
+        .hero { text-align:center; padding:56px 0 44px; position:relative; overflow:hidden; }
+        .hero h1 { font-size:clamp(2.3rem,5.5vw,4rem); font-weight:900; line-height:1.1; margin-bottom:20px; background:linear-gradient(135deg,#1e40af,#2563eb,#3b82f6,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-1.5px; }
+        .hero p { font-size:17px; color:#64748b; max-width:780px; margin:0 auto 30px; line-height:1.85; }
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:14px 30px; border-radius:12px; font-weight:700; font-size:15px; cursor:pointer; border:none; text-decoration:none; transition:all 0.3s; }
+        .btn-primary { background:linear-gradient(135deg,#1e40af,#2563eb); color:#fff; box-shadow:0 6px 22px rgba(37,99,235,0.35); }
+        .btn-primary:hover { transform:translateY(-3px); }
+        .btn-outline { background:var(--card); border:2px solid var(--border); color:var(--text); }
+        .btn-outline:hover { border-color:#2563eb; color:#2563eb; }
+        .btn-success { background:#10b981; color:#fff; }
+        .btn-danger { background:#ef4444; color:#fff; }
+        .btn-dark { background:#334155; color:#fff; }
+        .btn-sm { padding:8px 16px; font-size:13px; border-radius:10px; }
+        .btn-icon { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:17px; cursor:pointer; border:none; background:#334155; color:#fff; }
+        .torch-on { background:#fbbf24 !important; color:#000 !important; }
+        .card { background:var(--card); border-radius:18px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.05); border:1px solid var(--border); transition:all 0.35s; }
+        .card:hover { transform:translateY(-3px); }
+        .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:32px 0; }
+        .stat-card { background:var(--card); border-radius:16px; padding:24px 18px; text-align:center; border:1px solid var(--border); }
+        .stat-num { font-size:36px; font-weight:900; }
+        .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:30px 0; }
+        .scanner-wrapper { display:flex; flex-direction:column; align-items:center; gap:22px; }
+        .scanner-content { display:grid; grid-template-columns:1fr; gap:22px; width:100%; max-width:1000px; }
+        @media(min-width:900px){ .scanner-content { grid-template-columns:1fr 1fr; } }
+        .scanner-box { background:#000; border-radius:20px; overflow:hidden; position:relative; aspect-ratio:4/3; box-shadow:0 30px 80px rgba(0,0,0,0.45),0 0 0 4px rgba(37,99,235,0.35); max-width:460px; width:100%; margin:0 auto; border:2px solid rgba(37,99,235,0.6); }
+        .scanner-box video { width:100%; height:100%; object-fit:cover; display:block; }
+        .scanner-laser { position:absolute; left:0; right:0; height:4px; background:linear-gradient(90deg,transparent,#3b82f6,#60a5fa,#93c5fd,#60a5fa,#3b82f6,transparent); z-index:10; pointer-events:none; animation:laserTopToBottom 2s linear infinite; box-shadow:0 0 40px #3b82f6; display:none; border-radius:50%; }
+        @keyframes laserTopToBottom { 0%{top:0%} 50%{top:50%} 100%{top:100%} }
+        .cam-placeholder { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#000; color:#64748b; z-index:5; }
+        .result-box { min-height:220px; display:flex; align-items:center; justify-content:center; background:var(--bg); border:2px dashed var(--border); border-radius:16px; padding:22px; text-align:center; transition:all 0.4s; }
+        .result-box.success { background:linear-gradient(135deg,#f0f9ff,#e0f2fe); border-color:#3b82f6; border-style:solid; box-shadow:0 8px 30px rgba(59,130,246,0.15); }
+        .dark .result-box.success { background:linear-gradient(135deg,#0f172a,#1e3a5f); }
+        .product-info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px; }
+        .product-info-item { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:10px; text-align:center; }
+        .product-info-label { font-size:10px; color:#64748b; text-transform:uppercase; font-weight:700; }
+        .product-info-value { font-size:14px; font-weight:700; }
+        .product-images { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+        .product-image-thumb { width:70px; height:70px; object-fit:cover; border-radius:8px; cursor:pointer; border:2px solid transparent; }
+        .product-image-thumb:hover { border-color:#2563eb; }
+        .product-description { margin-top:10px; background:var(--bg); padding:12px; border-radius:10px; font-size:13px; color:var(--text); }
+        .product-price-row { display:flex; align-items:center; gap:10px; margin-top:10px; background:var(--bg); padding:10px; border-radius:10px; }
+        .product-price-row strong { font-size:14px; }
+        .price-btn { margin-left:auto; }
+        .blog-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px; }
+        .blog-card { background:var(--card); border-radius:16px; overflow:hidden; border:1px solid var(--border); cursor:pointer; transition:all 0.35s; }
+        .blog-card:hover { transform:translateY(-6px); }
+        .blog-img { height:220px; background-size:cover; background-position:center; display:flex; align-items:flex-end; padding:22px; color:#fff; font-weight:800; font-size:18px; position:relative; overflow:hidden; }
+        .blog-img::after { content:''; position:absolute; bottom:0; left:0; right:0; height:65%; background:linear-gradient(transparent,rgba(0,0,0,0.8)); }
+        .blog-img span { position:relative; z-index:1; }
+        .footer { background:#0f172a; color:#94a3b8; padding:50px 28px 20px; margin-top:auto; }
+        .footer-grid { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.8fr 1fr 1fr; gap:40px; margin-bottom:30px; }
+        .footer h4 { color:#fff; font-size:15px; font-weight:700; margin-bottom:12px; }
+        .footer ul { list-style:none; padding:0; }
+        .footer ul li { margin-bottom:8px; }
+        .footer ul li a { color:#94a3b8; text-decoration:none; opacity:0.8; }
+        .footer-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+        .footer-tag { font-size:11px; color:#94a3b8; padding:5px 12px; border:1px solid #334155; border-radius:18px; text-decoration:none; }
+        .footer-bottom { max-width:1280px; margin:0 auto; text-align:center; padding-top:18px; border-top:1px solid #1e293b; font-size:12px; opacity:0.65; }
+        .toast { position:fixed; top:18px; right:18px; z-index:9999; padding:13px 22px; border-radius:12px; color:#fff; font-weight:600; box-shadow:0 10px 35px rgba(0,0,0,0.3); animation:toastIn 0.4s; font-size:14px; }
+        @keyframes toastIn { from{transform:translateX(120%);opacity:0} to{transform:translateX(0);opacity:1} }
+        .hidden { display:none!important; }
+        .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; display:flex; align-items:center; justify-content:center; padding:20px; animation:fadeInModal 0.3s; }
+        .modal-overlay img { max-width:90vw; max-height:90vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+        .modal-close { position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.2); border:none; color:#fff; font-size:24px; width:40px; height:40px; border-radius:50%; cursor:pointer; }
+        @keyframes fadeInModal { from{opacity:0} to{opacity:1} }
+        .faq-item { border-bottom:1px solid var(--border); }
+        .faq-question { width:100%; text-align:left; padding:16px 0; background:none; border:none; cursor:pointer; font-size:16px; font-weight:600; color:var(--text); display:flex; justify-content:space-between; align-items:center; }
+        .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease, padding 0.3s ease; }
+        .faq-answer.show { max-height:300px; padding-bottom:16px; }
+        .faq-answer p { color:#64748b; font-size:14px; }
+        @media(max-width:768px){ .nav-links{display:none} .hamburger-btn{display:flex} .stats-grid{grid-template-columns:repeat(2,1fr)} .features-grid{grid-template-columns:1fr} .footer-grid{grid-template-columns:1fr} .blog-grid{grid-template-columns:1fr} .scanner-content{grid-template-columns:1fr} .product-info-grid{grid-template-columns:1fr} .product-images { justify-content:center; } }
+        .generator-page .header { text-align:center; padding:30px; color:white; margin-bottom:20px; }
+        .generator-page .header h1 { font-size:42px; font-weight:800; color:#fff; text-shadow:2px 2px 4px rgba(0,0,0,0.2); }
+        .generator-page .tabs { display:flex; justify-content:center; gap:20px; margin-bottom:30px; }
+        .generator-page .tab-btn { padding:15px 40px; border:2px solid #fff; background:rgba(255,255,255,0.1); color:#fff; border-radius:30px; cursor:pointer; font-size:18px; font-weight:600; display:flex; align-items:center; gap:10px; backdrop-filter:blur(10px); }
+        .generator-page .tab-btn.active { background:#fff; color:#6366f1; }
+        .generator-page .main-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:20px; }
+        .generator-page .card { background:#fff; border-radius:20px; padding:30px; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+        .generator-page .section { margin-bottom:25px; padding-bottom:25px; border-bottom:2px solid #f1f5f9; }
+        .generator-page .section:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+        .generator-page .section-title { font-size:18px; font-weight:700; color:#1e293b; margin-bottom:15px; display:flex; align-items:center; gap:10px; }
+        .generator-page .type-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+        .generator-page .type-btn { padding:15px 10px; border:2px solid #e2e8f0; background:#fff; border-radius:12px; cursor:pointer; font-size:13px; font-weight:600; color:#64748b; display:flex; flex-direction:column; align-items:center; gap:8px; transition:all 0.3s; }
+        .generator-page .type-btn.active { background:linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff; border-color:transparent; }
+        .generator-page .form-group { margin-bottom:15px; }
+        .generator-page .form-label { display:block; font-size:13px; font-weight:600; color:#64748b; margin-bottom:5px; text-transform:uppercase; }
+        .generator-page .form-input { width:100%; padding:12px 15px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; background:#f8fafc; }
+        .generator-page .form-input:focus { outline:none; border-color:#6366f1; background:#fff; }
+        .generator-page .color-group { display:flex; gap:10px; align-items:center; }
+        .generator-page .color-picker { width:50px; height:45px; border:2px solid #e2e8f0; border-radius:10px; cursor:pointer; padding:2px; }
+        .generator-page .color-hex { flex:1; padding:12px; border:2px solid #e2e8f0; border-radius:10px; font-size:14px; font-family:'Courier New',monospace; }
+        .generator-page .range-group { display:flex; align-items:center; gap:15px; }
+        .generator-page .range-slider { flex:1; height:8px; border-radius:4px; background:#e2e8f0; outline:none; -webkit-appearance:none; }
+        .generator-page .range-slider::-webkit-slider-thumb { -webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#6366f1,#8b5cf6); cursor:pointer; border:3px solid #fff; }
+        .generator-page .range-value { font-weight:700; color:#6366f1; min-width:50px; text-align:center; }
+        .generator-page .upload-box { border:2px dashed #cbd5e1; border-radius:12px; padding:30px; text-align:center; cursor:pointer; background:#f8fafc; }
+        .generator-page .upload-box:hover { border-color:#6366f1; background:#f0f0ff; }
+        .generator-page .file-preview { margin-top:10px; display:flex; align-items:center; gap:10px; padding:15px; background:#f0fdf4; border-radius:10px; border:2px solid #10b981; }
+        .generator-page .file-preview img { width:50px; height:50px; object-fit:cover; border-radius:8px; }
+        .generator-page .btn-remove { padding:8px 15px; background:#ef4444; color:#fff; border:none; border-radius:8px; cursor:pointer; }
+        .generator-page .btn { padding:15px 30px; border:none; border-radius:12px; font-size:16px; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:10px; width:100%; }
+        .generator-page .btn-primary { background:linear-gradient(135deg,#6366f1,#8b5cf6); color:#fff; }
+        .generator-page .preview-box { background:#f8fafc; border:2px dashed #cbd5e1; border-radius:16px; padding:40px; min-height:400px; display:flex; align-items:center; justify-content:center; margin-bottom:25px; }
+        .generator-page .preview-placeholder { text-align:center; color:#94a3b8; }
+        .generator-page .preview-placeholder i { font-size:80px; margin-bottom:15px; }
+        .generator-page .download-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-bottom:15px; }
+        .generator-page .btn-download { padding:12px; background:#10b981; color:#fff; border:none; border-radius:10px; font-size:14px; font-weight:600; display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; }
+        .generator-page .info-box { background:linear-gradient(135deg,#f0f0ff,#f8f0ff); border-radius:12px; padding:20px; margin-top:20px; }
+        .generator-page .info-item { display:flex; justify-content:space-between; padding:8px 0; font-size:14px; }
+        .generator-page .info-label { color:#64748b; font-weight:500; }
+        .generator-page .info-value { font-weight:600; color:#6366f1; }
+        .generator-page .spinner { width:50px; height:50px; border:4px solid #e2e8f0; border-top:4px solid #6366f1; border-radius:50%; animation:spin 0.8s linear infinite; margin:20px auto; }
+        @keyframes spin { to{transform:rotate(360deg)} }
+        .generator-page .toast-container { position:fixed; bottom:30px; right:30px; z-index:10000; display:flex; flex-direction:column; gap:10px; }
+        .generator-page .toast { background:#1e293b; color:#fff; padding:16px 24px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.3); animation:slideIn 0.3s ease; display:flex; align-items:center; gap:10px; font-weight:500; min-width:300px; }
+        .generator-page .toast.success { border-left:4px solid #10b981; }
+        .generator-page .toast.error { border-left:4px solid #ef4444; }
+        .generator-page .toast.info { border-left:4px solid #6366f1; }
+        .generator-page .toast.warning { border-left:4px solid #f59e0b; }
+        @keyframes slideIn { from{transform:translateX(100%);opacity:0} to{transform:translateX(0);opacity:1} }
+        @keyframes slideOut { from{transform:translateX(0);opacity:1} to{transform:translateX(100%);opacity:0} }
+        /* Additional CSS for result improvement */
+        .product-card { background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.08); margin-top: 16px; }
+        .product-image-container { width: 100%; max-height: 200px; display: flex; align-items: center; justify-content: center; background: #f8fafc; padding: 12px; }
+        .dark .product-image-container { background: #1e293b; }
+        .product-image-container img { max-width: 100%; max-height: 180px; object-fit: contain; border-radius: 8px; }
+        .product-details { padding: 16px; }
+        .product-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+        .product-short-desc { font-size: 13px; color: #64748b; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 12px; }
+        .barcode-number { font-family: monospace; font-weight: 700; background: #ffffff; color: #1e293b; padding: 8px 12px; border-radius: 8px; border: 2px solid #3b82f6; display: inline-block; margin-top: 8px; font-size: 14px; }
+        .dark .barcode-number { background: #1e293b; color: #ffffff; border-color: #60a5fa; }
+        /* Highlight class for Google buttons - GREEN */
+        .highlight-btn { background: #10b981 !important; color: #ffffff !important; border: none !important; box-shadow: 0 4px 14px rgba(16,185,129,0.4) !important; }
+        .highlight-btn:hover { background: #059669 !important; }
+        /* Responsive fix for generator main-grid on mobile */
+        @media(max-width:768px){
+            .generator-page .main-grid { grid-template-columns: 1fr !important; gap: 20px; }
+        }
     </style>
 </head>
 <body>
-
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="#" class="logo" onclick="go('home')"><div class="logo-icon">📷</div><div>ScanBarcode<span>Pro</span><sub>ONLINE GRATIS</sub></div></a>
-        <ul class="nav-links">
-            <li><a href="#" onclick="go('home')">Beranda</a></li><li><a href="#" onclick="go('scanner')">Pemindai</a></li><li><a href="#" onclick="go('generator')">Generator</a></li><li><a href="#" onclick="go('riwayat')">Riwayat</a></li><li><a href="#" onclick="go('blog')">Blog</a></li><li><a href="#" onclick="go('tentang')">Tentang</a></li><li><a href="#" onclick="go('kontak')">Kontak</a></li>
-        </ul>
-        <div style="display:flex;align-items:center;gap:8px">
-            <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
-            <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
-        </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#" onclick="go('home')">🏠 Beranda</a><a href="#" onclick="go('scanner')">📷 Pemindai</a><a href="#" onclick="go('generator')">🎨 Generator</a><a href="#" onclick="go('riwayat')">📋 Riwayat</a><a href="#" onclick="go('blog')">📚 Blog</a><a href="#" onclick="go('tentang')">ℹ️ Tentang</a><a href="#" onclick="go('kontak')">📧 Kontak</a>
-    </div>
-</nav>
-
-<div class="main-content">
-
-    <!-- HOME -->
-    <div class="page active" id="page-home">
-        <div class="hero">
-            <h1>Pemindai Barcode Online Gratis<br>Profesional & Terpercaya</h1>
-            <p><strong>ScanBarcode Pro</strong> adalah platform pemindai barcode dan QR code online gratis terbaik di Indonesia. Dengan live camera canggih dan QR generator profesional, semua kebutuhan scan barcode Anda terpenuhi. 100% privat, tanpa upload data.</p>
-            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-                <button class="btn btn-primary" onclick="go('scanner')"><i class="fas fa-camera"></i> Scan Barcode Sekarang</button>
-                <button class="btn btn-outline" onclick="go('generator')"><i class="fas fa-qrcode"></i> QR Generator Pro</button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="go('home')">
+                <div class="logo-icon">📷</div>
+                <div class="logo-text">ScanBarcode<span>Pro</span><sub class="logo-sub">PEMINDAI ONLINE #1</sub></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="go('home')">Beranda</a></li>
+                <li><a href="#" onclick="go('scanner')">Pemindai</a></li>
+                <li><a href="#" onclick="go('generator')">Generator</a></li>
+                <li><a href="#" onclick="go('riwayat')">Riwayat</a></li>
+                <li><a href="#" onclick="go('blog')">Blog</a></li>
+                <li><a href="#" onclick="go('tentang')">Tentang</a></li>
+                <li><a href="#" onclick="go('kontak')">Kontak</a></li>
+            </ul>
+            <div style="display:flex;align-items:center;gap:8px">
+                <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()"><span></span><span></span><span></span></button>
             </div>
         </div>
-
-        <div class="keywords-section">
-            <h3 style="font-weight:700;font-size:17px;margin-bottom:12px">🔍 Kata Kunci Populer</h3>
-            <div class="kw-list">
-                <a href="#" class="kw-tag" onclick="go('scanner')">scan barcode</a>
-                <a href="#" class="kw-tag" onclick="go('scanner')">pemindai barcode online</a>
-                <a href="#" class="kw-tag" onclick="go('scanner')">scan qr code</a>
-                <a href="#" class="kw-tag" onclick="go('generator')">qr code generator</a>
-                <a href="#" class="kw-tag" onclick="go('scanner')">barcode scanner</a>
-            </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#" onclick="go('home')">🏠 Beranda</a>
+            <a href="#" onclick="go('scanner')">📷 Pemindai</a>
+            <a href="#" onclick="go('generator')">🎨 Generator</a>
+            <a href="#" onclick="go('riwayat')">📋 Riwayat</a>
+            <a href="#" onclick="go('blog')">📚 Blog</a>
+            <a href="#" onclick="go('tentang')">ℹ️ Tentang</a>
+            <a href="#" onclick="go('kontak')">📧 Kontak</a>
         </div>
+    </nav>
 
-        <div class="stats-grid">
-            <div class="stat-card"><div class="stat-num" style="color:#2563eb">5M+</div><div class="stat-label">Total Pemindaian</div></div>
-            <div class="stat-card"><div class="stat-num" style="color:#3b82f6">#1</div><div class="stat-label">Di Indonesia</div></div>
-            <div class="stat-card"><div class="stat-num" style="color:#10b981">50+</div><div class="stat-label">Format Barcode</div></div>
-            <div class="stat-card"><div class="stat-num" style="color:#f97316">4.9★</div><div class="stat-label">Rating Pengguna</div></div>
-        </div>
-
-        <div class="features-grid">
-            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">🔒</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Privasi 100% Terjamin</h3><p style="color:#64748b;font-size:14px">Data tidak pernah diupload ke server manapun.</p></div>
-            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">📷</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Live Camera Profesional</h3><p style="color:#64748b;font-size:14px">Laser biru indah dengan pemindaian akurat.</p></div>
-            <div class="card" style="text-align:center"><div style="font-size:3rem;margin-bottom:14px">⚡</div><h3 style="font-weight:700;font-size:1.1rem;margin-bottom:8px">Super Cepat</h3><p style="color:#64748b;font-size:14px">Hasil muncul dalam milidetik.</p></div>
-        </div>
-
-        <!-- PROFESSIONAL HOME CONTENT (500+ lines expanded) -->
-        <div class="card" style="margin-top:35px;line-height:2">
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin-bottom:16px">Apa Itu Pemindai Barcode Online?</h2>
-            <p>Pemindai barcode online adalah alat digital yang memungkinkan Anda membaca informasi dari kode batang (barcode) atau kode matriks (QR code) menggunakan kamera smartphone tanpa perlu menginstal aplikasi tambahan. ScanBarcode Pro hadir sebagai solusi pemindai barcode online gratis terbaik di Indonesia yang dapat diakses langsung dari browser favorit Anda.</p>
-            <p>Teknologi pemindaian barcode telah berkembang pesat. Dulu, Anda memerlukan alat scanner khusus yang mahal dan rumit. Sekarang, cukup dengan smartphone dan koneksi internet, Anda dapat memindai berbagai jenis barcode dengan akurasi tinggi. ScanBarcode Pro menggunakan teknologi WebAssembly dan ZXing untuk memberikan hasil pemindaian terbaik.</p>
-            <p>Aktivitas scan barcode sangat bermanfaat dalam kehidupan sehari-hari di Indonesia. Dari mengecek harga produk di supermarket, melacak resi pengiriman paket dari toko online, memverifikasi keaslian barang branded, hingga membaca QR code undangan pernikahan atau menu restoran digital. Dengan alat scan barcode yang tepat, semua bisa selesai dalam hitungan detik.</p>
-            <p>ScanBarcode Pro dirancang khusus untuk pengguna Indonesia dengan antarmuka yang sederhana dan mudah digunakan. Tidak perlu pengetahuan teknis khusus - cukup buka browser, izinkan kamera, dan arahkan ke barcode. Hasil akan muncul secara otomatis dengan informasi lengkap.</p>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Keunggulan ScanBarcode Pro</h2>
-            <p>ScanBarcode Pro menawarkan berbagai keunggulan yang menjadikannya pilihan utama masyarakat Indonesia untuk kebutuhan pemindaian barcode:</p>
-            <ul>
-                <li><strong>100% Gratis:</strong> Tidak ada biaya apapun, tidak ada batasan penggunaan, dan tidak ada fitur premium yang tersembunyi.</li>
-                <li><strong>Tanpa Install Aplikasi:</strong> Cukup buka browser dan langsung gunakan. Tidak perlu download aplikasi yang memakan ruang penyimpanan.</li>
-                <li><strong>Privasi Terjamin:</strong> Semua pemrosesan terjadi di browser Anda (client-side). Tidak ada data yang dikirim ke server manapun.</li>
-                <li><strong>50+ Format Barcode:</strong> Mendukung EAN, UPC, Code128, QR Code, DataMatrix, PDF417, Aztec, dan banyak lagi.</li>
-                <li><strong>Live Camera Profesional:</strong> Laser biru yang indah dengan pemindaian real-time yang akurat.</li>
-                <li><strong>QR Code Generator Pro:</strong> Kustomisasi warna, ukuran, margin, dan tipe konten untuk QR code profesional.</li>
-                <li><strong>Riwayat Pemindaian:</strong> Semua hasil scan tersimpan otomatis dengan opsi export ke CSV.</li>
-                <li><strong>PWA Support:</strong> Install ke home screen dan gunakan seperti aplikasi native.</li>
-                <li><strong>Dark Mode:</strong> Mode gelap untuk kenyamanan mata di malam hari.</li>
-                <li><strong>Responsive Design:</strong> Tampilan optimal di semua perangkat - mobile, tablet, dan desktop.</li>
-            </ul>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Format Barcode yang Didukung</h2>
-            <p>ScanBarcode Pro mendukung lebih dari 50 format barcode yang berbeda. Berikut adalah rincian format yang paling umum digunakan:</p>
-            <ul>
-                <li><strong>Barcode 1D (Linear):</strong> EAN-13, EAN-8, UPC-A, UPC-E, Code128, Code39, Code93, ITF-14, Codabar, MSI Plessey</li>
-                <li><strong>Barcode 2D (Matrix):</strong> QR Code, DataMatrix, PDF417, Aztec Code, MaxiCode, DotCode</li>
-                <li><strong>Format Khusus:</strong> WiFi QR Code, vCard (Kontak), ISBN (Buku), ISSN (Publikasi), GS1 DataBar</li>
-            </ul>
-            <p>Setiap format memiliki karakteristik dan kegunaan yang berbeda. EAN-13 digunakan untuk produk retail internasional, Code128 untuk logistik dan pengiriman, QR Code untuk berbagai keperluan digital, dan DataMatrix untuk aplikasi industri.</p>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Cara Menggunakan ScanBarcode Pro</h2>
-            <p>Menggunakan ScanBarcode Pro sangat mudah dan intuitif. Ikuti langkah-langkah berikut:</p>
-            <ol>
-                <li><strong>Buka Website:</strong> Buka browser di HP atau komputer Anda dan kunjungi website ScanBarcode Pro.</li>
-                <li><strong>Klik "Scan Barcode":</strong> Klik tombol "Scan Barcode" untuk membuka halaman pemindai.</li>
-                <li><strong>Klik "Mulai Kamera":</strong> Klik tombol "Mulai Kamera" dan izinkan akses kamera saat browser meminta.</li>
-                <li><strong>Arahkan ke Barcode:</strong> Arahkan kamera ke barcode atau QR code dalam area pemindaian.</li>
-                <li><strong>Hasil Otomatis:</strong> Hasil pemindaian akan muncul otomatis dalam milidetik.</li>
-            </ol>
-            <p>Untuk hasil terbaik, pastikan pencahayaan cukup dan barcode dalam kondisi baik. Gunakan fitur senter (💡) untuk kondisi pencahayaan yang kurang, dan ganti kamera (🔄) jika ingin beralih antara kamera depan dan belakang.</p>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Informasi Produk dari Barcode</h2>
-            <p>Salah satu fitur unggulan ScanBarcode Pro adalah kemampuan untuk menampilkan informasi detail dari barcode produk. Ketika Anda memindai barcode EAN-13 atau UPC-A, scanner kami akan menampilkan:</p>
-            <ul>
-                <li><strong>Asal Negara:</strong> Kode negara berdasarkan GS1 prefix (3 digit pertama untuk EAN-13)</li>
-                <li><strong>Kode Produsen:</strong> Kode unik yang mengidentifikasi produsen atau perusahaan</li>
-                <li><strong>Kode Produk:</strong> Kode spesifik untuk produk tertentu dari produsen tersebut</li>
-                <li><strong>Digit Cek:</strong> Digit terakhir untuk verifikasi keakuratan barcode</li>
-            </ul>
-            <p>Ini sangat berguna untuk bisnis retail yang ingin memverifikasi produk, atau konsumen yang ingin mengetahui asal-usul produk yang mereka beli.</p>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Aplikasi Bisnis ScanBarcode Pro</h2>
-            <p>ScanBarcode Pro digunakan oleh berbagai sektor bisnis di seluruh Indonesia:</p>
-            <ul>
-                <li><strong>Ritel & Supermarket:</strong> Cek harga dan stok produk dengan EAN/UPC.</li>
-                <li><strong>Logistik & Ekspedisi:</strong> Tracking paket dengan Code128.</li>
-                <li><strong>UMKM & Warung:</strong> Pembayaran QRIS dan katalog produk digital.</li>
-                <li><strong>Farmasi & Kesehatan:</strong> Verifikasi obat dengan barcode GS1.</li>
-                <li><strong>Perpustakaan:</strong> Manajemen peminjaman buku dengan ISBN.</li>
-                <li><strong>Manufaktur:</strong> Quality control dan tracking produksi.</li>
-            </ul>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">PWA - Install ke Home Screen</h2>
-            <p>ScanBarcode Pro mendukung Progressive Web App (PWA). Ini berarti Anda dapat menginstall website kami ke home screen smartphone Anda dan menggunakannya seperti aplikasi native. Caranya:</p>
-            <ol>
-                <li>Buka ScanBarcode Pro di Chrome atau Safari.</li>
-                <li>Klik menu tiga titik (⋮) di browser.</li>
-                <li>Pilih "Add to Home Screen" atau "Tambahkan ke Layar Utama".</li>
-                <li>ScanBarcode Pro akan muncul sebagai ikon aplikasi di home screen Anda.</li>
-            </ol>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">Tips Penggunaan Optimal</h2>
-            <ul>
-                <li>Gunakan fitur senter (💡) untuk kondisi pencahayaan yang kurang.</li>
-                <li>Ganti kamera (🔄) jika ingin beralih antara kamera depan dan belakang.</li>
-                <li>Upload gambar barcode dari galeri jika kamera mengalami masalah.</li>
-                <li>Jaga jarak ideal 15-30 cm antara kamera dan barcode.</li>
-                <li>Bersihkan lensa kamera jika hasil scan terlihat buram.</li>
-                <li>Gunakan QR Code Generator untuk membuat QR code bisnis Anda.</li>
-            </ul>
-
-            <h2 style="font-weight:800;color:#2563eb;font-size:1.6rem;margin:25px 0 14px">FAQ Singkat</h2>
-            <p><strong>Q: Apakah ScanBarcode Pro benar-benar gratis?</strong><br>A: Ya, 100% gratis selamanya tanpa batasan apapun.</p>
-            <p><strong>Q: Apakah data saya aman saat menggunakan ScanBarcode Pro?</strong><br>A: Sangat aman! Semua pemrosesan terjadi di browser Anda, tidak ada upload data.</p>
-            <p><strong>Q: Format barcode apa saja yang bisa discan?</strong><br>A: 50+ format termasuk EAN, UPC, QR Code, DataMatrix, WiFi, vCard, ISBN.</p>
-            <p><strong>Q: Bagaimana cara scan barcode online?</strong><br>A: Klik "Scan Barcode", izinkan kamera, arahkan ke barcode.</p>
-            <p><strong>Q: Apakah bisa scan dari gambar?</strong><br>A: Ya, upload foto barcode dari galeri Anda.</p>
-            <p><strong>Q: Apakah perlu install aplikasi?</strong><br>A: Tidak perlu! Cukup buka browser.</p>
-        </div>
-    </div>
-
-    <!-- SCANNER PAGE -->
-    <div class="page" id="page-scanner">
-        <h2 style="font-weight:800;font-size:1.5rem;margin-bottom:18px"><i class="fas fa-camera"></i> Pemindai Barcode Online - Live Camera</h2>
-        <div class="scanner-wrapper">
-            <div class="scanner-content">
-                <div>
-                    <div class="scanner-box">
-                        <div id="reader" style="width:100%;height:100%"></div>
-                        <div class="cam-placeholder" id="camPlaceholder"><div style="font-size:3.5rem;margin-bottom:10px">📷</div><p style="font-size:15px">Klik "Mulai Kamera" untuk mengaktifkan</p></div>
-                        <div class="scanner-laser" id="scanLaser"></div>
-                    </div>
-                    <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">
-                        <button id="btnStart" class="btn btn-primary" onclick="startScanner()"><i class="fas fa-play"></i> Mulai Kamera</button>
-                        <button id="btnStop" class="btn btn-danger hidden" onclick="stopScanner()"><i class="fas fa-stop"></i> Stop</button>
-                        <button id="btnTorch" class="btn-icon hidden" onclick="toggleTorch()">💡</button>
-                        <button id="btnSwitch" class="btn-icon hidden" onclick="switchCamera()">🔄</button>
-                    </div>
-                    <div class="card" style="margin-top:10px;padding:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-                        <label style="cursor:pointer;padding:8px 14px;background:var(--bg);border-radius:10px;font-weight:500;font-size:13px;border:1.5px solid var(--border);display:inline-flex;align-items:center;gap:7px"><i class="fas fa-image"></i> Upload Gambar<input type="file" accept="image/*" style="display:none" onchange="scanImageFile(this)"></label>
-                        <span id="scanStatus" style="font-size:12px;padding:5px 10px;border-radius:20px;background:var(--bg);border:1.5px solid var(--border)">⚪ Kamera Mati</span>
-                    </div>
+    <div class="main-content">
+        <!-- HOME PAGE -->
+        <div class="page active" id="page-home">
+            <div class="hero">
+                <div style="display:inline-block; background:rgba(37,99,235,0.1); border-radius:30px; padding:8px 20px; font-size:13px; font-weight:600; color:#2563eb; margin-bottom:22px;">🔒 Gratis · Tanpa Aplikasi</div>
+                <h1>Pemindai Barcode Online Gratis<br>Profesional &amp; Terpercaya</h1>
+                <p><strong>ScanBarcode Pro</strong> — Platform pemindai barcode dan QR code online gratis #1 Indonesia. Scan langsung dari kamera live dengan laser biru. Dilengkapi Generator QR & Barcode profesional.</p>
+                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                    <button class="btn btn-primary" onclick="go('scanner')"><i class="fas fa-camera"></i> Scan Barcode Sekarang</button>
+                    <button class="btn btn-outline" onclick="go('generator')"><i class="fas fa-qrcode"></i> Generator QR & Barcode</button>
                 </div>
-                <div class="card" style="padding:22px">
-                    <h3 style="font-weight:700;margin-bottom:14px;font-size:1.1rem"><i class="fas fa-clipboard-check"></i> Hasil Scan</h3>
-                    <div id="resultDisplay" class="result-box"><div style="font-size:2.5rem;margin-bottom:8px">📷</div><p style="font-size:14px">Arahkan kamera ke barcode</p></div>
-                    <div id="productInfoSection" style="display:none"></div>
-                    <div id="resultActions" style="margin-top:10px;display:none;flex-direction:column;gap:8px"></div>
-                    <div id="resultInfo" style="margin-top:8px;display:none;padding:8px;background:var(--hover);border-left:4px solid #2563eb;border-radius:8px;font-size:12px"></div>
-                    <div id="productSearch" style="margin-top:8px;display:none"></div>
+            </div>
+            <div style="background:var(--card); border-radius:16px; padding:22px; margin:30px 0;">
+                <h3 style="font-weight:700;font-size:16px;margin-bottom:10px">🔍 Kata Kunci Populer</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <a href="#" style="padding:8px 18px; background:var(--hover); border-radius:22px; text-decoration:none; color:var(--text); font-size:14px;" onclick="go('scanner')">scan barcode</a>
+                    <a href="#" style="padding:8px 18px; background:var(--hover); border-radius:22px; text-decoration:none; color:var(--text); font-size:14px;" onclick="go('scanner')">pemindai barcode online</a>
+                    <a href="#" style="padding:8px 18px; background:var(--hover); border-radius:22px; text-decoration:none; color:var(--text); font-size:14px;" onclick="go('scanner')">scan qr code</a>
+                    <a href="#" style="padding:8px 18px; background:var(--hover); border-radius:22px; text-decoration:none; color:var(--text); font-size:14px;" onclick="go('generator')">qr code generator</a>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-num" style="color:#2563eb">5M+</div><div class="stat-label">Total Pemindaian</div></div>
+                <div class="stat-card"><div class="stat-num" style="color:#3b82f6">#1</div><div class="stat-label">Di Indonesia</div></div>
+                <div class="stat-card"><div class="stat-num" style="color:#10b981">50+</div><div class="stat-label">Format Barcode</div></div>
+                <div class="stat-card"><div class="stat-num" style="color:#f97316">4.9★</div><div class="stat-label">Rating Pengguna</div></div>
+            </div>
+            <div class="features-grid">
+                <div class="card" style="text-align:center;padding:24px"><div style="font-size:2.8rem;margin-bottom:12px">⚡</div><h3 style="font-weight:700;font-size:1.05rem;margin-bottom:6px">Super Cepat</h3><p style="color:#64748b;font-size:14px">Hasil muncul dalam milidetik.</p></div>
+                <div class="card" style="text-align:center;padding:24px"><div style="font-size:2.8rem;margin-bottom:12px">📷</div><h3 style="font-weight:700;font-size:1.05rem;margin-bottom:6px">Live Camera</h3><p style="color:#64748b;font-size:14px">Laser biru dengan pemindaian real-time.</p></div>
+                <div class="card" style="text-align:center;padding:24px"><div style="font-size:2.8rem;margin-bottom:12px">⚙️</div><h3 style="font-weight:700;font-size:1.05rem;margin-bottom:6px">Generator Pro</h3><p style="color:#64748b;font-size:14px">QR & Barcode dengan kustomisasi penuh.</p></div>
+            </div>
+            <!-- Professional content (long) -->
+            <div class="card" style="margin-top:25px;line-height:2;padding:32px">
+                <h2 style="font-weight:800;color:#2563eb;font-size:1.5rem;margin-bottom:14px">Apa Itu Pemindai Barcode Online?</h2>
+                <p>Pemindai barcode online adalah alat digital yang memungkinkan Anda membaca informasi dari kode batang (barcode) atau kode matriks (QR code) menggunakan kamera smartphone tanpa perlu menginstal aplikasi tambahan. ScanBarcode Pro hadir sebagai solusi pemindai barcode online gratis terbaik di Indonesia yang dapat diakses langsung dari browser favorit Anda.</p>
+                <p>Teknologi pemindaian barcode telah berkembang pesat. Dulu, Anda memerlukan alat scanner khusus yang mahal dan rumit. Sekarang, cukup dengan smartphone dan koneksi internet, Anda dapat memindai berbagai jenis barcode dengan akurasi tinggi. ScanBarcode Pro menggunakan teknologi WebAssembly dan ZXing untuk memberikan hasil pemindaian terbaik.</p>
+                <p>Aktivitas scan barcode sangat bermanfaat dalam kehidupan sehari-hari di Indonesia. Dari mengecek harga produk di supermarket, melacak resi pengiriman paket dari toko online, memverifikasi keaslian barang branded, hingga membaca QR code undangan pernikahan atau menu restoran digital. Dengan alat scan barcode yang tepat, semua bisa selesai dalam hitungan detik.</p>
+                <p>ScanBarcode Pro dirancang khusus untuk pengguna Indonesia dengan antarmuka yang sederhana dan mudah digunakan. Tidak perlu pengetahuan teknis khusus - cukup buka browser, izinkan kamera, dan arahkan ke barcode. Hasil akan muncul secara otomatis dengan informasi lengkap.</p>
+                <h2 style="font-weight:800;color:#2563eb;font-size:1.5rem;margin:28px 0 14px">Keunggulan ScanBarcode Pro</h2>
+                <ul>
+                    <li><strong>100% Gratis:</strong> Tanpa biaya, tanpa batasan.</li>
+                    <li><strong>Tanpa Install:</strong> Cukup browser.</li>
+                    <li><strong>50+ Format Barcode:</strong> EAN, UPC, QR Code, dll.</li>
+                    <li><strong>Live Camera:</strong> Laser biru real-time.</li>
+                    <li><strong>QR & Barcode Generator:</strong> Kustomisasi penuh.</li>
+                    <li><strong>Riwayat:</strong> Export CSV.</li>
+                </ul>
+                <h2 style="font-weight:800;color:#2563eb;font-size:1.5rem;margin:28px 0 14px">Format Barcode yang Didukung</h2>
+                <p>ScanBarcode Pro mendukung lebih dari 50 format barcode yang berbeda. Berikut adalah rincian format yang paling umum digunakan:</p>
+                <ul>
+                    <li><strong>Barcode 1D (Linear):</strong> EAN-13, EAN-8, UPC-A, UPC-E, Code128, Code39, Code93, ITF-14, Codabar, MSI Plessey</li>
+                    <li><strong>Barcode 2D (Matrix):</strong> QR Code, DataMatrix, PDF417, Aztec Code, MaxiCode, DotCode</li>
+                    <li><strong>Format Khusus:</strong> WiFi QR Code, vCard (Kontak), ISBN (Buku), ISSN (Publikasi), GS1 DataBar</li>
+                </ul>
+                <p>Setiap format memiliki karakteristik dan kegunaan yang berbeda. EAN-13 digunakan untuk produk retail internasional, Code128 untuk logistik dan pengiriman, QR Code untuk berbagai keperluan digital, dan DataMatrix untuk aplikasi industri.</p>
+            </div>
+            <!-- FAQ Accordion (5 items) -->
+            <div class="card" style="margin-top:25px;padding:28px">
+                <h2 style="font-weight:800;color:#2563eb;font-size:1.5rem;margin-bottom:14px">❓ Pertanyaan Singkat (FAQ)</h2>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Apakah ScanBarcode Pro gratis? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer"><p>Ya, 100% gratis tanpa batasan dan tanpa biaya tersembunyi.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Apakah perlu install aplikasi? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer"><p>Tidak, cukup buka browser dan gunakan langsung. Tidak perlu download atau install apa pun.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Format apa saja yang didukung? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer"><p>50+ format termasuk EAN, UPC, QR Code, DataMatrix, WiFi, vCard, ISBN, dan banyak lagi.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Bisakah scan dari gambar? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer"><p>Ya, gunakan tombol "Upload Gambar" untuk memindai barcode dari file gambar.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFAQ(this)">Apakah data saya aman? <i class="fas fa-chevron-down"></i></button>
+                    <div class="faq-answer"><p>Semua pemrosesan dilakukan di perangkat Anda. Data tidak dikirim ke server mana pun.</p></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- GENERATOR PAGE -->
-    <div class="page" id="page-generator">
-        <h2 style="font-weight:800;font-size:1.5rem;margin-bottom:18px"><i class="fas fa-qrcode"></i> QR Code Generator Pro</h2>
-        <div class="card" style="padding:0;overflow:hidden">
-            <div class="qr-pro-header"><div style="width:46px;height:46px;background:rgba(255,255,255,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px">🎨</div><div><h2 style="font-weight:800;font-size:1.3rem">QR Code Pro</h2><p style="font-size:12px;opacity:0.85">Generator QR Code Profesional</p></div></div>
-            <div style="padding:26px" class="gen-grid">
-                <div id="genControls"></div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
-                    <div id="genPreview" style="background:#fff;padding:24px;border-radius:14px;min-width:200px;min-height:200px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.08)"><span style="color:#9ca3af">Preview QR Code</span></div>
-                    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
-                        <button id="btnDownloadPNG" class="btn btn-primary btn-sm hidden"><i class="fas fa-download"></i> PNG</button>
-                        <button id="btnDownloadSVG" class="btn btn-outline btn-sm hidden"><i class="fas fa-download"></i> SVG</button>
+        <!-- SCANNER PAGE -->
+        <div class="page" id="page-scanner">
+            <h2 style="font-weight:800;font-size:1.5rem;margin-bottom:18px"><i class="fas fa-camera"></i> Pemindai Barcode Online - Live Camera</h2>
+            <div class="scanner-wrapper">
+                <div class="scanner-content">
+                    <div>
+                        <div class="scanner-box">
+                            <div id="reader" style="width:100%;height:100%"></div>
+                            <div class="cam-placeholder" id="camPlaceholder"><div style="font-size:3.5rem;margin-bottom:10px">📷</div><p>Klik "Mulai Kamera" untuk mengaktifkan</p></div>
+                            <div class="scanner-laser" id="scanLaser"></div>
+                        </div>
+                        <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+                            <button id="btnStart" class="btn btn-primary" onclick="startScanner()"><i class="fas fa-play"></i> Mulai Kamera</button>
+                            <button id="btnStop" class="btn btn-danger hidden" onclick="stopScanner()"><i class="fas fa-stop"></i> Stop</button>
+                            <button id="btnTorch" class="btn-icon hidden" onclick="toggleTorch()">💡</button>
+                            <button id="btnSwitch" class="btn-icon hidden" onclick="switchCamera()">🔄</button>
+                        </div>
+                        <div class="card" style="margin-top:10px;padding:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                            <label style="cursor:pointer;padding:8px 14px;background:var(--bg);border-radius:10px;font-weight:500;font-size:13px;border:1.5px solid var(--border);display:inline-flex;align-items:center;gap:7px"><i class="fas fa-image"></i> Upload Gambar<input type="file" accept="image/*" style="display:none" onchange="scanImageFile(this)"></label>
+                            <span id="scanStatus" style="font-size:12px;padding:5px 10px;border-radius:20px;background:var(--bg);border:1.5px solid var(--border)">⚪ Kamera Mati</span>
+                        </div>
+                    </div>
+                    <div class="card" style="padding:22px">
+                        <h3 style="font-weight:700;margin-bottom:14px;font-size:1.1rem"><i class="fas fa-clipboard-check"></i> Hasil Scan</h3>
+                        <div id="resultDisplay" class="result-box"><div style="font-size:2.5rem;margin-bottom:8px">📷</div><p>Arahkan kamera ke barcode</p></div>
+                        <div id="productInfoSection" style="display:none"></div>
+                        <div id="resultActions" style="margin-top:10px;display:none;flex-direction:column;gap:8px"></div>
+                        <div id="resultInfo" style="margin-top:8px;display:none;padding:8px;background:var(--hover);border-left:4px solid #2563eb;border-radius:8px;font-size:12px"></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- GENERATOR PAGE (full featured) -->
+        <div class="page" id="page-generator">
+            <div class="generator-page">
+                <div class="header">
+                    <h1><i class="fas fa-qrcode"></i> Generator QR & Barcode Pro</h1>
+                    <p style="color:#fff; opacity:0.9;">Buat Kode QR dan Barcode Profesional dengan Fitur Lengkap</p>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" id="tabQR" onclick="switchTab('qr')"><i class="fas fa-qrcode"></i> QR Code</button>
+                    <button class="tab-btn" id="tabBarcode" onclick="switchTab('barcode')"><i class="fas fa-barcode"></i> Barcode</button>
+                </div>
+                <div id="qrSection">
+                    <div class="main-grid">
+                        <div class="card">
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-cube"></i> Pilih Jenis Konten</div>
+                                <div class="type-grid" id="typeGrid">
+                                    <button class="type-btn active" data-type="url"><i class="fas fa-globe"></i> URL</button>
+                                    <button class="type-btn" data-type="text"><i class="fas fa-font"></i> Teks</button>
+                                    <button class="type-btn" data-type="email"><i class="fas fa-envelope"></i> Email</button>
+                                    <button class="type-btn" data-type="phone"><i class="fas fa-phone"></i> Telepon</button>
+                                    <button class="type-btn" data-type="sms"><i class="fas fa-sms"></i> SMS</button>
+                                    <button class="type-btn" data-type="wifi"><i class="fas fa-wifi"></i> WiFi</button>
+                                    <button class="type-btn" data-type="vcard"><i class="fas fa-address-card"></i> vCard</button>
+                                    <button class="type-btn" data-type="geo"><i class="fas fa-map-marker-alt"></i> Lokasi</button>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-edit"></i> Masukkan Konten</div>
+                                <div id="panel-url" class="content-panel active"><div class="form-group"><label class="form-label">URL Website *</label><input type="url" id="url-input" placeholder="https://www.contoh.com" class="form-input"></div></div>
+                                <div id="panel-text" class="content-panel"><div class="form-group"><label class="form-label">Konten Teks *</label><textarea id="text-input" placeholder="Masukkan teks Anda..." class="form-input" rows="3"></textarea></div></div>
+                                <div id="panel-email" class="content-panel"><div class="form-group"><label class="form-label">Email *</label><input type="email" id="email-input" placeholder="halo@contoh.com" class="form-input"></div><div class="form-group"><label class="form-label">Subjek</label><input type="text" id="email-subject" placeholder="Subjek" class="form-input"></div><div class="form-group"><label class="form-label">Pesan</label><textarea id="email-body" placeholder="Pesan" class="form-input" rows="2"></textarea></div></div>
+                                <div id="panel-phone" class="content-panel"><div class="form-group"><label class="form-label">Nomor Telepon *</label><input type="tel" id="phone-input" placeholder="+6281234567890" class="form-input"></div></div>
+                                <div id="panel-sms" class="content-panel"><div class="form-group"><label class="form-label">Nomor *</label><input type="tel" id="sms-number" placeholder="+6281234567890" class="form-input"></div><div class="form-group"><label class="form-label">Pesan</label><textarea id="sms-message" placeholder="Pesan SMS" class="form-input" rows="2"></textarea></div></div>
+                                <div id="panel-wifi" class="content-panel"><div class="form-group"><label class="form-label">SSID *</label><input type="text" id="wifi-ssid" placeholder="WiFiSaya" class="form-input"></div><div class="form-group"><label class="form-label">Password</label><input type="text" id="wifi-password" placeholder="Kata Sandi" class="form-input"></div><div class="form-group"><label class="form-label">Enkripsi</label><select id="wifi-encryption" class="form-input"><option value="WPA">WPA/WPA2</option><option value="WEP">WEP</option><option value="nopass">Tanpa Sandi</option></select></div></div>
+                                <div id="panel-vcard" class="content-panel"><div class="form-group"><label class="form-label">Nama *</label><input type="text" id="vcard-name" placeholder="Budi Santoso" class="form-input"></div><div class="form-group"><label class="form-label">Organisasi</label><input type="text" id="vcard-org" placeholder="PT. Contoh" class="form-input"></div><div class="form-group"><label class="form-label">Telepon</label><input type="tel" id="vcard-phone" placeholder="+6281234567890" class="form-input"></div><div class="form-group"><label class="form-label">Email</label><input type="email" id="vcard-email" placeholder="budi@contoh.com" class="form-input"></div></div>
+                                <div id="panel-geo" class="content-panel"><div class="form-group"><label class="form-label">Latitude *</label><input type="number" id="geo-lat" placeholder="-6.2088" step="any" class="form-input"></div><div class="form-group"><label class="form-label">Longitude *</label><input type="number" id="geo-lng" placeholder="106.8456" step="any" class="form-input"></div></div>
+                            </div>
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-palette"></i> Kustomisasi Warna</div>
+                                <div class="form-group"><label class="form-label">Warna Depan</label><div class="color-group"><input type="color" id="fg-color" value="#000000" class="color-picker"><input type="text" id="fg-hex" value="#000000" class="color-hex form-input" maxlength="7"></div></div>
+                                <div class="form-group"><label class="form-label">Warna Latar</label><div class="color-group"><input type="color" id="bg-color" value="#ffffff" class="color-picker"><input type="text" id="bg-hex" value="#ffffff" class="color-hex form-input" maxlength="7"></div></div>
+                            </div>
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-image"></i> Unggah Logo</div>
+                                <div class="upload-box" id="uploadBox"><input type="file" id="logoFile" accept="image/*" style="display:none;"><i class="fas fa-cloud-upload-alt"></i><p>Klik untuk Unggah Logo</p><small style="color:#94a3b8;">PNG, JPG, SVG (Maks 5MB)</small></div>
+                                <div id="logoPreview" class="file-preview hidden"><img id="logoPreviewImg" src="" alt="Logo"><div class="file-info"><div class="file-name" id="logoFileName"></div><div class="file-size" id="logoFileSize"></div></div><button class="btn-remove" id="btnRemoveLogo"><i class="fas fa-times"></i> Hapus</button></div>
+                                <div class="form-group" style="margin-top:15px;"><label class="form-label">Ukuran Logo: <span id="logoSizeLabel">20</span>%</label><div class="range-group"><input type="range" id="logoSize" min="10" max="40" value="20" class="range-slider"><span class="range-value" id="logoSizeValue">20%</span></div></div>
+                            </div>
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-sliders-h"></i> Pengaturan QR</div>
+                                <div class="form-group"><label class="form-label">Ukuran: <span id="qrSizeLabel">500</span>px</label><div class="range-group"><input type="range" id="qrSize" min="200" max="2000" value="500" step="50" class="range-slider"><span class="range-value" id="qrSizeValue">500px</span></div></div>
+                                <div class="form-group"><label class="form-label">Margin: <span id="marginLabel">2</span></label><div class="range-group"><input type="range" id="margin" min="0" max="10" value="2" class="range-slider"><span class="range-value" id="marginValue">2</span></div></div>
+                                <div class="form-group"><label class="form-label">Koreksi Kesalahan</label><select id="errorCorrection" class="form-input"><option value="L">Rendah (7%)</option><option value="M">Sedang (15%)</option><option value="Q">Tinggi (25%)</option><option value="H" selected>Sangat Tinggi (30%)</option></select></div>
+                            </div>
+                            <button id="generateQRBtn" class="btn btn-primary"><i class="fas fa-magic"></i> Buat Kode QR</button>
+                        </div>
+                        <div class="card">
+                            <div class="section-title" style="margin-bottom:20px;"><i class="fas fa-qrcode"></i> Pratinjau QR</div>
+                            <div class="preview-box" id="qrPreviewBox"><div id="qrPreviewPlaceholder" class="preview-placeholder"><i class="fas fa-qrcode"></i><p>Kode QR Anda Akan Muncul di Sini</p></div><div id="qrDisplay" class="hidden"></div></div>
+                            <div id="qrDownloadOptions" class="hidden">
+                                <div class="download-grid">
+                                    <a class="btn-download" id="btnDownloadQRPNG" download="qrcode.png"><i class="fas fa-download"></i> PNG</a>
+                                    <a class="btn-download" id="btnDownloadQRJPG" download="qrcode.jpg"><i class="fas fa-download"></i> JPG</a>
+                                    <a class="btn-download" id="btnDownloadQRSVG" download="qrcode.svg"><i class="fas fa-download"></i> SVG</a>
+                                    <button class="btn-download" id="btnPrintQR"><i class="fas fa-print"></i> Cetak</button>
+                                </div>
+                                <div class="action-buttons" style="display:flex;gap:10px;margin-top:10px;"><button class="btn-action" id="btnCopyQR" style="flex:1; padding:12px; background:white; border:2px solid #e2e8f0; border-radius:10px; cursor:pointer;"><i class="fas fa-copy"></i> Salin</button><button class="btn-action" id="btnShareQR" style="flex:1; padding:12px; background:white; border:2px solid #e2e8f0; border-radius:10px; cursor:pointer;"><i class="fas fa-share-alt"></i> Bagikan</button></div>
+                            </div>
+                            <div id="qrInfo" class="info-box hidden">
+                                <div class="info-item"><span class="info-label">Konten:</span><span class="info-value" id="qrInfoContent">-</span></div>
+                                <div class="info-item"><span class="info-label">Jenis:</span><span class="info-value" id="qrInfoType">-</span></div>
+                                <div class="info-item"><span class="info-label">Ukuran:</span><span class="info-value" id="qrInfoSize">-</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="barcodeSection" class="hidden">
+                    <div class="main-grid">
+                        <div class="card">
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-barcode"></i> Pilih Format Barcode</div>
+                                <div class="type-grid" id="barcodeFormatGrid">
+                                    <button class="type-btn active" data-format="CODE128"><i class="fas fa-barcode"></i> CODE128</button>
+                                    <button class="type-btn" data-format="EAN13"><i class="fas fa-barcode"></i> EAN-13</button>
+                                    <button class="type-btn" data-format="EAN8"><i class="fas fa-barcode"></i> EAN-8</button>
+                                    <button class="type-btn" data-format="UPC"><i class="fas fa-barcode"></i> UPC-A</button>
+                                    <button class="type-btn" data-format="ITF14"><i class="fas fa-barcode"></i> ITF-14</button>
+                                    <button class="type-btn" data-format="MSI"><i class="fas fa-barcode"></i> MSI</button>
+                                    <button class="type-btn" data-format="pharmacode"><i class="fas fa-barcode"></i> Pharmacode</button>
+                                    <button class="type-btn" data-format="codabar"><i class="fas fa-barcode"></i> Codabar</button>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-edit"></i> Masukkan Data</div>
+                                <div class="form-group"><label class="form-label">Nilai / Data *</label><input type="text" id="barcode-value" placeholder="Masukkan angka atau teks" class="form-input"></div>
+                            </div>
+                            <div class="section">
+                                <div class="section-title"><i class="fas fa-palette"></i> Kustomisasi Barcode</div>
+                                <div class="barcode-options" style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                                    <div class="form-group"><label class="form-label">Warna Garis</label><div class="color-group"><input type="color" id="barcode-line-color" value="#000000" class="color-picker"><input type="text" id="barcode-line-hex" value="#000000" class="color-hex form-input" maxlength="7"></div></div>
+                                    <div class="form-group"><label class="form-label">Warna Latar</label><div class="color-group"><input type="color" id="barcode-bg-color" value="#ffffff" class="color-picker"><input type="text" id="barcode-bg-hex" value="#ffffff" class="color-hex form-input" maxlength="7"></div></div>
+                                </div>
+                                <div class="form-group"><label class="form-label">Lebar (px): <span id="barcodeWidthLabel">2</span></label><div class="range-group"><input type="range" id="barcodeWidth" min="1" max="4" value="2" class="range-slider"><span class="range-value" id="barcodeWidthValue">2</span></div></div>
+                                <div class="form-group"><label class="form-label">Tinggi (px): <span id="barcodeHeightLabel">100</span></label><div class="range-group"><input type="range" id="barcodeHeight" min="50" max="200" value="100" class="range-slider"><span class="range-value" id="barcodeHeightValue">100px</span></div></div>
+                                <div class="form-group"><label class="form-label">Tampilkan Nilai</label><select id="barcode-display-value" class="form-input"><option value="true">Ya</option><option value="false">Tidak</option></select></div>
+                            </div>
+                            <button id="generateBarcodeBtn" class="btn btn-primary"><i class="fas fa-barcode"></i> Buat Barcode</button>
+                        </div>
+                        <div class="card">
+                            <div class="section-title" style="margin-bottom:20px;"><i class="fas fa-barcode"></i> Pratinjau Barcode</div>
+                            <div class="preview-box" id="barcodePreviewBox"><div id="barcodePreviewPlaceholder" class="preview-placeholder"><i class="fas fa-barcode"></i><p>Barcode Anda Akan Muncul di Sini</p></div><div id="barcodeDisplay" class="hidden"></div></div>
+                            <div id="barcodeDownloadOptions" class="hidden">
+                                <div class="download-grid">
+                                    <a class="btn-download" id="btnDownloadBarcodePNG" download="barcode.png"><i class="fas fa-download"></i> PNG</a>
+                                    <a class="btn-download" id="btnDownloadBarcodeSVG" download="barcode.svg"><i class="fas fa-download"></i> SVG</a>
+                                    <button class="btn-download" id="btnPrintBarcode"><i class="fas fa-print"></i> Cetak</button>
+                                </div>
+                            </div>
+                            <div id="barcodeInfo" class="info-box hidden">
+                                <div class="info-item"><span class="info-label">Data:</span><span class="info-value" id="barcodeInfoData">-</span></div>
+                                <div class="info-item"><span class="info-label">Format:</span><span class="info-value" id="barcodeInfoFormat">-</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIWAYAT PAGE -->
+        <div class="page" id="page-riwayat">
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+                    <h2 style="font-weight:700;font-size:1.2rem"><i class="fas fa-history"></i> Riwayat Scan</h2>
+                    <div style="display:flex;gap:8px"><button onclick="exportHistory()" class="btn btn-primary btn-sm"><i class="fas fa-file-csv"></i> Export CSV</button><button onclick="clearHistory()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button></div>
+                </div>
+                <div id="historyList" style="max-height:450px;overflow-y:auto"></div>
+                <div id="historyEmpty" style="text-align:center;color:#9ca3af;padding:55px"><div style="font-size:2.8rem">📭</div><p>Belum ada riwayat</p></div>
+            </div>
+        </div>
+
+        <!-- BLOG PAGE -->
+        <div class="page" id="page-blog">
+            <div id="blogListView">
+                <h2 style="font-weight:800;font-size:2rem;margin-bottom:6px"><i class="fas fa-newspaper"></i> Blog ScanBarcode</h2>
+                <p style="color:#64748b;margin-bottom:28px;font-size:16px">Artikel lengkap tentang scan barcode</p>
+                <div class="blog-grid" id="blogGrid"></div>
+            </div>
+            <div id="blogDetailView" class="hidden"><button class="blog-back" onclick="closeBlog()"><i class="fas fa-arrow-left"></i> Kembali</button><div id="blogDetailContent"></div></div>
+        </div>
+
+        <!-- TENTANG PAGE -->
+        <div class="page" id="page-tentang">
+            <div class="card" style="max-width:880px;margin:0 auto;line-height:2">
+                <h1 style="font-weight:800;font-size:1.8rem;margin-bottom:18px">ℹ️ Tentang ScanBarcode Pro</h1>
+                <p>ScanBarcode Pro didirikan 2023 sebagai pemindai barcode online gratis #1 di Indonesia. 5M+ pemindaian, 50+ format.</p>
+            </div>
+        </div>
+
+        <!-- KONTAK PAGE -->
+        <div class="page" id="page-kontak">
+            <div class="card" style="max-width:880px;margin:0 auto;line-height:2">
+                <h1 style="font-weight:800;font-size:1.8rem;margin-bottom:18px">📧 Hubungi ScanBarcode Pro</h1>
+                <p>Punya pertanyaan? Hubungi tim ScanBarcode Pro melalui email: <a href="mailto:halo@scanbarcodepro.id" style="color:#2563eb;font-weight:600;">halo@scanbarcodepro.id</a></p>
+            </div>
+        </div>
     </div>
 
-    <!-- RIWAYAT -->
-    <div class="page" id="page-riwayat">
-        <div class="card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px"><h2 style="font-weight:700;font-size:1.2rem"><i class="fas fa-history"></i> Riwayat Scan</h2><div style="display:flex;gap:8px"><button onclick="exportHistory()" class="btn btn-primary btn-sm"><i class="fas fa-file-csv"></i> Export CSV</button><button onclick="clearHistory()" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</button></div></div><div id="historyList" style="max-height:450px;overflow-y:auto"></div><div id="historyEmpty" style="text-align:center;color:#9ca3af;padding:55px"><div style="font-size:2.8rem">📭</div><p>Belum ada riwayat</p></div></div>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div>
+                <h4>📷 ScanBarcode Pro</h4>
+                <p>Pemindai barcode online gratis terbaik di Indonesia. Scan QR & barcode dari kamera live, plus generator QR & barcode profesional.</p>
+                <div class="footer-tags"><span class="footer-tag">scan barcode</span><span class="footer-tag">pemindai barcode</span><span class="footer-tag">scan qr code</span><span class="footer-tag">qr generator</span><span class="footer-tag">barcode generator</span></div>
+            </div>
+            <div>
+                <h4>📋 Menu</h4>
+                <ul>
+                    <li><a href="#" onclick="go('scanner')">📷 Pemindai</a></li>
+                    <li><a href="#" onclick="go('generator')">🎨 Generator</a></li>
+                    <li><a href="#" onclick="go('blog')">📝 Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>ℹ️ Informasi</h4>
+                <ul>
+                    <li><a href="#" onclick="go('tentang')">ℹ️ Tentang</a></li>
+                    <li><a href="#" onclick="go('kontak')">📧 Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 ScanBarcode Pro. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer" style="position:fixed;bottom:30px;right:30px;z-index:10000;"></div>
+
+    <!-- Modal for full image -->
+    <div id="imageModal" class="modal-overlay hidden" onclick="closeImageModal()">
+        <button class="modal-close" onclick="closeImageModal()"><i class="fas fa-times"></i></button>
+        <img id="modalImage" src="" alt="Product Full Image">
     </div>
 
-    <!-- BLOG -->
-    <div class="page" id="page-blog">
-        <div id="blogListView"><h2 style="font-weight:800;font-size:2rem;margin-bottom:6px"><i class="fas fa-newspaper"></i> Blog ScanBarcode</h2><p style="color:#64748b;margin-bottom:28px;font-size:16px">Artikel lengkap tentang scan barcode</p><div class="blog-grid" id="blogGrid"></div></div>
-        <div id="blogDetailView" class="hidden"><button class="blog-back" onclick="closeBlog()"><i class="fas fa-arrow-left"></i> Kembali</button><div id="blogDetailContent"></div></div>
-    </div>
+    <script>
+        // ===== GLOBAL FUNCTIONS =====
+        function toast(m, t) {
+            let c = document.createElement('div');
+            c.className = 'toast';
+            c.style.background = t === 'error' ? '#ef4444' : '#10b981';
+            c.innerHTML = m;
+            document.body.appendChild(c);
+            setTimeout(() => { c.style.opacity = '0'; c.style.transition = '.3s'; setTimeout(() => c.remove(), 300) }, 3000);
+        }
+        function toggleMenu() {
+            let m = document.getElementById('mobileMenu'), h = document.getElementById('hamburgerBtn');
+            m.classList.toggle('show'); h.classList.toggle('open');
+        }
+        function go(n) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            let el = document.getElementById('page-' + n);
+            if (el) el.classList.add('active');
+            else document.getElementById('page-home').classList.add('active');
+            document.getElementById('mobileMenu').classList.remove('show');
+            document.getElementById('hamburgerBtn').classList.remove('open');
+            window.scrollTo(0, 0);
+            if (n === 'blog') renderBlogs();
+            if (n === 'riwayat') renderHistory();
+            if (n !== 'scanner') stopScanner();
+        }
+        function toggleTheme() {
+            let d = document.documentElement.classList.toggle('dark');
+            document.getElementById('themeBtn').textContent = d ? '☀️' : '🌙';
+            localStorage.setItem('theme', d ? 'dark' : 'light');
+        }
+        function toggleFAQ(btn) {
+            let answer = btn.nextElementSibling;
+            let icon = btn.querySelector('i');
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.classList.add('show');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        function openImageModal(src) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+        }
 
-    <!-- TENTANG -->
-    <div class="page" id="page-tentang"><div class="card" style="max-width:880px;margin:0 auto;line-height:2"><h1 style="font-weight:800;font-size:1.8rem;margin-bottom:18px">ℹ️ Tentang ScanBarcode Pro</h1><p>ScanBarcode Pro didirikan 2023 sebagai pemindai barcode online gratis #1 di Indonesia. 5M+ pemindaian, 50+ format, 100% privat.</p></div></div>
+        const GS1_COUNTRIES = {'899':'Indonesia','888':'Singapura','955':'Malaysia','885':'Thailand','893':'Vietnam','890':'India','690':'China','691':'China','692':'China','693':'China','694':'China','695':'China','500':'Inggris','501':'Inggris','502':'Inggris','503':'Inggris','504':'Inggris','505':'Inggris','506':'Inggris','507':'Inggris','508':'Inggris','509':'Inggris','400':'Jerman','401':'Jerman','402':'Jerman','403':'Jerman','404':'Jerman','405':'Jerman','406':'Jerman','407':'Jerman','408':'Jerman','409':'Jerman','410':'Jerman','411':'Jerman','412':'Jerman','413':'Jerman','414':'Jerman','415':'Jerman','416':'Jerman','417':'Jerman','418':'Jerman','419':'Jerman','420':'Jerman','421':'Jerman','422':'Jerman','423':'Jerman','424':'Jerman','425':'Jerman','426':'Jerman','427':'Jerman','428':'Jerman','429':'Jerman','430':'Jerman','431':'Jerman','432':'Jerman','433':'Jerman','434':'Jerman','435':'Jerman','436':'Jerman','437':'Jerman','438':'Jerman','439':'Jerman','440':'Jerman','450':'Jepang','451':'Jepang','452':'Jepang','453':'Jepang','454':'Jepang','455':'Jepang','456':'Jepang','457':'Jepang','458':'Jepang','459':'Jepang','490':'Jepang','491':'Jepang','492':'Jepang','493':'Jepang','494':'Jepang','495':'Jepang','496':'Jepang','497':'Jepang','498':'Jepang','499':'Jepang','000':'Amerika Serikat','001':'Amerika Serikat','002':'Amerika Serikat','003':'Amerika Serikat','004':'Amerika Serikat','005':'Amerika Serikat','006':'Amerika Serikat','007':'Amerika Serikat','008':'Amerika Serikat','009':'Amerika Serikat','010':'Amerika Serikat','011':'Amerika Serikat','012':'Amerika Serikat','013':'Amerika Serikat','300':'Prancis','301':'Prancis','302':'Prancis','303':'Prancis','304':'Prancis','305':'Prancis','306':'Prancis','307':'Prancis','308':'Prancis','309':'Prancis','310':'Prancis','311':'Prancis','312':'Prancis','313':'Prancis','314':'Prancis','315':'Prancis','316':'Prancis','317':'Prancis','318':'Prancis','319':'Prancis','320':'Prancis','321':'Prancis','322':'Prancis','323':'Prancis','324':'Prancis','325':'Prancis','326':'Prancis','327':'Prancis','328':'Prancis','329':'Prancis','330':'Prancis','331':'Prancis','332':'Prancis','333':'Prancis','334':'Prancis','335':'Prancis','336':'Prancis','337':'Prancis','338':'Prancis','339':'Prancis','340':'Prancis','341':'Prancis','342':'Prancis','343':'Prancis','344':'Prancis','345':'Prancis','346':'Prancis','347':'Prancis','348':'Prancis','349':'Prancis','471':'Taiwan','474':'Estonia','475':'Latvia','476':'Azerbaijan','477':'Lithuania','478':'Uzbekistan','479':'Sri Lanka','480':'Filipina','481':'Belarus','482':'Ukraina','483':'Turkmenistan','484':'Moldova','485':'Armenia','486':'Georgia','487':'Kazakhstan','488':'Tajikistan','489':'Hong Kong','520':'Yunani','521':'Yunani','528':'Lebanon','529':'Siprus','530':'Albania','531':'Makedonia','535':'Malta','539':'Irlandia','540':'Belgia','541':'Belgia','542':'Belgia','543':'Belgia','544':'Belgia','545':'Belgia','546':'Belgia','547':'Belgia','548':'Belgia','549':'Belgia','560':'Portugal','569':'Islandia','570':'Denmark','571':'Denmark','572':'Denmark','573':'Denmark','574':'Denmark','575':'Denmark','576':'Denmark','577':'Denmark','578':'Denmark','579':'Denmark','590':'Polandia','594':'Rumania','599':'Hungaria','700':'Norwegia','701':'Norwegia','702':'Norwegia','703':'Norwegia','704':'Norwegia','705':'Norwegia','706':'Norwegia','707':'Norwegia','708':'Norwegia','709':'Norwegia','730':'Swedia','731':'Swedia','732':'Swedia','733':'Swedia','734':'Swedia','735':'Swedia','736':'Swedia','737':'Swedia','738':'Swedia','739':'Swedia','740':'Guatemala','741':'El Salvador','742':'Honduras','743':'Nikaragua','744':'Kosta Rika','745':'Panama','746':'Republik Dominika','759':'Venezuela','760':'Swiss','761':'Swiss','762':'Swiss','763':'Swiss','764':'Swiss','765':'Swiss','766':'Swiss','767':'Swiss','768':'Swiss','769':'Swiss','773':'Uruguay','775':'Peru','777':'Bolivia','780':'Chili','784':'Paraguay','786':'Ekuador'};
 
-    <!-- KONTAK -->
-    <div class="page" id="page-kontak"><div class="card" style="max-width:880px;margin:0 auto;line-height:2"><h1 style="font-weight:800;font-size:1.8rem;margin-bottom:18px">📧 Hubungi ScanBarcode Pro</h1><p>Punya pertanyaan? Hubungi tim ScanBarcode Pro.</p></div></div>
+        const blogImgs = ['https://images.unsplash.com/photo-1586281380349-632531db7ed1?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553729459-afe8a1f19b2a?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop'];
+        const blogs = [
+            {id:1,title:'Cara Memindai Barcode dengan Kamera HP',cat:'Tutorial',date:'15 Maret 2026',excerpt:'Panduan lengkap scan barcode pakai HP.',content:'<p>Di era digital, memindai barcode sudah menjadi kebutuhan. ScanBarcode Pro hadir sebagai solusi praktis, gratis, dan 100% privat.</p><h2>Langkah 1</h2><p>Buka browser dan kunjungi ScanBarcode Pro.</p><h2>Langkah 2</h2><p>Klik "Mulai Kamera" dan izinkan akses.</p><h2>Langkah 3</h2><p>Arahkan ke barcode. Hasil muncul instan.</p>'},
+            {id:2,title:'Perbedaan EAN dan UPC',cat:'Retail',date:'10 Maret 2026',excerpt:'Memahami EAN-13 dan UPC-A.',content:'<p>EAN-13 digunakan global termasuk Indonesia. UPC-A digunakan di Amerika.</p>'},
+            {id:3,title:'QRIS: Pembayaran Digital',cat:'Fintech',date:'5 Maret 2026',excerpt:'Standar nasional Bank Indonesia.',content:'<p>QRIS menyatukan berbagai kode QR menjadi satu standar nasional.</p>'},
+            {id:4,title:'Manajemen Inventori UMKM',cat:'Bisnis',date:'28 Februari 2026',excerpt:'Optimalkan stok dengan barcode.',content:'<p>Sistem barcode membantu UMKM melacak stok dengan akurat.</p>'},
+            {id:5,title:'WiFi QR Code',cat:'Tools',date:'20 Februari 2026',excerpt:'Permudah pelanggan terhubung.',content:'<p>WiFi QR code berisi informasi koneksi. Scan dan otomatis terhubung.</p>'},
+            {id:6,title:'Keamanan QR Code',cat:'Keamanan',date:'15 Februari 2026',excerpt:'Tips hindari QR palsu.',content:'<p>Periksa URL, waspada QR tempelan, gunakan scanner terpercaya.</p>'}
+        ];
+        function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card" onclick="openBlog(${b.id})"><div class="blog-img" style="background-image:url('${blogImgs[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date} • 5 menit</span></div></div>`).join('')}
+        function openBlog(id){let b=blogs.find(x=>x.id===id)||blogs[0];document.getElementById('blogListView').classList.add('hidden');document.getElementById('blogDetailView').classList.remove('hidden');document.getElementById('blogDetailContent').innerHTML=`<div class="blog-detail-header" style="background-image:url('${blogImgs[id-1]}')"><div><span style="font-size:12px;font-weight:700;text-transform:uppercase">${b.cat}</span><h1 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin:10px 0">${b.title}</h1><span style="font-size:14px">📅 ${b.date}</span></div></div><div class="blog-detail-content">${b.content}</div>`;window.scrollTo(0,0)}
+        function closeBlog(){document.getElementById('blogListView').classList.remove('hidden');document.getElementById('blogDetailView').classList.add('hidden');window.scrollTo(0,0)}
 
-</div>
-
-<footer class="footer"><div class="footer-grid"><div><h4>📷 ScanBarcode Pro</h4><p>Pemindai barcode online gratis terbaik di Indonesia.</p><div class="footer-tags"><span class="footer-tag">scan barcode</span><span class="footer-tag">pemindai barcode</span><span class="footer-tag">scan qr code</span></div></div><div><h4>📋 Menu</h4><ul><li><a href="#" onclick="go('scanner')">📷 Pemindai</a></li><li><a href="#" onclick="go('generator')">🎨 Generator</a></li><li><a href="#" onclick="go('blog')">📝 Blog</a></li></ul></div><div><h4>ℹ️ Informasi</h4><ul><li><a href="#" onclick="go('tentang')">ℹ️ Tentang</a></li><li><a href="#" onclick="go('kontak')">📧 Kontak</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 ScanBarcode Pro. Hak Cipta Dilindungi.</p></div></footer>
-
-<script>
-function toast(m,t){let c=document.createElement('div');c.className='toast';c.style.background=t==='error'?'#ef4444':'#10b981';c.innerHTML=m;document.body.appendChild(c);setTimeout(()=>{c.style.opacity='0';c.style.transition='.3s';setTimeout(()=>c.remove(),300)},3000)}
-function toggleMenu(){let m=document.getElementById('mobileMenu'),h=document.getElementById('hamburgerBtn');m.classList.toggle('show');h.classList.toggle('open')}
-function go(n){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let el=document.getElementById('page-'+n);if(el)el.classList.add('active');else document.getElementById('page-home').classList.add('active');document.getElementById('mobileMenu').classList.remove('show');document.getElementById('hamburgerBtn').classList.remove('open');window.scrollTo(0,0);if(n==='blog')renderBlogs();if(n==='riwayat')renderHistory();if(n==='generator')genTab('qr');if(n!=='scanner')stopScanner()}
-function toggleTheme(){let d=document.documentElement.classList.toggle('dark');document.getElementById('themeBtn').textContent=d?'☀️':'🌙';localStorage.setItem('theme',d?'dark':'light')}
-
-// ===== GS1 COUNTRY PREFIX MAPPING =====
-const GS1_COUNTRIES = {
-    '899':'Indonesia','888':'Singapura','955':'Malaysia','885':'Thailand','893':'Vietnam',
-    '890':'India','880':'Bangladesh','729':'Israel','690':'China','691':'China','692':'China','693':'China','694':'China','695':'China',
-    '500':'Inggris','501':'Inggris','502':'Inggris','503':'Inggris','504':'Ingg리스','505':'Inggris','506':'Inggris','507':'Inggris','508':'Inggris','509':'Inggris',
-    '400':'Jerman','401':'Jerman','402':'Jerman','403':'Jerman','404':'Jerman','405':'Jerman','406':'Jerman','407':'Jerman','408':'Jerman','409':'Jerman','410':'Jerman','411':'Jerman','412':'Jerman','413':'Jerman','414':'Jerman','415':'Jerman','416':'Jerman','417':'Jerman','418':'Jerman','419':'Jerman','420':'Jerman','421':'Jerman','422':'Jerman','423':'Jerman','424':'Jerman','425':'Jerman','426':'Jerman','427':'Jerman','428':'Jerman','429':'Jerman','430':'Jerman','431':'Jerman','432':'Jerman','433':'Jerman','434':'Jerman','435':'Jerman','436':'Jerman','437':'Jerman','438':'Jerman','439':'Jerman','440':'Jerman',
-    '450':'Jepang','451':'Jepang','452':'Jepang','453':'Jepang','454':'Jepang','455':'Jepang','456':'Jepang','457':'Jepang','458':'Jepang','459':'Jepang','490':'Jepang','491':'Jepang','492':'Jepang','493':'Jepang','494':'Jepang','495':'Jepang','496':'Jepang','497':'Jepang','498':'Jepang','499':'Jepang',
-    '000':'Amerika Serikat','001':'Amerika Serikat','002':'Amerika Serikat','003':'Amerika Serikat','004':'Amerika Serikat','005':'Amerika Serikat','006':'Amerika Serikat','007':'Amerika Serikat','008':'Amerika Serikat','009':'Amerika Serikat','010':'Amerika Serikat','011':'Amerika Serikat','012':'Amerika Serikat','013':'Amerika Serikat',
-    '300':'Prancis','301':'Prancis','302':'Prancis','303':'Prancis','304':'Prancis','305':'Prancis','306':'Prancis','307':'Prancis','308':'Prancis','309':'Prancis','310':'Prancis','311':'Prancis','312':'Prancis','313':'Prancis','314':'Prancis','315':'Prancis','316':'Prancis','317':'Prancis','318':'Prancis','319':'Prancis','320':'Prancis','321':'Prancis','322':'Prancis','323':'Prancis','324':'Prancis','325':'Prancis','326':'Prancis','327':'Prancis','328':'Prancis','329':'Prancis','330':'Prancis','331':'Prancis','332':'Prancis','333':'Prancis','334':'Prancis','335':'Prancis','336':'Prancis','337':'Prancis','338':'Prancis','339':'Prancis','340':'Prancis','341':'Prancis','342':'Prancis','343':'Prancis','344':'Prancis','345':'Prancis','346':'Prancis','347':'Prancis','348':'Prancis','349':'Prancis',
-    '600':'Afrika Selatan','601':'Afrika Selatan','602':'Afrika Selatan','603':'Afrika Selatan','604':'Afrika Selatan','605':'Afrika Selatan','606':'Afrika Selatan','607':'Afrika Selatan','608':'Afrika Selatan','609':'Afrika Selatan','610':'Afrika Selatan','611':'Afrika Selatan','612':'Afrika Selatan','613':'Afrika Selatan','614':'Afrika Selatan','615':'Afrika Selatan','616':'Afrika Selatan','617':'Afrika Selatan','618':'Afrika Selatan','619':'Afrika Selatan','620':'Afrika Selatan','621':'Afrika Selatan','622':'Afrika Selatan','623':'Afrika Selatan','624':'Afrika Selatan','625':'Afrika Selatan','626':'Afrika Selatan','627':'Afrika Selatan','628':'Afrika Selatan','629':'Afrika Selatan','630':'Afrika Selatan','631':'Afrika Selatan','632':'Afrika Selatan','633':'Afrika Selatan','634':'Afrika Selatan','635':'Afrika Selatan','636':'Afrika Selatan','637':'Afrika Selatan','638':'Afrika Selatan','639':'Afrika Selatan','640':'Afrika Selatan','641':'Afrika Selatan','642':'Afrika Selatan','643':'Afrika Selatan','644':'Afrika Selatan','645':'Afrika Selatan','646':'Afrika Selatan','647':'Afrika Selatan','648':'Afrika Selatan','649':'Afrika Selatan',
-    '750':'Meksiko','751':'Meksiko','752':'Meksiko','753':'Meksiko','754':'Meksiko','755':'Meksiko','756':'Meksiko','757':'Meksiko','758':'Meksiko','759':'Meksiko',
-    '770':'Kolombia','771':'Kolombia','772':'Kolombia','773':'Kolombia','774':'Kolombia','775':'Kolombia','776':'Kolombia','777':'Kolombia','778':'Kolombia','779':'Kolombia',
-    '789':'Brasil','790':'Brasil',
-    '471':'Taiwan','474':'Estonia','475':'Latvia','476':'Azerbaijan','477':'Lithuania','478':'Uzbekistan','479':'Sri Lanka','480':'Filipina','481':'Belarus','482':'Ukraina','483':'Turkmenistan','484':'Moldova','485':'Armenia','486':'Georgia','487':'Kazakhstan','488':'Tajikistan','489':'Hong Kong',
-    '520':'Yunani','521':'Yunani','528':'Lebanon','529':'Siprus','530':'Albania','531':'Makedonia','535':'Malta','539':'Irlandia','540':'Belgia','541':'Belgia','542':'Belgia','543':'Belgia','544':'Belgia','545':'Belgia','546':'Belgia','547':'Belgia','548':'Belgia','549':'Belgia','560':'Portugal','569':'Islandia','570':'Denmark','571':'Denmark','572':'Denmark','573':'Denmark','574':'Denmark','575':'Denmark','576':'Denmark','577':'Denmark','578':'Denmark','579':'Denmark','590':'Polandia','594':'Rumania','599':'Hungaria',
-    '700':'Norwegia','701':'Norwegia','702':'Norwegia','703':'Norwegia','704':'Norwegia','705':'Norwegia','706':'Norwegia','707':'Norwegia','708':'Norwegia','709':'Norwegia','730':'Swedia','731':'Swedia','732':'Swedia','733':'Swedia','734':'Swedia','735':'Swedia','736':'Swedia','737':'Swedia','738':'Swedia','739':'Swedia','740':'Guatemala','741':'El Salvador','742':'Honduras','743':'Nikaragua','744':'Kosta Rika','745':'Panama','746':'Republik Dominika','759':'Venezuela','760':'Swiss','761':'Swiss','762':'Swiss','763':'Swiss','764':'Swiss','765':'Swiss','766':'Swiss','767':'Swiss','768':'Swiss','769':'Swiss','773':'Uruguay','775':'Peru','777':'Bolivia','780':'Chili','784':'Paraguay','786':'Ekuador'
-};
-
-// ===== BLOG DATA =====
-const blogImgs=['https://images.unsplash.com/photo-1586281380349-632531db7ed1?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553729459-afe8a1f19b2a?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop','https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop'];
-const blogs=[{id:1,title:'Cara Memindai Barcode dengan Kamera HP',cat:'Tutorial',date:'15 Maret 2026',excerpt:'Panduan lengkap scan barcode pakai HP.',content:'<p>Di era digital, memindai barcode sudah menjadi kebutuhan. ScanBarcode Pro hadir sebagai solusi praktis, gratis, dan 100% privat.</p><h2>Langkah 1</h2><p>Buka browser dan kunjungi ScanBarcode Pro.</p><h2>Langkah 2</h2><p>Klik "Mulai Kamera" dan izinkan akses.</p><h2>Langkah 3</h2><p>Arahkan ke barcode. Hasil muncul instan.</p>'},{id:2,title:'Perbedaan EAN dan UPC',cat:'Retail',date:'10 Maret 2026',excerpt:'Memahami EAN-13 dan UPC-A.',content:'<p>EAN-13 digunakan global termasuk Indonesia. UPC-A digunakan di Amerika.</p>'},{id:3,title:'QRIS: Pembayaran Digital',cat:'Fintech',date:'5 Maret 2026',excerpt:'Standar nasional Bank Indonesia.',content:'<p>QRIS menyatukan berbagai kode QR menjadi satu standar nasional.</p>'},{id:4,title:'Manajemen Inventori UMKM',cat:'Bisnis',date:'28 Februari 2026',excerpt:'Optimalkan stok dengan barcode.',content:'<p>Sistem barcode membantu UMKM melacak stok dengan akurat.</p>'},{id:5,title:'WiFi QR Code',cat:'Tools',date:'20 Februari 2026',excerpt:'Permudah pelanggan terhubung.',content:'<p>WiFi QR code berisi informasi koneksi. Scan dan otomatis terhubung.</p>'},{id:6,title:'Keamanan QR Code',cat:'Keamanan',date:'15 Februari 2026',excerpt:'Tips hindari QR palsu.',content:'<p>Periksa URL, waspada QR tempelan, gunakan scanner terpercaya.</p>'}];
-function renderBlogs(){document.getElementById('blogGrid').innerHTML=blogs.map((b,i)=>`<div class="blog-card" onclick="openBlog(${b.id})"><div class="blog-img" style="background-image:url('${blogImgs[i]}')"><span>${b.title}</span></div><div class="blog-info"><span class="blog-cat">${b.cat}</span><h3 class="blog-title">${b.title}</h3><p class="blog-excerpt">${b.excerpt}</p><span class="blog-date">📅 ${b.date} • 5 menit</span></div></div>`).join('')}
-function openBlog(id){let b=blogs.find(x=>x.id===id)||blogs[0];document.getElementById('blogListView').classList.add('hidden');document.getElementById('blogDetailView').classList.remove('hidden');document.getElementById('blogDetailContent').innerHTML=`<div class="blog-detail-header" style="background-image:url('${blogImgs[id-1]}')"><div><span style="font-size:12px;font-weight:700;text-transform:uppercase">${b.cat}</span><h1 style="font-size:clamp(1.5rem,3vw,2rem);font-weight:900;margin:10px 0">${b.title}</h1><span style="font-size:14px">📅 ${b.date}</span></div></div><div class="blog-detail-content">${b.content}</div>`;window.scrollTo(0,0)}
-function closeBlog(){document.getElementById('blogListView').classList.remove('hidden');document.getElementById('blogDetailView').classList.add('hidden');window.scrollTo(0,0)}
-    
         // Scanner logic
         let scanner=null,scanRes='',scanning=!1,torchOn=!1,curCam=null,cams=[];
         async function startScanner(){
@@ -407,7 +651,7 @@ function closeBlog(){document.getElementById('blogListView').classList.remove('h
             let type = /^https?:\/\//i.test(t)?'url':/^WIFI:/i.test(t)?'wifi':/^tel:/i.test(t)?'phone':/^mailto:/i.test(t)?'email':/^\d{8,14}$/.test(t)?'product':'text';
             let ic={url:'🔗',wifi:'📶',phone:'📞',email:'✉️',product:'📦',text:'📝'},lb={url:'Link',wifi:'WiFi',phone:'Telepon',email:'Email',product:'Barcode Produk',text:'Teks'};
             d.className='result-box success';
-            d.innerHTML=`<div style="text-align:center;width:100%">${scanTypeBadge}<div style="font-size:2.5rem;margin:10px 0;">${ic[type]}</div><div style="font-size:13px;font-weight:700;color:#2563eb;margin:6px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;padding:12px;border-radius:8px;font-size:14px;border:2px solid #3b82f6">${t}</div><div style="margin-top:10px;color:#64748b;font-size:12px;">Format: ${f}</div></div>`;
+            d.innerHTML=`<div style="text-align:center;width:100%">${scanTypeBadge}<div style="font-size:2.5rem;margin:10px 0;">${ic[type]}</div><div style="font-size:13px;font-weight:700;color:#2563eb;margin:6px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;color:#1e293b;padding:12px;border-radius:8px;font-size:14px;border:2px solid #3b82f6" class="barcode-number">${t}</div><div style="margin-top:10px;color:#64748b;font-size:12px;">Format: ${f}</div></div>`;
             pi.innerHTML='';pi.style.display='none';
             if(type==='product' && /^\d{12,13}$/.test(t)){
                 let country='-',manufacturer='-',product='-';
@@ -428,16 +672,41 @@ function closeBlog(){document.getElementById('blogListView').classList.remove('h
                     const data=await response.json();
                     if(data.status===1 && data.product){
                         const p=data.product;
-                        let imgUrl=p.image_url||p.image_front_url||p.image_thumb_url||'';
+                        let imgUrls=[];
+                        const imageFields=['image_url','image_front_url','image_ingredients_url','image_nutrition_url','image_packaging_url','image_other_url','image_small_url','image_thumb_url'];
+                        imageFields.forEach(field => {
+                            if(p[field]) imgUrls.push(p[field]);
+                        });
+                        imgUrls=[...new Set(imgUrls)];
                         let name=p.product_name||'Produk';
                         let brand=p.brands||'Merek tidak diketahui';
-                        container.innerHTML=`<div style="display:flex;align-items:center;gap:15px;background:var(--bg);padding:12px;border-radius:10px;border:1px solid var(--border);">
-                            ${imgUrl?`<img src="${imgUrl}" alt="${name}" style="width:80px;height:80px;object-fit:contain;border-radius:8px;" onerror="this.style.display='none'">`:'<div style="width:80px;height:80px;background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px;">📦</div>'}
-                            <div style="text-align:left;">
-                                <div style="font-weight:700;font-size:15px;">${name}</div>
-                                <div style="font-size:13px;color:#64748b;">Merek: ${brand}</div>
+                        let categories=p.categories||'';
+                        let quantity=p.quantity||'';
+                        let description = p.generic_name || p.ingredients_text || '';
+                        description = description.length>120 ? description.substring(0,120)+'...' : description;
+                        // No price displayed (per user request)
+                        let imgHtml='';
+                        if(imgUrls.length>0){
+                            let thumbs=imgUrls.map((url,idx)=>`<img src="${url}" class="product-image-thumb" onclick="openImageModal('${url}')" onerror="this.style.display='none'">`).join('');
+                            imgHtml=`<div class="product-images">${thumbs}</div>`;
+                        } else {
+                            imgHtml='<div style="font-size:30px;margin:10px;">📦</div>';
+                        }
+                        container.innerHTML=`
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    ${imgHtml}
+                                </div>
+                                <div class="product-details">
+                                    <div class="product-name">${name}</div>
+                                    <div class="product-short-desc">${description || 'Tidak ada deskripsi.'}</div>
+                                    <div><strong>Merek:</strong> ${brand}</div>
+                                    ${categories?`<div><strong>Kategori:</strong> ${categories}</div>`:''}
+                                    ${quantity?`<div><strong>Ukuran:</strong> ${quantity}</div>`:''}
+                                    <div class="barcode-number">${t}</div>
+                                </div>
                             </div>
-                        </div>`;
+                        `;
                     }else{
                         container.innerHTML='<div style="padding:10px;background:var(--bg);border-radius:8px;font-size:13px;color:#64748b;">ℹ️ Produk tidak ditemukan di database terbuka.</div>';
                     }
@@ -448,8 +717,8 @@ function closeBlog(){document.getElementById('blogListView').classList.remove('h
             let ac=`<button onclick="copyRes()" class="btn btn-dark" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-copy"></i> Salin Teks</button>`;
             if(type==='url')ac+=`<button onclick="window.open('${t}','_blank')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-external-link-alt"></i> Buka Website</button>`;
             if(type==='product'){
-                ac+=`<button onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(t)}+harga','_blank')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-search"></i> Cek Harga di Google</button>`;
-                ac+=`<button onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(t)}+product+info','_blank')" class="btn btn-outline" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-info-circle"></i> Info Produk di Google</button>`;
+                ac+=`<button onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(t)}+product+info','_blank')" class="btn btn-outline highlight-btn" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-info-circle"></i> Info Produk di Google</button>`;
+                ac+=`<button onclick="window.open('https://www.google.com/search?q=${encodeURIComponent(t)}','_blank')" class="btn btn-outline highlight-btn" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-search"></i> Cari di Google</button>`;
             }
             ac+=`<button onclick="shareRes()" class="btn btn-outline" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-share-alt"></i> Bagikan Hasil</button>`;
             a.innerHTML=ac;a.style.display='flex';i.style.display='block';i.innerHTML=`<strong>📋 Format:</strong> ${f} | <strong>🕐 Waktu:</strong> ${new Date().toLocaleString('id-ID')}`;
@@ -462,65 +731,45 @@ function closeBlog(){document.getElementById('blogListView').classList.remove('h
         function clearHistory(){if(confirm('Hapus semua riwayat?')){localStorage.removeItem('sh');renderHistory();toast('Dihapus')}}
         function exportHistory(){let h=JSON.parse(localStorage.getItem('sh')||'[]');if(!h.length)return;let c='Waktu,Format,Konten\n'+h.map(i=>`"${i.time}","${i.format}","${i.text.replace(/"/g,'""')}"`).join('\n');let b=new Blob(['\uFEFF'+c],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='scan-history.csv';a.click()}
 
-// ===== ENHANCED RESULT WITH PRODUCT INFO =====
-function showResult(t,f){
-    let d=document.getElementById('resultDisplay'),a=document.getElementById('resultActions'),i=document.getElementById('resultInfo'),p=document.getElementById('productSearch'),pi=document.getElementById('productInfoSection');
-    let type=/^https?:\/\//i.test(t)?'url':/^WIFI:/i.test(t)?'wifi':/^tel:/i.test(t)?'phone':/^mailto:/i.test(t)?'email':/^\d{8,14}$/.test(t)?'product':'text';
-    let ic={url:'🔗',wifi:'📶',phone:'📞',email:'✉️',product:'📦',text:'📝'},lb={url:'Link',wifi:'WiFi',phone:'Telepon',email:'Email',product:'Barcode Produk',text:'Teks'};
-    d.className='result-box success';
-    d.innerHTML=`<div style="text-align:center;width:100%"><div style="font-size:2.5rem;margin-bottom:8px">${ic[type]}</div><div style="font-size:13px;font-weight:700;color:#2563eb;margin:6px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;padding:12px;border-radius:8px;font-size:14px;border:2px solid #3b82f6">${t}</div></div>`;
-    
-    // Product info section
-    if(type==='product' && /^\d{12,13}$/.test(t)){
-        let country='-',manufacturer='-',product='-';
-        if(t.length===13){ // EAN-13
-            let prefix=t.substring(0,3);
-            country=GS1_COUNTRIES[prefix]||'Global ('+prefix+')';
-            manufacturer=t.substring(3,8);
-            product=t.substring(8,12);
-        } else if(t.length===12){ // UPC-A
-            let prefix=t.substring(0,1);
-            country='Amerika Serikat';
-            manufacturer=t.substring(1,6);
-            product=t.substring(6,11);
-        }
-        pi.style.display='block';
-        pi.innerHTML=`<div class="product-info-grid"><div class="product-info-item"><div class="product-info-label">🌍 Asal Negara</div><div class="product-info-value">${country}</div></div><div class="product-info-item"><div class="product-info-label">🏭 Kode Produsen</div><div class="product-info-value">${manufacturer}</div></div><div class="product-info-item"><div class="product-info-label">📦 Kode Produk</div><div class="product-info-value">${product}</div></div></div>`;
-    } else {
-        pi.style.display='none';
-    }
-    
-    let ac=`<button onclick="copyRes()" class="btn btn-dark" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-copy"></i> Salin Teks</button>`;
-    if(type==='url')ac+=`<button onclick="window.open('${t}','_blank')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-external-link-alt"></i> Buka Website</button>`;
-    if(type==='product')ac+=`<button onclick="searchGoogle('${t}')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-search"></i> Cari di Google</button>`;
-    ac+=`<button onclick="shareRes()" class="btn btn-outline" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-share-alt"></i> Bagikan Hasil</button>`;
-    a.innerHTML=ac;a.style.display='flex';i.style.display='block';i.innerHTML=`<strong>📋 Format:</strong> ${f} | <strong>🕐 Waktu:</strong> ${new Date().toLocaleString('id-ID')}`;
-    if(type==='product'){p.style.display='block';searchGoogle(t)}else{p.style.display='none'}
-}
-function searchGoogle(c){let q=encodeURIComponent(c);document.getElementById('productSearch').innerHTML=`<div class="card" style="padding:10px;text-align:center;margin-top:8px"><p style="font-size:13px;margin-bottom:6px;font-weight:600">🔍 Cari: <strong>${c}</strong></p><a href="https://www.google.com/search?q=${q}+product" target="_blank" class="btn btn-primary btn-sm" style="margin:2px">🔍 Google</a><a href="https://www.google.com/search?q=${q}+barcode+info" target="_blank" class="btn btn-outline btn-sm" style="margin:2px">📦 Info</a></div>`}
-function copyRes(){navigator.clipboard.writeText(scanRes).then(()=>toast('✅ Disalin!'))}
-function shareRes(){if(navigator.share)navigator.share({text:scanRes});else copyRes()}
+        // Generator initialization
+        let currentType='url',currentBarcodeFormat='CODE128',logoImage=null,currentQRCanvas=null,currentQRDataURL=null,currentBarcodeCanvas=null,currentBarcodeDataURL=null;
+        window.switchTab=function(tab){const qrSection=document.getElementById('qrSection'),barcodeSection=document.getElementById('barcodeSection'),tabQR=document.getElementById('tabQR'),tabBarcode=document.getElementById('tabBarcode');if(tab==='qr'){tabQR.classList.add('active');tabBarcode.classList.remove('active');qrSection.classList.remove('hidden');barcodeSection.classList.add('hidden');}else{tabBarcode.classList.add('active');tabQR.classList.remove('active');barcodeSection.classList.remove('hidden');qrSection.classList.add('hidden');}};
+        function setupQRTypeButtons(){document.querySelectorAll('#typeGrid .type-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('#typeGrid .type-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentType=this.dataset.type;document.querySelectorAll('.content-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+currentType).classList.add('active');});});}
+        function setupBarcodeFormatButtons(){document.querySelectorAll('#barcodeFormatGrid .type-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('#barcodeFormatGrid .type-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');currentBarcodeFormat=this.dataset.format;});});}
+        function getQRContent(){let content='';switch(currentType){case'url':content=document.getElementById('url-input').value.trim();break;case'text':content=document.getElementById('text-input').value.trim();break;case'email':const email=document.getElementById('email-input').value.trim();if(!email)return'';const subject=document.getElementById('email-subject').value.trim();const body=document.getElementById('email-body').value.trim();content='mailto:'+email;const params=[];if(subject)params.push('subject='+encodeURIComponent(subject));if(body)params.push('body='+encodeURIComponent(body));if(params.length)content+='?'+params.join('&');break;case'phone':const phone=document.getElementById('phone-input').value.trim();content=phone?'tel:'+phone:'';break;case'sms':const smsNum=document.getElementById('sms-number').value.trim();if(!smsNum)return'';content='sms:'+smsNum;const msg=document.getElementById('sms-message').value.trim();if(msg)content+='?body='+encodeURIComponent(msg);break;case'wifi':const ssid=document.getElementById('wifi-ssid').value.trim();if(!ssid)return'';const pass=document.getElementById('wifi-password').value.trim();const enc=document.getElementById('wifi-encryption').value;content='WIFI:S:'+ssid+';T:'+enc+';P:'+pass+';;';break;case'vcard':const name=document.getElementById('vcard-name').value.trim();if(!name)return'';content='BEGIN:VCARD\nVERSION:3.0\nFN:'+name+'\n';const org=document.getElementById('vcard-org').value.trim();if(org)content+='ORG:'+org+'\n';const vPhone=document.getElementById('vcard-phone').value.trim();if(vPhone)content+='TEL:'+vPhone+'\n';const vEmail=document.getElementById('vcard-email').value.trim();if(vEmail)content+='EMAIL:'+vEmail+'\n';content+='END:VCARD';break;case'geo':const lat=document.getElementById('geo-lat').value.trim();const lng=document.getElementById('geo-lng').value.trim();if(!lat||!lng)return'';content='geo:'+lat+','+lng;break;}return content;}
+        function setupColorSync(){const sync=(picker,hex)=>{picker.addEventListener('input',()=>hex.value=picker.value);hex.addEventListener('input',()=>{if(/^#[0-9A-Fa-f]{6}$/.test(hex.value))picker.value=hex.value;});};sync(document.getElementById('fg-color'),document.getElementById('fg-hex'));sync(document.getElementById('bg-color'),document.getElementById('bg-hex'));sync(document.getElementById('barcode-line-color'),document.getElementById('barcode-line-hex'));sync(document.getElementById('barcode-bg-color'),document.getElementById('barcode-bg-hex'));}
+        function setupRangeSliders(){const bindSlider=(sliderId,valueId,labelId,suffix)=>{const slider=document.getElementById(sliderId);slider.addEventListener('input',()=>{document.getElementById(valueId).textContent=slider.value+suffix;if(labelId)document.getElementById(labelId).textContent=slider.value;});};bindSlider('logoSize','logoSizeValue','logoSizeLabel','%');bindSlider('qrSize','qrSizeValue','qrSizeLabel','px');bindSlider('margin','marginValue','marginLabel','');bindSlider('barcodeWidth','barcodeWidthValue','barcodeWidthLabel','');bindSlider('barcodeHeight','barcodeHeightValue','barcodeHeightLabel','px');}
+        function setupLogoUpload(){const uploadBox=document.getElementById('uploadBox');const fileInput=document.getElementById('logoFile');uploadBox.addEventListener('click',()=>fileInput.click());fileInput.addEventListener('change',(e)=>{const file=e.target.files[0];if(!file)return;const allowed=['image/png','image/jpeg','image/jpg','image/gif','image/svg+xml'];if(!allowed.includes(file.type)){showToast('❌ Pilih file gambar (PNG, JPG, GIF, SVG)','error');return;}if(file.size>5*1024*1024){showToast('❌ Ukuran file harus kurang dari 5MB','error');return;}const reader=new FileReader();reader.onload=(ev)=>{const img=new Image();img.onload=()=>{logoImage=img;document.getElementById('logoPreviewImg').src=ev.target.result;document.getElementById('logoFileName').textContent=file.name;document.getElementById('logoFileSize').textContent=formatFileSize(file.size);document.getElementById('logoPreview').classList.remove('hidden');uploadBox.classList.add('hidden');showToast('✅ Logo berhasil diunggah!','success');};img.onerror=()=>showToast('❌ Gagal memuat gambar','error');img.src=ev.target.result;};reader.readAsDataURL(file);});document.getElementById('btnRemoveLogo').addEventListener('click',()=>{logoImage=null;fileInput.value='';document.getElementById('logoPreview').classList.add('hidden');document.getElementById('uploadBox').classList.remove('hidden');showToast('🗑️ Logo dihapus','info');});}
+        function setupQRGenerateButton(){document.getElementById('generateQRBtn').addEventListener('click',async function(){const content=getQRContent();if(!content){showToast('⚠️ Silakan masukkan konten terlebih dahulu!','warning');return;}const btn=this;btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Membuat...';const qrDisplay=document.getElementById('qrDisplay');const placeholder=document.getElementById('qrPreviewPlaceholder');qrDisplay.innerHTML='<div class="spinner"></div>';qrDisplay.classList.remove('hidden');placeholder.classList.add('hidden');try{const qrSize=parseInt(document.getElementById('qrSize').value);const margin=parseInt(document.getElementById('margin').value);const fgColor=document.getElementById('fg-color').value;const bgColor=document.getElementById('bg-color').value;const errorCorrection=document.getElementById('errorCorrection').value;qrDisplay.innerHTML='';const qrCode=new QRCode(qrDisplay,{text:content,width:qrSize,height:qrSize,colorDark:fgColor,colorLight:bgColor,correctLevel:QRCode.CorrectLevel[errorCorrection]});await new Promise(res=>setTimeout(res,500));const canvas=qrDisplay.querySelector('canvas');if(canvas){currentQRCanvas=canvas;if(logoImage){const ctx=canvas.getContext('2d');const logoSizePercent=parseInt(document.getElementById('logoSize').value)/100;const logoSize=canvas.width*logoSizePercent;const logoX=(canvas.width-logoSize)/2;const logoY=(canvas.height-logoSize)/2;const padding=logoSize*0.1;ctx.fillStyle='#ffffff';ctx.fillRect(logoX-padding,logoY-padding,logoSize+padding*2,logoSize+padding*2);ctx.drawImage(logoImage,logoX,logoY,logoSize,logoSize);}currentQRDataURL=canvas.toDataURL('image/png');const img=document.createElement('img');img.src=currentQRDataURL;img.style.maxWidth='100%';img.style.height='auto';img.style.borderRadius='12px';qrDisplay.innerHTML='';qrDisplay.appendChild(img);document.getElementById('qrDownloadOptions').classList.remove('hidden');document.getElementById('qrInfo').classList.remove('hidden');document.getElementById('qrInfoContent').textContent=content.substring(0,50)+(content.length>50?'...':'');document.getElementById('qrInfoType').textContent=currentType.toUpperCase();document.getElementById('qrInfoSize').textContent=qrSize+'x'+qrSize+'px';updateQRDownloadLinks();showToast('✅ Kode QR berhasil dibuat!','success');}}catch(err){console.error(err);showToast('❌ Gagal membuat kode QR: '+err.message,'error');placeholder.classList.remove('hidden');qrDisplay.classList.add('hidden');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-magic"></i> Buat Kode QR';}});}
+        function updateQRDownloadLinks(){if(!currentQRDataURL)return;document.getElementById('btnDownloadQRPNG').href=currentQRDataURL;const canvas=currentQRCanvas;const jpgCanvas=document.createElement('canvas');jpgCanvas.width=canvas.width;jpgCanvas.height=canvas.height;const ctx=jpgCanvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,jpgCanvas.width,jpgCanvas.height);ctx.drawImage(canvas,0,0);document.getElementById('btnDownloadQRJPG').href=jpgCanvas.toDataURL('image/jpeg',0.95);}
+        function setupQRDownloadButtons(){document.getElementById('btnDownloadQRPNG').addEventListener('click',e=>{e.preventDefault();downloadQRCode('png');});document.getElementById('btnDownloadQRJPG').addEventListener('click',e=>{e.preventDefault();downloadQRCode('jpg');});document.getElementById('btnDownloadQRSVG').addEventListener('click',e=>{e.preventDefault();downloadQRCode('svg');});document.getElementById('btnPrintQR').addEventListener('click',()=>printQR());}
+        function downloadQRCode(format){if(!currentQRCanvas){showToast('⚠️ Buat kode QR terlebih dahulu!','warning');return;}const canvas=currentQRCanvas;let dataUrl,filename;if(format==='png'){dataUrl=canvas.toDataURL('image/png');filename='qrcode.png';}else if(format==='jpg'){const jpgCanvas=document.createElement('canvas');jpgCanvas.width=canvas.width;jpgCanvas.height=canvas.height;const ctx=jpgCanvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,jpgCanvas.width,jpgCanvas.height);ctx.drawImage(canvas,0,0);dataUrl=jpgCanvas.toDataURL('image/jpeg',0.95);filename='qrcode.jpg';}else if(format==='svg'){const content=getQRContent();const qrSize=parseInt(document.getElementById('qrSize').value);const fgColor=document.getElementById('fg-color').value;const bgColor=document.getElementById('bg-color').value;const tempDiv=document.createElement('div');tempDiv.style.position='absolute';tempDiv.style.left='-9999px';document.body.appendChild(tempDiv);const qrCode=new QRCode(tempDiv,{text:content,width:qrSize,height:qrSize,colorDark:fgColor,colorLight:bgColor,correctLevel:QRCode.CorrectLevel[document.getElementById('errorCorrection').value]});setTimeout(()=>{const svgElement=tempDiv.querySelector('svg');if(svgElement){const svgData=new XMLSerializer().serializeToString(svgElement);const blob=new Blob([svgData],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='qrcode.svg';document.body.appendChild(link);link.click();document.body.removeChild(link);setTimeout(()=>URL.revokeObjectURL(url),100);showToast('✅ Berhasil diunduh sebagai SVG','success');}document.body.removeChild(tempDiv);},100);return;}const link=document.createElement('a');link.href=dataUrl;link.download=filename;document.body.appendChild(link);link.click();document.body.removeChild(link);showToast('✅ Berhasil diunduh sebagai '+format.toUpperCase(),'success');}
+        function printQR(){if(!currentQRCanvas){showToast('⚠️ Buat kode QR terlebih dahulu!','warning');return;}const dataUrl=currentQRCanvas.toDataURL('image/png');const printWindow=window.open('', '_blank','width=800,height=600');printWindow.document.write(`<!DOCTYPE html><html><head><title>Cetak Kode QR</title><style>body{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}img{max-width:100%;height:auto}@media print{img{max-width:80%}}</style></head><body><img src="${dataUrl}" onload="setTimeout(()=>window.print(),500)"></body></html>`);printWindow.document.close();showToast('🖨️ Dialog cetak dibuka','info');}
+        function setupQRActionButtons(){document.getElementById('btnCopyQR').addEventListener('click',copyQRToClipboard);document.getElementById('btnShareQR').addEventListener('click',shareQR);}
+        async function copyQRToClipboard(){if(!currentQRCanvas){showToast('⚠️ Buat kode QR terlebih dahulu!','warning');return;}try{const blob=await new Promise(res=>currentQRCanvas.toBlob(res,'image/png'));await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);showToast('✅ Kode QR disalin ke clipboard!','success');}catch(e){showToast('❌ Gagal menyalin. Coba unduh saja.','error');}}
+        async function shareQR(){if(!currentQRCanvas){showToast('⚠️ Buat kode QR terlebih dahulu!','warning');return;}if(navigator.share){try{const blob=await new Promise(res=>currentQRCanvas.toBlob(res,'image/png'));const file=new File([blob],'qrcode.png',{type:'image/png'});await navigator.share({title:'Kode QR',text:'Lihat kode QR ini!',files:[file]});showToast('✅ Berhasil dibagikan!','success');}catch(e){if(e.name!=='AbortError')showToast('❌ Gagal membagikan','error');}}else showToast('⚠️ Berbagi tidak didukung. Gunakan unduhan.','warning');}
+        function setupBarcodeGenerateButton(){document.getElementById('generateBarcodeBtn').addEventListener('click',function(){const value=document.getElementById('barcode-value').value.trim();if(!value){showToast('⚠️ Masukkan data barcode terlebih dahulu!','warning');return;}const btn=this;btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Membuat...';const display=document.getElementById('barcodeDisplay');const placeholder=document.getElementById('barcodePreviewPlaceholder');display.innerHTML='';display.classList.remove('hidden');placeholder.classList.add('hidden');try{const format=currentBarcodeFormat;const lineColor=document.getElementById('barcode-line-color').value;const bgColor=document.getElementById('barcode-bg-color').value;const width=parseInt(document.getElementById('barcodeWidth').value);const height=parseInt(document.getElementById('barcodeHeight').value);const displayValue=document.getElementById('barcode-display-value').value==='true';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('id','barcode-svg');display.appendChild(svg);JsBarcode(svg,value,{format:format,lineColor:lineColor,background:bgColor,width:width,height:height,displayValue:displayValue,margin:10});const svgData=new XMLSerializer().serializeToString(svg);const svgBlob=new Blob([svgData],{type:'image/svg+xml;charset=utf-8'});const svgUrl=URL.createObjectURL(svgBlob);const img=new Image();img.onload=function(){const canvas=document.createElement('canvas');canvas.width=img.width;canvas.height=img.height;const ctx=canvas.getContext('2d');ctx.fillStyle=bgColor;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0);currentBarcodeCanvas=canvas;currentBarcodeDataURL=canvas.toDataURL('image/png');const displayImg=document.createElement('img');displayImg.src=currentBarcodeDataURL;displayImg.style.maxWidth='100%';displayImg.style.height='auto';displayImg.style.borderRadius='12px';display.innerHTML='';display.appendChild(displayImg);document.getElementById('barcodeDownloadOptions').classList.remove('hidden');document.getElementById('barcodeInfo').classList.remove('hidden');document.getElementById('barcodeInfoData').textContent=value;document.getElementById('barcodeInfoFormat').textContent=format;updateBarcodeDownloadLinks();URL.revokeObjectURL(svgUrl);showToast('✅ Barcode berhasil dibuat!','success');};img.onerror=()=>{showToast('❌ Gagal membuat barcode. Periksa data untuk format ini.','error');placeholder.classList.remove('hidden');display.classList.add('hidden');};img.src=svgUrl;}catch(err){console.error(err);showToast('❌ Gagal membuat barcode: '+err.message,'error');placeholder.classList.remove('hidden');display.classList.add('hidden');}finally{btn.disabled=false;btn.innerHTML='<i class="fas fa-barcode"></i> Buat Barcode';}});}
+        function updateBarcodeDownloadLinks(){if(!currentBarcodeDataURL)return;document.getElementById('btnDownloadBarcodePNG').href=currentBarcodeDataURL;}
+        function setupBarcodeDownloadButtons(){document.getElementById('btnDownloadBarcodePNG').addEventListener('click',e=>{e.preventDefault();downloadBarcodePNG();});document.getElementById('btnDownloadBarcodeSVG').addEventListener('click',e=>{e.preventDefault();downloadBarcodeSVG();});document.getElementById('btnPrintBarcode').addEventListener('click',()=>printBarcode());}
+        function downloadBarcodePNG(){if(!currentBarcodeCanvas){showToast('⚠️ Buat barcode terlebih dahulu!','warning');return;}const link=document.createElement('a');link.href=currentBarcodeDataURL;link.download='barcode.png';document.body.appendChild(link);link.click();document.body.removeChild(link);showToast('✅ Barcode diunduh sebagai PNG','success');}
+        function downloadBarcodeSVG(){const value=document.getElementById('barcode-value').value.trim();if(!value){showToast('⚠️ Tidak ada data barcode','error');return;}const format=currentBarcodeFormat;const lineColor=document.getElementById('barcode-line-color').value;const bgColor=document.getElementById('barcode-bg-color').value;const width=parseInt(document.getElementById('barcodeWidth').value);const height=parseInt(document.getElementById('barcodeHeight').value);const displayValue=document.getElementById('barcode-display-value').value==='true';const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');JsBarcode(svg,value,{format,lineColor,background:bgColor,width,height,displayValue,margin:10});const svgData=new XMLSerializer().serializeToString(svg);const blob=new Blob([svgData],{type:'image/svg+xml'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='barcode.svg';document.body.appendChild(link);link.click();document.body.removeChild(link);setTimeout(()=>URL.revokeObjectURL(url),100);showToast('✅ Barcode diunduh sebagai SVG','success');}
+        function printBarcode(){if(!currentBarcodeCanvas){showToast('⚠️ Buat barcode terlebih dahulu!','warning');return;}const dataUrl=currentBarcodeCanvas.toDataURL('image/png');const printWindow=window.open('', '_blank','width=800,height=600');printWindow.document.write(`<!DOCTYPE html><html><head><title>Cetak Barcode</title><style>body{display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:20px}img{max-width:100%;height:auto}@media print{img{max-width:80%}}</style></head><body><img src="${dataUrl}" onload="setTimeout(()=>window.print(),500)"></body></html>`);printWindow.document.close();showToast('🖨️ Dialog cetak dibuka','info');}
+        function showToast(message,type='info'){const icons={success:'fa-check-circle',error:'fa-exclamation-circle',warning:'fa-exclamation-triangle',info:'fa-info-circle'};const toast=document.createElement('div');toast.className='toast '+type;toast.innerHTML=`<i class="fas ${icons[type]||icons.info}"></i> ${message}`;document.getElementById('toastContainer').appendChild(toast);setTimeout(()=>{toast.style.animation='slideOut 0.3s ease forwards';setTimeout(()=>toast.remove(),300);},3000);}
+        function formatFileSize(bytes){if(bytes<1024)return bytes+' B';if(bytes<1024*1024)return (bytes/1024).toFixed(1)+' KB';return (bytes/(1024*1024)).toFixed(1)+' MB';}
 
-// ===== HISTORY =====
-function saveHist(t,f){let h=JSON.parse(localStorage.getItem('sh')||'[]');h.unshift({text:t,format:f,time:new Date().toLocaleString('id-ID')});localStorage.setItem('sh',JSON.stringify(h.slice(0,100)))}
-function renderHistory(){let h=JSON.parse(localStorage.getItem('sh')||'[]');document.getElementById('historyEmpty').style.display=h.length?'none':'block';document.getElementById('historyList').innerHTML=h.map(i=>`<div style="padding:8px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:6px"><div style="flex:1"><span style="font-size:10px;font-weight:700;color:#2563eb;background:var(--hover);padding:2px 6px;border-radius:3px">${i.format}</span> <span style="font-size:10px;color:#9ca3af;margin-left:6px">${i.time}</span><p style="font-family:monospace;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:3px">${i.text}</p></div><button onclick="navigator.clipboard.writeText('${i.text.replace(/'/g,"\\'")}');toast('Disalin!')" style="border:none;background:var(--bg);cursor:pointer;padding:6px;border-radius:5px">📋</button></div>`).join('')}
-function clearHistory(){if(confirm('Hapus semua riwayat?')){localStorage.removeItem('sh');renderHistory();toast('Dihapus')}}
-function exportHistory(){let h=JSON.parse(localStorage.getItem('sh')||'[]');if(!h.length)return;let c='Waktu,Format,Konten\n'+h.map(i=>`"${i.time}","${i.format}","${i.text.replace(/"/g,'""')}"`).join('\n');let b=new Blob(['\uFEFF'+c],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='scan-history.csv';a.click()}
-
-// ===== QR GENERATOR =====
-let currentQRType='text',genBlob=null;
-function genTab(t){if(t==='qr'){document.getElementById('genControls').innerHTML=`<div style="display:flex;flex-direction:column;gap:12px"><div><label style="font-size:13px;font-weight:700;color:#2563eb">TIPE KONTEN</label><div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:6px">${['text','url','email','phone','sms','wifi','vcard','location'].map(t=>`<button class="qr-type-btn ${t===currentQRType?'active':''}" onclick="setQRType('${t}')">${getQRIcon(t)} ${getQRLabel(t)}</button>`).join('')}</div></div><div id="qrFields"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label style="font-size:12px;font-weight:600">Warna QR</label><input type="color" id="qrFg" value="#000000" style="width:100%;height:36px;border:1.5px solid var(--border);border-radius:8px;padding:2px"></div><div><label style="font-size:12px;font-weight:600">Warna BG</label><input type="color" id="qrBg" value="#ffffff" style="width:100%;height:36px;border:1.5px solid var(--border);border-radius:8px;padding:2px"></div></div><button onclick="generateQRPro()" class="btn btn-primary" style="padding:14px;width:100%"><i class="fas fa-qrcode"></i> Generate QR Code</button></div>`;setQRType('text')}else{document.getElementById('genControls').innerHTML=`<div style="display:flex;flex-direction:column;gap:10px"><label style="font-size:13px;font-weight:700;color:#2563eb">FORMAT</label><select id="barFormat" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"><option value="CODE128">Code 128</option><option value="EAN13">EAN-13</option><option value="UPC">UPC-A</option></select><label style="font-size:13px;font-weight:600">Data</label><input id="barData" placeholder="Masukkan angka..." style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"><button onclick="genBC()" class="btn btn-primary" style="padding:12px;width:100%"><i class="fas fa-barcode"></i> Generate Barcode</button></div>`}document.getElementById('genPreview').innerHTML='<span style="color:#9ca3af">Preview</span>';document.getElementById('btnDownloadPNG').classList.add('hidden');document.getElementById('btnDownloadSVG').classList.add('hidden');genBlob=null}
-function getQRIcon(t){return{text:'📝',url:'🔗',email:'✉️',phone:'📞',sms:'💬',wifi:'📶',vcard:'👤',location:'📍'}[t]||'📝'}
-function getQRLabel(t){return{text:'Teks',url:'URL',email:'Email',phone:'Telepon',sms:'SMS',wifi:'WiFi',vcard:'vCard',location:'Lokasi'}[t]||'Teks'}
-function setQRType(t){currentQRType=t;document.querySelectorAll('.qr-type-btn').forEach(b=>b.classList.remove('active'));let types=['text','url','email','phone','sms','wifi','vcard','location'];let idx=types.indexOf(t);let btns=document.querySelectorAll('.qr-type-btn');if(btns[idx])btns[idx].classList.add('active');let html='';if(t==='text')html=`<label style="font-size:13px;font-weight:600">Teks</label><textarea id="qrText" rows="3" placeholder="Masukkan teks..." style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text);resize:vertical"></textarea>`;if(t==='url')html=`<label style="font-size:13px;font-weight:600">URL</label><input id="qrText" placeholder="https://..." style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)">`;if(t==='email')html=`<label style="font-size:13px;font-weight:600">Email</label><input id="qrText" placeholder="nama@email.com" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)">`;if(t==='phone')html=`<label style="font-size:13px;font-weight:600">Telepon</label><input id="qrText" placeholder="08123456789" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)">`;if(t==='sms')html=`<label style="font-size:13px;font-weight:600">Nomor</label><input id="qrPhone" placeholder="08123456789" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"><label style="font-size:13px;font-weight:600">Pesan</label><textarea id="qrMsg" rows="2" placeholder="Pesan..." style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"></textarea>`;if(t==='wifi')html=`<label style="font-size:13px;font-weight:600">SSID</label><input id="qrSsid" placeholder="Nama WiFi" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"><label style="font-size:13px;font-weight:600">Password</label><input id="qrPass" placeholder="Password" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)">`;if(t==='vcard')html=`<label style="font-size:13px;font-weight:600">Nama</label><input id="qrName" placeholder="Nama Lengkap" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"><label style="font-size:13px;font-weight:600">Telepon</label><input id="qrTel" placeholder="08123456789" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)">`;if(t==='location')html=`<label style="font-size:13px;font-weight:600">Latitude</label><input id="qrLat" placeholder="-6.2088" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)"><label style="font-size:13px;font-weight:600">Longitude</label><input id="qrLng" placeholder="106.8456" style="width:100%;padding:10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:var(--bg);color:var(--text)">`;document.getElementById('qrFields').innerHTML=html}
-function generateQRPro(){let t=currentQRType,data='';if(t==='text')data=document.getElementById('qrText')?.value||'';if(t==='url')data=document.getElementById('qrText')?.value||'';if(t==='email')data='mailto:'+(document.getElementById('qrText')?.value||'');if(t==='phone')data='tel:'+(document.getElementById('qrText')?.value||'');if(t==='sms')data='smsto:'+(document.getElementById('qrPhone')?.value||'')+':'+(document.getElementById('qrMsg')?.value||'');if(t==='wifi')data='WIFI:S:'+(document.getElementById('qrSsid')?.value||'')+';T:WPA;P:'+(document.getElementById('qrPass')?.value||'')+';';if(t==='vcard'){data='BEGIN:VCARD\nVERSION:3.0\nFN:'+(document.getElementById('qrName')?.value||'')+'\nTEL:'+(document.getElementById('qrTel')?.value||'')+'\nEND:VCARD'}if(t==='location')data='geo:'+(document.getElementById('qrLat')?.value||'')+','+(document.getElementById('qrLng')?.value||'');if(!data){toast('Masukkan data!','error');return}let fg=document.getElementById('qrFg')?.value||'#000000',bg=document.getElementById('qrBg')?.value||'#ffffff';document.getElementById('genPreview').innerHTML='';new QRCode(document.getElementById('genPreview'),{text:data,width:200,height:200,colorDark:fg,colorLight:bg});setTimeout(()=>{let c=document.querySelector('#genPreview canvas');if(c){c.toBlob(b=>{genBlob=b;document.getElementById('btnDownloadPNG').classList.remove('hidden')},'image/png')}},300)}
-function genBC(){let d=document.getElementById('barData')?.value.trim(),f=document.getElementById('barFormat')?.value||'CODE128';if(!d){toast('Masukkan data!','error');return}document.getElementById('genPreview').innerHTML='';let s=document.createElementNS("http://www.w3.org/2000/svg","svg");document.getElementById('genPreview').appendChild(s);try{JsBarcode(s,d,{format:f,height:80,displayValue:!0,fontSize:14});genBlob=new Blob([new XMLSerializer().serializeToString(s)],{type:'image/svg+xml'});document.getElementById('btnDownloadSVG').classList.remove('hidden');document.getElementById('btnDownloadPNG').classList.add('hidden')}catch(e){toast('Data tidak valid!','error')}}
-document.getElementById('btnDownloadPNG').addEventListener('click',()=>{if(!genBlob)return;let a=document.createElement('a');a.href=URL.createObjectURL(genBlob);a.download='qr-code.png';a.click();toast('✅ PNG Terunduh!')});
-document.getElementById('btnDownloadSVG').addEventListener('click',()=>{if(!genBlob)return;let a=document.createElement('a');a.href=URL.createObjectURL(genBlob);a.download='barcode.svg';a.click();toast('✅ SVG Terunduh!')});
-
-// ===== INIT =====
-if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.getElementById('themeBtn').textContent='☀️'}
-genTab('qr');
-</script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            setupQRTypeButtons();
+            setupBarcodeFormatButtons();
+            setupColorSync();
+            setupRangeSliders();
+            setupLogoUpload();
+            setupQRGenerateButton();
+            setupQRDownloadButtons();
+            setupQRActionButtons();
+            setupBarcodeGenerateButton();
+            setupBarcodeDownloadButtons();
+            if(localStorage.getItem('theme')==='dark'){document.documentElement.classList.add('dark');document.getElementById('themeBtn').textContent='☀️'}
+        });
+    </script>
 </body>
-</html>
+                                                                                                       </html>

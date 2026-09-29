@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="manifest" href="/web-app-manifest-512x512.png">
-<link rel="canonical" href="https://scanbarcode-pro.vercel.app/hi" />
+<link rel="canonical" href="https://scanbarcode-pro.vercel.app/" />
 
 <meta property="og:title" content="Free Online Barcode Scanner — Professional & Trusted">
 <meta property="og:description" content="Free online barcode & QR code scanner with live camera. Fast, accurate, and 100% free.">
@@ -58,7 +58,8 @@
     .page.active { display:block; animation:fadeIn 0.5s; }
     @keyframes fadeIn { from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:translateY(0)} }
     .hero { text-align:center; padding:56px 0 44px; position:relative; overflow:hidden; }
-    .hero h1 { font-size:clamp(2rem,5vw,3.4rem); font-weight:900; line-height:1.2; margin-bottom:20px; background:linear-gradient(135deg,#1e40af,#2563eb,#3b82f6,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-1px; }
+    .hero h1 { font-size:clamp(1.9rem,4.5vw,3rem); font-weight:900; line-height:1.25; margin-bottom:20px; letter-spacing:-0.5px; background:linear-gradient(135deg,#1e40af,#2563eb,#3b82f6,#60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero h1 span { display:block; }
     .hero p { font-size:17px; color:#64748b; max-width:820px; margin:0 auto 30px; line-height:1.85; }
     .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:14px 30px; border-radius:12px; font-weight:700; font-size:15px; cursor:pointer; border:none; text-decoration:none; transition:all 0.3s; }
     .btn-primary { background:linear-gradient(135deg,#1e40af,#2563eb); color:#fff; box-shadow:0 6px 22px rgba(37,99,235,0.35); }
@@ -98,9 +99,6 @@
     .product-main-image { width:100%; max-height:220px; object-fit:contain; border-radius:12px; cursor:pointer; background:#fff; transition:transform 0.3s; padding:8px; }
     .product-main-image:hover { transform:scale(1.02); }
     .product-description { margin-top:10px; background:var(--bg); padding:12px; border-radius:10px; font-size:13px; color:var(--text); }
-    .product-price-row { display:flex; align-items:center; gap:10px; margin-top:10px; background:var(--bg); padding:10px; border-radius:10px; }
-    .product-price-row strong { font-size:14px; }
-    .price-btn { margin-left:auto; }
     .footer { background:#0f172a; color:#94a3b8; padding:50px 28px 20px; margin-top:auto; }
     .footer-grid { max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.8fr 1fr 1fr; gap:40px; margin-bottom:30px; }
     .footer h4 { color:#fff; font-size:15px; font-weight:700; margin-bottom:12px; }
@@ -125,7 +123,7 @@
     /* ONLY Google buttons highlighted green */
     .highlight-btn { background: #10b981 !important; color: #ffffff !important; border: none !important; box-shadow: 0 4px 14px rgba(16,185,129,0.4) !important; }
     .highlight-btn:hover { background: #059669 !important; transform: translateY(-2px); }
-    /* Product image container (neutral) */
+    /* Universal image container (neutral) */
     .product-image-container { width: 100%; max-height: 260px; display: flex; align-items: center; justify-content: center; background: var(--bg); padding: 12px; border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); flex-direction: column; overflow: hidden; }
     .dark .product-image-container { background: var(--hover); }
     .product-card { background: var(--card); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.08); margin-top: 16px; border: 1px solid var(--border); }
@@ -143,6 +141,15 @@
         font-size: 3rem;
     }
     .product-image-placeholder .loading-text { font-size: 13px; margin-top: 8px; color: var(--muted); }
+    /* Universal icon image for non-product scans */
+    .universal-icon-image {
+        width: 100%; height: 180px;
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        border-radius: 12px;
+        font-size: 5rem;
+    }
+    .dark .universal-icon-image { background: linear-gradient(135deg, #1e3a5f, #0f172a); }
     /* Smooth scroll focus animation for result */
     @keyframes pulseHighlight { 0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); } 70% { box-shadow: 0 0 0 16px rgba(16,185,129,0); } 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); } }
     .pulse-focus { animation: pulseHighlight 1.4s ease-out; }
@@ -182,7 +189,7 @@
         <div class="page active" id="page-home">
             <div class="hero">
                 <div style="display:inline-block; background:rgba(37,99,235,0.1); border-radius:30px; padding:8px 20px; font-size:13px; font-weight:600; color:#2563eb; margin-bottom:22px;">🔒 हमेशा फ्री · कोई ऐप इंस्टॉल नहीं करना</div>
-                <h1>फ्री ऑनलाइन बारकोड स्कैनर<br>प्रोफेशनल और भरोसेमंद</h1>
+                <h1><span>फ्री ऑनलाइन बारकोड स्कैनर</span><span>प्रोफेशनल और भरोसेमंद</span></h1>
                 <p><strong>ScanBarcode Pro</strong> दुनिया भर में लाखों लोगों द्वारा भरोसेमंद नंबर 1 फ्री ऑनलाइन बारकोड और QR कोड स्कैनर है। अपने लाइव कैमरा से सीधे ब्लू लेज़र के साथ स्कैन करें और पूरी उत्पाद जानकारी के साथ तुरंत परिणाम प्राप्त करें — इमेज, ब्रांड, कैटेगरी और बहुत कुछ। तेज़, सटीक और 100% फ्री।</p>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
                     <button class="btn btn-primary" onclick="go('scanner')"><i class="fas fa-camera"></i> अभी स्कैन करें</button>
@@ -443,25 +450,28 @@
 
         const GS1_COUNTRIES = {'899':'इंडोनेशिया','888':'सिंगापुर','955':'मलेशिया','885':'थाईलैंड','893':'वियतनाम','890':'भारत','690':'चीन','691':'चीन','692':'चीन','693':'चीन','694':'चीन','695':'चीन','500':'यूनाइटेड किंगडम','501':'यूनाइटेड किंगडम','502':'यूनाइटेड किंगडम','503':'यूनाइटेड किंगडम','504':'यूनाइटेड किंगडम','400':'जर्मनी','401':'जर्मनी','402':'जर्मनी','403':'जर्मनी','450':'जापान','490':'जापान','000':'संयुक्त राज्य अमेरिका','300':'फ्रांस','471':'ताइवान','480':'फिलीपींस','520':'ग्रीस','760':'स्विट्जरलैंड'};
 
-        // ===== UNIVERSAL PRODUCT IMAGE FETCHER =====
-        // Try multiple sources to always show a product image
-        async function fetchProductImage(barcode) {
-            const sources = [
-                `https://images.openfoodfacts.org/images/products/${barcode.slice(0,3)}/${barcode.slice(3,6)}/${barcode.slice(6,9)}/${barcode.slice(9)}/front_en.400.jpg`,
-                `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`
-            ];
-            try {
-                const r = await fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`);
-                const data = await r.json();
-                if (data.status === 1 && data.product) {
-                    const p = data.product;
-                    const imgFields = ['image_url','image_front_url','image_small_url','image_thumb_url','image_ingredients_url','image_nutrition_url','image_packaging_url'];
-                    for (const f of imgFields) {
-                        if (p[f]) return { image: p[f], source: 'OpenFoodFacts', data: p };
-                    }
-                }
-            } catch(e) {}
-            return { image: null, source: null, data: null };
+        // ===== UNIVERSAL SCAN RESULT VISUAL =====
+        // For non-product scans (URL, WiFi, phone, email, text), show a styled icon visual
+        function getUniversalVisual(type, text) {
+            const visuals = {
+                'url': { icon: '🔗', title: 'वेबसाइट लिंक', desc: 'यह एक वेबसाइट URL है। नीचे दिए गए बटन से इसे ब्राउज़र में खोलें।', bg: 'linear-gradient(135deg,#dbeafe,#bfdbfe)' },
+                'wifi': { icon: '📶', title: 'WiFi नेटवर्क', desc: 'यह एक WiFi QR कोड है। इसमें नेटवर्क की जानकारी है।', bg: 'linear-gradient(135deg,#ede9fe,#ddd6fe)' },
+                'phone': { icon: '📞', title: 'फोन नंबर', desc: 'यह एक फोन नंबर है। इसे कॉल करने के लिए टैप करें।', bg: 'linear-gradient(135deg,#dcfce7,#bbf7d0)' },
+                'email': { icon: '✉️', title: 'ईमेल पता', desc: 'यह एक ईमेल पता है। इसे खोलने के लिए ईमेल ऐप का उपयोग करें।', bg: 'linear-gradient(135deg,#fef3c7,#fde68a)' },
+                'text': { icon: '📝', title: 'टेक्स्ट कंटेंट', desc: 'यह एक सामान्य टेक्स्ट है। आप इसे कॉपी या शेयर कर सकते हैं।', bg: 'linear-gradient(135deg,#e0e7ff,#c7d2fe)' }
+            };
+            const v = visuals[type] || visuals['text'];
+            return `
+                <div class="product-card">
+                    <div class="product-image-container" style="background:${v.bg};">
+                        <div style="font-size:6rem;text-align:center;line-height:1;">${v.icon}</div>
+                    </div>
+                    <div class="product-details">
+                        <div class="product-name">${v.title}</div>
+                        <div class="product-short-desc">${v.desc}</div>
+                        <div class="barcode-number" style="word-break:break-all;">${text.substring(0,80)}${text.length>80?'...':''}</div>
+                    </div>
+                </div>`;
         }
 
         // Scanner logic
@@ -509,6 +519,8 @@
             d.className='result-box success';
             d.innerHTML=`<div style="text-align:center;width:100%">${scanTypeBadge}<div style="font-size:2.5rem;margin:10px 0;">${ic[type]}</div><div style="font-size:13px;font-weight:700;color:#2563eb;margin:6px 0">${lb[type]}</div><div style="font-family:monospace;font-weight:600;word-break:break-all;background:#fff;color:#1e293b;padding:12px;border-radius:8px;font-size:14px;border:2px solid #3b82f6" class="barcode-number">${t}</div><div style="margin-top:10px;color:#64748b;font-size:12px;">फॉर्मेट: ${f}</div></div>`;
             pi.innerHTML='';pi.style.display='none';
+
+            // ===== PRODUCT SCAN =====
             if(type==='product' && /^\d{8,14}$/.test(t)){
                 let country='-',manufacturer='-',product='-';
                 if(t.length>=13){let prefix=t.substring(0,3);country=GS1_COUNTRIES[prefix]||'वैश्विक ('+prefix+')';manufacturer=t.substring(3,8);product=t.substring(8,12);}
@@ -522,7 +534,6 @@
                 </div>`;
                 let container=document.createElement('div');
                 container.style.cssText='margin-top:10px;';
-                // Loading placeholder with spinner
                 container.innerHTML=`
                     <div class="product-card">
                         <div class="product-image-container">
@@ -557,9 +568,7 @@
                         if(description.length>140) description=description.substring(0,140)+'...';
                     }
 
-                    // UNIVERSAL FALLBACK: If no image found, try Open Food Facts static image URL
                     if(imgUrls.length === 0 && t.length >= 8){
-                        // Try common OpenFoodFacts static image URL patterns
                         const paddedCode = t.padStart(13, '0');
                         const p1 = paddedCode.slice(0,3), p2 = paddedCode.slice(3,6), p3 = paddedCode.slice(6,9);
                         const rest = paddedCode.slice(9);
@@ -567,7 +576,6 @@
                         imgUrls.push(staticUrl);
                     }
 
-                    // Build image HTML
                     let mainImg;
                     if(imgUrls.length > 0){
                         mainImg = `<img src="${imgUrls[0]}" class="product-main-image" alt="${name}" onclick="openImageModal('${imgUrls[0]}')"
@@ -600,7 +608,6 @@
                         </div>
                     `;
                 }catch(err){
-                    // Even on network error, show a styled placeholder
                     container.innerHTML=`
                         <div class="product-card">
                             <div class="product-image-container">
@@ -617,6 +624,12 @@
                         </div>`;
                 }
             }
+            // ===== NON-PRODUCT SCAN: SHOW UNIVERSAL VISUAL =====
+            else {
+                pi.style.display='block';
+                pi.innerHTML = getUniversalVisual(type, t);
+            }
+
             let ac=`<button onclick="copyRes()" class="btn btn-dark" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-copy"></i> टेक्स्ट कॉपी करें</button>`;
             if(type==='url')ac+=`<button onclick="window.open('${t}','_blank')" class="btn btn-success" style="padding:9px;width:100%;font-size:13px"><i class="fas fa-external-link-alt"></i> वेबसाइट खोलें</button>`;
             if(type==='product'){
